@@ -65,6 +65,7 @@ gem 'devise-guests', '~> 0.6'
 group :development, :test do
   gem 'fcrepo_wrapper'
   gem 'rspec-rails'
+  gem 'database_cleaner'
 end
 
 gem 'riiif', '~> 1.1'
