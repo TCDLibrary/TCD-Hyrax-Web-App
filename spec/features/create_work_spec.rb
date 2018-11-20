@@ -52,7 +52,18 @@ RSpec.feature 'Create a Work', js: false do
       fill_in('Creator', with: 'Doe, Jane')
       fill_in('Keyword', with: 'testing')
       select('In Copyright', from: 'Rights statement')
-      byebug
+
+      # 20-11-2018 JL:
+      click_link("Additional fields")
+      fill_in "Genre", with: "A Work Genre"
+      fill_in "Bibliography", with: "A Work Bibliography"
+      fill_in "Dris page no", with: "A Dris Page No"
+      fill_in "Dris document no", with: "A Dris Document Number"
+      #fill_in "Page type", with: "A Page Type"
+      fill_in "Page no", with: "A Page Number"
+      fill_in "Catalog no", with: "A Catalog Number"
+
+
       # With selenium and the chrome driver, focus remains on the
       # select box. Click outside the box so the next line can't find
       # its element
