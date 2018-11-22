@@ -1,10 +1,10 @@
 # Generated via
-#  `rails generate hyrax:work Work`
+#  `rails generate hyrax:work Folio`
 require 'rails_helper'
 include Warden::Test::Helpers
 
 # NOTE: If you generated more than one work, you have to set "js: true"
-RSpec.feature 'Create a Work', js: true do
+RSpec.feature 'Create a Folio', js: true do
   context 'a logged in user' do
     Capybara.javascript_driver = :selenium_chrome_headless
     let(:user_attributes) do
@@ -37,10 +37,10 @@ RSpec.feature 'Create a Work', js: true do
       click_link "Add new work"
 
       # If you generate more than one work uncomment these lines
-      choose "payload_concern", option: "Work"
+      choose "payload_concern", option: "Folio"
       click_button "Create work"
 
-      expect(page).to have_content "Add New Work"
+      expect(page).to have_content "Add New Folio"
       click_link "Files" # switch tab
       expect(page).to have_content "Add files"
       expect(page).to have_content "Add folder"
@@ -54,23 +54,11 @@ RSpec.feature 'Create a Work', js: true do
       fill_in('Keyword', with: 'testing')
       select('In Copyright', from: 'Rights statement')
 
-      # 20-11-2018 JL:
-      # require tcd_metadata.rb
-      click_link("Additional fields")
-      fill_in "Genre", with: "A Work Genre"
-      fill_in "Bibliography", with: "A Work Bibliography"
-      fill_in "Dris page no", with: "A Dris Page No"
-      fill_in "Dris document no", with: "A Dris Document Number"
-      #fill_in "Page type", with: "A Page Type"
-      fill_in "Page no", with: "A Page Number"
-      fill_in "Catalog no", with: "A Catalog Number"
-
-
       # With selenium and the chrome driver, focus remains on the
       # select box. Click outside the box so the next line can't find
       # its element
       find('body').click
-      choose('work_visibility_open')
+      choose('folio_visibility_open')
       expect(page).to have_content('Please note, making something visible to the world (i.e. marking this as Public) may be viewed as publishing which could impact your ability to')
       check('agreement')
 

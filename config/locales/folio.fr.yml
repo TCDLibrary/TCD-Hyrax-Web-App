@@ -1,0 +1,8 @@
+fr:
+  hyrax:
+    icons:
+      folio:     'fa fa-file-text-o'
+    select_type:
+      folio:
+        description:        "Folio œuvres"
+        name:               "Folio"

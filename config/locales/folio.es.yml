@@ -1,0 +1,10 @@
+es:
+  hyrax:
+    icons:
+      folio:     'fa fa-file-text-o'
+    select_type:
+      folio:
+        # TODO: translate `human_name` into Spanish
+        description:        "Folio trabajos"
+        name:               "Folio"
+        # TODO: translate `human_name` into Spanish
