@@ -61,10 +61,26 @@ RSpec.feature 'Create a Work', js: true do
       fill_in "Bibliography", with: "A Work Bibliography"
       fill_in "Dris page no", with: "A Dris Page No"
       fill_in "Dris document no", with: "A Dris Document Number"
-      #fill_in "Page type", with: "A Page Type"
-      fill_in "Page no", with: "A Page Number"
-      fill_in "Catalog no", with: "A Catalog Number"
+      fill_in "Dris unique", with: "A Dris Unique"
+      fill_in "Format duration", with: "A Format Duration"
+      fill_in "Format resolution", with: "A Format Resolution"
+      fill_in "Copyright holder", with: "A Copyright Holder"
+      fill_in "Digital root number", with: "A Digital Root Number"
+      fill_in "Digital object identifier", with: "A Digital Object Identifier"
+      fill_in "Language code", with: "A Language Code"
+      fill_in "Location type", with: "A Location Type"
+      fill_in "Shelf locator", with: "A Shelf Locator"
+      fill_in "Role", with: "A Role"
+      fill_in "Role code", with: "A Role Code"
+      fill_in "Sponsor", with: "A Sponsor"
+      fill_in "Conservation history", with: "A Conservation History"
+      fill_in "Publisher location", with: "A Publisher Location"
+      fill_in "Page number", with: "A Page Number"
+      fill_in "Page type", with: "A Page Type"
+      fill_in "Physical extent", with: "A Physical Extent"
 
+      # 29/11/2018 JL - abstract already exists
+      # fill_in "Abstract", with: "An Abstract"
 
       # With selenium and the chrome driver, focus remains on the
       # select box. Click outside the box so the next line can't find
