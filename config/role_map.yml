@@ -1,8 +1,13 @@
 development:
   archivist:
     - archivist1@example.com
+  admin:
+    - jlakes@tcd.ie
 
 test:
+  admin:
+      - jlakes@tcd.ie
+      - test@example.com 
   archivist:
     - archivist1@example.com
     - archivist2@example.com

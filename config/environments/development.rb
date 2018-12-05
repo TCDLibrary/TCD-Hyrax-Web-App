@@ -12,7 +12,7 @@ Rails.application.configure do
   # Show full error reports.
   config.consider_all_requests_local = true
 
-  # 21/11/2018 JL
+  # 21/11/2018 JL:
   config.active_job.queue_adapter     = :inline
 
   # Enable/disable caching. By default caching is disabled.
