@@ -71,64 +71,51 @@ class Work < ActiveFedora::Base
   #  property :format_h, predicate: ::RDF::Vocab::????
   #  property :format_w, predicate: ::RDF::Vocab::????
 
-  #  property :total_records, predicate: ::RDF::Vocab::????                 <<<< JL: is this really metadata?
-  #  property :order_no, predicate: ::RDF::Vocab::????                      <<<< MA: not used in FileMaker
-  #  property :county, predicate: ::RDF::Vocab::????                        <<<< MA: not used in FileMaker
-  #  property :folder_number, predicate: ::RDF::Vocab::????                 <<<< JL: is this really metadata?
-  #  property :project_number, predicate: ::RDF::Vocab::????                <<<< JL: is this really metadata?
+  property :support, predicate: ::RDF::Vocab::MODS.physicalForm
 
-  #  JL: note, in FileMaker can be captured in two places, depending on whether vocab used
-  #  JL: note, see also BasicMetadata
-  #  property :role_code, predicate: ::RDF::Vocab::????
-  #  property :role, predicate: ::RDF::Vocab::????
+  #  JL: medium cant refer to same Mods fields
+  #      property :medium, predicate: ::RDF::Vocab::????
+  property :medium, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#me')
+  property :type_of_work, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#type_of_work')
 
-  #  JL: item_title is in CoreMetadata
+  #  JL: modification_date is in CoreMetadata
+  #  JL: creation_date is in CoreMetadata
 
-  #  property :alternative_title, predicate: ::RDF::Vocab::????
-  #  property :series_title, predicate: ::RDF::Vocab::????
-  #  property :collection_title, predicate: ::RDF::Vocab::????              <<<< JL: why store? Can we not derive? What if it is in multiple collections?
-  #  property :virtual_collection_title, predicate: ::RDF::Vocab::????      <<<< JL: how is this different to collection_title
+  property :related_item_type, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#related_item_type')
+  property :related_item_identifier, predicate: ::RDF::Vocab::MODS.relatedItem
+  property :related_item_title, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#related_item_title')
 
-  #  property :related_item_type, predicate: ::RDF::Vocab::????
-  #  property :related_item_identifier, predicate: ::RDF::Vocab::????
-  #  property :related_item_title, predicate: ::RDF::Vocab::????
-
-
-  #  JL is copyright_notes in BasicMetadata?
-
-  #  property :copyright_notice, predicate: ::RDF::Vocab::????
-
-
-  #  JL: BasicMetadata? property :type, predicate: ::RDF::Vocab::????
-
-  #  property: type_of_work/genre_of_work , predicate: ::RDF::Vocab::????   <<<< JL: What to call it?
-
-  #  property :culture, predicate: ::RDF::Vocab::????                       <<<< MA: no Mods equivalent
-
-
-
-
-  #  property :support, predicate: ::RDF::Vocab::????
-  #  property :medium, predicate: ::RDF::Vocab::????
-
-  #  JL: metadata_modification_date is in CoreMetadata
-
-  #  property :solr, predicate: ::RDF::Vocab::????                          <<<< JL: this is not metadata
-  #  property :visibility, predicate: ::RDF::Vocab::????                    <<<< JL: this is not metadata, it is for managing catalogers workflow
-  #  property :europeana, predicate: ::RDF::Vocab::????                     <<<< JL: this is not metadata, it is for managing catalogers workflow
-  #  property :sponsor, predicate: ::RDF::Vocab::????
-  #  property :provenance, predicate: ::RDF::Vocab::????
-
+  property :subject_lcsh, predicate: ::RDF::Vocab::MODS.subject
+  property :subject_local, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#subject_local')
   #  JL: subject is in BasicMetadata
-  #  JL: subject_names is in BasicMetadata
-
-  #  property :local_keyword/open_keyword, predicate: ::RDF::Vocab::????
+  property :subject_name, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#subject_name')
 
   #  JL: caption/notes/description is in BasicMetadata
 
-  #  property :abstract, predicate: ::RDF::Vocab::MODS.abstract
+  property :alternative_title, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#alternative_title')
+  #  JL: item_title is in CoreMetadata
+  property :series_title, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#series_title')
+  property :collection_title, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#collection_title')
+  property :virtual_collection_title, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#virtual_collection_title')
 
+  #  JL: type_of_resource is in BasicMetadata
 
+  property :provenance, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#provenance')
+
+  #  JL:property :copyright_notice, see rights in BasicMetadata, DC.rights
+
+  property :visibility_flag, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#visibility')
+  property :europeana, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#europeana')
+  property :solr_flag, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#solr')
+  property :culture, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#culture')
+
+  property :county, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#county')
+  property :folder_number, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#folder_number')
+  property :project_number, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#project_number')
+  property :order_no, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#order_no')
+  property :total_records, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#total_records')
+
+  #  JL: note, in FileMaker can be captured in two places, depending on whether vocab used
 
   # This must be included at the end, because it finalizes the metadata
   # schema (by adding accepts_nested_attributes)

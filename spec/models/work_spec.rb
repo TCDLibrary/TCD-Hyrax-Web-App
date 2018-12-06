@@ -29,6 +29,30 @@ RSpec.describe Work do
         expect(work.page_number).to be_empty
         expect(work.page_type).to be_empty
         expect(work.physical_extent).to be_empty
+        expect(work.support).to be_empty
+        expect(work.medium).to be_empty
+        expect(work.type_of_work).to be_empty
+        expect(work.related_item_type).to be_empty
+        expect(work.related_item_identifier).to be_empty
+        expect(work.related_item_title).to be_empty
+        expect(work.subject_lcsh).to be_empty
+        expect(work.subject_local).to be_empty
+        expect(work.subject_name).to be_empty
+        expect(work.alternative_title).to be_empty
+        expect(work.series_title).to be_empty
+        expect(work.collection_title).to be_empty
+        expect(work.virtual_collection_title).to be_empty
+        expect(work.provenance).to be_empty
+        expect(work.visibility_flag).to be_empty
+        expect(work.europeana).to be_empty
+        expect(work.solr_flag).to be_empty
+        expect(work.culture).to be_empty
+        expect(work.county).to be_empty
+        expect(work.folder_number).to be_empty
+        expect(work.project_number).to be_empty
+        expect(work.order_no).to be_empty
+        expect(work.total_records).to be_empty
+
       end
     end
     context "with a Work that has TCD metadata defined" do
@@ -55,6 +79,30 @@ RSpec.describe Work do
         work.page_number = ["A Page Number"]
         work.page_type = ["A Page Type"]
         work.physical_extent = ["A Physical Extent"]
+        work.support = ["A Support"]
+        work.medium = ["A Medium"]
+        work.type_of_work = ["A Type Of Work"]
+        work.related_item_type = ["A Related Item Type"]
+        work.related_item_identifier = ["A Related Item Identifier"]
+        work.related_item_title = ["A Related Item Title"]
+        work.subject_lcsh = ["A Subject LCSH"]
+        work.subject_local = ["A Subject Local"]
+        work.subject_name = ["A Subject Name"]
+        work.alternative_title = ["An Alternative Title"]
+        work.series_title = ["A Series Title"]
+        work.collection_title = ["A Collection Title"]
+        work.virtual_collection_title = ["A Virtual Collection Title"]
+        work.provenance = ["A Provenance"]
+        work.visibility_flag = ["A Visibility Flag"]
+        work.europeana = ["A Europeana"]
+        work.solr_flag = ["A Solr Flag"]
+        work.culture = ["A Culture"]
+        work.county = ["A County"]
+        work.folder_number = ["A Folder Number"]
+        work.project_number = ["A Project Number"]
+        work.order_no = ["An Order No"]
+        work.total_records = ["A Total Records"]
+
 
         expect(work.genre).to eq(["A Work Genre"])
         expect(work.bibliography).to eq(["A Work Bibliography"])
@@ -77,6 +125,29 @@ RSpec.describe Work do
         expect(work.page_number).to eq (["A Page Number"])
         expect(work.page_type).to eq (["A Page Type"])
         expect(work.physical_extent).to eq (["A Physical Extent"])
+        expect(work.support).to eq (["A Support"])
+        expect(work.medium).to eq (["A Medium"])
+        expect(work.type_of_work).to eq (["A Type Of Work"])
+        expect(work.related_item_type).to eq (["A Related Item Type"])
+        expect(work.related_item_identifier).to eq (["A Related Item Identifier"])
+        expect(work.related_item_title).to eq (["A Related Item Title"])
+        expect(work.subject_lcsh).to eq (["A Subject LCSH"])
+        expect(work.subject_local).to eq (["A Subject Local"])
+        expect(work.subject_name).to eq (["A Subject Name"])
+        expect(work.alternative_title).to eq  (["An Alternative Title"])
+        expect(work.series_title).to eq  (["A Series Title"])
+        expect(work.collection_title).to eq (["A Collection Title"])
+        expect(work.virtual_collection_title).to eq (["A Virtual Collection Title"])
+        expect(work.provenance).to eq (["A Provenance"])
+        expect(work.visibility_flag).to eq (["A Visibility Flag"])
+        expect(work.europeana).to eq (["A Europeana"])
+        expect(work.solr_flag).to eq (["A Solr Flag"])
+        expect(work.culture).to eq (["A Culture"])
+        expect(work.county).to eq (["A County"])
+        expect(work.folder_number).to eq (["A Folder Number"])
+        expect(work.project_number).to eq (["A Project Number"])
+        expect(work.order_no).to eq (["An Order No"])
+        expect(work.total_records).to eq (["A Total Records"])
 
       end
     end
