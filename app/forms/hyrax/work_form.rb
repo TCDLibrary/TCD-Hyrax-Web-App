@@ -15,6 +15,7 @@ module Hyrax
     self.terms += [:format_duration]
     self.terms += [:format_resolution]
     self.terms += [:copyright_holder]
+    self.terms += [:copyright_note]
     self.terms += [:digital_root_number]
     self.terms += [:digital_object_identifier]
     self.terms += [:language_code]

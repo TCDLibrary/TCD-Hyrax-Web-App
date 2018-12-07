@@ -65,6 +65,7 @@ RSpec.feature 'Create a Work', js: true do
       fill_in "Format duration", with: "A Format Duration"
       fill_in "Format resolution", with: "A Format Resolution"
       fill_in "Copyright holder", with: "A Copyright Holder"
+      fill_in "Copyright note", with: "A Copyright Note"
       fill_in "Digital root number", with: "A Digital Root Number"
       fill_in "Digital object identifier", with: "A Digital Object Identifier"
       fill_in "Language code", with: "A Language Code"

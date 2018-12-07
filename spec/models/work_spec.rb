@@ -16,6 +16,7 @@ RSpec.describe Work do
         expect(work.format_duration).to be_empty
         expect(work.format_resolution).to be_empty
         expect(work.copyright_holder).to be_empty
+        expect(work.copyright_note).to be_empty
         expect(work.digital_root_number).to be_empty
         expect(work.digital_object_identifier).to be_empty
         expect(work.language_code).to be_empty
@@ -66,6 +67,7 @@ RSpec.describe Work do
         work.format_duration = ["A Format Duration"]
         work.format_resolution = ["A Format Resolution"]
         work.copyright_holder = ["A Copyright Holder"]
+        work.copyright_note = ["A Copyright Note"]
         work.digital_root_number = ["A Digital Root Number"]
         work.digital_object_identifier = ["A Digital Object Identifier"]
         work.language_code = ["A Language Code"]
@@ -112,6 +114,7 @@ RSpec.describe Work do
         expect(work.format_duration).to eq (["A Format Duration"])
         expect(work.format_resolution).to eq (["A Format Resolution"])
         expect(work.copyright_holder).to eq (["A Copyright Holder"])
+        expect(work.copyright_note).to eq (["A Copyright Note"])
         expect(work.digital_root_number).to eq (["A Digital Root Number"])
         expect(work.digital_object_identifier).to eq (["A Digital Object Identifier"])
         expect(work.language_code).to eq (["A Language Code"])
@@ -152,9 +155,5 @@ RSpec.describe Work do
       end
     end
   end
-
-
-
-
 
 end

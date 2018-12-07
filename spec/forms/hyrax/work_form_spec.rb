@@ -19,6 +19,7 @@ RSpec.describe Hyrax::WorkForm do
     expect(form.terms).to include(:format_duration)
     expect(form.terms).to include(:format_resolution)
     expect(form.terms).to include(:copyright_holder)
+    expect(form.terms).to include(:copyright_note)
     expect(form.terms).to include(:digital_root_number)
     expect(form.terms).to include(:digital_object_identifier)
     expect(form.terms).to include(:language_code)
@@ -55,7 +56,7 @@ RSpec.describe Hyrax::WorkForm do
     expect(form.terms).to include(:project_number)
     expect(form.terms).to include(:order_no)
     expect(form.terms).to include(:total_records)
-    
+
   end
 
 end
