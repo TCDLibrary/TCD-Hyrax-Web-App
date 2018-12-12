@@ -1,6 +1,8 @@
 Hyrax.config do |config|
   # Injected via `rails g hyrax:work Work`
   config.register_curation_concern :work
+  # Injected via `rails g hyrax:work Folio`
+  config.register_curation_concern :folio
   # Register roles that are expected by your implementation.
   # @see Hyrax::RoleRegistry for additional details.
   # @note there are magical roles as defined in Hyrax::RoleRegistry::MAGIC_ROLES
@@ -86,6 +88,7 @@ Hyrax.config do |config|
 
   # Path to the file characterization tool
   # config.fits_path = "fits.sh"
+  # config.fits_path = "Fits/fits-latest"
 
   # Path to the file derivatives creation tool
   # config.libreoffice_path = "soffice"
@@ -136,7 +139,7 @@ Hyrax.config do |config|
   #   * iiif_image_size_default
   #
   # Default is false
-  # config.iiif_image_server = false
+  config.iiif_image_server = true
 
   # Returns a URL that resolves to an image provided by a IIIF image server
   config.iiif_image_url_builder = lambda do |file_id, base_url, size|

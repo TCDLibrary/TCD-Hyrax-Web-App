@@ -1,0 +1,10 @@
+zh:
+  hyrax:
+    icons:
+      folio:     'fa fa-file-text-o'
+    select_type:
+      folio:
+        # TODO: translate `human_name` into Chinese
+        description:        "Folio 作品"
+        name:               "Folio"
+        # TODO: translate `human_name` into Chinese

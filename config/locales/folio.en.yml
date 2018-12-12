@@ -1,0 +1,8 @@
+en:
+  hyrax:
+    icons:
+      folio:     'fa fa-file-text-o'
+    select_type:
+      folio:
+        description:        "Folio works"
+        name:               "Folio"

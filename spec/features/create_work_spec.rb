@@ -4,8 +4,9 @@ require 'rails_helper'
 include Warden::Test::Helpers
 
 # NOTE: If you generated more than one work, you have to set "js: true"
-RSpec.feature 'Create a Work', js: false do
+RSpec.feature 'Create a Work', js: true do
   context 'a logged in user' do
+    Capybara.javascript_driver = :selenium_chrome_headless
     let(:user_attributes) do
       { email: 'test@example.com' }
     end
@@ -36,8 +37,8 @@ RSpec.feature 'Create a Work', js: false do
       click_link "Add new work"
 
       # If you generate more than one work uncomment these lines
-      # choose "payload_concern", option: "Work"
-      # click_button "Create work"
+      choose "payload_concern", option: "Work"
+      click_button "Create work"
 
       expect(page).to have_content "Add New Work"
       click_link "Files" # switch tab
@@ -52,6 +53,59 @@ RSpec.feature 'Create a Work', js: false do
       fill_in('Creator', with: 'Doe, Jane')
       fill_in('Keyword', with: 'testing')
       select('In Copyright', from: 'Rights statement')
+
+      # 20-11-2018 JL:
+      # require tcd_metadata.rb
+      click_link("Additional fields")
+      fill_in "Genre", with: "A Work Genre"
+      fill_in "Bibliography", with: "A Work Bibliography"
+      fill_in "Dris page no", with: "A Dris Page No"
+      fill_in "Dris document no", with: "A Dris Document Number"
+      fill_in "Dris unique", with: "A Dris Unique"
+      fill_in "Format duration", with: "A Format Duration"
+      fill_in "Format resolution", with: "A Format Resolution"
+      fill_in "Copyright holder", with: "A Copyright Holder"
+      fill_in "Copyright note", with: "A Copyright Note"
+      fill_in "Digital root number", with: "A Digital Root Number"
+      fill_in "Digital object identifier", with: "A Digital Object Identifier"
+      fill_in "Language code", with: "A Language Code"
+      fill_in "Location type", with: "A Location Type"
+      fill_in "Shelf locator", with: "A Shelf Locator"
+      fill_in "Role", with: "A Role"
+      fill_in "Role code", with: "A Role Code"
+      fill_in "Sponsor", with: "A Sponsor"
+      fill_in "Conservation history", with: "A Conservation History"
+      fill_in "Publisher location", with: "A Publisher Location"
+      fill_in "Page number", with: "A Page Number"
+      fill_in "Page type", with: "A Page Type"
+      fill_in "Physical extent", with: "A Physical Extent"
+      fill_in "Support", with: "A Support"
+      fill_in "Medium", with: "A Medium"
+      fill_in "Type of work", with: "A Type Of Work"
+      fill_in "Related item type", with: "A Related Item Type"
+      fill_in "Related item identifier", with: "A Related Item Identifier"
+      fill_in "Related item title", with: "A Related Item Title"
+      fill_in "Subject lcsh", with: "A Subject LCSH"
+      fill_in "Subject local", with: "A Subject Local"
+      fill_in "Subject name", with: "A Subject Name"
+      fill_in "Alternative title", with: "An Alternative Title"
+      fill_in "Series title", with: "A Series Title"
+      fill_in "Collection title", with: "A Collection Title"
+      fill_in "Virtual collection title", with: "A Virtual Collection Title"
+      fill_in "Provenance", with: "A Provenance"
+      fill_in "Visibility flag", with: "A Visibility Flag"
+      fill_in "Europeana", with: "A Europeana"
+      fill_in "Solr flag", with: "A Solr Flag"
+      fill_in "Culture", with: "A Culture"
+      fill_in "County", with: "A County"
+      fill_in "Folder number", with: "A Folder Number"
+      fill_in "Project number", with: "A Project Number"
+      fill_in "Order no", with: "An Order No"
+      fill_in "Total records", with: "A Total Records"
+
+      # 29/11/2018 JL - abstract already exists
+      # fill_in "Abstract", with: "An Abstract"
+
       # With selenium and the chrome driver, focus remains on the
       # select box. Click outside the box so the next line can't find
       # its element

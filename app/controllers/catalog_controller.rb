@@ -31,7 +31,7 @@ class CatalogController < ApplicationController
     config.default_solr_params = {
       qt: "search",
       rows: 10,
-      qf: "title_tesim description_tesim creator_tesim keyword_tesim"
+      qf: "title_tesim description_tesim creator_tesim keyword_tesim culture_tesim"
     }
 
     # solr field configuration for document/show views
@@ -85,6 +85,9 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("identifier", :stored_searchable), helper_method: :index_field_link, field_name: 'identifier'
     config.add_index_field solr_name("embargo_release_date", :stored_sortable, type: :date), label: "Embargo release date", helper_method: :human_readable_date
     config.add_index_field solr_name("lease_expiration_date", :stored_sortable, type: :date), label: "Lease expiration date", helper_method: :human_readable_date
+
+    config.add_index_field solr_name("culture", :stored_searchable), label: "Culture", helper_method: :link_to_profile
+
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
