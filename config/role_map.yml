@@ -1,12 +1,14 @@
 development:
   archivist:
     - archivist1@example.com
+    - cataloger@tcd.ie
 
 test:
   archivist:
     - archivist1@example.com
     - archivist2@example.com
     - leland_himself@example.com
+    - cataloger@tcd.ie
   admin_policy_object_editor:
     - archivist1@example.com
   donor:
