@@ -70,4 +70,4 @@ group :development, :test do
   gem 'database_cleaner'
 end
 
-gem 'riiif', '~> 1.1'
+gem 'riiif' #, '~> 1.1'

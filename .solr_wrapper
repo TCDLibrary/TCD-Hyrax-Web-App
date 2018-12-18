@@ -2,7 +2,9 @@
 # version: 6.0.0
 # port: 8983
 instance_dir: tmp/solr-development
+version: 7.5.0
 collection:
   persist: true
   dir: solr/config/
   name: hydra-development
+

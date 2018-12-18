@@ -49,10 +49,60 @@ RSpec.feature 'Create a Folio', js: true do
         attach_file("files[]", "#{Hyrax::Engine.root}/spec/fixtures/jp2_fits.xml", visible: false)
       end
       click_link "Descriptions" # switch tab
-      fill_in('Title', with: 'My Test Work')
+      fill_in('Title', with: 'My Test Folio')
       fill_in('Creator', with: 'Doe, Jane')
       fill_in('Keyword', with: 'testing')
       select('In Copyright', from: 'Rights statement')
+
+      # 13-12-2018 JL:
+      click_link("Additional fields")
+      fill_in "Genre", with: "A Work Genre"
+      fill_in "Bibliography", with: "A Work Bibliography"
+      fill_in "Dris page no", with: "A Dris Page No"
+      fill_in "Dris document no", with: "A Dris Document Number"
+      fill_in "Dris unique", with: "A Dris Unique"
+      fill_in "Format duration", with: "A Format Duration"
+      fill_in "Format resolution", with: "A Format Resolution"
+      fill_in "Copyright holder", with: "A Copyright Holder"
+      fill_in "Copyright note", with: "A Copyright Note"
+      fill_in "Digital root number", with: "A Digital Root Number"
+      fill_in "Digital object identifier", with: "A Digital Object Identifier"
+      fill_in "Language code", with: "A Language Code"
+      fill_in "Location type", with: "A Location Type"
+      fill_in "Shelf locator", with: "A Shelf Locator"
+      fill_in "Role", with: "A Role"
+      fill_in "Role code", with: "A Role Code"
+      fill_in "Sponsor", with: "A Sponsor"
+      fill_in "Conservation history", with: "A Conservation History"
+      fill_in "Publisher location", with: "A Publisher Location"
+      fill_in "Page number", with: "A Page Number"
+      fill_in "Page type", with: "A Page Type"
+      fill_in "Physical extent", with: "A Physical Extent"
+      fill_in "Support", with: "A Support"
+      fill_in "Medium", with: "A Medium"
+      fill_in "Type of work", with: "A Type Of Work"
+      fill_in "Related item type", with: "A Related Item Type"
+      fill_in "Related item identifier", with: "A Related Item Identifier"
+      fill_in "Related item title", with: "A Related Item Title"
+      fill_in "Subject lcsh", with: "A Subject LCSH"
+      fill_in "Subject local", with: "A Subject Local"
+      fill_in "Subject name", with: "A Subject Name"
+      fill_in "Alternative title", with: "An Alternative Title"
+      fill_in "Series title", with: "A Series Title"
+      fill_in "Collection title", with: "A Collection Title"
+      fill_in "Virtual collection title", with: "A Virtual Collection Title"
+      fill_in "Provenance", with: "A Provenance"
+      fill_in "Visibility flag", with: "A Visibility Flag"
+      fill_in "Europeana", with: "A Europeana"
+      fill_in "Solr flag", with: "A Solr Flag"
+      fill_in "Culture", with: "A Culture"
+      fill_in "County", with: "A County"
+      fill_in "Folder number", with: "A Folder Number"
+      fill_in "Project number", with: "A Project Number"
+      fill_in "Order no", with: "An Order No"
+      fill_in "Total records", with: "A Total Records"
+
+
 
       # With selenium and the chrome driver, focus remains on the
       # select box. Click outside the box so the next line can't find
@@ -63,7 +113,7 @@ RSpec.feature 'Create a Folio', js: true do
       check('agreement')
 
       click_on('Save')
-      expect(page).to have_content('My Test Work')
+      expect(page).to have_content('My Test Folio')
       expect(page).to have_content "Your files are being processed by Hyrax in the background."
     end
   end

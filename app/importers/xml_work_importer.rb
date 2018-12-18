@@ -1,25 +1,9 @@
-require 'csv'
-class CsvImporter
+class XmlWorkImporter
 
   def initialize(file)
     @file = file
     #@user = ::User.batch_user
   end
-
-
-  #   CSV.foreach(@file) do |row|
-  #     work = Work.new
-  #     work.title = [row[34]]
-  #     byebug
-  #     work.depositor = "cataloger@tcd.ie"
-  #     work.creator = [row[40]]
-  #     work.keyword = [row[76]]
-  #     work.rights_statement = [row[46]]
-  #     work.save
-  #   end
-  #end
-
-  #! /usr/bin/env ruby
 
   require 'nokogiri'
   require 'open-uri'
@@ -32,7 +16,12 @@ class CsvImporter
       doc.xpath("//xmlns:ROW").each do |link|
         work = Work.new
         work.depositor = "cataloger@tcd.ie"
+        fs = FileSet.new
+        fs.title = ["testing title for fileset"]
+        fs.save
+        work.members << fs
 
+        byebug
         # title -> Title
         link.xpath("xmlns:Title").each do |aTitle|
           if !aTitle.content.blank?

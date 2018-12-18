@@ -3,13 +3,14 @@ development:
     - archivist1@example.com
     - cataloger@tcd.ie
   admin:
-      - jlakes@tcd.ie
-
+    - jlakes@tcd.ie
+    - batchuser@example.com
 
 test:
   admin:
       - jlakes@tcd.ie
       - test@example.com
+      - batchuser@example.com
   archivist:
     - archivist1@example.com
     - archivist2@example.com
