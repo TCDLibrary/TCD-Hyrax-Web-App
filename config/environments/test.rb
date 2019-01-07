@@ -13,7 +13,7 @@ Rails.application.configure do
   config.eager_load = false
 
   # 05/12/2018 JL:
-  config.active_job.queue_adapter = :test
+  config.active_job.queue_adapter = :inline
 
   # Configure public file server for tests with Cache-Control for performance.
   config.public_file_server.enabled = true

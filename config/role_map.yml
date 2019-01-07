@@ -5,6 +5,7 @@ development:
   admin:
     - jlakes@tcd.ie
     - batchuser@example.com
+    - test@example.com
 
 test:
   admin:

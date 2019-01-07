@@ -8,7 +8,8 @@ RSpec.describe XmlCollectionImporter do
   let(:file_example)       { 'spec/fixtures/Named Collection Example_NAMED COLLECTION RECORD v3.6_20181207.xml' }
 
   before do
-    DatabaseCleaner.clean
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
     ActiveFedora::Cleaner.clean!
   end
 

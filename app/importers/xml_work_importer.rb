@@ -16,10 +16,10 @@ class XmlWorkImporter
       doc.xpath("//xmlns:ROW").each do |link|
         work = Work.new
         work.depositor = "cataloger@tcd.ie"
-        fs = FileSet.new
-        fs.title = ["testing title for fileset"]
-        fs.save
-        work.members << fs
+        #fs = FileSet.new
+        #fs.title = ["testing title for fileset"]
+        #fs.save
+        #work.members << fs
 
         byebug
         # title -> Title

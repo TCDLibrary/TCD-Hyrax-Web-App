@@ -1,0 +1,2216 @@
+
+---
+ar_internal_metadata:
+  columns:
+  - key
+  - value
+  - created_at
+  - updated_at
+  records: 
+  - - environment
+    - development
+    - '2018-12-05 09:46:33.004390'
+    - '2018-12-05 09:46:33.004390'
+
+---
+collection_branding_infos:
+  columns:
+  - id
+  - collection_id
+  - role
+  - local_path
+  - alt_text
+  - target_url
+  - height
+  - width
+  - created_at
+  - updated_at
+  records: 
+  - - 2
+    - '02870v844'
+    - banner
+    - "/home/joe/tcd_hyrax_app_2018_12_05/public/branding/02870v844/banner/trinity-college.jpg"
+    - ''
+    - ''
+    - 
+    - 
+    - '2018-12-10 12:38:52.891844'
+    - '2018-12-10 12:38:52.891844'
+  - - 4
+    - '02870v844'
+    - logo
+    - "/home/joe/tcd_hyrax_app_2018_12_05/public/branding/02870v844/logo/trinity-college.jpg"
+    - ''
+    - ''
+    - 
+    - 
+    - '2018-12-10 13:15:12.209923'
+    - '2018-12-10 13:15:12.209923'
+
+---
+collection_type_participants:
+  columns:
+  - id
+  - hyrax_collection_type_id
+  - agent_type
+  - agent_id
+  - access
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 1
+    - group
+    - admin
+    - manage
+    - '2018-12-05 10:12:37.161847'
+    - '2018-12-05 10:12:37.161847'
+  - - 2
+    - 1
+    - group
+    - admin
+    - create
+    - '2018-12-05 10:12:37.169769'
+    - '2018-12-05 10:12:37.169769'
+  - - 3
+    - 2
+    - group
+    - admin
+    - manage
+    - '2018-12-05 10:14:51.209284'
+    - '2018-12-05 10:14:51.209284'
+  - - 4
+    - 2
+    - group
+    - registered
+    - create
+    - '2018-12-05 10:14:51.217288'
+    - '2018-12-05 10:14:51.217288'
+
+---
+content_blocks:
+  columns:
+  - id
+  - name
+  - value
+  - created_at
+  - updated_at
+  - external_key
+  records: 
+  - - 1
+    - featured_researcher
+    - 
+    - '2018-12-05 09:46:50.821522'
+    - '2018-12-05 09:46:50.821522'
+    - 
+  - - 2
+    - marketing_text
+    - 
+    - '2018-12-05 09:46:50.829468'
+    - '2018-12-05 09:46:50.829468'
+    - 
+  - - 3
+    - announcement_text
+    - 
+    - '2018-12-05 09:46:50.841821'
+    - '2018-12-05 09:46:50.841821'
+    - 
+  - - 4
+    - about_page
+    - 
+    - '2018-12-06 16:16:56.995023'
+    - '2018-12-06 16:16:56.995023'
+    - 
+  - - 5
+    - help_page
+    - 
+    - '2018-12-06 16:16:57.009325'
+    - '2018-12-06 16:16:57.009325'
+    - 
+  - - 6
+    - agreement_page
+    - |
+      <h1>Hyrax Deposit Agreement</h1>
+
+      <p>
+      To properly administer this repository and preserve the contents of
+      Hyrax for future use, The Institution Name (Institution) requires certain permissions from you, the author(s), or copyright owner. By accepting this license, you do not give up the copyright to your work. You do not give up the right to submit the work to publishers or other repositories.  You grant to Institution the non-exclusive right to store your work.  You agree that Institution may translate the submission to any medium or format and keep more than one copy for the purposes of security, back up and long-term preservation of the scholarly record.  Institution will not make any alteration, other than as allowed by this license, to your submission.
+      </p>
+
+      <p>
+      When you submit your file(s) you will have the option of selecting its degree of Visibility on the Web, which will control who can access your materials.  Certain license terms apply to each visibility level:
+      </p>
+
+      <h3>Visibility Level: <span class="label label-success">PUBLIC</span></h3>
+      <p>
+      By choosing the Public option you are allowing anyone in the world to view your submission.   You may choose to apply one of several Creative Commons licenses to your submission, which are explained on the submission form and in the FAQ.  These licenses allow you to set your own terms of use for anyone accessing the submission.  You authorize Institution to distribute your content under the terms of that Creative Commons license and to allow users of Hyrax to do the same if your license choice permits that.
+
+      If you do not choose a license, you grant to Institution the non-exclusive right to distribute your submission (including the metadata and abstract) worldwide, in any format or medium for non-commercial, research, educational, or related academic purposes only.  You also authorize Institution to allow users of the repository to distribute your submission (including the metadata and abstract) worldwide, in any format or medium for non-commercial, research, educational, or related academic purposes only. Institution will clearly identify your name(s) as the author(s) or owner(s) of the submission, and will not make any alteration, other than as allowed by this license, to your submission.
+      </p>
+
+      <h3>Visibility Level: <span class="label label-info">INSTITUTION</span></h3>
+
+      <p>
+      If you select the Institution access option, you have decided to restrict access only to users of Institution's network. Your deposit will not be accessible to colleagues or students at other universities or to members of the public. If you want your work to be accessible to the broader scholarly community, you should consider the regular Public option instead.  If you choose, you may also further limit access to specific individuals or groups of individuals at Institution.
+      </p>
+
+      <p>
+      By clicking through this license, you grant to Institution the non-exclusive right to reproduce and/or distribute your submission (including the metadata and abstract) to students, faculty, staff, and walk-in users of the Institution libraries, in any format or medium for non-commercial, research, educational, or related academic purposes only.  If you have limited access to specific individuals or groups, Institution will distribute your submission ONLY to those users.  You also authorize Institution to allow Institution community users of the repository to distribute your submission (including the metadata and abstract) in any format or medium for Institution internal non-commercial, research, educational, or related academic purposes only. Institution will clearly identify your name(s) as the author(s) or owner(s) of the submission, and will not make any alteration, other than as allowed by this license, to your submission.
+      </p>
+
+      <h3>Visibility Level: <span class="label label-danger">PRIVATE</span></h3>
+
+      <p>
+      If you have selected the PRIVATE access option in the Hyrax deposit process, you have decided to allow Institution a more limited set of rights than those afforded under the Public license option. Your deposit will not be accessible to anyone other than yourself. If you want your work to be accessible to the broader scholarly community, you should consider the regular Public or Institution settings instead.
+      </p>
+
+      <h2>The following terms apply to ALL submissions:</h2>
+      <p>
+      You agree that Institution bears no responsibility for the contents of your submission.  You represent that the submission is your original work, and/or that you have the right to grant the rights contained in this license. You also represent that your submission does not, to the best of your knowledge, infringe upon anyone's copyright. You also represent and warrant that the submission contains no libelous or other unlawful matter and makes no improper invasion of the privacy of any other person.
+      </p>
+      <p>
+      If the submission contains material for which you do not hold copyright and that exceeds fair use, you represent that you have obtained the unrestricted permission of the copyright owner to grant Institution the rights required by this license, and that such third-party owned material is clearly identified and acknowledged within the text or content of the submission.
+      </p>
+      <p>
+      IF THE SUBMISSION IS BASED UPON WORK THAT HAS BEEN SPONSORED OR SUPPORTED BY AN AGENCY OR ORGANIZATION OTHER THAN INSTITUTION SUCH AS, BUT NOT LIMITED TO, THE NATIONAL INSTITUTES OF HEALTH, THE NATIONAL SCIENCE FOUNDATION, OR A PRIVATE FUNDER, YOU REPRESENT THAT YOU HAVE FULFILLED ANY RIGHT OF REVIEW, CONFIDENTIALITY, OR OTHER OBLIGATIONS REQUIRED BY THAT CONTRACT OR AGREEMENT.
+      </p>
+    - '2018-12-06 16:16:57.023719'
+    - '2018-12-06 16:16:57.023719'
+    - 
+  - - 7
+    - terms_page
+    - |
+      <h1>Terms of Use for Hyrax</h1>
+
+      <ol>
+        <li>
+          <strong>General:</strong> The Site is maintained by the The Institution Name Libraries and The Institution Name Information Technology Services (ITS), in support of our mission to disseminate information and research to scholars, educators and the public. As used in these Terms of Use, the terms "we, "us," and "our" refer to the Libraries, ITS, and The Institution Name ("Institution"). Use of Hyrax (the Site and its contents) is subject to the following terms and conditions and all applicable laws. By using the Site or any of its content, you accept and agree to be bound by these Terms of Use and all applicable laws. If any of these Terms of Use are unacceptable to you, do not use the Site.
+        </li>
+
+        <li>
+          <strong>Changes to Terms of Use Are Binding:</strong> We may change these Terms of Use from time-to-time without advance notice. Your use of the Site or any of its content after any changes have been made will constitute your agreement on a prospective basis to the modified Terms of Use and all of the changes. Accordingly, you should read these Terms of Use from time-to-time for any changes.
+        </li>
+
+        <li>
+          <strong>Copyright and Use of Hyrax Content:</strong> The Site includes text, images, graphics, information, articles, multi-media objects, scholarly projects and other works protected by copyright, trademark and other laws ("Content").  Some of the Content on this site may include materials from older published works that have passed into the "public domain" under U.S. copyright law.  Where such information is known, it is included specifically in the metadata associated with each item of Content.  However, the Site itself and most of the materials held as Content on the Site are protected by copyright and other laws.  These materials have been deposited to enable teaching, research, and other non-profit educational activities.  Unless otherwise specified in the metadata attached to an item of Content, you may use the Site and the Content only for non-commercial, research, educational, or related academic purposes.  Further, you have the responsibility to make your own assessment of the copyright or other legal concerns that might affect your use of Hyrax content and to assume personal responsibility for your uses of Content.
+        </li>
+
+        <li>
+          <strong>Special Permissions:</strong> Hyrax does not have the authority to grant or deny special permissions to use images or other Content found on the site beyond those uses that are specifically described in these Terms of Use or as noted specifically on individual items of Content.  Hyrax staff are not able to undertake copyright investigations on behalf of Site users.
+        </li>
+
+        <li>
+          <strong>Hyrax Access Levels:</strong> Where possible, Hyrax makes its Content available to the general public. However, some of the Content on this Site has been made available only to Institution community users or other user subgroups by the depositor.  Such Content cannot be used, downloaded, or distributed outside the Institution community (or subgroup identified) without the specific permission of the depositor.
+        </li>
+
+        <li>
+          <strong>Use of Hyrax Site and Content:</strong> Unless otherwise specified in the metadata attached to an item, Content that has been made accessible to the general public may be used for non-commercial, research, educational, or related academic purposes only.  Such uses include personal study, distribution to students, research and scholarship (including computational research uses such as data and text-mining, citation-extraction, or cross-referencing) as long as you do not sell the Content or sell advertising on any page on which the Content is displayed.  If you make an item of Content available to others, you shall do so in accordance with the terms of the rights granted pursuant to the particular item of Content, or at a minimum, you will retain with the Content its title, the name of the author(s), a reference to these Terms of Use, any copyright notice included on the original, and any metadata associated with the original. You may not use a facsimile of the published version of an article that may be posted in Hyrax under these open access terms, unless the publisher so permits.  You will not make any translation, adaptation or other derivative work of an item of Content except as authorized under U.S. law. You may not sublicense or otherwise transfer your rights in an item of Content, unless specifically authorized by the copyright license granted to the item of Content and will only make Content  available to others for use by them under these Terms of Use.  Links on the Site to third-party web sites are provided solely as a convenience to you. We do not approve or endorse the content of linked third-party sites, and you agree that we will have no responsibility or liability in connection with your use of any linked third-party sites. Nothing in these Terms of Use or on the Site will be construed as granting you any right or license to use any trademarks, service marks or logos displayed on the Site. You agree not to use or register any name, logo or insignia of The Institution Name or any of its subdivisions for any purpose except with our prior written approval and in accordance with any restrictions required by us.
+        </li>
+
+        <li>
+          <strong>Fair Use and Other Lawful Uses:</strong> Nothing in these Terms of Use is intended to restrict or limit you from making uses of Content  that, in the absence of rights granted hereunder, would not infringe or violate anyone's copyright, trademark or other rights.  To the extent permitted by law, adaptation of Hyrax Content to enable use and access by persons with disabilities is encouraged.
+        </li>
+
+        <li>
+          <strong>Reserved Rights; Obtaining Permissions:</strong> All rights in the Site and the Content that are not expressly granted are reserved. You agree to use the Site and the Content only in ways that comply with copyright and all other applicable laws, as well as with these Terms of Use, and that do not infringe or violate anyone's rights. If you wish to make any use of the Content that requires authorization under copyright, trademark or other rights, you agree to obtain all necessary permissions. You are responsible for determining whether permission is needed to make any use of the Content that you wish to make.
+        </li>
+
+        <li>
+          <strong>Disclaimer of Warranties:</strong> THE SITE AND THE CONTENT ARE PROVIDED "AS IS." TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, WE DISCLAIM ALL WARRANTIES OF ANY KIND (EXPRESS, IMPLIED OR OTHERWISE) REGARDING THE SITE OR THE CONTENT, INCLUDING BUT NOT LIMITED TO ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OWNERSHIP, AND NON-INFRINGEMENT. WE MAKE NO WARRANTY ABOUT THE ACCURACY, RELIABILITY, COMPLETENESS, TIMELINESS, SUFFICIENCY OR QUALITY OF THE SITE OR THE CONTENT, NOR THAT ANY PARTICULAR CONTENT WILL CONTINUE TO BE MADE AVAILABLE. WE DO NOT APPROVE OR ENDORSE ANY POSTED MATERIAL OR CONTENT PROVIDED BY OTHERS, INCLUDING INSTITUTION AUTHORS. WE DO NOT WARRANT THAT THE SITE WILL OPERATE WITHOUT ERROR OR INTERRUPTION, OR THAT THE SITE OR ITS SERVER ARE FREE OF COMPUTER VIRUSES OR OTHER HARMFUL MATERIALS.
+        </li>
+
+        <li>
+          <strong>Limitations of Liability and Remedies:</strong> WE MAKE THE SITE AND THE CONTENT AVAILABLE FREE OF CHARGE. YOUR USE OF THE SITE AND THE CONTENT IS AT YOUR OWN SOLE RISK. IN NO EVENT SHALL WE BE LIABLE TO YOU, IN CONTRACT, TORT OR OTHERWISE, FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL, CONSEQUENTIAL, PUNITIVE, EXEMPLARY OR OTHER DAMAGES OF ANY KIND ARISING OUT OF OR RELATING TO THE SITE OR THE CONTENT, OR YOUR USE OF THE SITE OR THE CONTENT, OR ANY THIRD PARTY RIGHTS IN THE CONTENT, EVEN IF THE SITE OR CONTENT IS DEFECTIVE OR WE ARE NEGLIGENT OR OTHERWISE AT FAULT, AND REGARDLESS WHETHER WE ARE ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. THE FOREGOING LIMITATIONS SHALL APPLY TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW.
+        </li>
+
+        <li>
+          <strong>Indemnity:</strong> You agree to indemnify and hold harmless The Institution Name and its trustees, officers, fellows, students, employees and agents, from and against all claims, actions, suits, damages, liabilities and costs (including, without limitation, reasonable legal fees) arising from or relating to your use of the Site or any of the Content or your failure to comply with any provision of these Terms of Use.
+        </li>
+
+        <li>
+          <strong>Communications:</strong>
+          <ol type="A">
+            <li>Copyright Complaints: We respect the intellectual property rights of others. If you believe your copyright has been violated on the Site, please notify us through Institution's designated agent under the Digital Millennium Copyright Act (see 17 U.S.C. Â&sect;512(c)(3).</li>
+            <li>Other Site Issues: Please direct all other communications to <a href="/contact">contact form</a>.
+          </ol>
+        </li>
+
+        <li>
+          <strong>Applicable Law and Jurisdiction; Access from Outside the Commonwealth of Pennsylvania:</strong> The Site is controlled and operated from our facilities in and around University Park, PA. These Terms of Use, and any claim or dispute that arises from or relates to your use of the Site or the Content, will be governed by the laws of Pennsylvania, without regard to its conflicts of laws principles. You agree that all such claims and disputes will be heard and resolved exclusively in the courts of Centre County, Pennsylvania. You consent to the personal jurisdiction of such courts over you for this purpose, and waive and agree not to assert any objection to such proceedings in such courts (including any defense or objection of lack of proper jurisdiction or venue or inconvenience of forum). If you choose to access our website from locations other than Pennsylvania, you will be responsible for compliance with all local laws of those other locations.</li>
+
+        <li>
+          <strong>Termination:</strong> The permissions granted to you will terminate automatically upon any breach by you of these Terms of Use.  If we take down or otherwise cease to make a work available as an item of Content, the permission granted to you hereunder to use that Content thereafter will terminate at that time. Hyrax is maintained as a scholarly and educational resource by Institution which may be modified or terminated by the University in its sole discretion.
+        </li>
+      </ol>
+    - '2018-12-06 16:16:57.050920'
+    - '2018-12-06 16:16:57.050920'
+    - 
+
+---
+featured_works:
+  columns:
+  - id
+  - order
+  - work_id
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 5
+    - 5138jd84x
+    - '2018-12-10 11:48:01.860508'
+    - '2018-12-10 11:48:01.860508'
+
+---
+hyrax_collection_types:
+  columns:
+  - id
+  - title
+  - description
+  - machine_id
+  - nestable
+  - discoverable
+  - sharable
+  - allow_multiple_membership
+  - require_membership
+  - assigns_workflow
+  - assigns_visibility
+  - share_applies_to_new_works
+  - brandable
+  - badge_color
+  records: 
+  - - 1
+    - Admin Set
+    - An aggregation of works that is intended to help with administrative control.
+      Admin Sets provide a way of defining behaviors and policies around a set of
+      works.
+    - admin_set
+    - false
+    - false
+    - true
+    - false
+    - true
+    - true
+    - true
+    - true
+    - false
+    - "#405060"
+  - - 2
+    - User Collection
+    - A User Collection can be created by any user to organize their works.
+    - user_collection
+    - true
+    - true
+    - true
+    - true
+    - false
+    - false
+    - false
+    - false
+    - true
+    - "#705070"
+
+---
+job_io_wrappers:
+  columns:
+  - id
+  - user_id
+  - uploaded_file_id
+  - file_set_id
+  - mime_type
+  - original_name
+  - path
+  - relation
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 1
+    - 9
+    - ht24wj40p
+    - 
+    - 
+    - "/home/joe/tcd_hyrax_app_2018_12_05/tmp/uploads/hyrax/uploaded_file/file/9/GALL-9-GG-109_001_LO.jpg"
+    - original_file
+    - '2018-12-05 10:40:55.114118'
+    - '2018-12-05 10:40:55.114118'
+  - - 2
+    - 1
+    - 11
+    - 2b88qc16g
+    - 
+    - 
+    - "/home/joe/tcd_hyrax_app_2018_12_05/tmp/uploads/hyrax/uploaded_file/file/11/GALL-9-GG-109_001_LO.jpg"
+    - original_file
+    - '2018-12-05 10:48:41.223123'
+    - '2018-12-05 10:48:41.223123'
+  - - 3
+    - 1
+    - 12
+    - 1z40ks800
+    - 
+    - 
+    - "/home/joe/tcd_hyrax_app_2018_12_05/tmp/uploads/hyrax/uploaded_file/file/12/GALL-9-GG-109_002_LO.jpg"
+    - original_file
+    - '2018-12-05 10:49:55.774863'
+    - '2018-12-05 10:49:55.774863'
+  - - 4
+    - 1
+    - 13
+    - n583xt96p
+    - 
+    - 
+    - "/home/joe/tcd_hyrax_app_2018_12_05/tmp/uploads/hyrax/uploaded_file/file/13/GALL-9-GG-109_003_LO.jpg"
+    - original_file
+    - '2018-12-05 10:50:53.194586'
+    - '2018-12-05 10:50:53.194586'
+  - - 5
+    - 1
+    - 14
+    - sx61dm28w
+    - 
+    - 
+    - "/home/joe/tcd_hyrax_app_2018_12_05/tmp/uploads/hyrax/uploaded_file/file/14/GALL-9-GG-109_004_LO.jpg"
+    - original_file
+    - '2018-12-05 16:45:23.579282'
+    - '2018-12-05 16:45:23.579282'
+  - - 6
+    - 1
+    - 15
+    - pn89d6567
+    - 
+    - 
+    - "/home/joe/tcd_hyrax_app_2018_12_05/tmp/uploads/hyrax/uploaded_file/file/15/ciudad-de-las-artes-y-las-ciencias.jpg"
+    - original_file
+    - '2018-12-05 17:25:13.944335'
+    - '2018-12-05 17:25:13.944335'
+  - - 7
+    - 1
+    - 30
+    - q811kj606
+    - 
+    - 
+    - "/home/joe/tcd_hyrax_app_2018_12_05/tmp/uploads/hyrax/uploaded_file/file/30/GALL-9-GG-109_005_LO.jpg"
+    - original_file
+    - '2018-12-10 12:03:26.422375'
+    - '2018-12-10 12:03:26.422375'
+
+---
+minter_states:
+  columns:
+  - id
+  - namespace
+  - template
+  - counters
+  - seq
+  - rand
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - default
+    - ".reeddeeddk"
+    - '[{"value":0,"max":24139284},{"value":24139285,"max":48278568},{"value":48278568,"max":72417852},{"value":72417852,"max":96557136},{"value":96557136,"max":120696420},{"value":120696420,"max":144835704},{"value":144835704,"max":168974988},{"value":168974988,"max":193114272},{"value":193114272,"max":217253556},{"value":217253556,"max":241392840},{"value":241392840,"max":265532124},{"value":265532125,"max":289671408},{"value":289671408,"max":313810692},{"value":313810692,"max":337949976},{"value":337949976,"max":362089260},{"value":362089260,"max":386228544},{"value":386228544,"max":410367828},{"value":410367828,"max":434507112},{"value":434507112,"max":458646396},{"value":458646396,"max":482785680},{"value":482785681,"max":506924964},{"value":506924964,"max":531064248},{"value":531064248,"max":555203532},{"value":555203532,"max":579342816},{"value":579342817,"max":603482100},{"value":603482100,"max":627621384},{"value":627621385,"max":651760668},{"value":651760668,"max":675899952},{"value":675899952,"max":700039236},{"value":700039236,"max":724178520},{"value":724178520,"max":748317804},{"value":748317804,"max":772457088},{"value":772457088,"max":796596372},{"value":796596372,"max":820735656},{"value":820735656,"max":844874940},{"value":844874940,"max":869014224},{"value":869014224,"max":893153508},{"value":893153508,"max":917292792},{"value":917292792,"max":941432076},{"value":941432076,"max":965571360},{"value":965571360,"max":989710644},{"value":989710644,"max":1013849928},{"value":1013849929,"max":1037989212},{"value":1037989213,"max":1062128496},{"value":1062128496,"max":1086267780},{"value":1086267780,"max":1110407064},{"value":1110407064,"max":1134546348},{"value":1134546348,"max":1158685632},{"value":1158685632,"max":1182824916},{"value":1182824916,"max":1206964200},{"value":1206964200,"max":1231103484},{"value":1231103485,"max":1255242768},{"value":1255242768,"max":1279382052},{"value":1279382052,"max":1303521336},{"value":1303521336,"max":1327660620},{"value":1327660620,"max":1351799904},{"value":1351799904,"max":1375939188},{"value":1375939188,"max":1400078472},{"value":1400078472,"max":1424217756},{"value":1424217756,"max":1448357040},{"value":1448357040,"max":1472496324},{"value":1472496324,"max":1496635608},{"value":1496635608,"max":1520774892},{"value":1520774892,"max":1544914176},{"value":1544914176,"max":1569053460},{"value":1569053460,"max":1593192744},{"value":1593192744,"max":1617332028},{"value":1617332028,"max":1641471312},{"value":1641471312,"max":1665610596},{"value":1665610596,"max":1689749880},{"value":1689749880,"max":1713889164},{"value":1713889165,"max":1738028448},{"value":1738028448,"max":1762167732},{"value":1762167732,"max":1786307016},{"value":1786307016,"max":1810446300},{"value":1810446300,"max":1834585584},{"value":1834585584,"max":1858724868},{"value":1858724868,"max":1882864152},{"value":1882864152,"max":1907003436},{"value":1907003436,"max":1931142720},{"value":1931142720,"max":1955282004},{"value":1955282004,"max":1979421288},{"value":1979421288,"max":2003560572},{"value":2003560572,"max":2027699856},{"value":2027699856,"max":2051839140},{"value":2051839140,"max":2075978424},{"value":2075978424,"max":2100117708},{"value":2100117708,"max":2124256992},{"value":2124256993,"max":2148396276},{"value":2148396277,"max":2172535560},{"value":2172535560,"max":2196674844},{"value":2196674844,"max":2220814128},{"value":2220814128,"max":2244953412},{"value":2244953412,"max":2269092696},{"value":2269092696,"max":2293231980},{"value":2293231980,"max":2317371264},{"value":2317371265,"max":2341510548},{"value":2341510548,"max":2365649832},{"value":2365649832,"max":2389789116},{"value":2389789116,"max":2413928400},{"value":2413928400,"max":2438067684},{"value":2438067684,"max":2462206968},{"value":2462206968,"max":2486346252},{"value":2486346252,"max":2510485536},{"value":2510485536,"max":2534624820},{"value":2534624820,"max":2558764104},{"value":2558764105,"max":2582903388},{"value":2582903389,"max":2607042672},{"value":2607042672,"max":2631181956},{"value":2631181957,"max":2655321240},{"value":2655321240,"max":2679460524},{"value":2679460525,"max":2703599808},{"value":2703599808,"max":2727739092},{"value":2727739092,"max":2751878376},{"value":2751878376,"max":2776017660},{"value":2776017660,"max":2800156944},{"value":2800156945,"max":2824296228},{"value":2824296228,"max":2848435512},{"value":2848435512,"max":2872574796},{"value":2872574796,"max":2896714080},{"value":2896714080,"max":2920853364},{"value":2920853364,"max":2944992648},{"value":2944992648,"max":2969131932},{"value":2969131932,"max":2993271216},{"value":2993271216,"max":3017410500},{"value":3017410501,"max":3041549784},{"value":3041549785,"max":3065689068},{"value":3065689068,"max":3089828352},{"value":3089828352,"max":3113967636},{"value":3113967636,"max":3138106920},{"value":3138106920,"max":3162246204},{"value":3162246204,"max":3186385488},{"value":3186385488,"max":3210524772},{"value":3210524772,"max":3234664056},{"value":3234664056,"max":3258803340},{"value":3258803340,"max":3282942624},{"value":3282942624,"max":3307081908},{"value":3307081908,"max":3331221192},{"value":3331221193,"max":3355360476},{"value":3355360476,"max":3379499760},{"value":3379499760,"max":3403639044},{"value":3403639044,"max":3427778328},{"value":3427778328,"max":3451917612},{"value":3451917612,"max":3476056896},{"value":3476056896,"max":3500196180},{"value":3500196180,"max":3524335464},{"value":3524335464,"max":3548474748},{"value":3548474748,"max":3572614032},{"value":3572614032,"max":3596753316},{"value":3596753317,"max":3620892600},{"value":3620892600,"max":3645031884},{"value":3645031884,"max":3669171168},{"value":3669171168,"max":3693310452},{"value":3693310452,"max":3717449736},{"value":3717449736,"max":3741589020},{"value":3741589020,"max":3765728304},{"value":3765728304,"max":3789867588},{"value":3789867588,"max":3814006872},{"value":3814006872,"max":3838146156},{"value":3838146156,"max":3862285440},{"value":3862285441,"max":3886424724},{"value":3886424724,"max":3910564008},{"value":3910564008,"max":3934703292},{"value":3934703292,"max":3958842576},{"value":3958842576,"max":3982981860},{"value":3982981860,"max":4007121144},{"value":4007121144,"max":4031260428},{"value":4031260428,"max":4055399712},{"value":4055399712,"max":4079538996},{"value":4079538996,"max":4103678280},{"value":4103678280,"max":4127817564},{"value":4127817564,"max":4151956848},{"value":4151956848,"max":4176096132},{"value":4176096132,"max":4200235416},{"value":4200235416,"max":4224374700},{"value":4224374700,"max":4248513984},{"value":4248513984,"max":4272653268},{"value":4272653268,"max":4296792552},{"value":4296792552,"max":4320931836},{"value":4320931836,"max":4345071120},{"value":4345071120,"max":4369210404},{"value":4369210404,"max":4393349688},{"value":4393349688,"max":4417488972},{"value":4417488972,"max":4441628256},{"value":4441628256,"max":4465767540},{"value":4465767540,"max":4489906824},{"value":4489906824,"max":4514046108},{"value":4514046108,"max":4538185392},{"value":4538185393,"max":4562324676},{"value":4562324676,"max":4586463960},{"value":4586463960,"max":4610603244},{"value":4610603244,"max":4634742528},{"value":4634742528,"max":4658881812},{"value":4658881812,"max":4683021096},{"value":4683021097,"max":4707160380},{"value":4707160380,"max":4731299664},{"value":4731299665,"max":4755438948},{"value":4755438948,"max":4779578232},{"value":4779578232,"max":4803717516},{"value":4803717516,"max":4827856800},{"value":4827856800,"max":4851996084},{"value":4851996084,"max":4876135368},{"value":4876135368,"max":4900274652},{"value":4900274652,"max":4924413936},{"value":4924413936,"max":4948553220},{"value":4948553220,"max":4972692504},{"value":4972692504,"max":4996831788},{"value":4996831788,"max":5020971072},{"value":5020971072,"max":5045110356},{"value":5045110357,"max":5069249640},{"value":5069249640,"max":5093388924},{"value":5093388924,"max":5117528208},{"value":5117528208,"max":5141667492},{"value":5141667492,"max":5165806776},{"value":5165806776,"max":5189946060},{"value":5189946061,"max":5214085344},{"value":5214085344,"max":5238224628},{"value":5238224628,"max":5262363912},{"value":5262363912,"max":5286503196},{"value":5286503196,"max":5310642480},{"value":5310642480,"max":5334781764},{"value":5334781764,"max":5358921048},{"value":5358921048,"max":5383060332},{"value":5383060332,"max":5407199616},{"value":5407199616,"max":5431338900},{"value":5431338900,"max":5455478184},{"value":5455478184,"max":5479617468},{"value":5479617468,"max":5503756752},{"value":5503756752,"max":5527896036},{"value":5527896036,"max":5552035320},{"value":5552035320,"max":5576174604},{"value":5576174604,"max":5600313888},{"value":5600313888,"max":5624453172},{"value":5624453172,"max":5648592456},{"value":5648592456,"max":5672731740},{"value":5672731740,"max":5696871024},{"value":5696871025,"max":5721010308},{"value":5721010308,"max":5745149592},{"value":5745149592,"max":5769288876},{"value":5769288876,"max":5793428160},{"value":5793428160,"max":5817567444},{"value":5817567444,"max":5841706728},{"value":5841706729,"max":5865846012},{"value":5865846012,"max":5889985296},{"value":5889985296,"max":5914124580},{"value":5914124581,"max":5938263864},{"value":5938263864,"max":5962403148},{"value":5962403148,"max":5986542432},{"value":5986542432,"max":6010681716},{"value":6010681716,"max":6034821000},{"value":6034821000,"max":6058960284},{"value":6058960284,"max":6083099568},{"value":6083099568,"max":6107238852},{"value":6107238852,"max":6131378136},{"value":6131378136,"max":6155517420},{"value":6155517420,"max":6179656704},{"value":6179656704,"max":6203795988},{"value":6203795988,"max":6227935272},{"value":6227935272,"max":6252074556},{"value":6252074556,"max":6276213840},{"value":6276213840,"max":6300353124},{"value":6300353124,"max":6324492408},{"value":6324492408,"max":6348631692},{"value":6348631692,"max":6372770976},{"value":6372770976,"max":6396910260},{"value":6396910261,"max":6421049544},{"value":6421049544,"max":6445188828},{"value":6445188828,"max":6469328112},{"value":6469328112,"max":6493467396},{"value":6493467396,"max":6517606680},{"value":6517606680,"max":6541745964},{"value":6541745965,"max":6565885248},{"value":6565885248,"max":6590024532},{"value":6590024533,"max":6614163816},{"value":6614163818,"max":6638303100},{"value":6638303100,"max":6662442384},{"value":6662442384,"max":6686581668},{"value":6686581668,"max":6710720952},{"value":6710720952,"max":6734860236},{"value":6734860236,"max":6758999520},{"value":6758999520,"max":6783138804},{"value":6783138804,"max":6807278088},{"value":6807278088,"max":6831417372},{"value":6831417372,"max":6855556656},{"value":6855556656,"max":6879695940},{"value":6879695940,"max":6903835224},{"value":6903835224,"max":6927974508},{"value":6927974508,"max":6952113792},{"value":6952113792,"max":6976253076},{"value":6976253076,"max":7000392360},{"value":7000392360,"max":7024531644},{"value":7024531644,"max":7048670928},{"value":7048670928,"max":7072810000}]'
+    - 35
+    - !binary |-
+      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
+    - '2018-12-05 10:18:01.468115'
+    - '2018-12-18 08:51:49.503577'
+
+---
+permission_template_accesses:
+  columns:
+  - id
+  - permission_template_id
+  - agent_type
+  - agent_id
+  - access
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 1
+    - group
+    - admin
+    - manage
+    - '2018-12-05 09:57:40.652656'
+    - '2018-12-05 09:57:40.652656'
+  - - 2
+    - 1
+    - group
+    - registered
+    - deposit
+    - '2018-12-05 09:57:41.186999'
+    - '2018-12-05 09:57:41.186999'
+  - - 3
+    - 2
+    - group
+    - admin
+    - manage
+    - '2018-12-05 10:18:02.207261'
+    - '2018-12-05 10:18:02.207261'
+  - - 4
+    - 2
+    - user
+    - jlakes@tcd.ie
+    - manage
+    - '2018-12-05 10:18:02.208053'
+    - '2018-12-05 10:18:02.208053'
+  - - 5
+    - 3
+    - group
+    - admin
+    - manage
+    - '2018-12-13 17:34:02.505525'
+    - '2018-12-13 17:34:02.505525'
+  - - 6
+    - 3
+    - user
+    - jlakes@tcd.ie
+    - manage
+    - '2018-12-13 17:34:02.506221'
+    - '2018-12-13 17:34:02.506221'
+
+---
+permission_templates:
+  columns:
+  - id
+  - source_id
+  - visibility
+  - created_at
+  - updated_at
+  - release_date
+  - release_period
+  records: 
+  - - 1
+    - admin_set/default
+    - 
+    - '2018-12-05 09:57:40.651104'
+    - '2018-12-05 09:57:40.651104'
+    - 
+    - 
+  - - 2
+    - '02870v844'
+    - 
+    - '2018-12-05 10:18:02.205793'
+    - '2018-12-05 10:18:02.205793'
+    - 
+    - 
+  - - 3
+    - 8p58pc92q
+    - 
+    - '2018-12-13 17:34:02.504176'
+    - '2018-12-13 17:34:02.504176'
+    - 
+    - 
+
+---
+searches:
+  columns:
+  - id
+  - query_params
+  - user_id
+  - user_type
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      controller: hyrax/my/collections
+      action: index
+    - 
+    - 
+    - '2018-12-05 10:03:17.478245'
+    - '2018-12-05 10:03:17.478245'
+  - - 2
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      controller: hyrax/my/works
+      action: index
+    - 
+    - 
+    - '2018-12-05 10:03:31.730116'
+    - '2018-12-05 10:03:31.730116'
+  - - 3
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      controller: hyrax/my/collections
+      action: index
+    - 
+    - 
+    - '2018-12-05 10:12:32.424472'
+    - '2018-12-05 10:12:32.424472'
+  - - 4
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      controller: hyrax/dashboard/collections
+      action: index
+    - 
+    - 
+    - '2018-12-05 10:12:36.920083'
+    - '2018-12-05 10:12:36.920083'
+  - - 5
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      controller: hyrax/my/works
+      action: index
+    - 
+    - 
+    - '2018-12-05 10:28:55.831333'
+    - '2018-12-05 10:28:55.831333'
+  - - 6
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      utf8: "✓"
+      locale: en
+      search_field: all_fields
+      controller: catalog
+      action: index
+    - 
+    - 
+    - '2018-12-05 10:51:06.482786'
+    - '2018-12-05 10:51:06.482786'
+  - - 7
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      f: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+        human_readable_type_sim:
+        - Work
+      locale: en
+      search_field: all_fields
+      controller: catalog
+      action: index
+    - 
+    - 
+    - '2018-12-05 10:51:15.643942'
+    - '2018-12-05 10:51:15.643942'
+  - - 8
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      f: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+        human_readable_type_sim:
+        - Collection
+      locale: en
+      controller: catalog
+      action: index
+    - 
+    - 
+    - '2018-12-05 10:52:55.785475'
+    - '2018-12-05 10:52:55.785475'
+  - - 9
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      utf8: "✓"
+      f: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+        human_readable_type_sim:
+        - Collection
+      locale: en
+      search_field: all_fields
+      controller: catalog
+      action: index
+    - 
+    - 
+    - '2018-12-05 10:53:04.290217'
+    - '2018-12-05 10:53:04.290217'
+  - - 10
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      search_field: all_fields
+      controller: catalog
+      action: index
+    - 
+    - 
+    - '2018-12-05 10:53:07.575321'
+    - '2018-12-05 10:53:07.575321'
+  - - 11
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      controller: hyrax/my/works
+      action: index
+    - 
+    - 
+    - '2018-12-05 16:43:21.675610'
+    - '2018-12-05 16:43:21.675610'
+  - - 12
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      controller: hyrax/my/collections
+      action: index
+    - 
+    - 
+    - '2018-12-05 16:46:23.855094'
+    - '2018-12-05 16:46:23.855094'
+  - - 13
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      add_works_to_collection: '02870v844'
+      add_works_to_collection_label:
+      - Trinity College Dublin - Bound Collections
+      locale: en
+      controller: hyrax/my/works
+      action: index
+    - 
+    - 
+    - '2018-12-05 16:47:13.068673'
+    - '2018-12-05 16:47:13.068673'
+  - - 14
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      controller: hyrax/my/works
+      action: index
+    - 
+    - 
+    - '2018-12-06 16:17:31.065370'
+    - '2018-12-06 16:17:31.065370'
+  - - 15
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      controller: hyrax/my/collections
+      action: index
+    - 
+    - 
+    - '2018-12-06 16:17:39.422424'
+    - '2018-12-06 16:17:39.422424'
+  - - 16
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      utf8: "✓"
+      search_field: all_fields
+      q: Journey
+      controller: catalog
+      action: index
+    - 
+    - 
+    - '2018-12-07 16:55:40.887539'
+    - '2018-12-07 16:55:40.887539'
+  - - 17
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      search_field: all_fields
+      utf8: "✓"
+      controller: catalog
+      action: index
+    - 
+    - 
+    - '2018-12-07 16:56:41.640472'
+    - '2018-12-07 16:56:41.640472'
+  - - 18
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      search_field: all_fields
+      utf8: "✓"
+      view: gallery
+      controller: catalog
+      action: index
+    - 
+    - 
+    - '2018-12-07 16:57:11.306059'
+    - '2018-12-07 16:57:11.306059'
+  - - 19
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      f: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+        human_readable_type_sim:
+        - Collection
+      locale: en
+      controller: catalog
+      action: index
+    - 
+    - 
+    - '2018-12-07 16:57:20.314739'
+    - '2018-12-07 16:57:20.314739'
+  - - 20
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      f: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+        human_readable_type_sim:
+        - Collection
+      locale: en
+      view: list
+      controller: catalog
+      action: index
+    - 
+    - 
+    - '2018-12-07 16:57:24.183115'
+    - '2018-12-07 16:57:24.183115'
+  - - 21
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      f: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+        human_readable_type_sim:
+        - Collection
+      locale: en
+      view: gallery
+      controller: catalog
+      action: index
+    - 
+    - 
+    - '2018-12-07 16:57:26.469543'
+    - '2018-12-07 16:57:26.469543'
+  - - 22
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      f: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+        human_readable_type_sim:
+        - Collection
+      locale: en
+      view: masonry
+      controller: catalog
+      action: index
+    - 
+    - 
+    - '2018-12-07 16:57:28.134392'
+    - '2018-12-07 16:57:28.134392'
+  - - 23
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      f: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+        human_readable_type_sim:
+        - Collection
+      locale: en
+      view: slideshow
+      controller: catalog
+      action: index
+    - 
+    - 
+    - '2018-12-07 16:57:30.844176'
+    - '2018-12-07 16:57:30.844176'
+  - - 24
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      controller: hyrax/my/works
+      action: index
+    - 
+    - 
+    - '2018-12-07 16:57:48.555269'
+    - '2018-12-07 16:57:48.555269'
+  - - 25
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      search_field: all_fields
+      utf8: "✓"
+      view: masonry
+      controller: catalog
+      action: index
+    - 
+    - 
+    - '2018-12-07 16:58:10.328253'
+    - '2018-12-07 16:58:10.328253'
+  - - 26
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      search_field: all_fields
+      utf8: "✓"
+      view: slideshow
+      controller: catalog
+      action: index
+    - 
+    - 
+    - '2018-12-07 16:58:16.673064'
+    - '2018-12-07 16:58:16.673064'
+  - - 27
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      utf8: "✓"
+      locale: en
+      search_field: all_fields
+      q: zxcvbnm
+      controller: catalog
+      action: index
+    - 
+    - 
+    - '2018-12-07 17:10:49.445352'
+    - '2018-12-07 17:10:49.445352'
+  - - 28
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      utf8: "✓"
+      locale: en
+      search_field: all_fields
+      q: qwertyuiop
+      controller: catalog
+      action: index
+    - 
+    - 
+    - '2018-12-07 17:14:30.453013'
+    - '2018-12-07 17:14:30.453013'
+  - - 29
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      utf8: "✓"
+      locale: en
+      search_field: all_fields
+      q: zxcvbnm
+      controller: hyrax/my/works
+      action: index
+    - 
+    - 
+    - '2018-12-07 17:28:22.084855'
+    - '2018-12-07 17:28:22.084855'
+  - - 30
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      search_field: all_fields
+      utf8: "✓"
+      controller: hyrax/my/works
+      action: index
+    - 
+    - 
+    - '2018-12-07 17:28:29.935619'
+    - '2018-12-07 17:28:29.935619'
+  - - 31
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      utf8: "✓"
+      locale: en
+      q: zxcvbnm
+      controller: hyrax/my/works
+      action: index
+    - 
+    - 
+    - '2018-12-07 17:28:35.706075'
+    - '2018-12-07 17:28:35.706075'
+  - - 32
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      utf8: "✓"
+      controller: hyrax/my/works
+      action: index
+    - 
+    - 
+    - '2018-12-07 17:28:50.859846'
+    - '2018-12-07 17:28:50.859846'
+  - - 33
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      utf8: "✓"
+      locale: en
+      search_field: all_fields
+      q: bogie
+      controller: catalog
+      action: index
+    - 
+    - 
+    - '2018-12-07 17:30:33.094538'
+    - '2018-12-07 17:30:33.094538'
+  - - 34
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      utf8: "✓"
+      locale: en
+      search_field: all_fields
+      q: zxcvb
+      controller: catalog
+      action: index
+    - 
+    - 
+    - '2018-12-07 17:30:51.554027'
+    - '2018-12-07 17:30:51.554027'
+  - - 35
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      controller: hyrax/my/works
+      action: index
+    - 
+    - 
+    - '2018-12-10 10:02:28.265753'
+    - '2018-12-10 10:02:28.265753'
+  - - 36
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      f: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+        human_readable_type_sim:
+        - Collection
+      locale: en
+      controller: catalog
+      action: index
+    - 
+    - 
+    - '2018-12-10 10:03:44.180856'
+    - '2018-12-10 10:03:44.180856'
+  - - 37
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      controller: hyrax/my/collections
+      action: index
+    - 
+    - 
+    - '2018-12-10 10:33:55.338922'
+    - '2018-12-10 10:33:55.338922'
+  - - 38
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      controller: hyrax/my/collections
+      action: index
+    - 
+    - 
+    - '2018-12-10 10:34:05.510270'
+    - '2018-12-10 10:34:05.510270'
+  - - 39
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      controller: hyrax/my/works
+      action: index
+    - 
+    - 
+    - '2018-12-10 11:03:59.761106'
+    - '2018-12-10 11:03:59.761106'
+  - - 40
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      controller: hyrax/my/collections
+      action: index
+    - 
+    - 
+    - '2018-12-10 12:36:39.782454'
+    - '2018-12-10 12:36:39.782454'
+  - - 41
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      f: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+        human_readable_type_sim:
+        - Collection
+      locale: en
+      controller: catalog
+      action: index
+    - 
+    - 
+    - '2018-12-10 12:39:48.649860'
+    - '2018-12-10 12:39:48.649860'
+  - - 42
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      f: !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+        resource_type_sim:
+        - Book
+      locale: en
+      controller: hyrax/my/works
+      action: index
+    - 
+    - 
+    - '2018-12-10 12:41:52.985609'
+    - '2018-12-10 12:41:52.985609'
+  - - 43
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      utf8: "✓"
+      locale: en
+      search_field: all_fields
+      q: zxcvbnm
+      controller: catalog
+      action: index
+    - 
+    - 
+    - '2018-12-10 12:42:22.918493'
+    - '2018-12-10 12:42:22.918493'
+  - - 44
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      controller: hyrax/my/works
+      action: index
+    - 
+    - 
+    - '2018-12-12 12:48:21.286007'
+    - '2018-12-12 12:48:21.286007'
+  - - 45
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      controller: hyrax/dashboard/works
+      action: index
+    - 
+    - 
+    - '2018-12-12 14:49:47.056373'
+    - '2018-12-12 14:49:47.056373'
+  - - 46
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      controller: hyrax/my/collections
+      action: index
+    - 
+    - 
+    - '2018-12-12 17:59:34.523624'
+    - '2018-12-12 17:59:34.523624'
+  - - 47
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      controller: hyrax/my/collections
+      action: index
+    - 
+    - 
+    - '2018-12-13 10:04:34.934228'
+    - '2018-12-13 10:04:34.934228'
+  - - 48
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      controller: hyrax/my/works
+      action: index
+    - 
+    - 
+    - '2018-12-14 11:10:05.716319'
+    - '2018-12-14 11:10:05.716319'
+  - - 49
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      controller: hyrax/dashboard/works
+      action: index
+    - 
+    - 
+    - '2018-12-14 11:10:08.796845'
+    - '2018-12-14 11:10:08.796845'
+  - - 50
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      controller: hyrax/my/collections
+      action: index
+    - 
+    - 
+    - '2018-12-14 11:14:43.007227'
+    - '2018-12-14 11:14:43.007227'
+  - - 51
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      controller: hyrax/dashboard/collections
+      action: index
+    - 
+    - 
+    - '2018-12-14 11:15:28.656944'
+    - '2018-12-14 11:15:28.656944'
+  - - 52
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      controller: hyrax/my/works
+      action: index
+    - 
+    - 
+    - '2018-12-17 14:58:44.561350'
+    - '2018-12-17 14:58:44.561350'
+  - - 53
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      controller: hyrax/dashboard/works
+      action: index
+    - 
+    - 
+    - '2018-12-17 14:58:47.212397'
+    - '2018-12-17 14:58:47.212397'
+  - - 54
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      controller: hyrax/my/works
+      action: index
+    - 
+    - 
+    - '2018-12-18 11:12:39.447917'
+    - '2018-12-18 11:12:39.447917'
+  - - 55
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      controller: hyrax/my/collections
+      action: index
+    - 
+    - 
+    - '2018-12-18 11:13:57.585285'
+    - '2018-12-18 11:13:57.585285'
+  - - 56
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      controller: hyrax/dashboard/collections
+      action: index
+    - 
+    - 
+    - '2018-12-18 11:14:02.015013'
+    - '2018-12-18 11:14:02.015013'
+  - - 57
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      controller: hyrax/dashboard/works
+      action: index
+    - 
+    - 
+    - '2018-12-18 11:14:31.378581'
+    - '2018-12-18 11:14:31.378581'
+  - - 58
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      utf8: "✓"
+      locale: fr
+      search_field: all_fields
+      q: bogie
+      controller: catalog
+      action: index
+    - 
+    - 
+    - '2018-12-18 12:18:48.498032'
+    - '2018-12-18 12:18:48.498032'
+  - - 59
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      locale: en
+      controller: catalog
+      action: index
+    - 
+    - 
+    - '2018-12-18 12:19:05.600677'
+    - '2018-12-18 12:19:05.600677'
+
+---
+sipity_agents:
+  columns:
+  - id
+  - proxy_for_id
+  - proxy_for_type
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - admin
+    - Hyrax::Group
+    - '2018-12-05 09:57:41.148730'
+    - '2018-12-05 09:57:41.148730'
+  - - 2
+    - registered
+    - Hyrax::Group
+    - '2018-12-05 09:57:41.188321'
+    - '2018-12-05 09:57:41.188321'
+  - - 3
+    - '1'
+    - User
+    - '2018-12-05 10:03:11.951557'
+    - '2018-12-05 10:03:11.951557'
+  - - 4
+    - '2'
+    - User
+    - '2018-12-14 12:10:05.177149'
+    - '2018-12-14 12:10:05.177149'
+
+---
+sipity_entities:
+  columns:
+  - id
+  - proxy_for_global_id
+  - workflow_id
+  - workflow_state_id
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - gid://tcd-hyrax-app3/Work/5138jd84x
+    - 2
+    - 4
+    - '2018-12-05 10:40:53.006166'
+    - '2018-12-05 10:40:53.094001'
+  - - 2
+    - gid://tcd-hyrax-app3/Folio/bg257f046
+    - 2
+    - 4
+    - '2018-12-05 10:48:37.277981'
+    - '2018-12-05 10:48:37.337616'
+  - - 3
+    - gid://tcd-hyrax-app3/Folio/cf95jb44s
+    - 2
+    - 4
+    - '2018-12-05 10:49:52.523502'
+    - '2018-12-05 10:49:52.533382'
+  - - 4
+    - gid://tcd-hyrax-app3/Folio/br86b356q
+    - 2
+    - 4
+    - '2018-12-05 10:50:49.841439'
+    - '2018-12-05 10:50:49.856099'
+  - - 5
+    - gid://tcd-hyrax-app3/Folio/w66343603
+    - 2
+    - 4
+    - '2018-12-05 16:45:17.864250'
+    - '2018-12-05 16:45:17.910844'
+  - - 6
+    - gid://tcd-hyrax-app3/Work/707957642
+    - 2
+    - 4
+    - '2018-12-05 17:25:11.754588'
+    - '2018-12-05 17:25:11.797727'
+  - - 7
+    - gid://tcd-hyrax-app3/Folio/12579s24j
+    - 2
+    - 4
+    - '2018-12-10 12:03:22.565373'
+    - '2018-12-10 12:03:22.612180'
+
+---
+sipity_entity_specific_responsibilities:
+  columns:
+  - id
+  - workflow_role_id
+  - entity_id
+  - agent_id
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 5
+    - '1'
+    - 3
+    - '2018-12-05 10:40:53.072198'
+    - '2018-12-05 10:40:53.072198'
+  - - 2
+    - 5
+    - '2'
+    - 3
+    - '2018-12-05 10:48:37.321969'
+    - '2018-12-05 10:48:37.321969'
+  - - 3
+    - 5
+    - '3'
+    - 3
+    - '2018-12-05 10:49:52.529004'
+    - '2018-12-05 10:49:52.529004'
+  - - 4
+    - 5
+    - '4'
+    - 3
+    - '2018-12-05 10:50:49.851072'
+    - '2018-12-05 10:50:49.851072'
+  - - 5
+    - 5
+    - '5'
+    - 3
+    - '2018-12-05 16:45:17.894435'
+    - '2018-12-05 16:45:17.894435'
+  - - 6
+    - 5
+    - '6'
+    - 3
+    - '2018-12-05 17:25:11.780864'
+    - '2018-12-05 17:25:11.780864'
+  - - 7
+    - 5
+    - '7'
+    - 3
+    - '2018-12-10 12:03:22.596689'
+    - '2018-12-10 12:03:22.596689'
+
+---
+sipity_notifiable_contexts:
+  columns:
+  - id
+  - scope_for_notification_id
+  - scope_for_notification_type
+  - reason_for_notification
+  - notification_id
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 1
+    - Sipity::WorkflowAction
+    - action_is_taken
+    - 1
+    - '2018-12-05 09:57:41.049948'
+    - '2018-12-05 09:57:41.049948'
+  - - 2
+    - 2
+    - Sipity::WorkflowAction
+    - action_is_taken
+    - 2
+    - '2018-12-05 09:57:41.100590'
+    - '2018-12-05 09:57:41.100590'
+  - - 3
+    - 3
+    - Sipity::WorkflowAction
+    - action_is_taken
+    - 3
+    - '2018-12-05 09:57:41.111865'
+    - '2018-12-05 09:57:41.111865'
+  - - 4
+    - 4
+    - Sipity::WorkflowAction
+    - action_is_taken
+    - 1
+    - '2018-12-05 09:57:41.122652'
+    - '2018-12-05 09:57:41.122652'
+
+---
+sipity_notification_recipients:
+  columns:
+  - id
+  - notification_id
+  - role_id
+  - recipient_strategy
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 1
+    - 2
+    - to
+    - '2018-12-05 09:57:41.042071'
+    - '2018-12-05 09:57:41.042071'
+  - - 2
+    - 2
+    - 2
+    - to
+    - '2018-12-05 09:57:41.099493'
+    - '2018-12-05 09:57:41.099493'
+  - - 3
+    - 3
+    - 2
+    - to
+    - '2018-12-05 09:57:41.110787'
+    - '2018-12-05 09:57:41.110787'
+
+---
+sipity_notifications:
+  columns:
+  - id
+  - name
+  - notification_type
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - Hyrax::Workflow::PendingReviewNotification
+    - email
+    - '2018-12-05 09:57:41.030288'
+    - '2018-12-05 09:57:41.030288'
+  - - 2
+    - Hyrax::Workflow::ChangesRequiredNotification
+    - email
+    - '2018-12-05 09:57:41.097507'
+    - '2018-12-05 09:57:41.097507'
+  - - 3
+    - Hyrax::Workflow::DepositedNotification
+    - email
+    - '2018-12-05 09:57:41.108930'
+    - '2018-12-05 09:57:41.108930'
+
+---
+sipity_roles:
+  columns:
+  - id
+  - name
+  - description
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - managing
+    - Grants access to management tasks
+    - '2018-12-05 09:46:46.587663'
+    - '2018-12-05 09:46:46.602053'
+  - - 2
+    - approving
+    - Grants access to approval tasks
+    - '2018-12-05 09:46:46.609828'
+    - '2018-12-05 09:46:46.616618'
+  - - 3
+    - depositing
+    - Grants access to depositing tasks
+    - '2018-12-05 09:46:46.624509'
+    - '2018-12-05 09:46:46.631740'
+
+---
+sipity_workflow_actions:
+  columns:
+  - id
+  - workflow_id
+  - resulting_workflow_state_id
+  - name
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 1
+    - 1
+    - deposit
+    - '2018-12-05 09:57:41.014083'
+    - '2018-12-05 09:57:41.020740'
+  - - 2
+    - 1
+    - 3
+    - request_changes
+    - '2018-12-05 09:57:41.062294'
+    - '2018-12-05 09:57:41.096331'
+  - - 3
+    - 1
+    - 2
+    - approve
+    - '2018-12-05 09:57:41.103799'
+    - '2018-12-05 09:57:41.107819'
+  - - 4
+    - 1
+    - 1
+    - request_review
+    - '2018-12-05 09:57:41.115600'
+    - '2018-12-05 09:57:41.120244'
+  - - 5
+    - 1
+    - 
+    - comment_only
+    - '2018-12-05 09:57:41.123558'
+    - '2018-12-05 09:57:41.123558'
+  - - 6
+    - 2
+    - 4
+    - deposit
+    - '2018-12-05 09:57:41.135569'
+    - '2018-12-05 09:57:41.137078'
+
+---
+sipity_workflow_methods:
+  columns:
+  - id
+  - service_name
+  - weight
+  - workflow_action_id
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - Hyrax::Workflow::GrantReadToDepositor
+    - 0
+    - 1
+    - '2018-12-05 09:57:41.060144'
+    - '2018-12-05 09:57:41.060144'
+  - - 2
+    - Hyrax::Workflow::DeactivateObject
+    - 1
+    - 1
+    - '2018-12-05 09:57:41.061159'
+    - '2018-12-05 09:57:41.061159'
+  - - 3
+    - Hyrax::Workflow::DeactivateObject
+    - 0
+    - 2
+    - '2018-12-05 09:57:41.102240'
+    - '2018-12-05 09:57:41.102240'
+  - - 4
+    - Hyrax::Workflow::GrantEditToDepositor
+    - 1
+    - 2
+    - '2018-12-05 09:57:41.102894'
+    - '2018-12-05 09:57:41.102894'
+  - - 5
+    - Hyrax::Workflow::GrantReadToDepositor
+    - 0
+    - 3
+    - '2018-12-05 09:57:41.113484'
+    - '2018-12-05 09:57:41.113484'
+  - - 6
+    - Hyrax::Workflow::RevokeEditFromDepositor
+    - 1
+    - 3
+    - '2018-12-05 09:57:41.114127'
+    - '2018-12-05 09:57:41.114127'
+  - - 7
+    - Hyrax::Workflow::ActivateObject
+    - 2
+    - 3
+    - '2018-12-05 09:57:41.114740'
+    - '2018-12-05 09:57:41.114740'
+  - - 8
+    - Hyrax::Workflow::GrantEditToDepositor
+    - 0
+    - 6
+    - '2018-12-05 09:57:41.138735'
+    - '2018-12-05 09:57:41.138735'
+  - - 9
+    - Hyrax::Workflow::ActivateObject
+    - 1
+    - 6
+    - '2018-12-05 09:57:41.139385'
+    - '2018-12-05 09:57:41.139385'
+
+---
+sipity_workflow_responsibilities:
+  columns:
+  - id
+  - agent_id
+  - workflow_role_id
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 1
+    - 3
+    - '2018-12-05 09:57:41.157052'
+    - '2018-12-05 09:57:41.157052'
+  - - 2
+    - 1
+    - 4
+    - '2018-12-05 09:57:41.161493'
+    - '2018-12-05 09:57:41.161493'
+  - - 3
+    - 1
+    - 5
+    - '2018-12-05 09:57:41.164412'
+    - '2018-12-05 09:57:41.164412'
+  - - 4
+    - 1
+    - 6
+    - '2018-12-05 09:57:41.175952'
+    - '2018-12-05 09:57:41.175952'
+  - - 5
+    - 1
+    - 1
+    - '2018-12-05 09:57:41.178874'
+    - '2018-12-05 09:57:41.178874'
+  - - 6
+    - 1
+    - 2
+    - '2018-12-05 09:57:41.181644'
+    - '2018-12-05 09:57:41.181644'
+  - - 7
+    - 2
+    - 5
+    - '2018-12-05 09:57:41.189860'
+    - '2018-12-05 09:57:41.189860'
+  - - 8
+    - 4
+    - 6
+    - '2018-12-14 12:10:05.195689'
+    - '2018-12-14 12:10:05.195689'
+  - - 9
+    - 3
+    - 6
+    - '2018-12-14 12:10:23.452223'
+    - '2018-12-14 12:10:23.452223'
+
+---
+sipity_workflow_roles:
+  columns:
+  - id
+  - workflow_id
+  - role_id
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 1
+    - 2
+    - '2018-12-05 09:57:41.074552'
+    - '2018-12-05 09:57:41.074552'
+  - - 2
+    - 1
+    - 3
+    - '2018-12-05 09:57:41.117155'
+    - '2018-12-05 09:57:41.117155'
+  - - 3
+    - 2
+    - 1
+    - '2018-12-05 09:57:41.149930'
+    - '2018-12-05 09:57:41.149930'
+  - - 4
+    - 2
+    - 2
+    - '2018-12-05 09:57:41.160537'
+    - '2018-12-05 09:57:41.160537'
+  - - 5
+    - 2
+    - 3
+    - '2018-12-05 09:57:41.163473'
+    - '2018-12-05 09:57:41.163473'
+  - - 6
+    - 1
+    - 1
+    - '2018-12-05 09:57:41.174703'
+    - '2018-12-05 09:57:41.174703'
+
+---
+sipity_workflow_state_action_permissions:
+  columns:
+  - id
+  - workflow_role_id
+  - workflow_state_action_id
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 1
+    - 1
+    - '2018-12-05 09:57:41.091317'
+    - '2018-12-05 09:57:41.091317'
+  - - 2
+    - 1
+    - 2
+    - '2018-12-05 09:57:41.094821'
+    - '2018-12-05 09:57:41.094821'
+  - - 3
+    - 1
+    - 3
+    - '2018-12-05 09:57:41.106958'
+    - '2018-12-05 09:57:41.106958'
+  - - 4
+    - 2
+    - 4
+    - '2018-12-05 09:57:41.119373'
+    - '2018-12-05 09:57:41.119373'
+  - - 5
+    - 1
+    - 5
+    - '2018-12-05 09:57:41.126668'
+    - '2018-12-05 09:57:41.126668'
+  - - 6
+    - 1
+    - 6
+    - '2018-12-05 09:57:41.129704'
+    - '2018-12-05 09:57:41.129704'
+  - - 7
+    - 2
+    - 7
+    - '2018-12-05 09:57:41.132773'
+    - '2018-12-05 09:57:41.132773'
+
+---
+sipity_workflow_state_actions:
+  columns:
+  - id
+  - originating_workflow_state_id
+  - workflow_action_id
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 2
+    - 2
+    - '2018-12-05 09:57:41.083465'
+    - '2018-12-05 09:57:41.083465'
+  - - 2
+    - 1
+    - 2
+    - '2018-12-05 09:57:41.093839'
+    - '2018-12-05 09:57:41.093839'
+  - - 3
+    - 1
+    - 3
+    - '2018-12-05 09:57:41.106007'
+    - '2018-12-05 09:57:41.106007'
+  - - 4
+    - 3
+    - 4
+    - '2018-12-05 09:57:41.118417'
+    - '2018-12-05 09:57:41.118417'
+  - - 5
+    - 1
+    - 5
+    - '2018-12-05 09:57:41.125725'
+    - '2018-12-05 09:57:41.125725'
+  - - 6
+    - 2
+    - 5
+    - '2018-12-05 09:57:41.128782'
+    - '2018-12-05 09:57:41.128782'
+  - - 7
+    - 3
+    - 5
+    - '2018-12-05 09:57:41.131834'
+    - '2018-12-05 09:57:41.131834'
+
+---
+sipity_workflow_states:
+  columns:
+  - id
+  - workflow_id
+  - name
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 1
+    - pending_review
+    - '2018-12-05 09:57:41.018879'
+    - '2018-12-05 09:57:41.018879'
+  - - 2
+    - 1
+    - deposited
+    - '2018-12-05 09:57:41.063324'
+    - '2018-12-05 09:57:41.063324'
+  - - 3
+    - 1
+    - changes_required
+    - '2018-12-05 09:57:41.095728'
+    - '2018-12-05 09:57:41.095728'
+  - - 4
+    - 2
+    - deposited
+    - '2018-12-05 09:57:41.136520'
+    - '2018-12-05 09:57:41.136520'
+
+---
+sipity_workflows:
+  columns:
+  - id
+  - name
+  - label
+  - description
+  - created_at
+  - updated_at
+  - permission_template_id
+  - active
+  - allows_access_grant
+  records: 
+  - - 1
+    - one_step_mediated_deposit
+    - One-step mediated deposit workflow
+    - A single-step workflow for mediated deposit in which all deposits must be approved
+      by a reviewer. Reviewer may also send deposits back to the depositor.
+    - '2018-12-05 09:57:41.013407'
+    - '2018-12-05 09:57:41.133345'
+    - 1
+    - false
+    - false
+  - - 2
+    - default
+    - Default workflow
+    - A single submission step, default workflow
+    - '2018-12-05 09:57:41.135111'
+    - '2018-12-05 09:57:41.185202'
+    - 1
+    - true
+    - true
+
+---
+uploaded_files:
+  columns:
+  - id
+  - file
+  - user_id
+  - file_set_uri
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - trinity-college.jpg
+    - 1
+    - 
+    - '2018-12-05 10:18:40.783000'
+    - '2018-12-05 10:18:40.783000'
+  - - 2
+    - "._GALL-9-GG-109_001_LO.jpg"
+    - 1
+    - 
+    - '2018-12-05 10:34:01.827945'
+    - '2018-12-05 10:34:01.827945'
+  - - 3
+    - "._GALL-9-GG-109_001_LO.jpg"
+    - 1
+    - 
+    - '2018-12-05 10:34:36.781958'
+    - '2018-12-05 10:34:36.781958'
+  - - 4
+    - GALL-9-GG-109_001_LO.jpg
+    - 1
+    - 
+    - '2018-12-05 10:34:57.848964'
+    - '2018-12-05 10:34:57.848964'
+  - - 5
+    - GALL-9-GG-109_001_LO.jpg
+    - 1
+    - 
+    - '2018-12-05 10:35:46.104205'
+    - '2018-12-05 10:35:46.104205'
+  - - 6
+    - GALL-9-GG-109_001_LO.jpg
+    - 1
+    - 
+    - '2018-12-05 10:36:17.020556'
+    - '2018-12-05 10:36:17.020556'
+  - - 7
+    - GALL-9-GG-109_002_LO.jpg
+    - 1
+    - 
+    - '2018-12-05 10:36:23.308359'
+    - '2018-12-05 10:36:23.308359'
+  - - 8
+    - GALL-9-GG-109_001_LO.jpg
+    - 1
+    - 
+    - '2018-12-05 10:37:12.829620'
+    - '2018-12-05 10:37:12.829620'
+  - - 9
+    - GALL-9-GG-109_001_LO.jpg
+    - 1
+    - http://127.0.0.1:8080/fcrepo-webapp-4.7.5/rest/dev/ht/24/wj/40/ht24wj40p
+    - '2018-12-05 10:38:20.308888'
+    - '2018-12-05 10:41:03.136793'
+  - - 10
+    - GALL-9-GG-109_001_LO.jpg
+    - 1
+    - 
+    - '2018-12-05 10:47:02.869949'
+    - '2018-12-05 10:47:02.869949'
+  - - 11
+    - GALL-9-GG-109_001_LO.jpg
+    - 1
+    - http://127.0.0.1:8080/fcrepo-webapp-4.7.5/rest/dev/2b/88/qc/16/2b88qc16g
+    - '2018-12-05 10:48:13.210808'
+    - '2018-12-05 10:48:48.274421'
+  - - 12
+    - GALL-9-GG-109_002_LO.jpg
+    - 1
+    - http://127.0.0.1:8080/fcrepo-webapp-4.7.5/rest/dev/1z/40/ks/80/1z40ks800
+    - '2018-12-05 10:49:30.015457'
+    - '2018-12-05 10:50:02.618733'
+  - - 13
+    - GALL-9-GG-109_003_LO.jpg
+    - 1
+    - http://127.0.0.1:8080/fcrepo-webapp-4.7.5/rest/dev/n5/83/xt/96/n583xt96p
+    - '2018-12-05 10:50:40.809659'
+    - '2018-12-05 10:50:59.961905'
+  - - 14
+    - GALL-9-GG-109_004_LO.jpg
+    - 1
+    - http://127.0.0.1:8080/fcrepo-webapp-4.7.5/rest/dev/sx/61/dm/28/sx61dm28w
+    - '2018-12-05 16:44:51.381845'
+    - '2018-12-05 16:45:31.404163'
+  - - 15
+    - ciudad-de-las-artes-y-las-ciencias.jpg
+    - 1
+    - http://127.0.0.1:8080/fcrepo-webapp-4.7.5/rest/dev/pn/89/d6/56/pn89d6567
+    - '2018-12-05 17:21:41.262934'
+    - '2018-12-05 17:25:21.314753'
+  - - 16
+    - GALL-9-GG-109_005_LO.jpg
+    - 1
+    - 
+    - '2018-12-10 10:53:00.810044'
+    - '2018-12-10 10:53:00.810044'
+  - - 17
+    - GALL-9-GG-109_005_LO.jpg
+    - 1
+    - 
+    - '2018-12-10 10:53:46.593414'
+    - '2018-12-10 10:53:46.593414'
+  - - 18
+    - GALL-9-GG-109_005_LO.jpg
+    - 1
+    - 
+    - '2018-12-10 10:54:06.387364'
+    - '2018-12-10 10:54:06.387364'
+  - - 19
+    - GALL-9-GG-109_005_LO.jpg
+    - 1
+    - 
+    - '2018-12-10 10:54:39.035151'
+    - '2018-12-10 10:54:39.035151'
+  - - 20
+    - GALL-9-GG-109_005_LO.jpg
+    - 1
+    - 
+    - '2018-12-10 10:59:33.031899'
+    - '2018-12-10 10:59:33.031899'
+  - - 21
+    - GALL-9-GG-109_005_LO.jpg
+    - 1
+    - 
+    - '2018-12-10 11:00:54.384247'
+    - '2018-12-10 11:00:54.384247'
+  - - 22
+    - GALL-9-GG-109_005_LO.jpg
+    - 1
+    - 
+    - '2018-12-10 11:01:52.611172'
+    - '2018-12-10 11:01:52.611172'
+  - - 23
+    - GALL-9-GG-109_005_LO.jpg
+    - 1
+    - 
+    - '2018-12-10 11:02:51.533800'
+    - '2018-12-10 11:02:51.533800'
+  - - 24
+    - GALL-9-GG-109_005_LO.jpg
+    - 1
+    - 
+    - '2018-12-10 11:04:30.828841'
+    - '2018-12-10 11:04:30.828841'
+  - - 25
+    - GALL-9-GG-109_005_LO.jpg
+    - 1
+    - 
+    - '2018-12-10 11:59:13.042458'
+    - '2018-12-10 11:59:13.042458'
+  - - 26
+    - GALL-9-GG-109_005_LO.jpg
+    - 1
+    - 
+    - '2018-12-10 12:00:18.022099'
+    - '2018-12-10 12:00:18.022099'
+  - - 27
+    - GALL-9-GG-109_005_LO.jpg
+    - 1
+    - 
+    - '2018-12-10 12:00:39.858497'
+    - '2018-12-10 12:00:39.858497'
+  - - 28
+    - GALL-9-GG-109_005_LO.jpg
+    - 1
+    - 
+    - '2018-12-10 12:01:24.862176'
+    - '2018-12-10 12:01:24.862176'
+  - - 29
+    - GALL-9-GG-109_005_LO.jpg
+    - 1
+    - 
+    - '2018-12-10 12:02:07.578450'
+    - '2018-12-10 12:02:07.578450'
+  - - 30
+    - GALL-9-GG-109_005_LO.jpg
+    - 1
+    - http://127.0.0.1:8080/fcrepo-webapp-4.7.5/rest/dev/q8/11/kj/60/q811kj606
+    - '2018-12-10 12:03:17.076547'
+    - '2018-12-10 12:03:34.005429'
+  - - 31
+    - trinity-college.jpg
+    - 1
+    - 
+    - '2018-12-10 12:38:36.070883'
+    - '2018-12-10 12:38:36.070883'
+  - - 32
+    - trinity-college.jpg
+    - 1
+    - 
+    - '2018-12-10 13:14:15.958664'
+    - '2018-12-10 13:14:15.958664'
+  - - 33
+    - trinity-college.jpg
+    - 1
+    - 
+    - '2018-12-10 13:15:09.719364'
+    - '2018-12-10 13:15:09.719364'
+  - - 34
+    - MS2327-64_1_LO.jpg
+    - 2
+    - 
+    - '2018-12-17 15:00:14.149461'
+    - '2018-12-17 15:00:14.149461'
+  - - 35
+    - MS2327-64_1_LO.jpg
+    - 2
+    - 
+    - '2018-12-17 15:01:13.944682'
+    - '2018-12-17 15:01:13.944682'
+  - - 36
+    - MS2327-64_1_LO.jpg
+    - 2
+    - 
+    - '2018-12-17 15:02:42.646733'
+    - '2018-12-17 15:02:42.646733'
+  - - 37
+    - MS2327-64_1_LO.jpg
+    - 2
+    - 
+    - '2018-12-17 15:07:11.600720'
+    - '2018-12-17 15:07:11.600720'
+  - - 38
+    - MS2327-64_1_LO.jpg
+    - 2
+    - 
+    - '2018-12-18 08:51:17.298440'
+    - '2018-12-18 08:51:17.298440'
+  - - 39
+    - MS2327-64_1_LO.jpg
+    - 2
+    - 
+    - '2018-12-18 08:51:57.128394'
+    - '2018-12-18 08:51:57.128394'
+
+---
+users:
+  columns:
+  - id
+  - email
+  - encrypted_password
+  - reset_password_token
+  - reset_password_sent_at
+  - remember_created_at
+  - created_at
+  - updated_at
+  - guest
+  - facebook_handle
+  - twitter_handle
+  - googleplus_handle
+  - display_name
+  - address
+  - admin_area
+  - department
+  - title
+  - office
+  - chat_id
+  - website
+  - affiliation
+  - telephone
+  - avatar_file_name
+  - avatar_content_type
+  - avatar_file_size
+  - avatar_updated_at
+  - linkedin_handle
+  - orcid
+  - arkivo_token
+  - arkivo_subscription
+  - zotero_token
+  - zotero_userid
+  - preferred_locale
+  records: 
+  - - 1
+    - jlakes@tcd.ie
+    - "$2a$11$3jXpM0hmTfAZ57Z/gBSByOk..jTAf1ZHtYXyg8YuC7W6yW1JO4cw2"
+    - 
+    - 
+    - 
+    - '2018-12-05 10:03:11.254483'
+    - '2018-12-18 12:19:51.330150'
+    - false
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - en
+  - - 2
+    - batchuser@example.com
+    - "$2a$11$XLnvcX13f5ooDBQF7w4JDezFTWsWpai/AiuM1dGx0U2T.8DPMLllW"
+    - 
+    - 
+    - 
+    - '2018-12-14 11:12:52.784279'
+    - '2018-12-14 11:12:52.784279'
+    - false
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+
+---
+version_committers:
+  columns:
+  - id
+  - obj_id
+  - datastream_id
+  - version_id
+  - committer_login
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 
+    - 
+    - http://127.0.0.1:8080/fcrepo-webapp-4.7.5/rest/dev/ht/24/wj/40/ht24wj40p/files/979fc44b-6f07-4bd9-b8ef-2140ec5b7866/fcr:versions/version1
+    - jlakes@tcd.ie
+    - '2018-12-05 10:40:55.805546'
+    - '2018-12-05 10:40:55.805546'
+  - - 2
+    - 
+    - 
+    - http://127.0.0.1:8080/fcrepo-webapp-4.7.5/rest/dev/2b/88/qc/16/2b88qc16g/files/9a22173a-9962-4494-9929-9cc61a6503ee/fcr:versions/version1
+    - jlakes@tcd.ie
+    - '2018-12-05 10:48:41.950741'
+    - '2018-12-05 10:48:41.950741'
+  - - 3
+    - 
+    - 
+    - http://127.0.0.1:8080/fcrepo-webapp-4.7.5/rest/dev/1z/40/ks/80/1z40ks800/files/59d0c423-6d77-4e1c-82b1-d469d3ce5534/fcr:versions/version1
+    - jlakes@tcd.ie
+    - '2018-12-05 10:49:56.239679'
+    - '2018-12-05 10:49:56.239679'
+  - - 4
+    - 
+    - 
+    - http://127.0.0.1:8080/fcrepo-webapp-4.7.5/rest/dev/n5/83/xt/96/n583xt96p/files/25419b8c-05d1-445a-9048-10b4f7ee65dc/fcr:versions/version1
+    - jlakes@tcd.ie
+    - '2018-12-05 10:50:53.650523'
+    - '2018-12-05 10:50:53.650523'
+  - - 5
+    - 
+    - 
+    - http://127.0.0.1:8080/fcrepo-webapp-4.7.5/rest/dev/sx/61/dm/28/sx61dm28w/files/27b515f1-6ec2-4cdf-bb2d-c8102b6573a7/fcr:versions/version1
+    - jlakes@tcd.ie
+    - '2018-12-05 16:45:24.276792'
+    - '2018-12-05 16:45:24.276792'
+  - - 6
+    - 
+    - 
+    - http://127.0.0.1:8080/fcrepo-webapp-4.7.5/rest/dev/pn/89/d6/56/pn89d6567/files/751fed0e-24d0-46d6-995e-0a37ebb709ba/fcr:versions/version1
+    - jlakes@tcd.ie
+    - '2018-12-05 17:25:14.573621'
+    - '2018-12-05 17:25:14.573621'
+  - - 7
+    - 
+    - 
+    - http://127.0.0.1:8080/fcrepo-webapp-4.7.5/rest/dev/q8/11/kj/60/q811kj606/files/9bf3de12-1ac7-4152-a740-d3fe53f5405f/fcr:versions/version1
+    - jlakes@tcd.ie
+    - '2018-12-10 12:03:26.930100'
+    - '2018-12-10 12:03:26.930100'

@@ -7,7 +7,7 @@ module TcdExtendedMetadata
         index.as :stored_searchable
       end
 
-      property :dris_document_no, predicate: ::RDF::Vocab::DC.identifier
+      property :dris_document_no, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#dris_document_no')
       property :format_duration, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#fd')
       property :format_resolution, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#fr')
 
