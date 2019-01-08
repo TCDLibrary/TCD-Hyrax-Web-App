@@ -40,7 +40,7 @@ before_script:
   - jdk_switcher use oraclejdk8
   # - echo "USE mysql;\nUPDATE user SET password=PASSWORD('Pa$$w0rd') WHERE user='travis';\nFLUSH PRIVILEGES;\n" | mysql -u root
   #- echo "USE mysql;\nUPDATE user SET password=PASSWORD('Pa$$w0rd') WHERE user='travis';\nFLUSH PRIVILEGES;\n" | mysql -u root
-  - "cp ./config/travis.database.yml ./config/database.yml"
+  - "cp ./config/.travis.database.yml ./config/database.yml"
 
 script:
   - bundle exec rake ci
