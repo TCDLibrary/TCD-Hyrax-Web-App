@@ -33,6 +33,7 @@ services:
 
 before_script:
   - jdk_switcher use oraclejdk8
+  - echo "USE mysql;\nUPDATE user SET password=PASSWORD('Pa$$w0rd') WHERE user='travis';\nFLUSH PRIVILEGES;\n" | mysql -u root
 
 script:
   - bundle exec rake ci
