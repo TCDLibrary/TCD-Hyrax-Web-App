@@ -11,6 +11,7 @@ before_install:
   - gem update --system
   - gem install bundler
   - google-chrome-stable --headless --disable-gpu --no-sandbox --remote-debugging-port=9222 http://localhost &
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS db/test;'
 
 rvm:
   - 2.5.3
@@ -29,9 +30,10 @@ env:
 
 services:
   - redis-server
+  - mysql
 
 before_script:
   - jdk_switcher use oraclejdk8
 
 script:
-  - bundle exec rake ci  
+  - bundle exec rake ci
