@@ -11,6 +11,10 @@ before_install:
   - gem update --system
   - gem install bundler
   - google-chrome-stable --headless --disable-gpu --no-sandbox --remote-debugging-port=9222 http://localhost &
+  - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('Pa$$w0rd') where User='travis'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
+  - sudo mysql_upgrade -u travis -pPa$$w0rd
+  - sudo service mysql restart
+
 
 rvm:
   - 2.5.3
@@ -33,7 +37,7 @@ services:
 
 before_script:
   - jdk_switcher use oraclejdk8
-  - echo "USE mysql;\nUPDATE user SET password=PASSWORD('Pa$$w0rd') WHERE user='travis';\nFLUSH PRIVILEGES;\n" | mysql -u root
+  # - echo "USE mysql;\nUPDATE user SET password=PASSWORD('Pa$$w0rd') WHERE user='travis';\nFLUSH PRIVILEGES;\n" | mysql -u root
 
 script:
   - bundle exec rake ci
