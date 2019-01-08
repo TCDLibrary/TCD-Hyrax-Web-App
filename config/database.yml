@@ -19,7 +19,7 @@ test:
   database: db/test
   pool: 5
   username: travis
-  #password: Pa$$w0rd
+  password: Pa$$w0rd
 
 production:
   adapter: mysql2
