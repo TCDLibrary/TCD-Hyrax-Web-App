@@ -18,8 +18,8 @@ test:
   reconnect: false
   database: db/test
   pool: 5
-  username: root
-  password: Pa$$w0rd
+  username: travis
+  #password: Pa$$w0rd
 
 production:
   adapter: mysql2
