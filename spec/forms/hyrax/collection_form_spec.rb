@@ -8,7 +8,7 @@ RSpec.describe Hyrax::Forms::CollectionForm do
   let(:request) { nil }
   let(:form)    { described_class.new(coll, ability, request) }
   it "has the expected terms" do
-    byebug
+    #byebug
     expect(form.terms).to include(:creator)
     expect(form.terms).to include(:contributor)
     expect(form.terms).to include(:keyword)

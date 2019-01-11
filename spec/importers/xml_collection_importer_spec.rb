@@ -20,7 +20,7 @@ RSpec.describe XmlCollectionImporter do
   it "stores data in correct fields in the collection" do
      XmlCollectionImporter.new(file_example).import
      imported_collection = Collection.first
-     byebug
+     # byebug
      expect(imported_collection.title.first).to eq('Correspondence of John and Catherine D\'Alton')
      expect(imported_collection.depositor).to eq('test@example.com')
      expect(imported_collection.creator).to include('D’Alton, John, 1792-1867')

@@ -6,6 +6,7 @@ require 'active_fedora/cleaner'
 RSpec.describe XmlFolioImporter do
 
   let(:file_example)       { 'spec/fixtures/Named_Collection_Example_PARTS_RECORDS_v3.6_20181207.xml' }
+  let(:parent_id)          { '000000' }
 
   before do
     DatabaseCleaner.strategy = :transaction
@@ -15,6 +16,10 @@ RSpec.describe XmlFolioImporter do
 
   #it "imports an xml folio" do
   #      end
+
+  it "accepts a work (i.e. parent) id" do
+     expect { XmlFolioImporter.new(file_example, parent_id).import }.to change { Folio.count }.by 1
+  end
 
   it "stores data in correct fields in the Folio" do
      #XmlFolioImporter.new(file_example).import

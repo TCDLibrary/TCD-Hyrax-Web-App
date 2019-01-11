@@ -1,6 +1,6 @@
 class XmlFolioImporter
 
-  def initialize(file)
+  def initialize(file, parent = 'nk322d32h')
     @file = file
     @user = ::User.batch_user
   end
@@ -9,6 +9,18 @@ class XmlFolioImporter
   require 'open-uri'
 
   def import
+      # is there a parent Work to own these new folios?
+      #
+      admin_set_id =  AdminSet.find_or_create_default_admin_set_id
+
+      owner_rec = Work.new
+      begin
+        owner_rec = Work.find("nk322d32h")
+      rescue
+
+      end
+
+      byebug
       # Fetch and parse HTML document
       #doc = Nokogiri::XML(open("spec/fixtures/Named_Collection_Example_PARTS_RECORDS_v3.6_20181207.xml"))
       doc = Nokogiri::XML(open(@file))
@@ -16,6 +28,7 @@ class XmlFolioImporter
       doc.xpath("//xmlns:ROW").each do |link|
         folio = Folio.new
         folio.depositor = @user.email
+        folio.visibility = 'open'
 
 
         #byebug
@@ -496,11 +509,60 @@ class XmlFolioImporter
           end
         end
 
+        # Attach the image file and run it through the actor stack
+        # Try entering Hyrax::CurationConcern.actor on a console to see all of the
+        # actors this object will run through.
+        #image_binary = File.open("#{::Rails.root}/spec/fixtures/images/#{row[0]}")
+        #uploaded_file = Hyrax::UploadedFile.create(user: @user, file: image_binary)
+        #attributes_for_actor = { uploaded_files: [uploaded_file.id] }
+        # Hyrax::CurationConcern.actor_factory = Hyrax::DefaultMiddlewareStack.build_stack
 
+        # TODO:
+        # testing123 = ::Ability.new(@user)
+        # messing = Hyrax::DefaultMiddlewareStack.new
+        # messing.build_stack
+
+        # Attach the image file and run it through the actor stack
+        # Try entering Hyrax::CurationConcern.actor on a console to see all of the
+        # actors this object will run through.
+        #> image_binary = File.open("#{::Rails.root}/spec/fixtures/images/#{row[0]}")
+        #> uploaded_file = Hyrax::UploadedFile.create(user: @user, file: image_binary)
+        #> attributes_for_actor = { uploaded_files: [uploaded_file.id] }
+        #> env = Hyrax::Actors::Environment.new(image, ::Ability.new(@user), attributes_for_actor)
+        #> Hyrax::CurationConcern.actor.create(env)
+        #> image_binary.close
+
+        #> >attributes_for_actor = []
+        #> >env = Hyrax::Actors::Environment.new(folio, ::Ability.new(@user), attributes_for_actor)
+        #> >mystack = Hyrax::CurationConcern.actor.create(env)
+
+
+        folio.admin_set_id = admin_set_id
+        byebug
+
+        folio_binary = File.open("#{imageLocation}")
+        uploaded_file = Hyrax::UploadedFile.create(user: @user, file: folio_binary)
+        attributes_for_actor = { uploaded_files: [uploaded_file.id] }
+        env = Hyrax::Actors::Environment.new(folio, ::Ability.new(@user), attributes_for_actor)
+        Hyrax::CurationConcern.actor.create(env)
+        #folio_binary.close
+
+        # TODO: there are no filesets at this time. Probably added in separate thread above.
+        folio.file_sets.each do | fs |
+          byebug
+          CharacterizeJob.perform_now(fs, fs.files.first.id)
+        end
 
         folio.save
+        byebug
+        if !owner_rec.id.blank?
+           byebug
+           owner_rec.members << folio
+           owner_rec.ordered_members << folio
+           owner_rec.save
+        end
 
-        #byebug
+        byebug
         #fs = FileSet.new
         #fs.id = 'file-1'
         #fs.title = ["testing title for fileset"]

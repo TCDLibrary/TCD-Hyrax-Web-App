@@ -45,7 +45,7 @@ RSpec.feature 'Create a Folio', js: true do
       expect(page).to have_content "Add files"
       expect(page).to have_content "Add folder"
       within('span#addfiles') do
-        byebug
+        # byebug
         attach_file("files[]", "#{Hyrax::Engine.root}/spec/fixtures/image.jpg", visible: false)
         attach_file("files[]", "#{Hyrax::Engine.root}/spec/fixtures/jpg_fits.xml", visible: false)
       end

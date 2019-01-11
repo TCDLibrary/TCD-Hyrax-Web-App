@@ -21,16 +21,16 @@ class XmlCollectionImporter
         coll = Collection.new
         # todo : this gid wont be right for production
         coll.collection_type_gid = default_collection_type.gid
-                
+
         # "gid://tcd-hyrax-app3/hyrax-collectiontype/2"
 
         # todo :
         coll.depositor = "test@example.com"
-        byebug
+        # byebug
         coll.description = ["An Abstract"]
         #coll.collection_type_gid =
 
-        byebug
+        # byebug
         # title -> Title
         link.xpath("xmlns:Title").each do |aTitle|
           if !aTitle.content.blank?
@@ -55,9 +55,9 @@ class XmlCollectionImporter
             end
           end
         end
-        byebug
+        # byebug
         coll.save
-        byebug
+        # byebug
       end
   end
 end
