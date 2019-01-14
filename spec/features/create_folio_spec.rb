@@ -115,7 +115,7 @@ RSpec.feature 'Create a Folio', js: true do
 
       click_on('Save')
       expect(page).to have_content('My Test Folio')
-      expect(page).to have_content "Your files are being processed by Hyrax in the background."
+      expect(page).to have_content "Your files are being processed by Digital Collections in the background."
     end
   end
 end

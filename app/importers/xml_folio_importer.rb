@@ -3,6 +3,7 @@ class XmlFolioImporter
   def initialize(file, parent = 'nk322d32h')
     @file = file
     @user = ::User.batch_user
+    @parent = parent
   end
 
   require 'nokogiri'
@@ -15,7 +16,7 @@ class XmlFolioImporter
 
       owner_rec = Work.new
       begin
-        owner_rec = Work.find("nk322d32h")
+        owner_rec = Work.find(@parent)
       rescue
 
       end
@@ -49,6 +50,7 @@ class XmlFolioImporter
         # dris_document_no -> DRISPhotoID
         link.xpath("xmlns:DRISPhotoID").each do |drisPhotoId|
           if !drisPhotoId.content.blank?
+            # && !drisPhotoId.content == owner_rec.dris_document_no
             folio.dris_document_no = [drisPhotoId.content]
           end
         end
@@ -555,7 +557,7 @@ class XmlFolioImporter
 
         folio.save
         byebug
-        if !owner_rec.id.blank?
+        if !owner_rec.id.blank? && !owner_rec.id == '000000000'
            byebug
            owner_rec.members << folio
            owner_rec.ordered_members << folio

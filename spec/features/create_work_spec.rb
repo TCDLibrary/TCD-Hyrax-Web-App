@@ -9,6 +9,7 @@ RSpec.feature 'Create a Work', js: true do
     Capybara.javascript_driver = :selenium_chrome_headless
     let(:user_attributes) do
       { email: 'test@example.com' }
+      # { email: ::User.batch_user.email }
     end
     let(:user) do
       User.new(user_attributes) { |u| u.save(validate: false) }
@@ -35,7 +36,7 @@ RSpec.feature 'Create a Work', js: true do
       visit '/dashboard'
       click_link "Works"
       click_link "Add new work"
-
+      byebug
       # If you generate more than one work uncomment these lines
       choose "payload_concern", option: "Work"
       click_button "Create work"
@@ -116,7 +117,7 @@ RSpec.feature 'Create a Work', js: true do
 
       click_on('Save')
       expect(page).to have_content('My Test Work')
-      expect(page).to have_content "Your files are being processed by Hyrax in the background."
+      expect(page).to have_content "Your files are being processed by Digital Collections in the background."
     end
   end
 end

@@ -87,7 +87,7 @@ Hyrax.config do |config|
   # config.redis_namespace = "hyrax"
 
   # Path to the file characterization tool
-  # config.fits_path = "fits.sh"
+  config.fits_path = "~/Fits/fits-latest/fits.sh"
   # config.fits_path = "Fits/fits-latest"
   # config.fits_path = "Fits/fits-latest"
 
