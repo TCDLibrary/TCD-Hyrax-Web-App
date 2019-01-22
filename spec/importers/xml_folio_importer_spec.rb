@@ -5,8 +5,13 @@ require 'active_fedora/cleaner'
 
 RSpec.describe XmlFolioImporter do
 
-  let(:file_example)       { 'spec/fixtures/Named_Collection_Example_PARTS_RECORDS_v3.6_20181207.xml' }
-  let(:parent_id)          { '000000' }
+  #let(:file_example)       { 'spec/fixtures/Named_Collection_Example_PARTS_RECORDS_v3.6_20181207.xml' }
+  let(:file_example)       { 'Named_Collection_Example_PARTS_RECORDS_v3.6_20181207.xml' }
+  let(:base_folder)        { 'spec/fixtures/' }
+  let(:sub_folder)         { '' }
+  let(:parent_id)          { '000000000' }
+  let(:parent_type)        { 'no_parent' }
+
 
   before do
     DatabaseCleaner.strategy = :transaction
@@ -14,23 +19,16 @@ RSpec.describe XmlFolioImporter do
     ActiveFedora::Cleaner.clean!
   end
 
-  #it "imports an xml folio" do
-  #      end
-
-  it "accepts a work (i.e. parent) id" do
-     expect { XmlFolioImporter.new(file_example, parent_id).import }.to change { Folio.count }.by 1
-  end
-
   it "stores data in correct fields in the Folio" do
      #XmlFolioImporter.new(file_example).import
-     expect { XmlFolioImporter.new(file_example).import }.to change { Folio.count }.by 1
+     expect { XmlFolioImporter.new(file_example, parent_id, parent_type, sub_folder, base_folder).import }.to change { Folio.count }.by 1
 
      imported_folio = Folio.first
      expect(imported_folio.title.first).to eq('Letter from Catherine (Kate) D’Alton, Clonmore, 8th-12th August, 1824 to John D’Alton')
      expect(imported_folio.depositor).to eq(::User.batch_user.email)
      expect(imported_folio.creator).to include('D’Alton, John, 1792-1867')
      expect(imported_folio.keyword).to include('Correspondence')
-     expect(imported_folio.rights_statement.first).to eq('Expired')
+     expect(imported_folio.rights_statement.first).to include('http://rightsstatements.org/vocab/NKC/1.0/')
      expect(imported_folio.description).to include('TCD MS 2327/64 is a letter from Catherine (Kate) D’Alton (née Phillips, of Clonmore, Co. Mayo, 1815-1853) to her...')
      expect(imported_folio.publisher).to include('A Publisher Name')
      expect(imported_folio.date_created).to include('DateType: start; Day: 08-08-1824 A.D.')
@@ -88,7 +86,6 @@ RSpec.describe XmlFolioImporter do
      expect(imported_folio.project_number).to include('Project 1822')
      expect(imported_folio.order_no).to include('LCN no')
      expect(imported_folio.total_records).to include('4')
-
 
   end
 

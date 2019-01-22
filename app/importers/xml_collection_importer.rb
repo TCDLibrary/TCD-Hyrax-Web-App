@@ -5,6 +5,12 @@ class XmlCollectionImporter
     @user = ::User.batch_user
   end
 
+  # TODO : Does this importer work? What file is input?
+  # TODO : Link it to the data entry page,
+  # TODO : Input parm list
+  # TODO : No parent possible? Can Collections be nested? Current data doesnt support that model
+  # TODO : Create a private work to hold the Collection image?
+
   require 'nokogiri'
   require 'open-uri'
 

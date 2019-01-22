@@ -36,7 +36,7 @@ RSpec.feature 'Create a Work', js: true do
       visit '/dashboard'
       click_link "Works"
       click_link "Add new work"
-      byebug
+      # byebug
       # If you generate more than one work uncomment these lines
       choose "payload_concern", option: "Work"
       click_button "Create work"

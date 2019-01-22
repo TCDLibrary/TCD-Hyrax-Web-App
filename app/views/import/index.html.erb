@@ -1,8 +1,52 @@
 <h1>Import#index</h1>
 <p>Find me in app/views/import/index.html.erb</p>
+<%# TODO : Need to hide this behind security %>
+
+ <br />
+ I want to import:
+ <br />
+
+<%= form_tag("/import/picker", multipart: true, method: "get") do %>
+
+<%= radio_button_tag(:import_object_type, "collection(s)") %>
+<%= label_tag(:import_type_collection, "Collections") %>
+<br />
+<%= radio_button_tag(:import_object_type, "work(s)") %>
+<%= label_tag(:import_type_work, "Works") %>
+<br />
+<%= radio_button_tag(:import_object_type, "folio(s)") %>
+<%= label_tag(:import_type_folio, "Folios") %>
+<br />
 
 
 
-<%= form_tag do %>
-  Form contents
+  <%= file_field_tag 'picker' %>
+
+  <br />
+
+  <%= text_area_tag(:sub_folder, "", size: "40x1") %>
+  <%= label_tag("Optional subfolder") %>
+
+  <br />
+
+  <%= radio_button_tag(:parent_type, "collection") %>
+  <%= label_tag(:parent_is_a_collection, "parent is a Collection") %>
+  <br />
+  <%= radio_button_tag(:parent_type, "work") %>
+  <%= label_tag(:parent_is_a_work, "parent is a Work") %>
+
+  <br />
+  <%= radio_button_tag(:parent_type, "folio") %>
+  <%= label_tag(:parent_is_a_folio, "parent is a Folio") %>
+
+  <br />
+  <%= radio_button_tag(:parent_type, "no_parent") %>
+  <%= label_tag(:no_parent, "no parent") %>
+
+  <br />
+  <%= text_area_tag(:parent_code, "000000000", size: "9x1") %>
+  <%= label_tag("Optional parent id") %>
+  <br />
+  <%= submit_tag("Submit") %>
+
 <% end %>

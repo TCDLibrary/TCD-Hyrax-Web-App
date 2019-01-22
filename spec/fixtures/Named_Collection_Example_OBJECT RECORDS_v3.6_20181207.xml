@@ -144,7 +144,7 @@
       <DATA>aut</DATA>
     </OtherArtistRoleCode>
     <OtherTitle>
-    <DATA>An other title</DATA>
+      <DATA>An other title</DATA>
     </OtherTitle>
     <RelatedItemCalculation>
       <DATA>RelatedItemType: host; RelatedItemIdentifier: 0145515; RelatedItemTitle: Correspondence of John and Catherine D'Alton</DATA>
@@ -159,10 +159,10 @@
       <DATA>host</DATA>
     </RelatedItemType>
     <SeriesReportNo>
-  <DATA>A series report no</DATA>    
+      <DATA>A series report no</DATA>
     </SeriesReportNo>
     <SubjectLCSH>
-    <DATA>Subject lcsh</DATA>
+      <DATA>Subject lcsh</DATA>
     </SubjectLCSH>
     <SubjectTMG>
       <DATA>Correspondence</DATA>

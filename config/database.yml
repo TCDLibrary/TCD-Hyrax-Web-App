@@ -1,5 +1,7 @@
 # JL : 18/12/2018 Move to mysql
 
+# TODO : Need to encrypt passwords
+
 development:
   adapter: mysql2
   encoding: utf8

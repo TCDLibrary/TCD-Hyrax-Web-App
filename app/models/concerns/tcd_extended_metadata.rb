@@ -2,6 +2,12 @@ module TcdExtendedMetadata
   extend ActiveSupport::Concern
 
   included do
+      # TODO : review this list.
+      # TODO : Check all fields present
+      # TODO : Check predicates, e.g. DC.identifier and Mods.Identifier being used
+      # TODO : Review the two letter internal predicate codes. Make more descriptive?
+      # TODO : Are fields marked searchable working ok?
+      # TODO : Are fields marked facetable working ok?
 
       property :dris_page_no, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#dp') do |index|
         index.as :stored_searchable

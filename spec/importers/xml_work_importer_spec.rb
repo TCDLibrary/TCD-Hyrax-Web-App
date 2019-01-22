@@ -5,7 +5,11 @@ require 'active_fedora/cleaner'
 
 RSpec.describe XmlWorkImporter do
 
-  let(:file_example)       { 'spec/fixtures/Named_Collection_Example_OBJECT RECORDS_v3.6_20181207.xml' }
+  let(:file_example)       { 'Named_Collection_Example_OBJECT RECORDS_v3.6_20181207.xml' }
+  let(:base_folder)        { 'spec/fixtures/' }
+  let(:sub_folder)         { '' }
+  let(:parent_id)          { '000000000' }
+  let(:parent_type)        { 'no_parent' }
 
   before do
     DatabaseCleaner.strategy = :transaction
@@ -14,14 +18,14 @@ RSpec.describe XmlWorkImporter do
   end
 
   it "stores data in correct fields in the work" do
-     expect { XmlWorkImporter.new(file_example).import }.to change { Work.count }.by 1
+     expect { XmlWorkImporter.new(file_example, parent_id, parent_type, sub_folder, base_folder).import }.to change { Work.count }.by 1
 
      imported_work = Work.first
      expect(imported_work.title.first).to eq('Letter from Catherine (Kate) D’Alton, Clonmore, 8th-12th August, 1824 to John D’Alton')
-     expect(imported_work.depositor).to eq('cataloger@tcd.ie')
+     expect(imported_work.depositor).to eq(::User.batch_user.email)
      expect(imported_work.creator).to include('D’Alton, John, 1792-1867')
      expect(imported_work.keyword).to include('Correspondence')
-     expect(imported_work.rights_statement.first).to eq('Expired')
+     expect(imported_work.rights_statement.first).to include('http://rightsstatements.org/vocab/NKC/1.0/')
 
      expect(imported_work.description).to include('TCD MS 2327/64 is a letter from Catherine (Kate) D’Alton (née Phillips, of Clonmore, Co. Mayo, 1815-1853) to her...')
      expect(imported_work.publisher).to include('A Publisher Name')

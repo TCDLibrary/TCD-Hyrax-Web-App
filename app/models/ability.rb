@@ -1,8 +1,10 @@
 class Ability
   include Hydra::Ability
-  
+
   include Hyrax::Ability
   self.ability_logic += [:everyone_can_create_curation_concerns]
+
+  # TODO : review this, I need to prevent the public from creating objects
 
   # Define any customized permissions here.
   def custom_permissions

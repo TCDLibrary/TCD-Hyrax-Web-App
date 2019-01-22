@@ -2,9 +2,6 @@
 class Collection < ActiveFedora::Base
   include ::Hyrax::CollectionBehavior
 
-  # 20-11-2018 JL:
-  #include TcdExtendedMetadata
-
   # You can replace these metadata if they're not suitable
   include Hyrax::BasicMetadata
   self.indexer = Hyrax::CollectionWithBasicMetadataIndexer

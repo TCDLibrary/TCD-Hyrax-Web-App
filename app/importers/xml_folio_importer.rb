@@ -1,9 +1,20 @@
 class XmlFolioImporter
 
-  def initialize(file, parent = 'nk322d32h')
+  # TODO : Tidy up
+  # TODO : Check all fields are present and populated/deduplicated properly
+  # TODO : Run this offline? What happens to credentials then?
+  # TODO : Allow Work, Folio or Collection to be parent_type
+  # TODO : Validation, don't crash if file missing
+  # TODO : Need to add logs. I want a list of Folios, and their IDs to be output
+
+  def initialize(file, parent = '000000000', parent_type = 'no_parent', sub_folder = '', base_folder = 'public/data/ingest/')
     @file = file
     @user = ::User.batch_user
     @parent = parent
+    @parent_type = parent_type
+    @base_folder = base_folder
+    @sub_folder = sub_folder
+    @file_path = base_folder + sub_folder + file
   end
 
   require 'nokogiri'
@@ -13,18 +24,32 @@ class XmlFolioImporter
       # is there a parent Work to own these new folios?
       #
       admin_set_id =  AdminSet.find_or_create_default_admin_set_id
+      # byebug
+      if @parent_type == "work"
+        owner_rec = Work.new
+        begin
+          owner_rec = Work.find(@parent)
+        rescue
 
-      owner_rec = Work.new
-      begin
-        owner_rec = Work.find(@parent)
-      rescue
+        end
+      else
+        if @parent_type == "folio"
+          owner_rec = Folio.new
+          begin
+            owner_rec = Folio.find(@parent)
+          rescue
 
+          end
+        else
+          owner_rec = Work.new
+        end
       end
 
-      byebug
+
+      #byebug
       # Fetch and parse HTML document
       #doc = Nokogiri::XML(open("spec/fixtures/Named_Collection_Example_PARTS_RECORDS_v3.6_20181207.xml"))
-      doc = Nokogiri::XML(open(@file))
+      doc = Nokogiri::XML(open(@file_path))
       puts "### Search for nodes by xpath"
       doc.xpath("//xmlns:ROW").each do |link|
         folio = Folio.new
@@ -50,21 +75,23 @@ class XmlFolioImporter
         # dris_document_no -> DRISPhotoID
         link.xpath("xmlns:DRISPhotoID").each do |drisPhotoId|
           if !drisPhotoId.content.blank?
-            # && !drisPhotoId.content == owner_rec.dris_document_no
             folio.dris_document_no = [drisPhotoId.content]
           end
         end
 
         imageFileName = folio.dris_document_no.first + "_LO.jpg"
-        imageLocation = "spec/fixtures/" + imageFileName
+        #imageLocation = "spec/fixtures/" + imageFileName
+        imageLocation = @base_folder + @sub_folder + imageFileName
         #byebug
 
         # creator -> AttributedArtist
         link.xpath("xmlns:AttributedArtist").each do |anArtist|
           if !anArtist.content.blank?
             anArtist.xpath("xmlns:DATA").each do |individual|
-                folio.creator.push(individual.content)
+              if !(owner_rec.creator.include?(individual.content))
                 folio.contributor.push(individual.content)
+              end
+              folio.creator.push(individual.content)
             end
           end
         end
@@ -79,18 +106,22 @@ class XmlFolioImporter
         end
 
         # rights_statement -> CopyrightStatus
-        link.xpath("xmlns:CopyrightStatus").each do |statuses|
-          if !statuses.content.blank?
-            statuses.xpath("xmlns:DATA").each do |aStatus|
-              folio.rights_statement.push(aStatus.content)
-            end
-          end
-        end
+        # link.xpath("xmlns:CopyrightStatus").each do |statuses|
+        #   if !statuses.content.blank?
+        #     statuses.xpath("xmlns:DATA").each do |aStatus|
+        #       folio.rights_statement.push(aStatus.content)
+        #     end
+        #   end
+        # end
+        folio.rights_statement = ["http://rightsstatements.org/vocab/NKC/1.0/"]
 
         # abstract
+        #byebug
         link.xpath("xmlns:Abstract").each do |abstract|
           if !abstract.content.blank?
-            folio.description = [abstract.content]
+            if !(owner_rec.description.include?(abstract.content)) then
+               folio.description = [abstract.content]
+            end
           end
         end
 
@@ -100,7 +131,9 @@ class XmlFolioImporter
         # publisher
         link.xpath("xmlns:Publisher").each do |publisher|
           if !publisher.content.blank?
-            folio.publisher = [publisher.content]
+            if !(owner_rec.publisher.include?(publisher.content)) then
+               folio.publisher = [publisher.content]
+            end
           end
         end
 
@@ -108,7 +141,9 @@ class XmlFolioImporter
         link.xpath("xmlns:DateCalculation").each do |calcDates|
           if !calcDates.content.blank?
             calcDates.xpath("xmlns:DATA").each do |aCalcDate|
-              folio.date_created.push(aCalcDate.content)
+              if !(owner_rec.date_created.include?(aCalcDate.content))
+                 folio.date_created.push(aCalcDate.content)
+              end
             end
           end
         end
@@ -117,7 +152,9 @@ class XmlFolioImporter
         link.xpath("xmlns:SubjectTMG").each do |subjects|
           if !subjects.content.blank?
             subjects.xpath("xmlns:DATA").each do |aSubject|
-              folio.subject.push(aSubject.content)
+              if !(owner_rec.subject.include?(aSubject.content))
+                 folio.subject.push(aSubject.content)
+              end
             end
           end
         end
@@ -126,7 +163,9 @@ class XmlFolioImporter
         link.xpath("xmlns:Language").each do |languages|
           if !languages.content.blank?
             languages.xpath("xmlns:DATA").each do |aLanguage|
-              folio.language.push(aLanguage.content)
+              if !(owner_rec.language.include?(aLanguage.content))
+                 folio.language.push(aLanguage.content)
+              end
             end
           end
         end
@@ -134,7 +173,9 @@ class XmlFolioImporter
         # identifier  -> CatNo
         link.xpath("xmlns:CatNo").each do |catno|
           if !catno.content.blank?
-            folio.identifier = [catno.content]
+            if !(owner_rec.identifier.include?(catno.content)) then
+               folio.identifier = [catno.content]
+            end
           end
         end
 
@@ -145,61 +186,77 @@ class XmlFolioImporter
         # TODO:
 
         # source
-        # TO DO:
+        # TODO:
 
         # resource_type
         link.xpath("xmlns:Type").each do |aType|
           if !aType.content.blank?
-            folio.resource_type = [aType.content]
+            if !(owner_rec.resource_type.include?(aType.content)) then
+               folio.resource_type = [aType.content]
+            end
           end
         end
 
         # genre -> TypeOfWork
         link.xpath("xmlns:TypeOfWork").each do |aTypeOfWork|
           if !aTypeOfWork.content.blank?
-            folio.genre = [aTypeOfWork.content]
+            if !(owner_rec.genre.include?(aTypeOfWork.content)) then
+               folio.genre = [aTypeOfWork.content]
+            end
           end
         end
 
         # bibliography
         link.xpath("xmlns:Bibliography").each do |aBibliography|
           if !aBibliography.content.blank?
-            folio.bibliography = [aBibliography.content]
+            if !(owner_rec.bibliography.include?(aBibliography.content)) then
+               folio.bibliography = [aBibliography.content]
+            end
           end
         end
 
         # dris_page_no
         link.xpath("xmlns:DrisPageNo").each do |aDrisPageNo|
           if !aDrisPageNo.content.blank?
-            folio.dris_page_no = [aDrisPageNo.content]
+            if !(owner_rec.dris_page_no.include?(aDrisPageNo.content)) then
+               folio.dris_page_no = [aDrisPageNo.content]
+            end
           end
         end
 
         # dris_document_no
         link.xpath("xmlns:DrisDocumentNo").each do |aDrisDocumentNo|
           if !aDrisDocumentNo.content.blank?
-            folio.dris_document_no = [aDrisDocumentNo.content]
+            if !(owner_rec.dris_document_no.include?(aDrisDocumentNo.content)) then
+               folio.dris_document_no = [aDrisDocumentNo.content]
+            end
           end
         end
 
         # dris_unique
         link.xpath("xmlns:DrisUnique").each do |aDrisUnique|
           if !aDrisUnique.content.blank?
-            folio.dris_unique = [aDrisUnique.content]
+            if !(owner_rec.dris_unique.include?(aDrisUnique.content)) then
+              folio.dris_unique = [aDrisUnique.content]
+            end
           end
         end
 
         # format_duration
         link.xpath("xmlns:FormatDur").each do |aFormatDuration|
           if !aFormatDuration.content.blank?
-            folio.format_duration = [aFormatDuration.content]
+            if !(owner_rec.format_duration.include?(aFormatDuration.content)) then
+               folio.format_duration = [aFormatDuration.content]
+            end
           end
         end
 
         # format_resolution
         link.xpath("xmlns:FormatResolution").each do |aFormatResolution|
           if !aFormatResolution.content.blank?
-            folio.format_resolution = [aFormatResolution.content]
+            if !(owner_rec.format_resolution.include?(aFormatResolution.content)) then
+               folio.format_resolution = [aFormatResolution.content]
+            end
           end
         end
 
@@ -207,7 +264,9 @@ class XmlFolioImporter
         link.xpath("xmlns:CopyrightHolder").each do |copyrightHolders|
           if !copyrightHolders.content.blank?
             copyrightHolders.xpath("xmlns:DATA").each do |aCopyrightHolder|
-              folio.copyright_holder.push(aCopyrightHolder.content)
+              if !(owner_rec.copyright_holder.include?(aCopyrightHolder.content))
+                 folio.copyright_holder.push(aCopyrightHolder.content)
+              end
             end
           end
         end
@@ -216,7 +275,9 @@ class XmlFolioImporter
         link.xpath("xmlns:CopyrightNotes").each do |copyrightNotes|
           if !copyrightNotes.content.blank?
             copyrightNotes.xpath("xmlns:DATA").each do |aCopyrightNote|
-              folio.copyright_note.push(aCopyrightNote.content)
+              if !(owner_rec.copyright_note.include?(aCopyrightNote.content))
+                 folio.copyright_note.push(aCopyrightNote.content)
+              end
             end
           end
         end
@@ -224,14 +285,18 @@ class XmlFolioImporter
         # digital_root_number -> CatNo
         link.xpath("xmlns:CatNo").each do |aDigitalRootNumber|
           if !aDigitalRootNumber.content.blank?
-            folio.digital_root_number = [aDigitalRootNumber.content]
+            if !(owner_rec.digital_root_number.include?(aDigitalRootNumber.content)) then
+               folio.digital_root_number = [aDigitalRootNumber.content]
+            end
           end
         end
 
         # digital_object_identifier -> DRISPhotoID
         link.xpath("xmlns:DRISPhotoID").each do |aDigitalObjectId|
           if !aDigitalObjectId.content.blank?
-            folio.digital_object_identifier = [aDigitalObjectId.content]
+            if !(owner_rec.digital_object_identifier.include?(aDigitalObjectId.content)) then
+               folio.digital_object_identifier = [aDigitalObjectId.content]
+            end
           end
         end
 
@@ -239,7 +304,9 @@ class XmlFolioImporter
         link.xpath("xmlns:LanguageTermCode").each do |languageCodes|
           if !languageCodes.content.blank?
             languageCodes.xpath("xmlns:DATA").each do |aLanguageCode|
-              folio.language_code.push(aLanguageCode.content)
+              if !(owner_rec.language_code.include?(aLanguageCode.content))
+                 folio.language_code.push(aLanguageCode.content)
+              end
             end
           end
         end
@@ -248,7 +315,9 @@ class XmlFolioImporter
         link.xpath("xmlns:LocationType").each do |locationTypes|
           if !locationTypes.content.blank?
             locationTypes.xpath("xmlns:DATA").each do |aLocationType|
-              folio.location_type.push(aLocationType.content)
+              if !(owner_rec.location_type.include?(aLocationType.content))
+                folio.location_type.push(aLocationType.content)
+              end
             end
           end
         end
@@ -256,7 +325,9 @@ class XmlFolioImporter
         # shelf_locator -> Citation
         link.xpath("xmlns:Citation").each do |aShelfLocation|
           if !aShelfLocation.content.blank?
-            folio.shelf_locator = [aShelfLocation.content]
+            if !(owner_rec.shelf_locator.include?(aShelfLocation.content)) then
+               folio.shelf_locator = [aShelfLocation.content]
+            end
           end
         end
 
@@ -264,7 +335,9 @@ class XmlFolioImporter
         link.xpath("xmlns:AttributedArtistRoleCode").each do |roleCodes|
           if !roleCodes.content.blank?
             roleCodes.xpath("xmlns:DATA").each do |aRoleCode|
-              folio.role_code.push(aRoleCode.content)
+              if !(owner_rec.role_code.include?(aRoleCode.content))
+                 folio.role_code.push(aRoleCode.content)
+              end
             end
           end
         end
@@ -273,7 +346,9 @@ class XmlFolioImporter
         link.xpath("xmlns:AttributedArtistRole").each do |roles|
           if !roles.content.blank?
             roles.xpath("xmlns:DATA").each do |aRole|
-              folio.role.push(aRole.content)
+              if !(owner_rec.role.include?(aRole.content))
+                 folio.role.push(aRole.content)
+              end
             end
           end
         end
@@ -281,57 +356,75 @@ class XmlFolioImporter
         # sponsor -> Sponsor
         link.xpath("xmlns:Sponsor").each do |aSponsor|
           if !aSponsor.content.blank?
-            folio.sponsor.push(aSponsor.content)
+            if !(owner_rec.sponsor.include?(aSponsor.content)) then
+               folio.sponsor.push(aSponsor.content)
+            end
           end
         end
 
         # conservation_history -> Introduction
         link.xpath("xmlns:Introduction").each do |aConsHist|
           if !aConsHist.content.blank?
-            folio.conservation_history.push(aConsHist.content)
+            if !(owner_rec.conservation_history.include?(aConsHist.content)) then
+               folio.conservation_history.push(aConsHist.content)
+            end
           end
         end
 
         # publisher_location -> PublisherCity; PublisherCountry
         link.xpath("xmlns:PublisherCity").each do |aPublisherLoc|
           if !aPublisherLoc.content.blank?
-            folio.publisher_location.push(aPublisherLoc.content)
+            if !(owner_rec.publisher_location.include?(aPublisherLoc.content)) then
+               folio.publisher_location.push(aPublisherLoc.content)
+            end
           end
         end
         link.xpath("xmlns:PublisherCountry").each do |aPublisherLoc|
           if !aPublisherLoc.content.blank?
-            folio.publisher_location.push(aPublisherLoc.content)
+            if !(owner_rec.publisher_location.include?(aPublisherLoc.content)) then
+               folio.publisher_location.push(aPublisherLoc.content)
+            end
           end
         end
 
         # page_number -> PageNo; PageNoB
         link.xpath("xmlns:PageNo").each do |aPageNo|
           if !aPageNo.content.blank?
-            folio.page_number.push(aPageNo.content)
+            if !(owner_rec.page_number.include?(aPageNo.content)) then
+               folio.page_number.push(aPageNo.content)
+            end
           end
         end
         link.xpath("xmlns:PageNoB").each do |aPageNo|
           if !aPageNo.content.blank?
-            folio.page_number.push(aPageNo.content)
+            if !(owner_rec.page_number.include?(aPageNo.content)) then
+               folio.page_number.push(aPageNo.content)
+            end
           end
         end
 
         # page_type -> PageType; PageTypeB
         link.xpath("xmlns:PageType").each do |aPageType|
           if !aPageType.content.blank?
-            folio.page_type.push(aPageType.content)
+            if !(owner_rec.page_type.include?(aPageType.content)) then
+               folio.page_type.push(aPageType.content)
+            end
           end
         end
         link.xpath("xmlns:PageTypeB").each do |aPageType|
           if !aPageType.content.blank?
-            folio.page_type.push(aPageType.content)
+            if !(owner_rec.page_type.include?(aPageType.content)) then
+               folio.page_type.push(aPageType.content)
+            end
           end
         end
 
         # physical_extent -> FormatW
         link.xpath("xmlns:FormatW").each do |aPhysicalExtent|
           if !aPhysicalExtent.content.blank?
-            folio.physical_extent.push(aPhysicalExtent.content)
+            if !(owner_rec.physical_extent.include?(aPhysicalExtent.content)) then
+               folio.physical_extent.push(aPhysicalExtent.content)
+            end
           end
         end
 
@@ -339,7 +432,9 @@ class XmlFolioImporter
         link.xpath("xmlns:Support").each do |supports|
           if !supports.content.blank?
             supports.xpath("xmlns:DATA").each do |aSupport|
-              folio.support.push(aSupport.content)
+              if !(owner_rec.support.include?(aSupport.content))
+                 folio.support.push(aSupport.content)
+              end
             end
           end
         end
@@ -348,7 +443,9 @@ class XmlFolioImporter
         link.xpath("xmlns:Medium").each do |mediums|
           if !mediums.content.blank?
             mediums.xpath("xmlns:DATA").each do |aMedium|
-              folio.medium.push(aMedium.content)
+              if !(owner_rec.medium.include?(aMedium.content))
+                folio.medium.push(aMedium.content)
+              end
             end
           end
         end
@@ -356,7 +453,9 @@ class XmlFolioImporter
         # type_of_work
         link.xpath("xmlns:TypeOfWork").each do |aType|
           if !aType.content.blank?
-            folio.type_of_work.push(aType.content)
+            if !(owner_rec.type_of_work.include?(aType.content)) then
+               folio.type_of_work.push(aType.content)
+            end
           end
         end
 
@@ -364,7 +463,9 @@ class XmlFolioImporter
         link.xpath("xmlns:RelatedItemType").each do |relatedItemTypes|
           if !relatedItemTypes.content.blank?
             relatedItemTypes.xpath("xmlns:DATA").each do |aRelatedItemType|
-              folio.related_item_type.push(aRelatedItemType.content)
+              if !(owner_rec.related_item_type.include?(aRelatedItemType.content))
+                 folio.related_item_type.push(aRelatedItemType.content)
+              end
             end
           end
         end
@@ -373,7 +474,9 @@ class XmlFolioImporter
         link.xpath("xmlns:RelatedItemIdentifier").each do |relatedItemIdentifier|
           if !relatedItemIdentifier.content.blank?
             relatedItemIdentifier.xpath("xmlns:DATA").each do |aRelatedItemIdentifier|
-              folio.related_item_identifier.push(aRelatedItemIdentifier.content)
+              if !(owner_rec.related_item_identifier.include?(aRelatedItemIdentifier.content))
+                 folio.related_item_identifier.push(aRelatedItemIdentifier.content)
+              end
             end
           end
         end
@@ -382,7 +485,9 @@ class XmlFolioImporter
         link.xpath("xmlns:RelatedItemTitle").each do |relatedItemTitle|
           if !relatedItemTitle.content.blank?
             relatedItemTitle.xpath("xmlns:DATA").each do |aRelatedItemTitle|
-              folio.related_item_title.push(aRelatedItemTitle.content)
+              if !(owner_rec.related_item_title.include?(aRelatedItemTitle.content))
+                 folio.related_item_title.push(aRelatedItemTitle.content)
+              end
             end
           end
         end
@@ -391,7 +496,9 @@ class XmlFolioImporter
         link.xpath("xmlns:SubjectLCSH").each do |subjects|
           if !subjects.content.blank?
             subjects.xpath("xmlns:DATA").each do |aSubject|
-              folio.subject_lcsh.push(aSubject.content)
+              if !(owner_rec.subject_lcsh.include?(aSubject.content))
+                 folio.subject_lcsh.push(aSubject.content)
+              end
             end
           end
         end
@@ -400,7 +507,9 @@ class XmlFolioImporter
         link.xpath("xmlns:OpenKeyword").each do |subjects|
           if !subjects.content.blank?
             subjects.xpath("xmlns:DATA").each do |aSubject|
-              folio.subject_local.push(aSubject.content)
+              if !(owner_rec.subject_local.include?(aSubject.content))
+                 folio.subject_local.push(aSubject.content)
+              end
             end
           end
         end
@@ -409,7 +518,9 @@ class XmlFolioImporter
         link.xpath("xmlns:LCSubjectNames").each do |subjects|
           if !subjects.content.blank?
             subjects.xpath("xmlns:DATA").each do |aSubject|
-              folio.subject_name.push(aSubject.content)
+              if !(owner_rec.subject_name.include?(aSubject.content))
+                 folio.subject_name.push(aSubject.content)
+              end
             end
           end
         end
@@ -418,7 +529,9 @@ class XmlFolioImporter
         link.xpath("xmlns:OtherTitle").each do |titles|
           if !titles.content.blank?
             titles.xpath("xmlns:DATA").each do |aTitle|
-              folio.alternative_title.push(aTitle.content)
+              if !(owner_rec.alternative_title.include?(aTitle.content))
+                 folio.alternative_title.push(aTitle.content)
+              end
             end
           end
         end
@@ -427,7 +540,9 @@ class XmlFolioImporter
         link.xpath("xmlns:SeriesReportNo").each do |titles|
           if !titles.content.blank?
             titles.xpath("xmlns:DATA").each do |aTitle|
-              folio.series_title.push(aTitle.content)
+              if !(owner_rec.series_title.include?(aTitle.content))
+                 folio.series_title.push(aTitle.content)
+              end
             end
           end
         end
@@ -435,42 +550,54 @@ class XmlFolioImporter
         # collection_title -> TitleLargerEntity
         link.xpath("xmlns:TitleLargerEntity").each do |aTitle|
           if !aTitle.content.blank?
-            folio.collection_title.push(aTitle.content)
+            if !(owner_rec.collection_title.include?(aTitle.content)) then
+               folio.collection_title.push(aTitle.content)
+            end
           end
         end
 
         # virtual_collection_title -> TitleLargerEntity2
         link.xpath("xmlns:TitleLargerEntity2").each do |aTitle|
           if !aTitle.content.blank?
-            folio.virtual_collection_title.push(aTitle.content)
+            if !(owner_rec.virtual_collection_title.include?(aTitle.content)) then
+               folio.virtual_collection_title.push(aTitle.content)
+            end
           end
         end
 
         # provenance
         link.xpath("xmlns:Provenance").each do |aProvenance|
           if !aProvenance.content.blank?
-            folio.provenance.push(aProvenance.content)
+            if !(owner_rec.provenance.include?(aProvenance.content)) then
+               folio.provenance.push(aProvenance.content)
+            end
           end
         end
 
         # visibility_flag
         link.xpath("xmlns:Visibility").each do |visibilityFlag|
           if !visibilityFlag.content.blank?
-            folio.visibility_flag.push(visibilityFlag.content)
+            if !(owner_rec.visibility_flag.include?(visibilityFlag.content)) then
+               folio.visibility_flag.push(visibilityFlag.content)
+            end
           end
         end
 
         # europeana
         link.xpath("xmlns:Europeana").each do |europeanaFlag|
           if !europeanaFlag.content.blank?
-            folio.europeana.push(europeanaFlag.content)
+            if !(owner_rec.europeana.include?(europeanaFlag.content)) then
+               folio.europeana.push(europeanaFlag.content)
+            end
           end
         end
 
         # solr_flag -> Image
         link.xpath("xmlns:Image").each do |imageFlag|
           if !imageFlag.content.blank?
-            folio.solr_flag.push(imageFlag.content)
+            if !(owner_rec.solr_flag.include?(imageFlag.content)) then
+               folio.solr_flag.push(imageFlag.content)
+            end
           end
         end
 
@@ -478,7 +605,9 @@ class XmlFolioImporter
         link.xpath("xmlns:Culture").each do |cultures|
           if !cultures.content.blank?
             cultures.xpath("xmlns:DATA").each do |aCulture|
-              folio.culture.push(aCulture.content)
+              if !(owner_rec.culture.include?(aCulture.content))
+                 folio.culture.push(aCulture.content)
+              end
             end
           end
         end
@@ -486,141 +615,69 @@ class XmlFolioImporter
         # county -> CALM
         link.xpath("xmlns:CALM").each do |calmRef|
           if !calmRef.content.blank?
-            folio.county.push(calmRef.content)
+            if !(owner_rec.county.include?(calmRef.content)) then
+               folio.county.push(calmRef.content)
+            end
           end
         end
 
         # project_number
         link.xpath("xmlns:ProjectNo").each do |projNo|
           if !projNo.content.blank?
-            folio.project_number.push(projNo.content)
+            if !(owner_rec.project_number.include?(projNo.content)) then
+               folio.project_number.push(projNo.content)
+            end
           end
         end
 
         # order_no -> LCN
         link.xpath("xmlns:LCN").each do |orderNo|
           if !orderNo.content.blank?
-            folio.order_no.push(orderNo.content)
+            if !(owner_rec.order_no.include?(orderNo.content)) then
+               folio.order_no.push(orderNo.content)
+            end
           end
         end
 
         # total_records
         link.xpath("xmlns:PageTotal").each do |totalRecs|
           if !totalRecs.content.blank?
-            folio.total_records.push(totalRecs.content)
+            if !(owner_rec.total_records.include?(totalRecs.content)) then
+               folio.total_records.push(totalRecs.content)
+            end
           end
         end
 
-        # Attach the image file and run it through the actor stack
-        # Try entering Hyrax::CurationConcern.actor on a console to see all of the
-        # actors this object will run through.
-        #image_binary = File.open("#{::Rails.root}/spec/fixtures/images/#{row[0]}")
-        #uploaded_file = Hyrax::UploadedFile.create(user: @user, file: image_binary)
-        #attributes_for_actor = { uploaded_files: [uploaded_file.id] }
-        # Hyrax::CurationConcern.actor_factory = Hyrax::DefaultMiddlewareStack.build_stack
-
-        # TODO:
-        # testing123 = ::Ability.new(@user)
-        # messing = Hyrax::DefaultMiddlewareStack.new
-        # messing.build_stack
-
-        # Attach the image file and run it through the actor stack
-        # Try entering Hyrax::CurationConcern.actor on a console to see all of the
-        # actors this object will run through.
-        #> image_binary = File.open("#{::Rails.root}/spec/fixtures/images/#{row[0]}")
-        #> uploaded_file = Hyrax::UploadedFile.create(user: @user, file: image_binary)
-        #> attributes_for_actor = { uploaded_files: [uploaded_file.id] }
-        #> env = Hyrax::Actors::Environment.new(image, ::Ability.new(@user), attributes_for_actor)
-        #> Hyrax::CurationConcern.actor.create(env)
-        #> image_binary.close
-
-        #> >attributes_for_actor = []
-        #> >env = Hyrax::Actors::Environment.new(folio, ::Ability.new(@user), attributes_for_actor)
-        #> >mystack = Hyrax::CurationConcern.actor.create(env)
-
-
         folio.admin_set_id = admin_set_id
-        byebug
+        #byebug
+
+        if !owner_rec.id.blank? && !owner_rec.id == '000000000'
+           #byebug
+           owner_rec.members << folio
+           owner_rec.ordered_members << folio
+           owner_rec.save
+        end
 
         folio_binary = File.open("#{imageLocation}")
         uploaded_file = Hyrax::UploadedFile.create(user: @user, file: folio_binary)
         attributes_for_actor = { uploaded_files: [uploaded_file.id] }
         env = Hyrax::Actors::Environment.new(folio, ::Ability.new(@user), attributes_for_actor)
         Hyrax::CurationConcern.actor.create(env)
-        #folio_binary.close
 
         # TODO: there are no filesets at this time. Probably added in separate thread above.
-        folio.file_sets.each do | fs |
-          byebug
-          CharacterizeJob.perform_now(fs, fs.files.first.id)
-        end
+        #folio.file_sets.each do | fs |
+        #  byebug
+        #  CharacterizeJob.perform_now(fs, fs.files.first.id)
+        #end
 
         folio.save
-        byebug
-        if !owner_rec.id.blank? && !owner_rec.id == '000000000'
-           byebug
+
+        if !owner_rec.id.blank? && owner_rec.id != '000000000'
            owner_rec.members << folio
            owner_rec.ordered_members << folio
            owner_rec.save
         end
 
-        byebug
-        #fs = FileSet.new
-        #fs.id = 'file-1'
-        #fs.title = ["testing title for fileset"]
-        # fs.save
-        #folio.save
-        #myImg = folio.files.build
-        #myImg.content = File.open("#{imageLocation}")
-        #byebug
-        #myImg.save
-        #folio.save
-        #fs.save
-
-        #folio.edit_groups = ["test_group"]
-        #folio.access_control.permissions.to_a
-
-        #byebug
-        #folio_binary = File.open("#{imageLocation}")
-        #uploaded_file = Hyrax::UploadedFile.create(user: @user, file: folio_binary)
-        #newfile = Hydra::PCDM::File.new(uploaded_file)
-        #fs.files << uploaded_file
-        #fs.save
-        #folio.members << fs
-        #folio.save
-
-
-        #newfile = Hydra::PCDM::File.new(name:"file name")
-        #new_file = FileSet.new
-        #byebug
-        # folio.attach_file(new_file, "spec/fixtures/")
-        #byebug
-
-
-        #byebug
-        #uploaded_file = Hyrax::UploadedFile.create(user: @user, file: folio_binary)
-        #attributes_for_actor = { uploaded_files: [uploaded_file.id] }
-        #env = Hyrax::Actors::Environment.new(folio, ::Ability.new(@user), attributes_for_actor)
-        #begin
-        #  show Hydra::AccessControls::Permissions::GROUP_AGENT_URL_PREFIX
-        #rescue
-        #  Hydra::AccessControls::Permissions::GROUP_AGENT_URL_PREFIX('http://projecthydra.org/ns/auth/group'.freeze)
-        #end
-          # code that raises exception
-        #  Hyrax::CurationConcern.actor.create(env)
-        #rescue StandardError => e
-        #  puts e.backtrace
-        #end
-
-
-        #folio_binary.close
-
-        # fs.save
-        # folio.members << fs
-
-        #byebug
-
-        #folio.save
       end
   end
 end

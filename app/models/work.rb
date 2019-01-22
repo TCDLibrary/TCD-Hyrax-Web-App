@@ -7,6 +7,7 @@ class Work < ActiveFedora::Base
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []
   validates :title, presence: { message: 'Your work must have a title.' }
+  # TODO : what other types of validation can I add?
 
   # 12-12-2018 JL:
   include TcdExtendedMetadata
