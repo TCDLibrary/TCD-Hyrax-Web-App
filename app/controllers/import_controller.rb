@@ -1,4 +1,5 @@
 class ImportController < ApplicationController
+  include Hydra::Controller::ControllerBehavior
 
   def picker
 
@@ -24,7 +25,7 @@ class ImportController < ApplicationController
 
     #file_example = 'spec/fixtures/Named_Collection_Example_PARTS_RECORDS_v3.6_20181207.xml'
     #parent = 'f1881k888'
-    byebug
+    #byebug
 
     if new_object_type == "folio(s)"
       XmlFolioImporter.new(file_name, parent_id, parent_type, sub_folder).import

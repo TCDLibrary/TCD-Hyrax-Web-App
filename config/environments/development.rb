@@ -13,7 +13,8 @@ Rails.application.configure do
   config.consider_all_requests_local = true
 
   # 21/11/2018 JL:
-  config.active_job.queue_adapter     = :inline
+  # config.active_job.queue_adapter     = :inline
+  config.active_job.queue_adapter     = :sidekiq
 
   # Enable/disable caching. By default caching is disabled.
   if Rails.root.join('tmp/caching-dev.txt').exist?

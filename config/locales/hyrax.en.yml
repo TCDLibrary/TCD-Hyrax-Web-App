@@ -6,6 +6,7 @@ en:
       fields:
         facet:
           based_near_label_sim: Location
+          joetesting: Joe Testing          
           creator_sim: Creator
           file_format_sim: Format
           generic_type_sim: Type
@@ -15,6 +16,7 @@ en:
           subject_sim: Subject
         index:
           based_near_tesim: Location
+          joetesting: Joe Testing
           contributor_tesim: Contributor
           creator_tesim: Creator
           date_created_tesim: Date Created
@@ -31,6 +33,7 @@ en:
           subject_tesim: Subject
         show:
           based_near_tesim: Location
+          joetesting: Joe Testing
           contributor_tesim: Contributor
           creator_tesim: Creator
           date_created_tesim: Date Created

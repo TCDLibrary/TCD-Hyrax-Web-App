@@ -25,4 +25,7 @@ dump.rdb
 /dump.rdb
 /fits.log
 
+# Ignore the ingest files
+/public/data/ingest/*
+
 .byebug_history
