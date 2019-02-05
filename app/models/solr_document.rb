@@ -27,6 +27,10 @@ class SolrDocument
   use_extension( Hydra::ContentNegotiation )
 
   # JL: 07/12/2018
+  def abstract
+    self[Solrizer.solr_name('abstract')]
+  end
+
   def genre
     self[Solrizer.solr_name('genre')]
   end
@@ -35,8 +39,8 @@ class SolrDocument
     self[Solrizer.solr_name('dris_page_no')]
   end
 
-  def copyright_holder
-    self[Solrizer.solr_name('copyright_holder')]
+  def copyright_status
+    self[Solrizer.solr_name('copyright_status')]
   end
 
   def digital_object_identifier
@@ -51,9 +55,9 @@ class SolrDocument
     self[Solrizer.solr_name('language_code')]
   end
 
-  def role
-    self[Solrizer.solr_name('role')]
-  end
+  # def role
+  #   self[Solrizer.solr_name('role')]
+  # end
 
   def sponsor
     self[Solrizer.solr_name('sponsor')]
@@ -71,21 +75,21 @@ class SolrDocument
     self[Solrizer.solr_name('medium')]
   end
 
-  def type_of_work
-    self[Solrizer.solr_name('type_of_work')]
-  end
+  #def type_of_work
+  #  self[Solrizer.solr_name('type_of_work')]
+  #end
 
-  def subject_lcsh
-    self[Solrizer.solr_name('subject_lcsh')]
-  end
+  #def subject_lcsh
+  #  self[Solrizer.solr_name('subject_lcsh')]
+  #end
 
-  def subject_local
-    self[Solrizer.solr_name('subject_local')]
-  end
+  #def subject_local
+  #  self[Solrizer.solr_name('subject_local')]
+  #end
 
-  def subject_name
-    self[Solrizer.solr_name('subject_name')]
-  end
+  #def subject_name
+  #  self[Solrizer.solr_name('subject_name')]
+  #end
 
   def alternative_title
     self[Solrizer.solr_name('alternative_title')]
@@ -111,4 +115,7 @@ class SolrDocument
     self[Solrizer.solr_name('culture')]
   end
 
+  def location
+    self[Solrizer.solr_name('location')]
+  end
 end

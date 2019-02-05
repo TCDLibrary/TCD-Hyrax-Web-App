@@ -17,20 +17,20 @@ RSpec.describe Hyrax::WorkPresenter do
   let(:depositor) { 'test@example.com' }
   # JL: 07/12/2018:
   let(:dris_page_no) {['A Dris Page No']}
-  let(:copyright_holder) {['A Copyright Holder']}
+  let(:copyright_status) {['A Copyright Holder']}
   let(:genre) {['A Genre']}
   let(:digital_object_identifier) {['A Digital Object Identifier']}
   let(:dris_unique) {['A Dris Unique']}
   let(:language_code) {['A Language Code']}
-  let(:role) {['A Role']}
+  #let(:role) {['A Role']}
   let(:sponsor) {['A Sponsor']}
   let(:publisher_location) {['A Publisher Location']}
   let(:support) {['A Support']}
   let(:medium) {['A Medium']}
-  let(:type_of_work) {['A Type Of Work']}
-  let(:subject_lcsh) {['A Subject Lcsh']}
-  let(:subject_local) {['A Subject Local']}
-  let(:subject_name) {['A Subject Name']}
+  #let(:type_of_work) {['A Type Of Work']}
+  #let(:subject_lcsh) {['A Subject Lcsh']}
+  #let(:subject_local) {['A Subject Local']}
+  #let(:subject_name) {['A Subject Name']}
   let(:alternative_title) {['An Alternative Title']}
   let(:series_title) {['A Series Title']}
   let(:collection_title) {['A Collection Title']}
@@ -47,20 +47,20 @@ RSpec.describe Hyrax::WorkPresenter do
       visibility: visibility,
       # JL : 07/12/2018
       dris_page_no: dris_page_no,
-      copyright_holder: copyright_holder,
+      copyright_status: copyright_status,
       genre: genre,
       digital_object_identifier: digital_object_identifier,
       dris_unique: dris_unique,
       language_code: language_code,
-      role: role,
+      #role: role,
       sponsor: sponsor,
       publisher_location: publisher_location,
       support: support,
       medium: medium,
-      type_of_work: type_of_work,
-      subject_lcsh: subject_lcsh,
-      subject_local: subject_local,
-      subject_name: subject_name,
+      #type_of_work: type_of_work,
+      #subject_lcsh: subject_lcsh,
+      #subject_local: subject_local,
+      #subject_name: subject_name,
       alternative_title: alternative_title,
       series_title: series_title,
       collection_title: collection_title,
@@ -88,9 +88,9 @@ RSpec.describe Hyrax::WorkPresenter do
     presenter.dris_page_no
   end
 
-  it "delegates copyright_holder to solr document" do
-    expect(solr_document).to receive(:copyright_holder)
-    presenter.copyright_holder
+  it "delegates copyright_status to solr document" do
+    expect(solr_document).to receive(:copyright_status)
+    presenter.copyright_status
   end
 
   it "delegates digital_object_identifier to solr document" do
@@ -108,10 +108,10 @@ RSpec.describe Hyrax::WorkPresenter do
     presenter.language_code
   end
 
-  it "delegates role to solr document" do
-    expect(solr_document).to receive(:role)
-    presenter.role
-  end
+  #it "delegates role to solr document" do
+  #  expect(solr_document).to receive(:role)
+  #  presenter.role
+  #end
 
   it "delegates sponsor to solr document" do
     expect(solr_document).to receive(:sponsor)
@@ -133,25 +133,25 @@ RSpec.describe Hyrax::WorkPresenter do
     presenter.medium
   end
 
-  it "delegates type_of_work to solr document" do
-    expect(solr_document).to receive(:type_of_work)
-    presenter.type_of_work
-  end
+  #it "delegates type_of_work to solr document" do
+  #  expect(solr_document).to receive(:type_of_work)
+  #  presenter.type_of_work
+  #end
 
-  it "delegates subject_lcsh to solr document" do
-    expect(solr_document).to receive(:subject_lcsh)
-    presenter.subject_lcsh
-  end
+  #it "delegates subject_lcsh to solr document" do
+  #  expect(solr_document).to receive(:subject_lcsh)
+  #  presenter.subject_lcsh
+  #end
 
-  it "delegates subject_local to solr document" do
-    expect(solr_document).to receive(:subject_local)
-    presenter.subject_local
-  end
+  #it "delegates subject_local to solr document" do
+  #  expect(solr_document).to receive(:subject_local)
+  #  presenter.subject_local
+  #end
 
-  it "delegates subject_name to solr document" do
-    expect(solr_document).to receive(:subject_name)
-    presenter.subject_name
-  end
+  #it "delegates subject_name to solr document" do
+  #  expect(solr_document).to receive(:subject_name)
+  #  presenter.subject_name
+  #end
 
   it "delegates alternative_title to solr document" do
     expect(solr_document).to receive(:alternative_title)

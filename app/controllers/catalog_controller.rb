@@ -85,8 +85,8 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("identifier", :stored_searchable), helper_method: :index_field_link, field_name: 'identifier'
     config.add_index_field solr_name("embargo_release_date", :stored_sortable, type: :date), label: "Embargo release date", helper_method: :human_readable_date
     config.add_index_field solr_name("lease_expiration_date", :stored_sortable, type: :date), label: "Lease expiration date", helper_method: :human_readable_date
-
     config.add_index_field solr_name("culture", :stored_searchable), label: "Culture", helper_method: :link_to_profile
+    config.add_index_field solr_name("location", :stored_searchable), label: "Location", helper_method: :link_to_profile
 
 
     # solr fields to be displayed in the show (single result) view
@@ -171,7 +171,7 @@ class CatalogController < ApplicationController
     end
 
     config.add_search_field('description') do |field|
-      field.label = "Abstract or Summary"
+      field.label = "Description"
       solr_name = solr_name("description", :stored_searchable)
       field.solr_local_parameters = {
         qf: solr_name,

@@ -27,7 +27,7 @@ RSpec.describe Hyrax::Forms::CollectionForm do
     # expect(form.terms).to include(:dris_unique)
     # expect(form.terms).to include(:format_duration)
     # expect(form.terms).to include(:format_resolution)
-    # expect(form.terms).to include(:copyright_holder)
+    # expect(form.terms).to include(:copyright_status)
     # expect(form.terms).to include(:copyright_note)
     # expect(form.terms).to include(:digital_root_number)
     # expect(form.terms).to include(:digital_object_identifier)

@@ -25,7 +25,7 @@ RSpec.describe Collection do
           # expect(coll.dris_unique).to be_empty
           # expect(coll.format_duration).to be_empty
           # expect(coll.format_resolution).to be_empty
-          # expect(coll.copyright_holder).to be_empty
+          # expect(coll.copyright_status).to be_empty
           # expect(coll.copyright_note).to be_empty
           # expect(coll.digital_root_number).to be_empty
           # expect(coll.digital_object_identifier).to be_empty
@@ -86,7 +86,7 @@ RSpec.describe Collection do
         # coll.dris_unique = ["A Dris Unique"]
         # coll.format_duration = ["A Format Duration"]
         # coll.format_resolution = ["A Format Resolution"]
-        # coll.copyright_holder = ["A Copyright Holder"]
+        # coll.copyright_status = ["A Copyright Holder"]
         # coll.copyright_note = ["A Copyright Note"]
         # coll.digital_root_number = ["A Digital Root Number"]
         # coll.digital_object_identifier = ["A Digital Object Identifier"]
@@ -142,7 +142,7 @@ RSpec.describe Collection do
         # expect(coll.dris_unique).to eq(["A Dris Unique"])
         # expect(coll.format_duration).to eq (["A Format Duration"])
         # expect(coll.format_resolution).to eq (["A Format Resolution"])
-        # expect(coll.copyright_holder).to eq (["A Copyright Holder"])
+        # expect(coll.copyright_status).to eq (["A Copyright Holder"])
         # expect(coll.copyright_note).to eq (["A Copyright Note"])
         # expect(coll.digital_root_number).to eq (["A Digital Root Number"])
         # expect(coll.digital_object_identifier).to eq (["A Digital Object Identifier"])

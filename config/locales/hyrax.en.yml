@@ -5,8 +5,8 @@ en:
     search:
       fields:
         facet:
-          based_near_label_sim: Location
-          joetesting: Joe Testing          
+          based_near_label_sim: Based Near
+          joetesting: Joe Testing
           creator_sim: Creator
           file_format_sim: Format
           generic_type_sim: Type
@@ -15,7 +15,7 @@ en:
           publisher_sim: Publisher
           subject_sim: Subject
         index:
-          based_near_tesim: Location
+          based_near_tesim: Based Near
           joetesting: Joe Testing
           contributor_tesim: Contributor
           creator_tesim: Creator
@@ -32,7 +32,7 @@ en:
           rights_statement_tesim: Rights Statement
           subject_tesim: Subject
         show:
-          based_near_tesim: Location
+          based_near_tesim: Based Near
           joetesting: Joe Testing
           contributor_tesim: Contributor
           creator_tesim: Creator
@@ -60,3 +60,8 @@ en:
     institution_name_full: Trinity College Dublin
     product_name: Digital Collections
     product_twitter_handle: "@DigitalColl"
+    simple_form:
+      labels:
+        defaults:
+          based_near: Based Near
+          description: Description

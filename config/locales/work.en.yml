@@ -6,3 +6,7 @@ en:
       work:
         description:        "Work works"
         name:               "Work"
+    simple_form:
+      labels:
+        defaults:
+          based_near: Based Near      

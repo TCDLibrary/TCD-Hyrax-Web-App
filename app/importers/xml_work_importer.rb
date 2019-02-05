@@ -56,23 +56,53 @@ class XmlWorkImporter
           end
         end
 
-        # creator -> AttributedArtist
+        # contributor -> AttributedArtist
         link.xpath("xmlns:AttributedArtist").each do |anArtist|
           if !anArtist.content.blank?
             anArtist.xpath("xmlns:DATA").each do |individual|
-              if !(owner_rec.creator.include?(individual.content))
-                 work.creator.push(individual.content)
+              if !(owner_rec.contributor.include?(individual.content))
+                work.contributor.push(individual.content)
               end
-              work.creator.push(individual.content)
             end
           end
         end
 
-        # keyword -> SubjectTMG
+        # creator -> AttributedArtistCalculation
+        link.xpath("xmlns:AttributedArtistCalculation").each do |anArtist|
+          if !anArtist.content.blank?
+            anArtist.xpath("xmlns:DATA").each do |individual|
+
+              # parse each AttributedArtistCalculation on ';' expecting 3 data fields
+              indivArtistCalc = individual.content
+              indivParts = indivArtistCalc.split(';')
+
+              name = ''
+              role = ''
+              # loop through the sub array and check the key before choosing the value
+              indivParts.each do | indivBlob |
+                # parse the part with ':' to get key/value pair
+                calcVal = indivBlob.split(': ')
+
+                if calcVal[0] == 'AttributedArtistRole'
+                    role = calcVal[1]
+                else if calcVal[0] == ' Attributed Artist'
+                          name = calcVal[1]
+                     end
+                end
+
+              end
+              dataToIngest = name + ', ' + role
+              work.creator.push(dataToIngest)
+
+            end
+          end
+        end
+
+        # genre -> SubjectTMG
         link.xpath("xmlns:SubjectTMG").each do |subjects|
           if !subjects.content.blank?
             subjects.xpath("xmlns:DATA").each do |aSubject|
-              work.keyword.push(aSubject.content)
+              work.genre.push(aSubject.content)
             end
           end
         end
@@ -91,7 +121,12 @@ class XmlWorkImporter
         link.xpath("xmlns:Abstract").each do |abstract|
           if !abstract.content.blank?
             if !(owner_rec.description.include?(abstract.content)) then
-              work.description = [abstract.content]
+              if (abstract.content.length > 200)
+                work.description = [(abstract.content.slice(1..200) + '...')]
+              else
+                 work.description = [abstract.content]
+              end
+              work.abstract = [abstract.content]
             end
           end
         end
@@ -109,6 +144,9 @@ class XmlWorkImporter
         link.xpath("xmlns:DateCalculation").each do |calcDates|
           if !calcDates.content.blank?
             calcDates.xpath("xmlns:DATA").each do |aCalcDate|
+              aCalcDate.content = aCalcDate.content.sub('DateType: ', '')
+              aCalcDate.content = aCalcDate.content.sub('Day: ', '')
+              aCalcDate.content = aCalcDate.content.sub(' A.D.', '')
               if !(owner_rec.date_created.include?(aCalcDate.content))
                 work.date_created.push(aCalcDate.content)
               end
@@ -117,15 +155,15 @@ class XmlWorkImporter
         end
 
         # subject
-        link.xpath("xmlns:SubjectTMG").each do |subjects|
-          if !subjects.content.blank?
-            subjects.xpath("xmlns:DATA").each do |aSubject|
-              if !(owner_rec.subject.include?(aSubject.content))
-                 work.subject.push(aSubject.content)
-              end
-            end
-          end
-        end
+        # link.xpath("xmlns:SubjectTMG").each do |subjects|
+        #  if !subjects.content.blank?
+        #    subjects.xpath("xmlns:DATA").each do |aSubject|
+        #      if !(owner_rec.subject.include?(aSubject.content))
+        #         work.subject.push(aSubject.content)
+        #      end
+        #    end
+        #  end
+        # end
 
         # language
         link.xpath("xmlns:Language").each do |languages|
@@ -139,16 +177,24 @@ class XmlWorkImporter
         end
 
         # identifier  -> CatNo
-        link.xpath("xmlns:CatNo").each do |catno|
-          if !catno.content.blank?
-             if !(owner_rec.identifier.include?(catno.content)) then
-               work.identifier = [catno.content]
-             end
-          end
-        end
+        #link.xpath("xmlns:CatNo").each do |catno|
+        #  if !catno.content.blank?
+        #     if !(owner_rec.identifier.include?(catno.content)) then
+        #       work.identifier = [catno.content]
+        #     end
+        #  end
+        # end
 
         # location
-        # TODO:
+        link.xpath("xmlns:Location").each do |location|
+          if !location.content.blank?
+            location.xpath("xmlns:DATA").each do |aLocation|
+              if !(owner_rec.location.include?(aLocation.content))
+                 work.location.push(aLocation.content)
+              end
+            end
+          end
+        end
 
         # related_url
         # TODO:
@@ -169,7 +215,7 @@ class XmlWorkImporter
         link.xpath("xmlns:TypeOfWork").each do |aTypeOfWork|
           if !aTypeOfWork.content.blank?
              if !(owner_rec.genre.include?(aTypeOfWork.content)) then
-                work.genre = [aTypeOfWork.content]
+                work.genre.push(aTypeOfWork.content)
              end
           end
         end
@@ -184,13 +230,13 @@ class XmlWorkImporter
         end
 
         # dris_page_no
-        link.xpath("xmlns:DrisPageNo").each do |aDrisPageNo|
-          if !aDrisPageNo.content.blank?
-             if !(owner_rec.dris_page_no.include?(aDrisPageNo.content)) then
-               work.dris_page_no = [aDrisPageNo.content]
-             end
-          end
-        end
+        #link.xpath("xmlns:DrisPageNo").each do |aDrisPageNo|
+        #  if !aDrisPageNo.content.blank?
+        #     if !(owner_rec.dris_page_no.include?(aDrisPageNo.content)) then
+        #       work.dris_page_no = [aDrisPageNo.content]
+        #     end
+        #  end
+        #end
 
         # dris_document_no
         link.xpath("xmlns:DrisDocumentNo").each do |aDrisDocumentNo|
@@ -228,12 +274,12 @@ class XmlWorkImporter
           end
         end
 
-        # copyright_holder
+        # copyright_status
         link.xpath("xmlns:CopyrightHolder").each do |copyrightHolders|
           if !copyrightHolders.content.blank?
             copyrightHolders.xpath("xmlns:DATA").each do |aCopyrightHolder|
-              if !(owner_rec.copyright_holder.include?(aCopyrightHolder.content))
-                 work.copyright_holder.push(aCopyrightHolder.content)
+              if !(owner_rec.copyright_status.include?(aCopyrightHolder.content))
+                 work.copyright_status.push(aCopyrightHolder.content)
               end
             end
           end
@@ -259,27 +305,28 @@ class XmlWorkImporter
           end
         end
 
+        imageName = ' '
         # digital_object_identifier -> DRISPhotoID
         link.xpath("xmlns:DRISPhotoID").each do |aDigitalObjectId|
           if !aDigitalObjectId.content.blank?
-            work.digital_object_identifier = [aDigitalObjectId.content]
+            imageName = aDigitalObjectId.content
           end
         end
 
-        imageFileName = work.digital_object_identifier.first + "_LO.jpg"
+        imageFileName = imageName + "_LO.jpg"
         # imageLocation = "spec/fixtures/" + imageFileName
         imageLocation = @base_folder + @sub_folder + imageFileName
 
         # language_code -> LanguageTermCode
-        link.xpath("xmlns:LanguageTermCode").each do |languageCodes|
-          if !languageCodes.content.blank?
-            languageCodes.xpath("xmlns:DATA").each do |aLanguageCode|
-              if !(owner_rec.language_code.include?(aLanguageCode.content))
-                 work.language_code.push(aLanguageCode.content)
-              end
-            end
-          end
-        end
+        #link.xpath("xmlns:LanguageTermCode").each do |languageCodes|
+        #  if !languageCodes.content.blank?
+        #    languageCodes.xpath("xmlns:DATA").each do |aLanguageCode|
+        #      if !(owner_rec.language_code.include?(aLanguageCode.content))
+        #         work.language_code.push(aLanguageCode.content)
+        #      end
+        #    end
+        #  end
+        #end
 
         # location_type -> LocationType
         link.xpath("xmlns:LocationType").each do |locationTypes|
@@ -293,35 +340,35 @@ class XmlWorkImporter
         end
 
         # shelf_locator -> Citation
-        link.xpath("xmlns:Citation").each do |aShelfLocation|
-          if !aShelfLocation.content.blank?
-            if !(owner_rec.shelf_locator.include?(aShelfLocation.content)) then
-               work.shelf_locator = [aShelfLocation.content]
+        link.xpath("xmlns:Citation").each do |aCitation|
+          if !aCitation.content.blank?
+            if !(owner_rec.identifier.include?(aCitation.content)) then
+               work.identifier = [aCitation.content]
             end
           end
         end
 
         # role_code -> AttributedArtistRoleCode
-        link.xpath("xmlns:AttributedArtistRoleCode").each do |roleCodes|
-          if !roleCodes.content.blank?
-            roleCodes.xpath("xmlns:DATA").each do |aRoleCode|
-              if !(owner_rec.role_code.include?(aRoleCode.content))
-                 work.role_code.push(aRoleCode.content)
-              end
-            end
-          end
-        end
+        #link.xpath("xmlns:AttributedArtistRoleCode").each do |roleCodes|
+        #  if !roleCodes.content.blank?
+        #    roleCodes.xpath("xmlns:DATA").each do |aRoleCode|
+        #      if !(owner_rec.role_code.include?(aRoleCode.content))
+        #         work.role_code.push(aRoleCode.content)
+        #      end
+        #    end
+        #  end
+        #end
 
         # role -> AttributedArtistRole
-        link.xpath("xmlns:AttributedArtistRole").each do |roles|
-          if !roles.content.blank?
-            roles.xpath("xmlns:DATA").each do |aRole|
-              if !(owner_rec.role.include?(aRole.content))
-                 work.role.push(aRole.content)
-              end
-            end
-          end
-        end
+        #link.xpath("xmlns:AttributedArtistRole").each do |roles|
+        #  if !roles.content.blank?
+        #    roles.xpath("xmlns:DATA").each do |aRole|
+        #      if !(owner_rec.role.include?(aRole.content))
+        #         work.role.push(aRole.content)
+        #      end
+        #    end
+        #  end
+        #end
 
         # sponsor -> Sponsor
         link.xpath("xmlns:Sponsor").each do |aSponsor|
@@ -398,8 +445,8 @@ class XmlWorkImporter
           end
         end
 
-        # support
-        link.xpath("xmlns:Support").each do |supports|
+        # support and medium are mapped in reverse in XML
+        link.xpath("xmlns:Medium").each do |supports|
           if !supports.content.blank?
             supports.xpath("xmlns:DATA").each do |aSupport|
               if !(owner_rec.support.include?(aSupport.content))
@@ -409,8 +456,8 @@ class XmlWorkImporter
           end
         end
 
-        # medium
-        link.xpath("xmlns:Medium").each do |mediums|
+        # medium and support are mapped in reverse in XML
+        link.xpath("xmlns:Support").each do |mediums|
           if !mediums.content.blank?
             mediums.xpath("xmlns:DATA").each do |aMedium|
               if !(owner_rec.medium.include?(aMedium.content))
@@ -421,13 +468,13 @@ class XmlWorkImporter
         end
 
         # type_of_work
-        link.xpath("xmlns:TypeOfWork").each do |aType|
-          if !aType.content.blank?
-            if !(owner_rec.type_of_work.include?(aType.content)) then
-               work.type_of_work.push(aType.content)
-            end
-          end
-        end
+        #link.xpath("xmlns:TypeOfWork").each do |aType|
+        #  if !aType.content.blank?
+        #    if !(owner_rec.type_of_work.include?(aType.content)) then
+        #       work.type_of_work.push(aType.content)
+        #    end
+        #  end
+        #end
 
         # related_item_type
         link.xpath("xmlns:RelatedItemType").each do |relatedItemTypes|
@@ -466,8 +513,8 @@ class XmlWorkImporter
         link.xpath("xmlns:SubjectLCSH").each do |subjects|
           if !subjects.content.blank?
             subjects.xpath("xmlns:DATA").each do |aSubject|
-              if !(owner_rec.subject_lcsh.include?(aSubject.content))
-                 work.subject_lcsh.push(aSubject.content)
+              if !(owner_rec.subject.include?(aSubject.content))
+                 work.subject.push(aSubject.content)
               end
             end
           end
@@ -477,8 +524,8 @@ class XmlWorkImporter
         link.xpath("xmlns:OpenKeyword").each do |subjects|
           if !subjects.content.blank?
             subjects.xpath("xmlns:DATA").each do |aSubject|
-              if !(owner_rec.subject_local.include?(aSubject.content))
-                 work.subject_local.push(aSubject.content)
+              if !(owner_rec.keyword.include?(aSubject.content))
+                 work.keyword.push(aSubject.content)
               end
             end
           end
@@ -488,8 +535,8 @@ class XmlWorkImporter
         link.xpath("xmlns:LCSubjectNames").each do |subjects|
           if !subjects.content.blank?
             subjects.xpath("xmlns:DATA").each do |aSubject|
-              if !(owner_rec.subject_name.include?(aSubject.content))
-                 work.subject_name.push(aSubject.content)
+              if !(owner_rec.subject.include?(aSubject.content))
+                 work.subject.push(aSubject.content)
               end
             end
           end

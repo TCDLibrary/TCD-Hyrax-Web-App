@@ -17,13 +17,15 @@ module TcdExtendedMetadata
       property :format_duration, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#fd')
       property :format_resolution, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#fr')
 
-      #  29/11/2018: JL - abstract already exists
-      #  property :abstract, predicate: ::RDF::Vocab::MODS.abstract
+      property :abstract, predicate: ::RDF::Vocab::MODS.abstract do |index|
+        index.type :text
+        index.as :stored_searchable
+      end
 
       #  29/11/2018: JL - access condition in Michelle's xls (Expired, Active, etc) is not in her Mods File
       #  JL: copyright status is in BasicMetadata
 
-      property :copyright_holder, predicate: ::RDF::Vocab::DC.rightsHolder do |index|
+      property :copyright_status, predicate: ::RDF::Vocab::DC.rightsHolder do |index|
         index.as :stored_searchable
       end
 
@@ -56,12 +58,12 @@ module TcdExtendedMetadata
       #  JL: contributor alrady exists in BasicMetadata
       # property :contributor, predicate: ::RDF::URI.new('http://id.loc.gov/authorities/names')
 
-      #  JL: Michelle wanted both of these role fiels to link to <name><role><roleTerm>
-      property :role_code, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#rc')
+      #  JL: Michelle wanted both of these role fields to link to <name><role><roleTerm>
+      # property :role_code, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#rc')
 
-      property :role, predicate: ::RDF::URI.new('https://www.loc.gov/standards/sourcelist/relator-role') do |index|
-        index.as :stored_searchable
-      end
+      # property :role, predicate: ::RDF::URI.new('https://www.loc.gov/standards/sourcelist/relator-role') do |index|
+      #   index.as :stored_searchable
+      # end
 
       #  JL: how to handle locally created contributor names, role_code and role? Same data as above but different Mods to be output
 
@@ -102,9 +104,9 @@ module TcdExtendedMetadata
         index.as :stored_searchable
       end
 
-      property :type_of_work, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#type_of_work') do |index|
-        index.as :stored_searchable
-      end
+      #property :type_of_work, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#type_of_work') do |index|
+      #  index.as :stored_searchable
+      #end
 
       #  JL: modification_date is in CoreMetadata
       #  JL: creation_date is in CoreMetadata
@@ -113,19 +115,19 @@ module TcdExtendedMetadata
       property :related_item_identifier, predicate: ::RDF::Vocab::MODS.relatedItem
       property :related_item_title, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#related_item_title')
 
-      property :subject_lcsh, predicate: ::RDF::Vocab::MODS.subject do |index|
-        index.as :stored_searchable
-      end
+      #property :subject_lcsh, predicate: ::RDF::Vocab::MODS.subject do |index|
+      #  index.as :stored_searchable
+      #end
 
-      property :subject_local, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#subject_local') do |index|
-        index.as :stored_searchable
-      end
+      #property :subject_local, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#subject_local') do |index|
+      #  index.as :stored_searchable
+      #end
 
       #  JL: subject is in BasicMetadata
 
-      property :subject_name, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#subject_name') do |index|
-        index.as :stored_searchable
-      end
+      #property :subject_name, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#subject_name') do |index|
+      #  index.as :stored_searchable
+      #end
 
       #  JL: caption/notes/description is in BasicMetadata
 
@@ -170,6 +172,10 @@ module TcdExtendedMetadata
       property :total_records, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#total_records')
 
       #  JL: note, in FileMaker can be captured in two places, depending on whether vocab used
+      property :location, predicate: ::RDF::Vocab::MODS.Location  do |index|
+        index.as :stored_searchable
+      end
+
 
   end
 
