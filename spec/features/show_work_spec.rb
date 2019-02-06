@@ -13,7 +13,7 @@ RSpec.feature 'Display a Work' do
   let(:genre)                       {['A Genre']}
   let(:digital_object_identifier)   {['A Digital Object Identifier']}
   let(:dris_unique)                 {['A Dris Unique']}
-  let(:language_code)               {['A Language Code']}
+  #let(:language_code)               {['A Language Code']}
   #let(:role)                        {['A Role']}
   let(:sponsor)                     {['A Sponsor']}
   let(:publisher_location)          {['A Publisher Location']}
@@ -44,7 +44,7 @@ RSpec.feature 'Display a Work' do
                 genre:                      genre,
                 digital_object_identifier:  digital_object_identifier,
                 dris_unique:                dris_unique,
-                language_code:              language_code,
+                #language_code:              language_code,
                 #role:                       role,
                 sponsor:                    sponsor,
                 publisher_location:         publisher_location,
@@ -74,8 +74,9 @@ RSpec.feature 'Display a Work' do
     expect(page).to have_content work.copyright_status.first
     expect(page).to have_content work.genre.first
     expect(page).to have_content work.digital_object_identifier.first
-    expect(page).to have_content work.dris_unique.first
-    expect(page).to have_content work.language_code.first
+    # JL: 06/02/2019 dris_unique is ingested but not displayed
+    #expect(page).to have_content work.dris_unique.first
+    #expect(page).to have_content work.language_code.first
     #expect(page).to have_content work.role.first
     expect(page).to have_content work.sponsor.first
     expect(page).to have_content work.publisher_location.first
