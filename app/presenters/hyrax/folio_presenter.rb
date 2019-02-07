@@ -13,7 +13,7 @@ module Hyrax
 
     delegate :digital_object_identifier, to: :solr_document
     delegate :dris_unique, to: :solr_document
-    delegate :language_code, to: :solr_document
+    # delegate :language_code, to: :solr_document
     # delegate :role, to: :solr_document
     delegate :sponsor, to: :solr_document
     delegate :publisher_location, to: :solr_document

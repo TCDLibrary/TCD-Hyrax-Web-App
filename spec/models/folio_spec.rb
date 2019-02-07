@@ -20,7 +20,7 @@ RSpec.describe Folio do
         expect(folio.copyright_note).to be_empty
         expect(folio.digital_root_number).to be_empty
         expect(folio.digital_object_identifier).to be_empty
-        expect(folio.language_code).to be_empty
+        #expect(folio.language_code).to be_empty
         expect(folio.location_type).to be_empty
         expect(folio.shelf_locator).to be_empty
         #expect(folio.role).to be_empty
@@ -73,7 +73,7 @@ RSpec.describe Folio do
         folio.copyright_note = ["A Copyright Note"]
         folio.digital_root_number = ["A Digital Root Number"]
         folio.digital_object_identifier = ["A Digital Object Identifier"]
-        folio.language_code = ["A Language Code"]
+        #folio.language_code = ["A Language Code"]
         folio.location_type = ["A Location Type"]
         folio.shelf_locator = ["A Shelf Locator"]
         #folio.role = ["A Role"]
@@ -121,7 +121,7 @@ RSpec.describe Folio do
         expect(folio.copyright_note).to eq (["A Copyright Note"])
         expect(folio.digital_root_number).to eq (["A Digital Root Number"])
         expect(folio.digital_object_identifier).to eq (["A Digital Object Identifier"])
-        expect(folio.language_code).to eq (["A Language Code"])
+        #expect(folio.language_code).to eq (["A Language Code"])
         expect(folio.location_type).to eq (["A Location Type"])
         expect(folio.shelf_locator).to eq (["A Shelf Locator"])
         #expect(folio.role).to eq (["A Role"])

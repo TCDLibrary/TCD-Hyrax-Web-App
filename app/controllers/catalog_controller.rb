@@ -31,7 +31,7 @@ class CatalogController < ApplicationController
     config.default_solr_params = {
       qt: "search",
       rows: 10,
-      qf: "title_tesim description_tesim creator_tesim keyword_tesim culture_tesim"
+      qf: "title_tesim description_tesim creator_tesim keyword_tesim culture_tesim abstract_tesim"
     }
 
     # solr field configuration for document/show views
@@ -66,33 +66,72 @@ class CatalogController < ApplicationController
     #   The ordering of the field names is the order of the display
     config.add_index_field solr_name("title", :stored_searchable), label: "Title", itemprop: 'name', if: false
     config.add_index_field solr_name("description", :stored_searchable), itemprop: 'description', helper_method: :iconify_auto_link
-    config.add_index_field solr_name("keyword", :stored_searchable), itemprop: 'keywords', link_to_search: solr_name("keyword", :facetable)
-    config.add_index_field solr_name("subject", :stored_searchable), itemprop: 'about', link_to_search: solr_name("subject", :facetable)
+    #config.add_index_field solr_name("abstract", :stored_searchable), itemprop: 'abstract', helper_method: :iconify_auto_link
+    config.add_index_field solr_name("alternative_title", :stored_searchable), itemprop: 'alternative_title'
     config.add_index_field solr_name("creator", :stored_searchable), itemprop: 'creator', link_to_search: solr_name("creator", :facetable)
+    config.add_index_field solr_name("publisher_location", :stored_searchable), itemprop: 'publisher_location'
+    config.add_index_field solr_name("publisher", :stored_searchable), itemprop: 'publisher', link_to_search: solr_name("publisher", :facetable)
+    config.add_index_field solr_name("date_created", :stored_searchable), itemprop: 'dateCreated'
+    config.add_index_field solr_name("series_title", :stored_searchable), itemprop: 'series_title'
+    config.add_index_field solr_name("collection_title", :stored_searchable), itemprop: 'collection_title'
+    config.add_index_field solr_name("virtual_collection_title", :stored_searchable), itemprop: 'virtual_collection_title'
+    config.add_index_field solr_name("medium", :stored_searchable), itemprop: 'medium'
+    config.add_index_field solr_name("support", :stored_searchable), itemprop: 'support'
+    config.add_index_field solr_name("dris_page_no", :stored_searchable), itemprop: 'dris_page_no'
+    config.add_index_field solr_name("digital_object_identifier", :stored_searchable), itemprop: 'digital_object_identifier'
+    config.add_index_field solr_name("language", :stored_searchable), itemprop: 'inLanguage', link_to_search: solr_name("language", :facetable)
+    config.add_index_field solr_name("culture", :stored_searchable), itemprop: 'culture'
+    config.add_index_field solr_name("provenance", :stored_searchable), itemprop: 'provenance'
+    config.add_index_field solr_name("subject", :stored_searchable), itemprop: 'about', link_to_search: solr_name("subject", :facetable)
+    config.add_index_field solr_name("keyword", :stored_searchable), itemprop: 'keywords', link_to_search: solr_name("keyword", :facetable)
+    config.add_index_field solr_name("genre", :stored_searchable), itemprop: 'genre'
+    config.add_index_field solr_name("identifier", :stored_searchable), helper_method: :index_field_link, field_name: 'identifier'
+    config.add_index_field solr_name("location", :stored_searchable), itemprop: 'location'
+    config.add_index_field solr_name("rights_statement", :stored_searchable), helper_method: :rights_statement_links
+    config.add_index_field solr_name("copyright_status", :stored_searchable), itemprop: 'copyright_status'
+    config.add_index_field solr_name("date_modified", :stored_sortable, type: :date), itemprop: 'dateModified', helper_method: :human_readable_date
+
+
+    #config.add_index_field solr_name("dris_unique", :stored_searchable), itemprop: 'dris_unique'
+    config.add_index_field solr_name("sponsor", :stored_searchable), itemprop: 'sponsor'
+    config.add_index_field solr_name("bibliography", :stored_searchable), itemprop: 'bibliography'
     config.add_index_field solr_name("contributor", :stored_searchable), itemprop: 'contributor', link_to_search: solr_name("contributor", :facetable)
     config.add_index_field solr_name("proxy_depositor", :symbol), label: "Depositor", helper_method: :link_to_profile
     config.add_index_field solr_name("depositor"), label: "Owner", helper_method: :link_to_profile
-    config.add_index_field solr_name("publisher", :stored_searchable), itemprop: 'publisher', link_to_search: solr_name("publisher", :facetable)
     config.add_index_field solr_name("based_near_label", :stored_searchable), itemprop: 'contentLocation', link_to_search: solr_name("based_near_label", :facetable)
-    config.add_index_field solr_name("language", :stored_searchable), itemprop: 'inLanguage', link_to_search: solr_name("language", :facetable)
     config.add_index_field solr_name("date_uploaded", :stored_sortable, type: :date), itemprop: 'datePublished', helper_method: :human_readable_date
-    config.add_index_field solr_name("date_modified", :stored_sortable, type: :date), itemprop: 'dateModified', helper_method: :human_readable_date
-    config.add_index_field solr_name("date_created", :stored_searchable), itemprop: 'dateCreated'
-    config.add_index_field solr_name("rights_statement", :stored_searchable), helper_method: :rights_statement_links
     config.add_index_field solr_name("license", :stored_searchable), helper_method: :license_links
     config.add_index_field solr_name("resource_type", :stored_searchable), label: "Resource Type", link_to_search: solr_name("resource_type", :facetable)
     config.add_index_field solr_name("file_format", :stored_searchable), link_to_search: solr_name("file_format", :facetable)
-    config.add_index_field solr_name("identifier", :stored_searchable), helper_method: :index_field_link, field_name: 'identifier'
     config.add_index_field solr_name("embargo_release_date", :stored_sortable, type: :date), label: "Embargo release date", helper_method: :human_readable_date
     config.add_index_field solr_name("lease_expiration_date", :stored_sortable, type: :date), label: "Lease expiration date", helper_method: :human_readable_date
-    config.add_index_field solr_name("culture", :stored_searchable), label: "Culture", helper_method: :link_to_profile
-    config.add_index_field solr_name("location", :stored_searchable), label: "Location", helper_method: :link_to_profile
 
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
     config.add_show_field solr_name("title", :stored_searchable)
     config.add_show_field solr_name("description", :stored_searchable)
+    #config.add_show_field solr_name("abstract", :stored_searchable)
+    config.add_show_field solr_name("dris_page_no", :stored_searchable)
+    config.add_show_field solr_name("copyright_status", :stored_searchable)
+    config.add_show_field solr_name("genre", :stored_searchable)
+    config.add_show_field solr_name("digital_object_identifier", :stored_searchable)
+    config.add_show_field solr_name("dris_unique", :stored_searchable)
+    config.add_show_field solr_name("sponsor", :stored_searchable)
+    config.add_show_field solr_name("bibliography", :stored_searchable)
+    config.add_show_field solr_name("publisher_location", :stored_searchable)
+    config.add_show_field solr_name("support", :stored_searchable)
+    config.add_show_field solr_name("medium", :stored_searchable)
+    config.add_show_field solr_name("alternative_title", :stored_searchable)
+    config.add_show_field solr_name("series_title", :stored_searchable)
+    config.add_show_field solr_name("collection_title", :stored_searchable)
+    config.add_show_field solr_name("virtual_collection_title", :stored_searchable)
+    config.add_show_field solr_name("provenance", :stored_searchable)
+    config.add_show_field solr_name("culture", :stored_searchable)
+    config.add_show_field solr_name("location", :stored_searchable)
+
+
+
     config.add_show_field solr_name("keyword", :stored_searchable)
     config.add_show_field solr_name("subject", :stored_searchable)
     config.add_show_field solr_name("creator", :stored_searchable)
@@ -179,6 +218,170 @@ class CatalogController < ApplicationController
       }
     end
 
+    config.add_search_field('abstract') do |field|
+      field.label = "Abstract"
+      solr_name = solr_name("abstract", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('dris_page_no') do |field|
+      field.label = "Page no"
+      solr_name = solr_name("dris_page_no", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('copyright_status') do |field|
+      field.label = "Copyright Status"
+      solr_name = solr_name("copyright_status", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('genre') do |field|
+      field.label = "Genre"
+      solr_name = solr_name("genre", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('digital_object_identifier') do |field|
+      field.label = "Digital Object Identifier"
+      solr_name = solr_name("digital_object_identifier", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('dris_unique') do |field|
+      field.label = "Dris Unique"
+      solr_name = solr_name("dris_unique", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('sponsor') do |field|
+      field.label = "Sponsor"
+      solr_name = solr_name("sponsor", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('bibliography') do |field|
+      field.label = "Bibliography"
+      solr_name = solr_name("bibliography", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+
+    config.add_search_field('publisher_location') do |field|
+      field.label = "Publisher Location"
+      solr_name = solr_name("publisher_location", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('support') do |field|
+      field.label = "Support"
+      solr_name = solr_name("support", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('medium') do |field|
+      field.label = "Medium"
+      solr_name = solr_name("medium", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('alternative_title') do |field|
+      field.label = "Alternative Title"
+      solr_name = solr_name("alternative_title", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('series_title') do |field|
+      field.label = "Series Title"
+      solr_name = solr_name("series_title", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('collection_title') do |field|
+      field.label = "Collection Title"
+      solr_name = solr_name("collection_title", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('virtual_collection_title') do |field|
+      field.label = "Virtual Collection Title"
+      solr_name = solr_name("virtual_collection_title", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('provenance') do |field|
+      field.label = "Provenance"
+      solr_name = solr_name("provenance", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('culture') do |field|
+      field.label = "Culture"
+      solr_name = solr_name("culture", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('location') do |field|
+      field.label = "Location"
+      solr_name = solr_name("location", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+
     config.add_search_field('publisher') do |field|
       solr_name = solr_name("publisher", :stored_searchable)
       field.solr_local_parameters = {
@@ -236,7 +439,7 @@ class CatalogController < ApplicationController
     end
 
     config.add_search_field('based_near') do |field|
-      field.label = "Location"
+      field.label = "Based Near"
       solr_name = solr_name("based_near_label", :stored_searchable)
       field.solr_local_parameters = {
         qf: solr_name,

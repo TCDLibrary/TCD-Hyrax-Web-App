@@ -69,7 +69,7 @@ RSpec.feature 'Create a Work', js: true do
       fill_in "Copyright note", with: "A Copyright Note"
       fill_in "Digital root number", with: "A Digital Root Number"
       fill_in "Digital object identifier", with: "A Digital Object Identifier"
-      fill_in "Language code", with: "A Language Code"
+      #fill_in "Language code", with: "A Language Code"
       fill_in "Location type", with: "A Location Type"
       #fill_in "Shelf locator", with: "A Shelf Locator"
       #fill_in "Role", with: "A Role"

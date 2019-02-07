@@ -51,9 +51,9 @@ class SolrDocument
     self[Solrizer.solr_name('dris_unique')]
   end
 
-  def language_code
-    self[Solrizer.solr_name('language_code')]
-  end
+  #def language_code
+  #  self[Solrizer.solr_name('language_code')]
+  #end
 
   # def role
   #   self[Solrizer.solr_name('role')]

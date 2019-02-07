@@ -7,6 +7,20 @@ class XmlFolioImporter
   # TODO : Validation, don't crash if file missing
   # TODO : Need to add logs. I want a list of Folios, and their IDs to be output
 
+  # JL : 06/02/2019 Michelle asked me to remove deduplication for the following fields:
+  #   Subject
+  #   Language
+  #   Identifier
+  #   Date created
+  #   Copyright status
+  #   Medium
+  #   Support
+  #   Collection title
+  #   Provenance
+  #   Culture
+  #   Description
+
+
   def initialize(file, parent = '000000000', parent_type = 'no_parent', sub_folder = '', base_folder = 'public/data/ingest/')
     @file = file
     @user = ::User.batch_user
@@ -149,14 +163,12 @@ class XmlFolioImporter
         #byebug
         link.xpath("xmlns:Abstract").each do |abstract|
           if !abstract.content.blank?
-            if !(owner_rec.description.include?(abstract.content)) then
-               if (abstract.content.length > 200)
-                  folio.description = [(abstract.content.slice(1..200) + '...')]
-               else
-                  folio.description = [abstract.content]
-               end
-               folio.abstract = [abstract.content]
-            end
+             if (abstract.content.length > 200)
+                folio.description = [(abstract.content.slice(1..200) + '...')]
+             else
+                folio.description = [abstract.content]
+             end
+             folio.abstract = [abstract.content]
           end
         end
 
@@ -175,14 +187,32 @@ class XmlFolioImporter
         # date created
         link.xpath("xmlns:DateCalculation").each do |calcDates|
           if !calcDates.content.blank?
+            crArray = Array.new(3)
             calcDates.xpath("xmlns:DATA").each do |aCalcDate|
-              aCalcDate.content = aCalcDate.content.sub('DateType: ', '')
-              aCalcDate.content = aCalcDate.content.sub('Day: ', '')
-              aCalcDate.content = aCalcDate.content.sub(' A.D.', '')
-              if !(owner_rec.date_created.include?(aCalcDate.content))
-                 folio.date_created.push(aCalcDate.content)
-              end
-            end
+                aCalcDate.content = aCalcDate.content.sub('DateType: ', '')
+                aCalcDate.content = aCalcDate.content.sub('Day: ', '')
+                aCalcDate.content = aCalcDate.content.sub(' A.D.', '')
+                # input date order is random so need to tidy it up so start end before end date.
+                # element[2] is safety net in case input format not what we expect.
+
+                if aCalcDate.content.include?("start")
+                  crArray[0] = aCalcDate.content
+                else if aCalcDate.content.include?("end")
+                        crArray[1] = aCalcDate.content
+                     else crArray[2] = aCalcDate.content
+                     end
+                end
+             end
+             # remove any null elements
+             crArray = crArray.compact
+             dCre = ""
+             crArray.each do | cr |
+                dCre += cr + " "
+             end
+             #if crArray.length > 0
+             #    byebug
+             folio.date_created.push(dCre)
+             #end
           end
         end
 
@@ -201,9 +231,7 @@ class XmlFolioImporter
         link.xpath("xmlns:Language").each do |languages|
           if !languages.content.blank?
             languages.xpath("xmlns:DATA").each do |aLanguage|
-              if !(owner_rec.language.include?(aLanguage.content))
-                 folio.language.push(aLanguage.content)
-              end
+              folio.language.push(aLanguage.content)
             end
           end
         end
@@ -310,9 +338,7 @@ class XmlFolioImporter
         link.xpath("xmlns:CopyrightHolder").each do |copyrightHolders|
           if !copyrightHolders.content.blank?
             copyrightHolders.xpath("xmlns:DATA").each do |aCopyrightHolder|
-              if !(owner_rec.copyright_status.include?(aCopyrightHolder.content))
-                 folio.copyright_status.push(aCopyrightHolder.content)
-              end
+              folio.copyright_status.push(aCopyrightHolder.content)
             end
           end
         end
@@ -371,9 +397,7 @@ class XmlFolioImporter
         # shelf_locator -> Citation
         link.xpath("xmlns:Citation").each do |aCitation|
           if !aCitation.content.blank?
-            if !(owner_rec.identifier.include?(aCitation.content)) then
-               folio.identifier = [aCitation.content]
-            end
+             folio.identifier = [aCitation.content]
           end
         end
 
@@ -478,9 +502,7 @@ class XmlFolioImporter
         link.xpath("xmlns:Medium").each do |supports|
           if !supports.content.blank?
             supports.xpath("xmlns:DATA").each do |aSupport|
-              if !(owner_rec.support.include?(aSupport.content))
-                 folio.support.push(aSupport.content)
-              end
+              folio.support.push(aSupport.content)
             end
           end
         end
@@ -489,9 +511,7 @@ class XmlFolioImporter
         link.xpath("xmlns:Support").each do |mediums|
           if !mediums.content.blank?
             mediums.xpath("xmlns:DATA").each do |aMedium|
-              if !(owner_rec.medium.include?(aMedium.content))
-                folio.medium.push(aMedium.content)
-              end
+              folio.medium.push(aMedium.content)
             end
           end
         end
@@ -542,9 +562,7 @@ class XmlFolioImporter
         link.xpath("xmlns:SubjectLCSH").each do |subjects|
           if !subjects.content.blank?
             subjects.xpath("xmlns:DATA").each do |aSubject|
-              if !(owner_rec.subject.include?(aSubject.content))
-                 folio.subject.push(aSubject.content)
-              end
+              folio.subject.push(aSubject.content)
             end
           end
         end
@@ -564,9 +582,7 @@ class XmlFolioImporter
         link.xpath("xmlns:LCSubjectNames").each do |subjects|
           if !subjects.content.blank?
             subjects.xpath("xmlns:DATA").each do |aSubject|
-              if !(owner_rec.subject.include?(aSubject.content))
-                 folio.subject.push(aSubject.content)
-              end
+               folio.subject.push(aSubject.content)
             end
           end
         end
@@ -596,9 +612,7 @@ class XmlFolioImporter
         # collection_title -> TitleLargerEntity
         link.xpath("xmlns:TitleLargerEntity").each do |aTitle|
           if !aTitle.content.blank?
-            if !(owner_rec.collection_title.include?(aTitle.content)) then
-               folio.collection_title.push(aTitle.content)
-            end
+             folio.collection_title.push(aTitle.content)
           end
         end
 
@@ -614,9 +628,7 @@ class XmlFolioImporter
         # provenance
         link.xpath("xmlns:Provenance").each do |aProvenance|
           if !aProvenance.content.blank?
-            if !(owner_rec.provenance.include?(aProvenance.content)) then
-               folio.provenance.push(aProvenance.content)
-            end
+             folio.provenance.push(aProvenance.content)
           end
         end
 
@@ -651,9 +663,7 @@ class XmlFolioImporter
         link.xpath("xmlns:Culture").each do |cultures|
           if !cultures.content.blank?
             cultures.xpath("xmlns:DATA").each do |aCulture|
-              if !(owner_rec.culture.include?(aCulture.content))
-                 folio.culture.push(aCulture.content)
-              end
+              folio.culture.push(aCulture.content)
             end
           end
         end

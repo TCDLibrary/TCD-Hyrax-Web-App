@@ -32,7 +32,7 @@ RSpec.describe XmlFolioImporter do
      expect(imported_folio.description).to include('TCD MS 2327/64 is a letter from Catherine (Kate) D’Alton (née Phillips, of Clonmore, Co. Mayo, 1815-1853) to her...')
      expect(imported_folio.abstract).to include('TCD MS 2327/64 is a letter from Catherine (Kate) D’Alton (née Phillips, of Clonmore, Co. Mayo, 1815-1853) to her...')
      expect(imported_folio.publisher).to include('A Publisher Name')
-     expect(imported_folio.date_created).to include('start; 08-08-1824')
+     expect(imported_folio.date_created).to include('start; 08-08-1824 end; 12-08-1824 ')
      expect(imported_folio.subject).to include ('D’Alton, John, 1792-1867--Correspondence')
      expect(imported_folio.language).to include ('English')
      expect(imported_folio.identifier).to include ('IE TCD MS 2327/64')

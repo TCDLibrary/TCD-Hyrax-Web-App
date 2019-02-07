@@ -21,7 +21,7 @@ RSpec.describe Hyrax::WorkPresenter do
   let(:genre) {['A Genre']}
   let(:digital_object_identifier) {['A Digital Object Identifier']}
   let(:dris_unique) {['A Dris Unique']}
-  let(:language_code) {['A Language Code']}
+  #let(:language_code) {['A Language Code']}
   #let(:role) {['A Role']}
   let(:sponsor) {['A Sponsor']}
   let(:publisher_location) {['A Publisher Location']}
@@ -51,7 +51,7 @@ RSpec.describe Hyrax::WorkPresenter do
       genre: genre,
       digital_object_identifier: digital_object_identifier,
       dris_unique: dris_unique,
-      language_code: language_code,
+      #language_code: language_code,
       #role: role,
       sponsor: sponsor,
       publisher_location: publisher_location,
@@ -103,10 +103,10 @@ RSpec.describe Hyrax::WorkPresenter do
     presenter.dris_unique
   end
 
-  it "delegates language_code to solr document" do
-    expect(solr_document).to receive(:language_code)
-    presenter.language_code
-  end
+  #it "delegates language_code to solr document" do
+  #  expect(solr_document).to receive(:language_code)
+  #  presenter.language_code
+  #end
 
   #it "delegates role to solr document" do
   #  expect(solr_document).to receive(:role)

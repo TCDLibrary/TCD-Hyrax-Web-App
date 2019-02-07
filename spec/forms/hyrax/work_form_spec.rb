@@ -11,7 +11,7 @@ RSpec.describe Hyrax::WorkForm do
   let(:request) { nil }
   let(:form)    { described_class.new(work, ability, request) }
   it "has the expected terms" do
-    expect(form.terms).to include(:abstract)    
+    expect(form.terms).to include(:abstract)
     expect(form.terms).to include(:genre)
     expect(form.terms).to include(:bibliography)
     expect(form.terms).to include(:dris_page_no)
@@ -23,7 +23,7 @@ RSpec.describe Hyrax::WorkForm do
     expect(form.terms).to include(:copyright_note)
     expect(form.terms).to include(:digital_root_number)
     expect(form.terms).to include(:digital_object_identifier)
-    expect(form.terms).to include(:language_code)
+    #expect(form.terms).to include(:language_code)
     expect(form.terms).to include(:location_type)
     expect(form.terms).to include(:shelf_locator)
     #expect(form.terms).to include(:role)

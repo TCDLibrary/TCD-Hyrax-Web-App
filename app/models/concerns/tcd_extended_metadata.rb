@@ -31,7 +31,7 @@ module TcdExtendedMetadata
 
       property :copyright_note, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#copyright_note')
 
-      # this is TGM genre:
+
       property :genre, predicate: ::RDF::URI.new("http://id.loc.gov/vocabulary/graphicMaterials") do |index|
         index.as :stored_searchable, :facetable
       end
@@ -46,9 +46,9 @@ module TcdExtendedMetadata
         index.as :stored_searchable, :facetable
       end
 
-      property :language_code, predicate: ::RDF::URI.new('https://www.loc.gov/standards/iso639-2') do |index|
-        index.as :stored_searchable
-      end
+      #property :language_code, predicate: ::RDF::URI.new('https://www.loc.gov/standards/iso639-2') do |index|
+      #  index.as :stored_searchable
+      #end
       #  JL: language is in BasicMetadata DC11.language
 
       #  JL: location already exists
@@ -81,6 +81,7 @@ module TcdExtendedMetadata
       #  JL: publsher is in BasicMetadata
 
       #  JL publisher place and publisher country are both described for MODS.place so merged
+
       property :publisher_location, predicate: ::RDF::Vocab::MODS.placeOfOrigin do |index|
         index.as :stored_searchable
       end
@@ -97,9 +98,7 @@ module TcdExtendedMetadata
         index.as :stored_searchable
       end
 
-      #  JL: medium cant refer to same Mods fields
-      #      property :medium, predicate: ::RDF::Vocab::????
-
+      #  JL: medium cant refer to same Mods field as support
       property :medium, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#me') do |index|
         index.as :stored_searchable
       end
@@ -172,6 +171,7 @@ module TcdExtendedMetadata
       property :total_records, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#total_records')
 
       #  JL: note, in FileMaker can be captured in two places, depending on whether vocab used
+      # TODO : test if searchable
       property :location, predicate: ::RDF::Vocab::MODS.Location  do |index|
         index.as :stored_searchable
       end

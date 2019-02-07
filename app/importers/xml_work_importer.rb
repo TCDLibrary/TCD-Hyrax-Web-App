@@ -8,6 +8,19 @@ class XmlWorkImporter
   # TODO : Need to add logs. I want a list of Works, and their IDs to be output
   # TODO : Tidy up
 
+  # JL : 06/02/2019 Michelle asked me to remove deduplication for the following fields:
+  #   Subject
+  #   Language
+  #   Identifier
+  #   Date created
+  #   Copyright status
+  #   Medium
+  #   Support
+  #   Collection title
+  #   Provenance
+  #   Culture
+  #   Description
+
   def initialize(file, parent = '000000000', parent_type = 'no_parent', sub_folder = '', base_folder = 'public/data/ingest/')
     @file = file
     @user = ::User.batch_user
@@ -120,14 +133,14 @@ class XmlWorkImporter
         # abstract
         link.xpath("xmlns:Abstract").each do |abstract|
           if !abstract.content.blank?
-            if !(owner_rec.description.include?(abstract.content)) then
+
               if (abstract.content.length > 200)
                 work.description = [(abstract.content.slice(1..200) + '...')]
               else
                  work.description = [abstract.content]
               end
               work.abstract = [abstract.content]
-            end
+
           end
         end
 
@@ -143,14 +156,29 @@ class XmlWorkImporter
         # date created
         link.xpath("xmlns:DateCalculation").each do |calcDates|
           if !calcDates.content.blank?
+            crArray = Array.new(3)
             calcDates.xpath("xmlns:DATA").each do |aCalcDate|
               aCalcDate.content = aCalcDate.content.sub('DateType: ', '')
               aCalcDate.content = aCalcDate.content.sub('Day: ', '')
               aCalcDate.content = aCalcDate.content.sub(' A.D.', '')
-              if !(owner_rec.date_created.include?(aCalcDate.content))
-                work.date_created.push(aCalcDate.content)
+              # input date order is random so need to tidy it up so start end before end date.
+              # element[2] is safety net in case input format not what we expect.
+
+              if aCalcDate.content.include?("start")
+                crArray[0] = aCalcDate.content
+              else if aCalcDate.content.include?("end")
+                      crArray[1] = aCalcDate.content
+                   else crArray[2] = aCalcDate.content
+                   end
               end
             end
+            # remove any null elements
+            crArray = crArray.compact
+            dCre = ""
+            crArray.each do | cr |
+               dCre += cr + " "
+            end
+            work.date_created.push(dCre)
           end
         end
 
@@ -169,9 +197,7 @@ class XmlWorkImporter
         link.xpath("xmlns:Language").each do |languages|
           if !languages.content.blank?
             languages.xpath("xmlns:DATA").each do |aLanguage|
-              if !(owner_rec.language.include?(aLanguage.content))
-                 work.language.push(aLanguage.content)
-              end
+               work.language.push(aLanguage.content)
             end
           end
         end
@@ -212,13 +238,14 @@ class XmlWorkImporter
         end
 
         # genre -> TypeOfWork
-        link.xpath("xmlns:TypeOfWork").each do |aTypeOfWork|
-          if !aTypeOfWork.content.blank?
-             if !(owner_rec.genre.include?(aTypeOfWork.content)) then
-                work.genre.push(aTypeOfWork.content)
-             end
-          end
-        end
+        # JL : 07/02/2019 Remove at Work level for Michelle
+        #link.xpath("xmlns:TypeOfWork").each do |aTypeOfWork|
+        #  if !aTypeOfWork.content.blank?
+        #     if !(owner_rec.genre.include?(aTypeOfWork.content)) then
+        #        work.genre.push(aTypeOfWork.content)
+        #     end
+        #  end
+        #end
 
         # bibliography
         link.xpath("xmlns:Bibliography").each do |aBibliography|
@@ -278,9 +305,7 @@ class XmlWorkImporter
         link.xpath("xmlns:CopyrightHolder").each do |copyrightHolders|
           if !copyrightHolders.content.blank?
             copyrightHolders.xpath("xmlns:DATA").each do |aCopyrightHolder|
-              if !(owner_rec.copyright_status.include?(aCopyrightHolder.content))
-                 work.copyright_status.push(aCopyrightHolder.content)
-              end
+               work.copyright_status.push(aCopyrightHolder.content)
             end
           end
         end
@@ -342,9 +367,7 @@ class XmlWorkImporter
         # shelf_locator -> Citation
         link.xpath("xmlns:Citation").each do |aCitation|
           if !aCitation.content.blank?
-            if !(owner_rec.identifier.include?(aCitation.content)) then
-               work.identifier = [aCitation.content]
-            end
+             work.identifier = [aCitation.content]
           end
         end
 
@@ -449,9 +472,7 @@ class XmlWorkImporter
         link.xpath("xmlns:Medium").each do |supports|
           if !supports.content.blank?
             supports.xpath("xmlns:DATA").each do |aSupport|
-              if !(owner_rec.support.include?(aSupport.content))
-                 work.support.push(aSupport.content)
-              end
+               work.support.push(aSupport.content)
             end
           end
         end
@@ -460,9 +481,7 @@ class XmlWorkImporter
         link.xpath("xmlns:Support").each do |mediums|
           if !mediums.content.blank?
             mediums.xpath("xmlns:DATA").each do |aMedium|
-              if !(owner_rec.medium.include?(aMedium.content))
-                 work.medium.push(aMedium.content)
-              end
+               work.medium.push(aMedium.content)
             end
           end
         end
@@ -513,9 +532,7 @@ class XmlWorkImporter
         link.xpath("xmlns:SubjectLCSH").each do |subjects|
           if !subjects.content.blank?
             subjects.xpath("xmlns:DATA").each do |aSubject|
-              if !(owner_rec.subject.include?(aSubject.content))
-                 work.subject.push(aSubject.content)
-              end
+               work.subject.push(aSubject.content)
             end
           end
         end
@@ -535,9 +552,7 @@ class XmlWorkImporter
         link.xpath("xmlns:LCSubjectNames").each do |subjects|
           if !subjects.content.blank?
             subjects.xpath("xmlns:DATA").each do |aSubject|
-              if !(owner_rec.subject.include?(aSubject.content))
-                 work.subject.push(aSubject.content)
-              end
+               work.subject.push(aSubject.content)
             end
           end
         end
@@ -567,9 +582,7 @@ class XmlWorkImporter
         # collection_title -> TitleLargerEntity
         link.xpath("xmlns:TitleLargerEntity").each do |aTitle|
           if !aTitle.content.blank?
-            if !(owner_rec.collection_title.include?(aTitle.content)) then
-               work.collection_title.push(aTitle.content)
-            end
+             work.collection_title.push(aTitle.content)
           end
         end
 
@@ -585,9 +598,7 @@ class XmlWorkImporter
         # provenance
         link.xpath("xmlns:Provenance").each do |aProvenance|
           if !aProvenance.content.blank?
-            if !(owner_rec.provenance.include?(aProvenance.content)) then
-               work.provenance.push(aProvenance.content)
-            end
+             work.provenance.push(aProvenance.content)
           end
         end
 
@@ -622,9 +633,7 @@ class XmlWorkImporter
         link.xpath("xmlns:Culture").each do |cultures|
           if !cultures.content.blank?
             cultures.xpath("xmlns:DATA").each do |aCulture|
-              if !(owner_rec.culture.include?(aCulture.content))
-                 work.culture.push(aCulture.content)
-              end
+               work.culture.push(aCulture.content)
             end
           end
         end

@@ -31,7 +31,7 @@ RSpec.describe XmlWorkImporter do
      expect(imported_work.abstract).to include('TCD MS 2327/64 is a letter from Catherine (Kate) D’Alton (née Phillips, of Clonmore, Co. Mayo, 1815-1853) to her...')
 
      expect(imported_work.publisher).to include('A Publisher Name')
-     expect(imported_work.date_created).to include('start; 08-08-1824')
+     expect(imported_work.date_created).to include('start; 08-08-1824 end; 12-08-1824 ')
      expect(imported_work.subject).to include ('D’Alton, John, 1792-1867--Correspondence')
      expect(imported_work.language).to include ('English')
      expect(imported_work.identifier).to include ('IE TCD MS 2327/64')
@@ -39,7 +39,7 @@ RSpec.describe XmlWorkImporter do
      # TODO: expect(imported_work.related_url).to include
      # TODO: expect(imported_work.source).to include ('')
      expect(imported_work.resource_type).to include ('text')
-     expect(imported_work.genre).to include ('objects')
+     #expect(imported_work.genre).to include ('objects')
      expect(imported_work.genre).to include ('Correspondence')
      expect(imported_work.bibliography).to include ('A Bibliography Value')
      #expect(imported_work.dris_page_no).to include ('folio _ ')

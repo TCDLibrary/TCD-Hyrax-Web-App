@@ -31,7 +31,7 @@ RSpec.feature 'Search for a work' do
         expect(page).to have_content work.genre.first
         expect(page).to have_content work.digital_object_identifier.first
         expect(page).to have_content work.dris_unique.first
-        expect(page).to have_content work.language_code.first
+        #expect(page).to have_content work.language_code.first
         #expect(page).to have_content work.role.first
         expect(page).to have_content work.sponsor.first
         expect(page).to have_content work.publisher_location.first

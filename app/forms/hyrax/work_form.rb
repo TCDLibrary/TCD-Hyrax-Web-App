@@ -19,7 +19,7 @@ module Hyrax
     self.terms += [:copyright_note]
     self.terms += [:digital_root_number]
     self.terms += [:digital_object_identifier]
-    self.terms += [:language_code]
+    #self.terms += [:language_code]
     self.terms += [:location_type]
     self.terms += [:shelf_locator]
     # self.terms += [:role]

@@ -20,7 +20,7 @@ RSpec.describe Work do
         expect(work.copyright_note).to be_empty
         expect(work.digital_root_number).to be_empty
         expect(work.digital_object_identifier).to be_empty
-        expect(work.language_code).to be_empty
+        #expect(work.language_code).to be_empty
         expect(work.location_type).to be_empty
         expect(work.shelf_locator).to be_empty
         #expect(work.role).to be_empty
@@ -73,7 +73,7 @@ RSpec.describe Work do
         work.copyright_note = ["A Copyright Note"]
         work.digital_root_number = ["A Digital Root Number"]
         work.digital_object_identifier = ["A Digital Object Identifier"]
-        work.language_code = ["A Language Code"]
+        #work.language_code = ["A Language Code"]
         work.location_type = ["A Location Type"]
         work.shelf_locator = ["A Shelf Locator"]
         #work.role = ["A Role"]
@@ -121,7 +121,7 @@ RSpec.describe Work do
         expect(work.copyright_note).to eq (["A Copyright Note"])
         expect(work.digital_root_number).to eq (["A Digital Root Number"])
         expect(work.digital_object_identifier).to eq (["A Digital Object Identifier"])
-        expect(work.language_code).to eq (["A Language Code"])
+        #expect(work.language_code).to eq (["A Language Code"])
         expect(work.location_type).to eq (["A Location Type"])
         expect(work.shelf_locator).to eq (["A Shelf Locator"])
         #expect(work.role).to eq (["A Role"])
