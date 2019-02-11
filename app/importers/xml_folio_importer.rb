@@ -28,7 +28,7 @@ class XmlFolioImporter
     @parent_type = parent_type
     @base_folder = base_folder
     @sub_folder = sub_folder
-    @file_path = base_folder + sub_folder + file
+    @file_path = base_folder + sub_folder + '/' + file
   end
 
   require 'nokogiri'
@@ -95,7 +95,7 @@ class XmlFolioImporter
 
         imageFileName = folio.dris_document_no.first + "_LO.jpg"
         #imageLocation = "spec/fixtures/" + imageFileName
-        imageLocation = @base_folder + @sub_folder + imageFileName
+        imageLocation = @base_folder + @sub_folder + '/' +  imageFileName
         #byebug
 
         # contributor -> AttributedArtist
@@ -164,7 +164,7 @@ class XmlFolioImporter
         link.xpath("xmlns:Abstract").each do |abstract|
           if !abstract.content.blank?
              if (abstract.content.length > 200)
-                folio.description = [(abstract.content.slice(1..200) + '...')]
+                folio.description = [(abstract.content.slice(0..200) + '...')]
              else
                 folio.description = [abstract.content]
              end

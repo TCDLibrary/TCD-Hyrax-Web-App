@@ -28,7 +28,7 @@ class XmlWorkImporter
     @parent_type = parent_type
     @base_folder = base_folder
     @sub_folder = sub_folder
-    @file_path = base_folder + sub_folder + file
+    @file_path = base_folder + sub_folder + '/' + file
   end
 
   require 'nokogiri'
@@ -135,7 +135,7 @@ class XmlWorkImporter
           if !abstract.content.blank?
 
               if (abstract.content.length > 200)
-                work.description = [(abstract.content.slice(1..200) + '...')]
+                work.description = [(abstract.content.slice(0..200) + '...')]
               else
                  work.description = [abstract.content]
               end
@@ -340,7 +340,7 @@ class XmlWorkImporter
 
         imageFileName = imageName + "_LO.jpg"
         # imageLocation = "spec/fixtures/" + imageFileName
-        imageLocation = @base_folder + @sub_folder + imageFileName
+        imageLocation = @base_folder + @sub_folder + '/'+ imageFileName
 
         # language_code -> LanguageTermCode
         #link.xpath("xmlns:LanguageTermCode").each do |languageCodes|
