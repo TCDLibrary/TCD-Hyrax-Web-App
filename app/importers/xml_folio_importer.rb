@@ -27,8 +27,13 @@ class XmlFolioImporter
     @parent = parent
     @parent_type = parent_type
     @base_folder = base_folder
+
     @sub_folder = sub_folder
-    @file_path = base_folder + sub_folder + '/' + file
+    if !@sub_folder.blank?
+      @sub_folder = @sub_folder + '/'
+    end
+
+    @file_path = base_folder + sub_folder + file
   end
 
   require 'nokogiri'
@@ -95,7 +100,7 @@ class XmlFolioImporter
 
         imageFileName = folio.dris_document_no.first + "_LO.jpg"
         #imageLocation = "spec/fixtures/" + imageFileName
-        imageLocation = @base_folder + @sub_folder + '/' +  imageFileName
+        imageLocation = @base_folder + @sub_folder +  imageFileName
         #byebug
 
         # contributor -> AttributedArtist
@@ -120,21 +125,26 @@ class XmlFolioImporter
 
               name = ''
               role = ''
+              dataToIngest = ''
               # loop through the sub array and check the key before choosing the value
               indivParts.each do | indivBlob |
                 # parse the part with ':' to get key/value pair
                 calcVal = indivBlob.split(': ')
 
-                if calcVal[0] == 'AttributedArtistRole'
+                if calcVal.count > 1
+                  if calcVal[0] == 'AttributedArtistRole'
                     role = calcVal[1]
-                else if calcVal[0] == ' Attributed Artist'
-                          name = calcVal[1]
-                     end
+                  else if calcVal[0] == ' Attributed Artist'
+                         name = calcVal[1]
+                       end
+                  end
                 end
 
               end
               dataToIngest = name + ', ' + role
-              folio.creator.push(dataToIngest)
+              if !dataToIngest.blank?
+                folio.creator.push(dataToIngest)
+              end
 
             end
           end

@@ -28,7 +28,12 @@ class XmlWorkImporter
     @parent_type = parent_type
     @base_folder = base_folder
     @sub_folder = sub_folder
-    @file_path = base_folder + sub_folder + '/' + file
+
+    if !@sub_folder.blank?
+      @sub_folder = @sub_folder + '/'
+    end
+
+    @file_path = base_folder + @sub_folder + file
   end
 
   require 'nokogiri'
@@ -89,23 +94,28 @@ class XmlWorkImporter
               indivArtistCalc = individual.content
               indivParts = indivArtistCalc.split(';')
 
-              name = ''
-              role = ''
+              name = ""
+              role = ""
+              dataToIngest = ""
               # loop through the sub array and check the key before choosing the value
               indivParts.each do | indivBlob |
                 # parse the part with ':' to get key/value pair
                 calcVal = indivBlob.split(': ')
 
-                if calcVal[0] == 'AttributedArtistRole'
+                if calcVal.count > 1
+                  if calcVal[0] == 'AttributedArtistRole'
                     role = calcVal[1]
-                else if calcVal[0] == ' Attributed Artist'
-                          name = calcVal[1]
-                     end
+                  else if calcVal[0] == ' Attributed Artist'
+                         name = calcVal[1]
+                       end
+                  end
                 end
-
               end
+
               dataToIngest = name + ', ' + role
-              work.creator.push(dataToIngest)
+              if !dataToIngest.blank?
+                work.creator.push(dataToIngest)
+              end
 
             end
           end
@@ -340,7 +350,7 @@ class XmlWorkImporter
 
         imageFileName = imageName + "_LO.jpg"
         # imageLocation = "spec/fixtures/" + imageFileName
-        imageLocation = @base_folder + @sub_folder + '/'+ imageFileName
+        imageLocation = @base_folder + @sub_folder + imageFileName
 
         # language_code -> LanguageTermCode
         #link.xpath("xmlns:LanguageTermCode").each do |languageCodes|
