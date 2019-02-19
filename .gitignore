@@ -28,4 +28,7 @@ dump.rdb
 # Ignore the ingest files
 /public/data/ingest/*
 
+# Ignore the branding files
+/public/branding/*
+
 .byebug_history

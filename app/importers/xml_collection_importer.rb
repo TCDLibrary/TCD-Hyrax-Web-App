@@ -34,6 +34,7 @@ class XmlCollectionImporter
         coll.depositor = "test@example.com"
         # byebug
         coll.description = ["An Abstract"]
+        coll.visibility = 'open'        
         #coll.collection_type_gid =
 
         # byebug

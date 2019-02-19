@@ -60,6 +60,7 @@ class XmlWorkImporter
       doc.xpath("//xmlns:ROW").each do |link|
         work = Work.new
         work.depositor = @user.email
+        work.visibility = 'open'        
 
         link.xpath("xmlns:Title").each do |aTitle|
           if !aTitle.content.blank?

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  # TODO : import needs to be hidden behind Dashboard:
   get 'import/index'
   get 'import/picker'
+  get 'export/dublinCore'
 
   mount Riiif::Engine => 'images', as: :riiif if Hyrax.config.iiif_image_server?
   mount Blacklight::Engine => '/'
