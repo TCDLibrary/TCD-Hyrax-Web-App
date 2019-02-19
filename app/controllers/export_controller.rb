@@ -7,7 +7,7 @@ class ExportController < ApplicationController
 
     owner_rec = Work.new
 
-    if !owner_rec == '000000000'
+    if objectId != '000000000'
       begin
           owner_rec = Work.find(objectId)
       rescue
@@ -16,7 +16,7 @@ class ExportController < ApplicationController
 
       if !owner_rec.id.blank?
          builder = Nokogiri::XML::Builder.new do |xml|
-            xml.qualifieddc('xmlns:dc' => "http://purl.org/dc/elements/1.1/", 'xmlns:dcterms' => "http://purl.org/dc/terms/") {
+            xml.metadata('xmlns:dc' => "http://purl.org/dc/elements/1.1/", 'xmlns:dcterms' => "http://purl.org/dc/terms/") {
 
               if !owner_rec.title[0].blank?
                 xml.send('dc:title', owner_rec.title[0])
