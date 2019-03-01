@@ -21,7 +21,7 @@ class XmlWorkImporter
   #   Culture
   #   Description
 
-  def initialize(file, parent = '000000000', parent_type = 'no_parent', sub_folder = '', base_folder = 'public/data/ingest/')
+  def initialize(file, parent = '000000000', parent_type = 'no_parent', sub_folder = '', image_type = 'LO', base_folder = 'public/data/ingest/')
     @file = file
     @user = ::User.batch_user
     @parent = parent
@@ -32,7 +32,7 @@ class XmlWorkImporter
     if !@sub_folder.blank?
       @sub_folder = @sub_folder + '/'
     end
-
+    @image_type = image_type
     @file_path = base_folder + @sub_folder + file
   end
 
@@ -60,7 +60,7 @@ class XmlWorkImporter
       doc.xpath("//xmlns:ROW").each do |link|
         work = Work.new
         work.depositor = @user.email
-        work.visibility = 'open'        
+        work.visibility = 'open'
 
         link.xpath("xmlns:Title").each do |aTitle|
           if !aTitle.content.blank?
@@ -350,9 +350,17 @@ class XmlWorkImporter
         end
 
         imageFileName = imageName + "_LO.jpg"
+
+        if @image_type == 'HI'
+          imageFileName = imageName + "_HI.jpg"
+        else if @image_type == 'TIFF'
+                imageFileName = imageName + ".tiff"
+             end
+        end
+
         # imageLocation = "spec/fixtures/" + imageFileName
         imageLocation = @base_folder + @sub_folder + imageFileName
-
+        #byebug
         # language_code -> LanguageTermCode
         #link.xpath("xmlns:LanguageTermCode").each do |languageCodes|
         #  if !languageCodes.content.blank?

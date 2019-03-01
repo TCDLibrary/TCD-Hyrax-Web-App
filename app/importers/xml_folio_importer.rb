@@ -21,7 +21,7 @@ class XmlFolioImporter
   #   Description
 
 
-  def initialize(file, parent = '000000000', parent_type = 'no_parent', sub_folder = '', base_folder = 'public/data/ingest/')
+  def initialize(file, parent = '000000000', parent_type = 'no_parent', sub_folder = '', image_type = 'LO', base_folder = 'public/data/ingest/')
     @file = file
     @user = ::User.batch_user
     @parent = parent
@@ -32,7 +32,7 @@ class XmlFolioImporter
     if !@sub_folder.blank?
       @sub_folder = @sub_folder + '/'
     end
-
+    @image_type = image_type
     @file_path = base_folder + sub_folder + file
   end
 
@@ -99,6 +99,14 @@ class XmlFolioImporter
         end
 
         imageFileName = folio.dris_document_no.first + "_LO.jpg"
+
+        if @image_type == 'HI'
+          imageFileName = folio.dris_document_no.first + "_HI.jpg"
+        else if @image_type == 'TIFF'
+                imageFileName = folio.dris_document_no.first + ".tiff"
+             end
+        end
+
         #imageLocation = "spec/fixtures/" + imageFileName
         imageLocation = @base_folder + @sub_folder +  imageFileName
         #byebug

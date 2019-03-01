@@ -5,7 +5,7 @@ require 'active_fedora/cleaner'
 
 RSpec.describe XmlWorkImporter do
 
-  let(:file_example)       { 'Named_Collection_Example_OBJECT RECORDS_v3.6_20181207.xml' }
+  let(:file_example)       { 'Named Collection Example_WORKS_ONE_OBJECT.XML' }
   let(:base_folder)        { 'spec/fixtures/' }
   let(:sub_folder)         { '' }
   let(:parent_id)          { '000000000' }
@@ -27,8 +27,8 @@ RSpec.describe XmlWorkImporter do
      expect(imported_work.keyword).to include('D’Alton, Catherine (Kate), approximately 1795-1859--Correspondence')
      expect(imported_work.rights_statement.first).to include('http://rightsstatements.org/vocab/NKC/1.0/')
 
-     expect(imported_work.description).to include('TCD MS 2327/64 is a letter from Catherine (Kate) D’Alton (née Phillips, of Clonmore, Co. Mayo, 1815-1853) to her...')
-     expect(imported_work.abstract).to include('TCD MS 2327/64 is a letter from Catherine (Kate) D’Alton (née Phillips, of Clonmore, Co. Mayo, 1815-1853) to her...')
+     expect(imported_work.description).to include('TCD MS 2327/64 is a letter from Catherine (Kate) D’Alton (née Phillips, of Clonmore, Co. Mayo, 1815-1853) to her husband, John William Alexander D’Alton (of Bessville, Co. Meath, 1792-1867).  Written d...')
+     #expect(imported_work.abstract).to include('TCD MS 2327/64 is a letter from Catherine (Kate) D’Alton (née Phillips, of Clonmore, Co. Mayo, 1815-1853) to her...')
 
      expect(imported_work.publisher).to include('A Publisher Name')
      expect(imported_work.date_created).to include('start; 08-08-1824 end; 12-08-1824 ')

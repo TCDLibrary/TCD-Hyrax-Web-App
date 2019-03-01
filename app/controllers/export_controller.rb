@@ -18,65 +18,87 @@ class ExportController < ApplicationController
          builder = Nokogiri::XML::Builder.new do |xml|
             xml.metadata('xmlns:dc' => "http://purl.org/dc/elements/1.1/", 'xmlns:dcterms' => "http://purl.org/dc/terms/") {
 
-              if !owner_rec.title[0].blank?
-                xml.send('dc:title', owner_rec.title[0])
+              owner_rec.title.each do |attribute|
+                if !attribute.blank?
+                   xml.send('dcterms:title', attribute)
+                end
               end
 
-              if !owner_rec.creator[0].blank?
-                xml.send('dc:creator', owner_rec.creator[0])
+              owner_rec.creator.each do |attribute|
+                if !attribute.blank?
+                   xml.send('dcterms:creator', attribute)
+                end
               end
 
-              if !owner_rec.subject[0].blank?
-                xml.send('dc:subject', owner_rec.subject[0])
+              owner_rec.subject.each do |attribute|
+                if !attribute.blank?
+                   xml.send('dcterms:subject', attribute)
+                end
               end
 
-              if !owner_rec.description[0].blank?
-                xml.send('dc:description', owner_rec.description[0])
+              owner_rec.description.each do |attribute|
+                if !attribute.blank?
+                   xml.send('dcterms:description', attribute)
+                end
               end
 
-              if !owner_rec.publisher[0].blank?
-                xml.send('dc:publisher', owner_rec.publisher[0])
+              owner_rec.publisher.each do |attribute|
+                if !attribute.blank?
+                   xml.send('dcterms:publisher', attribute)
+                end
               end
 
-              if !owner_rec.contributor[0].blank?
-                xml.send('dc:contributor', owner_rec.contributor[0])
+              owner_rec.contributor.each do |attribute|
+                if !attribute.blank?
+                   xml.send('dcterms:contributor', attribute)
+                end
               end
 
-              if !owner_rec.date_created[0].blank?
-                xml.send('dcterms:created', owner_rec.date_created[0])
+              owner_rec.date_created.each do |attribute|
+                if !attribute.blank?
+                   xml.send('dcterms:created', attribute)
+                end
               end
 
               if !owner_rec.date_uploaded.blank?
-                xml.send('dc:dateSubmitted', owner_rec.date_uploaded)
+                xml.send('dcterms:dateSubmitted', owner_rec.date_uploaded)
               end
 
               if !owner_rec.date_modified.blank?
-                xml.send('dc:modified', owner_rec.date_modified)
+                xml.send('dcterms:modified', owner_rec.date_modified)
               end
 
-              if !owner_rec.resource_type[0].blank?
-                xml.send('dc:type', owner_rec.resource_type[0])
+              owner_rec.resource_type.each do |attribute|
+                if !attribute.blank?
+                   xml.send('dcterms:type', attribute)
+                end
               end
 
-              if !owner_rec.identifier[0].blank?
-                xml.send('dc:identifier', owner_rec.identifier[0])
+              owner_rec.identifier.each do |attribute|
+                if !attribute.blank?
+                   xml.send('dcterms:identifier', attribute)
+                end
               end
 
-              if !owner_rec.language[0].blank?
-                xml.send('dc:language', owner_rec.language[0])
+              owner_rec.language.each do |attribute|
+                if !attribute.blank?
+                   xml.send('dcterms:language', attribute)
+                end
               end
 
-              if !owner_rec.copyright_status[0].blank?
-                xml.send('dc:rights', owner_rec.copyright_status[0])
+              owner_rec.copyright_status.each do |attribute|
+                if !attribute.blank?
+                   xml.send('dcterms:rights', attribute)
+                end
               end
-
-              #language	::RDF::Vocab::DC11.language	TRUE
 
               # TODO: why is this not on the object?
               #rights	::RDF::Vocab::DC.rights	TRUE
 
-              if !owner_rec.bibliographic_citation[0].blank?
-                xml.send('dc:bibliographicCitation', owner_rec.bibliographic_citation[0])
+              owner_rec.bibliographic_citation.each do |attribute|
+                if !attribute.blank?
+                   xml.send('dcterms:bibliographicCitation', attribute)
+                end
               end
 
             }

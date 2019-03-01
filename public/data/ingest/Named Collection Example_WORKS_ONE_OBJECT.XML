@@ -20,8 +20,8 @@ Monday 9th August 1824 Tuesday
  I could get no one to go to the office yesterday as Tom is going there and tells me you may get it tomorrow if he is there before the mail goes off my own darling adieu ...but come if you can dear dear own adieu Billy &amp; Eliza send you Kisses and also their orders to come to them as well as your poor old troublesome Kate.
 
 </Abstract>
-    <Bibliography/>
-    <CALM/>
+    <Bibliography>A Bibliography Value</Bibliography>
+    <CALM>Calm ref</CALM>
     <CatNo>MS2327-64</CatNo>
     <Citation>IE TCD MS 2327/64</Citation>
     <CopyrightNotice>Copyright 2017 The Board of Trinity College Dublin. Images are available for single-use academic application only. Publication, transmission or display is prohibited without formal written approval of Trinity College Library, Dublin.</CopyrightNotice>
@@ -31,29 +31,29 @@ Monday 9th August 1824 Tuesday
     <DRISPhotoID>MS2327-64_0</DRISPhotoID>
     <DrisUnique>0145514</DrisUnique>
     <Europeana>No</Europeana>
-    <FormatDur/>
+    <FormatDur>A format dur</FormatDur>
     <FormatH/>
-    <FormatResolution/>
-    <FormatW/>
+    <FormatResolution>A format res</FormatResolution>
+    <FormatW>Physical extent</FormatW>
     <Image>No</Image>
-    <Introduction/>
-    <LCN/>
+    <Introduction>Conservation history</Introduction>
+    <LCN>LCN no</LCN>
     <MetadataCreationDate>22/10/2018 09:12:57</MetadataCreationDate>
     <MetadataModificationDate>07/12/2018 07:53:11</MetadataModificationDate>
-    <PageNo/>
-    <PageNoB/>
+    <PageNo>n/a</PageNo>
+    <PageNoB>n/a B</PageNoB>
     <PageTotal>1</PageTotal>
     <PageType>folio</PageType>
-    <PageTypeB/>
+    <PageTypeB>other page type</PageTypeB>
     <ProjectName>1822</ProjectName>
     <ProjectNo>Project 1822</ProjectNo>
     <Provenance>Donated to the Library of Trinity College, Dublin by Father Wallace Clare, St. Joseph’s College, Ipswich, Suffolk, 8 December 1951.</Provenance>
     <Publisher>A Publisher Name</Publisher>
-    <PublisherCity/>
-    <PublisherCountry/>
-    <Sponsor/>
+    <PublisherCity>The publishers city</PublisherCity>
+    <PublisherCountry>The publishers country</PublisherCountry>
+    <Sponsor>Sponsor name</Sponsor>
     <Title>Letter from Catherine (Kate) D’Alton, Clonmore, 8th-12th August, 1824 to John D’Alton</Title>
-    <TitleLargerEntity2/>
+    <TitleLargerEntity2>Second title larger entity</TitleLargerEntity2>
     <TOC/>
     <Type>text</Type>
     <TypeOfWork>objects</TypeOfWork>
@@ -78,7 +78,7 @@ Monday 9th August 1824 Tuesday
       <DATA>Public domain</DATA>
     </CopyrightHolder>
     <CopyrightNotes>
-      <DATA/>
+      <DATA>Some copyright notes</DATA>
     </CopyrightNotes>
     <CopyrightStatus>
       <DATA>Expired</DATA>
@@ -156,7 +156,9 @@ Monday 9th August 1824 Tuesday
     <OtherArtistRoleCode>
       <DATA>aut</DATA>
     </OtherArtistRoleCode>
-    <OtherTitle/>
+    <OtherTitle>
+      <DATA>An other title</DATA>
+      </OtherTitle>
     <RelatedItemCalculation>
       <DATA>RelatedItemType: host; RelatedItemIdentifier: 0145515; RelatedItemTitle: Correspondence of John and Catherine D'Alton</DATA>
     </RelatedItemCalculation>
@@ -169,7 +171,9 @@ Monday 9th August 1824 Tuesday
     <RelatedItemType>
       <DATA>host</DATA>
     </RelatedItemType>
-    <SeriesReportNo/>
+    <SeriesReportNo>
+      <DATA>A series report no</DATA>
+      </SeriesReportNo>
     <SubjectLCSH/>
     <SubjectTMG>
       <DATA>Correspondence</DATA>

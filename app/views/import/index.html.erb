@@ -47,6 +47,9 @@
   <%= text_area_tag(:parent_code, "000000000", size: "9x1") %>
   <%= label_tag("Optional parent id") %>
   <br />
+  <%= select_tag :image_type, "<option>HI</option><option selected='selected'>LO</option><option>TIFF</option>".html_safe %>
+  <%= label_tag(:dropdown_label, "Image Type") %>
+  <br />
   <%= submit_tag("Submit") %>
 
 <% end %>

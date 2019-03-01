@@ -13,6 +13,7 @@ class ImportController < ApplicationController
 
     parent_type = 'no_parent'
     parent_id = '000000000'
+    image_type = 'LO'
 
 
     new_object_type = params[:import_object_type]
@@ -27,6 +28,8 @@ class ImportController < ApplicationController
       parent_id = '000000000'
     end
 
+    image_type = params[:image_type]
+    #byebug
     # TODO : Need to get this controller to work with Folios, Works and Collections - depending on input
 
     #work_file_example = 'spec/fixtures/Named_Collection_Example_OBJECT RECORDS_v3.6_20181207.xml'
@@ -36,11 +39,11 @@ class ImportController < ApplicationController
     #byebug
 
     if new_object_type == "folio(s)"
-      XmlFolioImporter.new(file_name, parent_id, parent_type, sub_folder).import
+      XmlFolioImporter.new(file_name, parent_id, parent_type, sub_folder, image_type).import
     end
 
     if new_object_type == "work(s)"
-        XmlWorkImporter.new(file_name, parent_id, parent_type, sub_folder).import
+        XmlWorkImporter.new(file_name, parent_id, parent_type, sub_folder, image_type).import
     end
 
     if new_object_type == "collection(s)"
