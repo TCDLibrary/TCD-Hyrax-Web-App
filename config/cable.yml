@@ -1,6 +1,9 @@
 development:
   adapter: async
 
+demo-vm045:
+  adapter: async
+  
 test:
   adapter: async
 

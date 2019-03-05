@@ -11,6 +11,16 @@ development:
   username: root
   password: Pa$$w0rd
 
+demo-vm045:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: db/development
+  pool: 5
+  username: root
+  password: Pa$$w0rd
+
+
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.

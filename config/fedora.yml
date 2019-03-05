@@ -3,6 +3,14 @@ development:
   password: fedoraAdmin
   url: http://127.0.0.1:<%= ENV['FCREPO_DEVELOPMENT_PORT'] || 8080 %>/fcrepo-webapp-4.7.5/rest
   base_path: /dev
+
+demo-vm045:
+  user: fedoraAdmin
+  password: fedoraAdmin
+  url: http://134.226.115.55:8080/fcrepo-webapp-4.7.5/rest
+  base_path: /dev
+
+
 test:
   user: fedoraAdmin
   password: fedoraAdmin

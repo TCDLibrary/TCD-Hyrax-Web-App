@@ -9,6 +9,15 @@ development:
     - batchuser@example.com
     - test@example.com
 
+demo-vm045:
+  archivist:
+    - archivist1@example.com
+    - cataloger@tcd.ie
+  admin:
+    - jlakes@tcd.ie
+    - batchuser@example.com
+    - test@example.com
+
 test:
   admin:
       - jlakes@tcd.ie
