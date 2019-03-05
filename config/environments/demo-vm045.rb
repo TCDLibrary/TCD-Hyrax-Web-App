@@ -57,5 +57,5 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # fits path on vm045 not same as laptop
-  config.fits_path = "~/fits-1/fits.sh"
+  config.fits_path = "/home/hyraxuser/Fits/fits.sh"
 end
