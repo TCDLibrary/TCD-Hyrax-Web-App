@@ -13,7 +13,9 @@ gem 'rails', '~> 5.1.6'
 # JL : 18/12/2018 Moving from Sqlite to MySql
 gem 'mysql2'
 # Use Puma as the app server
-gem 'puma', '~> 3.7'
+#gem 'puma', '~> 3.7'
+# JL 07/03/2019 use Passenger instead of Puma
+gem "passenger", ">= 5.3.2", require: "phusion_passenger/rack_handler"
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
