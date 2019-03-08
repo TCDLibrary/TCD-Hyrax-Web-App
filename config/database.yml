@@ -11,7 +11,7 @@ development:
   username: root
   password: Pa$$w0rd
 
-demo-vm045:
+demovm045:
   adapter: mysql2
   encoding: utf8
   reconnect: false
