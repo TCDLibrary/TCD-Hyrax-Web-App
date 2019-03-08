@@ -70,7 +70,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'hyrax', '2.4.0'
-group :development, :test do
+group :development, :test, :demovm045 do
   gem 'solr_wrapper', '>= 0.3'
 end
 
@@ -78,7 +78,7 @@ gem 'rsolr', '>= 1.0'
 gem 'jquery-rails'
 gem 'devise'
 gem 'devise-guests', '~> 0.6'
-group :development, :test do
+group :development, :test, :demovm045 do
   gem 'fcrepo_wrapper'
   gem 'rspec-rails'
   gem 'database_cleaner'
