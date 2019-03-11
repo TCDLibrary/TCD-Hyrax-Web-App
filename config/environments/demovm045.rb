@@ -56,6 +56,4 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  # fits path on vm045 not same as laptop
-  config.fits_path = "/home/hyraxuser/Fits/fits.sh"
 end
