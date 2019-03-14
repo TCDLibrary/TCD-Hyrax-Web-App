@@ -18,8 +18,9 @@ class ImportController < ApplicationController
 
     new_object_type = params[:import_object_type]
     # base_folder = 'spec/fixtures/'
-    sub_folder = params[:sub_folder]
-    file_name = params[:picker]
+    sub_folder = String.new
+    #params[:sub_folder]
+    file_name = params[:ingest_input_file]
 
     parent_id = params[:parent_code]
     parent_type = params[:parent_type]
@@ -38,16 +39,18 @@ class ImportController < ApplicationController
     #parent = 'f1881k888'
     #byebug
 
+    #testing = Rails.application.config.ingest_folder
+    #byebug
     if new_object_type == "folio(s)"
-      XmlFolioImporter.new(file_name, parent_id, parent_type, sub_folder, image_type).import
+      XmlFolioImporter.new(current_user, file_name, parent_id, parent_type, image_type).import
     end
 
     if new_object_type == "work(s)"
-        XmlWorkImporter.new(file_name, parent_id, parent_type, sub_folder, image_type).import
+        XmlWorkImporter.new(current_user,file_name, parent_id, parent_type, image_type).import
     end
 
     if new_object_type == "collection(s)"
-        XmlCollectionImporter.new(work_file_example).import
+        XmlCollectionImporter.new(current_user, work_file_example).import
     end
 
 

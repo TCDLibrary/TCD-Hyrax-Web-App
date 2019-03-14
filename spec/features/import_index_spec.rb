@@ -44,7 +44,7 @@ RSpec.feature 'Import Work', js: true do
     #end
     scenario do
       visit '/import/index'
-      expect(page).to have_content "Import#index"
+      expect(page).to have_content "Ingest"
     end
 
   end

@@ -15,6 +15,11 @@ class Hyrax::ConfigGenerator < Rails::Generators::Base
 
   source_root File.expand_path('../templates', __FILE__)
 
+
+  def for_joe
+    copy_file "config/ingest.yml"
+  end
+
   def local_authorities
     copy_file "config/authorities/licenses.yml"
     copy_file "config/authorities/rights_statements.yml"

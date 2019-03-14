@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
   get 'import/index'
+
+  # TODO: remove get import/picker
   get 'import/picker'
+  
+  post 'import/picker'
   get 'export/dublinCore'
 
   mount Riiif::Engine => 'images', as: :riiif if Hyrax.config.iiif_image_server?

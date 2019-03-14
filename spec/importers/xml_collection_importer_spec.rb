@@ -14,11 +14,11 @@ RSpec.describe XmlCollectionImporter do
   end
 
   it "imports an xml collection" do
-      expect { XmlCollectionImporter.new(file_example).import }.to change { Collection.count }.by 1
+      expect { XmlCollectionImporter.new(::User.batch_user, file_example).import }.to change { Collection.count }.by 1
   end
 
   it "stores data in correct fields in the collection" do
-     XmlCollectionImporter.new(file_example).import
+     XmlCollectionImporter.new(::User.batch_user, file_example).import
      imported_collection = Collection.first
      # byebug
      expect(imported_collection.title.first).to eq('Correspondence of John and Catherine D\'Alton')

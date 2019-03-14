@@ -1,5 +1,15 @@
-class XmlFolioImporter
+class XmlFolioImporter < ApplicationController
+  include Hydra::Controller::ControllerBehavior
+  include Blacklight::AccessControls::Catalog
 
+  require 'fileutils'
+
+  before_action :authenticate_user!
+  before_action :ensure_admin!
+
+  def ensure_admin!
+      authorize! :read, :admin_dashboard
+  end
   # TODO : Tidy up
   # TODO : Check all fields are present and populated/deduplicated properly
   # TODO : Run this offline? What happens to credentials then?
@@ -20,20 +30,17 @@ class XmlFolioImporter
   #   Culture
   #   Description
 
-
-  def initialize(file, parent = '000000000', parent_type = 'no_parent', sub_folder = '', image_type = 'LO', base_folder = 'public/data/ingest/')
+  def initialize(user, file, parent = '000000000', parent_type = 'no_parent', image_type = 'LO', base_folder = Rails.application.config.ingest_folder)
     @file = file
-    @user = ::User.batch_user
+    #@user = ::User.batch_user
+    @user = user
     @parent = parent
     @parent_type = parent_type
     @base_folder = base_folder
-
-    @sub_folder = sub_folder
-    if !@sub_folder.blank?
-      @sub_folder = @sub_folder + '/'
-    end
+    #byebug
     @image_type = image_type
-    @file_path = base_folder + sub_folder + file
+    @file_path = base_folder + file
+    @filename = file
   end
 
   require 'nokogiri'
@@ -42,6 +49,10 @@ class XmlFolioImporter
   def import
       # is there a parent Work to own these new folios?
       #
+      testing = Rails.application.config.ingest_folder
+
+      #@user = current_user
+      #byebug
       admin_set_id =  AdminSet.find_or_create_default_admin_set_id
       # byebug
       if @parent_type == "work"
@@ -64,6 +75,7 @@ class XmlFolioImporter
         end
       end
 
+      Rails.logger.info "*** Begin Ingesting Folio file #{@file_path}. =>TCD<="
 
       #byebug
       # Fetch and parse HTML document
@@ -99,16 +111,19 @@ class XmlFolioImporter
         end
 
         imageFileName = folio.dris_document_no.first + "_LO.jpg"
+        image_sub_folder = 'LO/'
 
         if @image_type == 'HI'
           imageFileName = folio.dris_document_no.first + "_HI.jpg"
+          image_sub_folder = 'HI/'
         else if @image_type == 'TIFF'
                 imageFileName = folio.dris_document_no.first + ".tiff"
+                image_sub_folder = 'TIFF/'
              end
         end
 
         #imageLocation = "spec/fixtures/" + imageFileName
-        imageLocation = @base_folder + @sub_folder +  imageFileName
+        imageLocation = @base_folder + image_sub_folder + imageFileName
         #byebug
 
         # contributor -> AttributedArtist
@@ -751,6 +766,20 @@ class XmlFolioImporter
            owner_rec.ordered_members << folio
            owner_rec.save
         end
+
+        if Rails.env != "test"
+          archive_folder = @base_folder + Date.today.to_s + '_ingested_xml_files'
+          if Dir.exists?(archive_folder)
+            dest_file_path = archive_folder + '/' + @filename
+            FileUtils.mv(@file_path, dest_file_path)
+          else
+            FileUtils.mkdir(archive_folder)
+            dest_file_path = archive_folder + '/' + @filename
+            FileUtils.mv(@file_path, dest_file_path)
+          end
+        end
+
+      Rails.logger.info "*** End Ingesting Folio file #{@file_path}. =>TCD<="
 
       end
   end

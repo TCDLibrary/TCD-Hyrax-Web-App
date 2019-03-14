@@ -21,19 +21,17 @@ class XmlWorkImporter
   #   Culture
   #   Description
 
-  def initialize(file, parent = '000000000', parent_type = 'no_parent', sub_folder = '', image_type = 'LO', base_folder = 'public/data/ingest/')
+  def initialize(user, file, parent = '000000000', parent_type = 'no_parent', image_type = 'LO', base_folder = Rails.application.config.ingest_folder)
     @file = file
-    @user = ::User.batch_user
+    #@user = ::User.batch_user
+    @user = user
     @parent = parent
     @parent_type = parent_type
     @base_folder = base_folder
-    @sub_folder = sub_folder
 
-    if !@sub_folder.blank?
-      @sub_folder = @sub_folder + '/'
-    end
     @image_type = image_type
-    @file_path = base_folder + @sub_folder + file
+    @file_path = base_folder + file
+    @filename = file
   end
 
   require 'nokogiri'
@@ -53,6 +51,7 @@ class XmlWorkImporter
         end
       end
 
+      Rails.logger.info "*** Begin Ingesting Work file #{@file_path}. =>TCD<="
       # Fetch and parse HTML document
       #doc = Nokogiri::XML(open("spec/fixtures/Named_Collection_Example_PARTS_RECORDS_v3.6_20181207.xml"))
       doc = Nokogiri::XML(open(@file_path))
@@ -350,16 +349,19 @@ class XmlWorkImporter
         end
 
         imageFileName = imageName + "_LO.jpg"
+        image_sub_folder = 'LO/'
 
         if @image_type == 'HI'
           imageFileName = imageName + "_HI.jpg"
+          image_sub_folder = 'HI/'
         else if @image_type == 'TIFF'
                 imageFileName = imageName + ".tiff"
+                image_sub_folder = 'TIFF/'
              end
         end
 
         # imageLocation = "spec/fixtures/" + imageFileName
-        imageLocation = @base_folder + @sub_folder + imageFileName
+        imageLocation = @base_folder + image_sub_folder + imageFileName
         #byebug
         # language_code -> LanguageTermCode
         #link.xpath("xmlns:LanguageTermCode").each do |languageCodes|
@@ -709,8 +711,22 @@ class XmlWorkImporter
            owner_rec.members << work
            owner_rec.ordered_members << work
            owner_rec.save
-
         end
+
+        if Rails.env != "test"
+          archive_folder = @base_folder + Date.today.to_s + '_ingested_xml_files'
+          #byebug
+          if Dir.exists?(archive_folder)
+            dest_file_path = archive_folder + '/' + @filename
+            FileUtils.mv(@file_path, dest_file_path)
+          else
+            FileUtils.mkdir(archive_folder)
+            dest_file_path = archive_folder + '/' + @filename
+            FileUtils.mv(@file_path, dest_file_path)
+          end
+        end
+
+      Rails.logger.info "*** End Ingesting Work file #{@file_path}. =>TCD<="
 
       end
   end

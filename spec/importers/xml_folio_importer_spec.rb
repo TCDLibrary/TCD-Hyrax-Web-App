@@ -21,7 +21,7 @@ RSpec.describe XmlFolioImporter do
 
   it "stores data in correct fields in the Folio" do
      #XmlFolioImporter.new(file_example).import
-     expect { XmlFolioImporter.new(file_example, parent_id, parent_type, sub_folder, base_folder).import }.to change { Folio.count }.by 1
+     expect { XmlFolioImporter.new(::User.batch_user, file_example, parent_id, parent_type,  'LO', base_folder).import }.to change { Folio.count }.by 1
 
      imported_folio = Folio.first
      expect(imported_folio.title.first).to eq('Letter from Catherine (Kate) D’Alton, Clonmore, 8th-12th August, 1824 to John D’Alton')

@@ -1,55 +1,60 @@
-<h1>Import#index</h1>
-<p>Find me in app/views/import/index.html.erb</p>
-<%# TODO : Need to hide this behind security %>
+<h1>Ingest</h1>
 
- <br />
- I want to import:
- <br />
+<p>Find me in app/views/import/index.html.erb</p>
+
+
 
 <%= form_tag("/import/picker", multipart: true, method: "get") do %>
-
-<%= radio_button_tag(:import_object_type, "collection(s)") %>
-<%= label_tag(:import_type_collection, "Collections") %>
-<br />
-<%= radio_button_tag(:import_object_type, "work(s)") %>
-<%= label_tag(:import_type_work, "Works") %>
-<br />
-<%= radio_button_tag(:import_object_type, "folio(s)") %>
-<%= label_tag(:import_type_folio, "Folios") %>
-<br />
-
-
-
-  <%= file_field_tag 'picker' %>
-
+  <h2>Files available to ingest:</h2>
+  Must be stored in <%= Rails.application.config.ingest_folder %>
   <br />
+    <%
+        Dir.glob(Rails.application.config.ingest_folder + "*.{XML,xml}").each do |val|
+               val.slice! "public/data/ingest/" %>
+           <%= radio_button_tag(:ingest_input_file, val) %>
+           <%= label_tag(:ingest_input_file, val.to_s) %>
+           <br />
+    <%  end %>
 
-  <%= text_area_tag(:sub_folder, "", size: "40x1") %>
-  <%= label_tag("Optional subfolder") %>
+  <h2>I want to import:</h2>
+    <br />
 
-  <br />
+   <%= radio_button_tag(:import_object_type, "work(s)") %>
+   <%= label_tag(:import_type_work, "Works") %>
+   <br />
+   <%= radio_button_tag(:import_object_type, "folio(s)") %>
+   <%= label_tag(:import_type_folio, "Folios") %>
+   <br />
 
-  <%= radio_button_tag(:parent_type, "collection") %>
-  <%= label_tag(:parent_is_a_collection, "parent is a Collection") %>
-  <br />
-  <%= radio_button_tag(:parent_type, "work") %>
-  <%= label_tag(:parent_is_a_work, "parent is a Work") %>
+   <h2>Object Hierarchy:</h2>
+   <br />
 
-  <br />
-  <%= radio_button_tag(:parent_type, "folio") %>
-  <%= label_tag(:parent_is_a_folio, "parent is a Folio") %>
+   <%= radio_button_tag(:parent_type, "collection") %>
+   <%= label_tag(:parent_is_a_collection, "parent is a Collection") %>
+   <br />
+   <%= radio_button_tag(:parent_type, "work") %>
+   <%= label_tag(:parent_is_a_work, "parent is a Work") %>
 
-  <br />
-  <%= radio_button_tag(:parent_type, "no_parent") %>
-  <%= label_tag(:no_parent, "no parent") %>
+   <br />
+   <%= radio_button_tag(:parent_type, "folio") %>
+   <%= label_tag(:parent_is_a_folio, "parent is a Folio") %>
 
-  <br />
-  <%= text_area_tag(:parent_code, "000000000", size: "9x1") %>
-  <%= label_tag("Optional parent id") %>
-  <br />
-  <%= select_tag :image_type, "<option>HI</option><option selected='selected'>LO</option><option>TIFF</option>".html_safe %>
-  <%= label_tag(:dropdown_label, "Image Type") %>
-  <br />
-  <%= submit_tag("Submit") %>
+   <br />
+   <%= radio_button_tag(:parent_type, "no_parent") %>
+   <%= label_tag(:no_parent, "no parent") %>
+   <br />
+
+   <h2>Optional parent id:</h2>
+   <br />
+   <%= text_area_tag(:parent_code, "000000000", size: "9x1") %>
+   <br />
+
+   <h2>Attach images?</h2>
+   <br />
+   <%= select_tag :image_type, "<option>Not Now</option><option>HI</option><option selected='selected'>LO</option><option>TIFF</option>".html_safe %>
+   <%= label_tag(:dropdown_label, "Image Type") %>
+   <br /> &nbsp;
+   <br />
+   <%= submit_tag("Submit") %>
 
 <% end %>

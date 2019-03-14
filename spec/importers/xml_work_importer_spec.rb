@@ -18,7 +18,7 @@ RSpec.describe XmlWorkImporter do
   end
 
   it "stores data in correct fields in the work" do
-     expect { XmlWorkImporter.new(file_example, parent_id, parent_type, sub_folder, base_folder).import }.to change { Work.count }.by 1
+     expect { XmlWorkImporter.new(::User.batch_user, file_example, parent_id, parent_type,  'LO', base_folder).import }.to change { Work.count }.by 1
 
      imported_work = Work.first
      expect(imported_work.title.first).to eq('Letter from Catherine (Kate) D’Alton, Clonmore, 8th-12th August, 1824 to John D’Alton')

@@ -1,8 +1,9 @@
 class XmlCollectionImporter
 
-  def initialize(file)
+  def initialize(user, file)
     @file = file
-    @user = ::User.batch_user
+    #@user = ::User.batch_user
+    @user = user
   end
 
   # TODO : Does this importer work? What file is input?
@@ -34,7 +35,7 @@ class XmlCollectionImporter
         coll.depositor = "test@example.com"
         # byebug
         coll.description = ["An Abstract"]
-        coll.visibility = 'open'        
+        coll.visibility = 'open'
         #coll.collection_type_gid =
 
         # byebug
