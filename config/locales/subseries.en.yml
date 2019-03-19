@@ -1,0 +1,16 @@
+en:
+  hyrax:
+    icons:
+      subseries:     'fa fa-file-text-o'
+    select_type:
+      subseries:
+        description:        "Subseries works"
+        name:               "Subseries"
+    subseries:
+      create:
+        breadcrumb: Add New Subseries
+        header: Add New Subseries
+      progress:
+        header: Save Subseries
+      update:
+        header: Edit Subseries       

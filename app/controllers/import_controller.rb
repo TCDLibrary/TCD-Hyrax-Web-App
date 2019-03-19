@@ -45,6 +45,10 @@ class ImportController < ApplicationController
       XmlFolioImporter.new(current_user, file_name, parent_id, parent_type, image_type).import
     end
 
+    if new_object_type == "subseries(s)"
+      XmlSubseriesImporter.new(current_user, file_name, parent_id, parent_type, image_type).import
+    end
+
     if new_object_type == "work(s)"
         XmlWorkImporter.new(current_user,file_name, parent_id, parent_type, image_type).import
     end

@@ -1,0 +1,10 @@
+es:
+  hyrax:
+    icons:
+      subseries:     'fa fa-file-text-o'
+    select_type:
+      subseries:
+        # TODO: translate `human_name` into Spanish
+        description:        "Subseries trabajos"
+        name:               "Subseries"
+        # TODO: translate `human_name` into Spanish

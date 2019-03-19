@@ -1,0 +1,10 @@
+zh:
+  hyrax:
+    icons:
+      subseries:     'fa fa-file-text-o'
+    select_type:
+      subseries:
+        # TODO: translate `human_name` into Chinese
+        description:        "Subseries 作品"
+        name:               "Subseries"
+        # TODO: translate `human_name` into Chinese

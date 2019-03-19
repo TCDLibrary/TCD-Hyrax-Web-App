@@ -25,6 +25,10 @@
    <%= radio_button_tag(:import_object_type, "folio(s)") %>
    <%= label_tag(:import_type_folio, "Folios") %>
    <br />
+   <%= radio_button_tag(:import_object_type, "subseries(s)") %>
+   <%= label_tag(:import_type_folio, "Subseries'") %>
+   <br />
+
 
    <h2>Object Hierarchy:</h2>
    <br />
@@ -38,6 +42,10 @@
    <br />
    <%= radio_button_tag(:parent_type, "folio") %>
    <%= label_tag(:parent_is_a_folio, "parent is a Folio") %>
+
+   <br />
+   <%= radio_button_tag(:parent_type, "subseries") %>
+   <%= label_tag(:parent_is_a_folio, "parent is a Subseries") %>
 
    <br />
    <%= radio_button_tag(:parent_type, "no_parent") %>

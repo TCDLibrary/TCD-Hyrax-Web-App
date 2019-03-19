@@ -1,0 +1,8 @@
+fr:
+  hyrax:
+    icons:
+      subseries:     'fa fa-file-text-o'
+    select_type:
+      subseries:
+        description:        "Subseries œuvres"
+        name:               "Subseries"
