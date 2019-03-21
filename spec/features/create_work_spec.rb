@@ -53,7 +53,7 @@ RSpec.feature 'Create a Work', js: true do
       fill_in('Title', with: 'My Test Work')
       fill_in('Creator', with: 'Doe, Jane')
       fill_in('Keyword', with: 'testing')
-      select('In Copyright', from: 'Rights statement')
+      select('Active - In Copyright', from: 'Rights statement')
 
       # 20-11-2018 JL:
       # require tcd_metadata.rb

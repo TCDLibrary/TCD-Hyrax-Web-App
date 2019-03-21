@@ -1,37 +1,49 @@
 terms:
 - id: http://rightsstatements.org/vocab/InC/1.0/
   term: "In Copyright"
-  active: true
+  active: false
 - id: http://rightsstatements.org/vocab/InC-OW-EU/1.0/
   term: "In Copyright - EU Orphan Work"
-  active: true
+  active: false
 - id: http://rightsstatements.org/vocab/InC-EDU/1.0/
   term: "In Copyright - Educational Use Permitted"
-  active: true
+  active: false
 - id: http://rightsstatements.org/vocab/InC-NC/1.0/
   term: "In Copyright - Non-Commercial Use Permitted"
-  active: true
+  active: false
 - id: http://rightsstatements.org/vocab/InC-RUU/1.0/
   term: "In Copyright - Rights-holder(s) Unlocatable or Unidentifiable"
-  active: true
+  active: false
 - id: http://rightsstatements.org/vocab/NoC-CR/1.0/
   term: "No Copyright - Contractual Restrictions"
-  active: true
+  active: false
 - id: http://rightsstatements.org/vocab/NoC-NC/1.0/
   term: "No Copyright - Non-Commercial Use Only "
-  active: true
+  active: false
 - id: http://rightsstatements.org/vocab/NoC-OKLR/1.0/
   term: "No Copyright - Other Known Legal Restrictions"
-  active: true
+  active: false
 - id: http://rightsstatements.org/vocab/NoC-US/1.0/
   term: "No Copyright - United States"
-  active: true
+  active: false
 - id: http://rightsstatements.org/vocab/CNE/1.0/
   term: "Copyright Not Evaluated"
-  active: true
+  active: false
 - id: http://rightsstatements.org/vocab/UND/1.0/
   term: "Copyright Undetermined"
-  active: true
+  active: false
 - id: http://rightsstatements.org/vocab/NKC/1.0/
   term: "No Known Copyright"
+  active: false
+- id: https://rightsstatements.org/page/InC/1.0/
+  term: "Active - In Copyright"
+  active: true
+- id: http://creativecommons.org/publicdomain/mark/1.0/
+  term: "Expired - Public Domain (Creative Commons)"
+  active: true
+- id: https://rightsstatements.org/page/InC-OW-EU/1.0/
+  term: "Orphan - In Copyright - EU Orphan Work"
+  active: true
+- id: https://rightsstatements.org/page/UND/1.0/
+  term: "Uncertain - Copyright Undetermined"
   active: true
