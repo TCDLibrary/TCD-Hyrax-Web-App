@@ -56,4 +56,6 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  # Path to the file characterization tool
+  config.fits_path = "/home/jlakes/fits-1/fits.sh"
 end

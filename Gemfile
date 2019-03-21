@@ -42,7 +42,17 @@ gem 'sidekiq'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+group :development do
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
+  #gem 'capistrano-rbenv'
+  #gem 'capistrano-chruby'
+  gem 'capistrano-bundler'
+  #gem 'capistrano-rails/assets'
+  #gem 'capistrano-rails/migrations'
+  gem 'capistrano-passenger'
+end
 
 group :development, :test, :demovm045 do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
