@@ -5,7 +5,7 @@ set :application, "TCD-Hyrax-Web-App"
 set :repo_url, "https://github.com/joelakes/TCD-Hyrax-Web-App.git"
 
 # JL : see notes when installing capistrano 21/03/2019
-set :passenger_restart_with_touch, false
+set :passenger_restart_with_touch, true
 
 # Default branch is :master
 ask :branch, `git rev-parse --abbrev-ref csv-import`.chomp
