@@ -80,7 +80,7 @@ class XmlFolioImporter < ApplicationController
             else
               owner_rec = Work.new
             end
-         end    
+         end
       end
 
       Rails.logger.info "*** Begin Ingesting Folio file #{@file_path}. =>TCD<="
@@ -252,6 +252,7 @@ class XmlFolioImporter < ApplicationController
              end
              #if crArray.length > 0
              #    byebug
+             dCre = dCre.sub("--", "")
              folio.date_created.push(dCre)
              #end
           end

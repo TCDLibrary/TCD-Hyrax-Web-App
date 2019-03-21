@@ -1,0 +1,20 @@
+<table class="table table-striped collection-highlights">
+  <tbody>
+    <% collections.each do |collection| %>
+      <tr>
+        <td>
+          <div class="media">
+            <div class="media-body">
+              <div class="media-heading">
+                <%= link_to [hyrax, collection] do %>
+                  <%= render_thumbnail_tag(collection, { class: 'hidden-xs file_listing_thumbnail' },
+                                           { suppress_link: true }) + collection.title_or_label %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

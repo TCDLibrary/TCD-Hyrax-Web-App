@@ -188,6 +188,7 @@ class XmlWorkImporter
             crArray.each do | cr |
                dCre += cr + " "
             end
+            dCre = dCre.sub("--", "")
             work.date_created.push(dCre)
           end
         end

@@ -80,7 +80,7 @@ class XmlSubseriesImporter < ApplicationController
             else
               owner_rec = Work.new
             end
-        end    
+        end
       end
 
       Rails.logger.info "*** Begin Ingesting Subseries file #{@file_path}. =>TCD<="
@@ -252,6 +252,7 @@ class XmlSubseriesImporter < ApplicationController
              end
              #if crArray.length > 0
              #    byebug
+             dCre = dCre.sub("--", "")
              subseries.date_created.push(dCre)
              #end
           end

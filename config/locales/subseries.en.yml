@@ -1,8 +1,134 @@
 en:
+
+  blacklight:
+    search:
+      fields:
+        facet:
+          based_near_label_sim: Based Near
+          based_near_label: Based Near
+          dris_page_no: Page No
+          dris_page_no_tesim: Page No
+          dris_page_no_label: Page No
+          genre_tesim: Genre
+          abstract_tesim: Abstract
+          digital_object_identifier_tesim: Digital Object Id
+          dris_unique_tesim: Dris Unique
+          sponsor_tesim: Sponsor
+          bibliography_tesim: Bibliography
+          publisher_location_tesim: Publisher Location
+          support_tesim: Support
+          medium_tesim: Medium
+          alternative_title_tesim: Alternative Title
+          series_title_tesim: Series Title
+          collection_title_tesim: Collection Title
+          virtual_collection_title_tesim: Virtual Collection Title
+          provenance_tesim: Provenance
+          culture_tesim: Culture
+          location_tesim: Location
+
+          copyright_status_tesim: Copyright Status
+          joetesting: Joe Testing
+          creator_sim: Creator
+          file_format_sim: Format
+          generic_type_sim: Type
+          keyword_sim: Keyword
+          language_sim: Language
+          publisher_sim: Publisher
+          subject_sim: Subject
+        index:
+          based_near_tesim: Based Near
+          based_near_label: Based Near
+          dris_page_no: Page No
+          dris_page_no_tesim: Page No
+          dris_page_no_label: Page No
+          genre_tesim: Genre
+          abstract_tesim: Abstract
+          digital_object_identifier_tesim: Digital Object Id
+          dris_unique_tesim: Dris Unique
+          sponsor_tesim: Sponsor
+          bibliography_tesim: Bibliography
+          publisher_location_tesim: Publisher Location
+          support_tesim: Support
+          medium_tesim: Medium
+          alternative_title_tesim: Alternative Title
+          series_title_tesim: Series Title
+          collection_title_tesim: Collection Title
+          virtual_collection_title_tesim: Virtual Collection Title
+          provenance_tesim: Provenance
+          culture_tesim: Culture
+          location_tesim: Location
+
+          copyright_status_tesim: Copyright Status
+          joetesting: Joe Testing
+          contributor_tesim: Contributor
+          creator_tesim: Creator
+          date_created_tesim: Date Created
+          date_modified_dtsi: Date Modified
+          date_uploaded_dtsi: Date Uploaded
+          description_tesim: Description
+          file_format_tesim: File Format
+          identifier_tesim: Identifier
+          keyword_tesim: Keyword
+          language_tesim: Language
+          license_tesim: License
+          publisher_tesim: Publisher
+          rights_statement_tesim: Rights Statement
+          subject_tesim: Subject
+        show:
+          based_near_tesim: Based Near
+          based_near_label: Based Near
+          dris_page_no: Page No
+          dris_page_no_tesim: Page No
+          dris_page_no_label: Page No
+          genre_tesim: Genre
+          abstract_tesim: Abstract
+          digital_object_identifier: Digital Object Id
+          dris_unique_tesim: Dris Unique
+          sponsor_tesim: Sponsor
+          bibliography_tesim: Bibliography
+          publisher_location_tesim: Publisher Location
+          support_tesim: Support
+          medium_tesim: Medium
+          alternative_title_tesim: Alternative Title
+          series_title_tesim: Series Title
+          collection_title_tesim: Collection Title
+          virtual_collection_title_tesim: Virtual Collection Title
+          provenance_tesim: Provenance
+          culture_tesim: Culture
+          location_tesim: Location
+
+          copyright_status_tesim: Copyright Status
+          joetesting: Joe Testing
+          contributor_tesim: Contributor
+          creator_tesim: Creator
+          date_created_tesim: Date Created
+          date_modified_dtsi: Date Modified
+          date_uploaded_dtsi: Date Uploaded
+          description_tesim: Description
+          file_format_tesim: File Format
+          identifier_tesim: Identifier
+          keyword_tesim: Keyword
+          language_tesim: Language
+          license_tesim: License
+          publisher_tesim: Publisher
+          rights_statement_tesim: Rights Statement
+          subject_tesim: Subject
+          title_tesim: Title
   hyrax:
-    icons:
-      subseries:     'fa fa-file-text-o'
+    account_name: Trinity College Dublin Admin
+    directory:
+      suffix: "@example.org"
+    footer:
+      copyright_html: "<strong>Copyright &copy; 2018 Samvera</strong> Licensed under the Apache License, Version 2.0"
+      service_html: A service of <a href="http://samvera.org/" class="navbar-link" target="_blank">Samvera</a>.
+    institution_name: TCD
+    institution_name_full: Trinity College Dublin
+    product_name: Digital Collections
+    product_twitter_handle: "@DigitalColl"
     select_type:
+      folio:
+        description:        "Folio works"
+        name:               "Folio"
       subseries:
         description:        "Subseries works"
         name:               "Subseries"
@@ -13,4 +139,14 @@ en:
       progress:
         header: Save Subseries
       update:
-        header: Edit Subseries       
+        header: Edit Subseries
+    icons:
+      folio:     'fa fa-file-text-o'
+      subseries:     'fa fa-file-text-o'
+
+  simple_form:
+    labels:
+      defaults:
+        based_near: Based Near
+        dris_page_no: Page no
+        description: Description
