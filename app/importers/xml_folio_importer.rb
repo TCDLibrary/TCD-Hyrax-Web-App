@@ -191,14 +191,22 @@ class XmlFolioImporter < ApplicationController
         end
 
         # rights_statement -> CopyrightStatus
-        # link.xpath("xmlns:CopyrightStatus").each do |statuses|
-        #   if !statuses.content.blank?
-        #     statuses.xpath("xmlns:DATA").each do |aStatus|
-        #       folio.rights_statement.push(aStatus.content)
-        #     end
-        #   end
-        # end
-        folio.rights_statement = ["http://rightsstatements.org/vocab/NKC/1.0/"]
+        link.xpath("xmlns:CopyrightStatus").each do |statuses|
+           if !statuses.content.blank?
+             statuses.xpath("xmlns:DATA").each do |aStatus|
+               if aStatus.content == "Active"
+                 folio.rights_statement = ["https://rightsstatements.org/page/InC/1.0"]
+               else if aStatus.content == "Expired"
+                      folio.rights_statement = ["http://creativecommons.org/publicdomain/mark/1.0/"]
+                    else if aStatus.content == "Orphan"
+                           folio.rights_statement = ["https://rightsstatements.org/page/InC-OW-EU/1.0"]
+                         else folio.rights_statement = ["https://rightsstatements.org/page/UND/1.0"]
+                         end
+                    end
+               end
+             end
+           end
+        end
 
         # abstract
         #byebug

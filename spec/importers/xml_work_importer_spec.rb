@@ -25,7 +25,7 @@ RSpec.describe XmlWorkImporter do
      expect(imported_work.depositor).to eq(::User.batch_user.email)
      expect(imported_work.creator).to include('D’Alton, John, 1792-1867, Addressee')
      expect(imported_work.keyword).to include('D’Alton, Catherine (Kate), approximately 1795-1859--Correspondence')
-     expect(imported_work.rights_statement.first).to include('http://rightsstatements.org/vocab/NKC/1.0/')
+     expect(imported_work.rights_statement).to include('http://creativecommons.org/publicdomain/mark/1.0/')
 
      expect(imported_work.description).to include('TCD MS 2327/64 is a letter from Catherine (Kate) D’Alton (née Phillips, of Clonmore, Co. Mayo, 1815-1853) to her husband, John William Alexander D’Alton (of Bessville, Co. Meath, 1792-1867).  Written d...')
      #expect(imported_work.abstract).to include('TCD MS 2327/64 is a letter from Catherine (Kate) D’Alton (née Phillips, of Clonmore, Co. Mayo, 1815-1853) to her...')

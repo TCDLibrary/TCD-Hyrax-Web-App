@@ -5,7 +5,7 @@ require 'active_fedora/cleaner'
 
 RSpec.describe XmlSubseriesImporter do
 
-  let(:file_example)       { 'Named Collection Example_PARTS_ONE_OBJECT.XML' }
+  let(:file_example)       { 'Named Collection Example_SUBSERIES_ONE_OBJECT.XML' }
   let(:base_folder)        { 'spec/fixtures/' }
   let(:sub_folder)         { '' }
   let(:parent_id)          { '000000000' }
@@ -27,7 +27,7 @@ RSpec.describe XmlSubseriesImporter do
      expect(imported_subseries.depositor).to eq(::User.batch_user.email)
      expect(imported_subseries.creator).to include('D’Alton, John, 1792-1867, Addressee')
      expect(imported_subseries.keyword).to include('D’Alton, Catherine (Kate), approximately 1795-1859--Correspondence')
-     expect(imported_subseries.rights_statement.first).to include('http://rightsstatements.org/vocab/NKC/1.0/')
+     expect(imported_subseries.rights_statement).to include('https://rightsstatements.org/page/InC/1.0')
      expect(imported_subseries.description).to include('TCD MS 2327/64 is a letter from Catherine (Kate) D’Alton (née Phillips, of Clonmore, Co. Mayo, 1815-1853) to her husband, John William Alexander D’Alton (of Bessville, Co. Meath, 1792-1867).  Written d...')
 
      expect(imported_subseries.publisher).to include('A Publisher Name')
