@@ -32,7 +32,8 @@ server "hprc-guest-115-045.tchpc.tcd.ie", user: "jlakes", roles: %w{app db web}
 # For available Capistrano configuration variables see the documentation page.
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
-
+# Path to the file characterization tool
+config.fits_path = "/home/jlakes/fits-1/fits.sh"
 
 
 # Custom SSH Options
