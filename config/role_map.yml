@@ -3,7 +3,7 @@
 development:
   archivist:
     - archivist1@example.com
-    - cataloger@tcd.ie
+#    - cataloger@tcd.ie
   admin:
     - jlakes@tcd.ie
     - batchuser@example.com
@@ -12,7 +12,7 @@ development:
 demovm045:
   archivist:
     - archivist1@example.com
-    - cataloger@tcd.ie
+#    - cataloger@tcd.ie
   admin:
     - jlakes@tcd.ie
     - batchuser@example.com
@@ -27,7 +27,7 @@ test:
     - archivist1@example.com
     - archivist2@example.com
     - leland_himself@example.com
-    - cataloger@tcd.ie
+#    - cataloger@tcd.ie
   admin_policy_object_editor:
     - archivist1@example.com
   donor:
