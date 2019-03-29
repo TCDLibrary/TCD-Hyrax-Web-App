@@ -176,6 +176,16 @@ module TcdExtendedMetadata
         index.as :stored_searchable
       end
 
+      # 29/03/2019 JL - split creator, genre and subject for Michelle
+      property :creator_loc, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#creator_loc')
+      property :creator_local, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#creator_local')
+      property :genre_aat, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#genre_aat')
+      property :genre_tgm, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#genre_tgm')
+      property :subject_lcsh, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#subject_lcsh')
+      property :subject_subj_name, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#subject_subj_name')
+      property :subject_local_keyword, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#subject_local_keyword')
+      # 29/03/2019 JL - experimental belongs_to added to work objects
+      property :i_belong_to, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#i_belong_to')
 
   end
 

@@ -141,10 +141,25 @@ class XmlFolioImporter < ApplicationController
               if !(owner_rec.contributor.include?(individual.content))
                 folio.contributor.push(individual.content)
               end
+              if !(owner_rec.creator_loc.include?(individual.content))
+                folio.creator_loc.push(individual.content)
+              end
               #folio.creator.push(individual.content)
             end
           end
         end
+
+        # creator_local -> OtherArtist
+        link.xpath("xmlns:OtherArtist").each do |anArtist|
+          if !anArtist.content.blank?
+            anArtist.xpath("xmlns:DATA").each do |individual|
+              if !(owner_rec.creator_local.include?(individual.content))
+                folio.creator_local.push(individual.content)
+              end
+            end
+          end
+        end
+
         # creator -> AttributedArtistCalculation
         link.xpath("xmlns:AttributedArtistCalculation").each do |anArtist|
           if !anArtist.content.blank?
@@ -186,6 +201,7 @@ class XmlFolioImporter < ApplicationController
           if !subjects.content.blank?
             subjects.xpath("xmlns:DATA").each do |aSubject|
               folio.genre.push(aSubject.content)
+              folio.genre_tgm.push(aSubject.content)
             end
           end
         end
@@ -326,6 +342,9 @@ class XmlFolioImporter < ApplicationController
           if !aTypeOfWork.content.blank?
             if !(owner_rec.genre.include?(aTypeOfWork.content)) then
                folio.genre.push(aTypeOfWork.content)
+            end
+            if !(owner_rec.genre_aat.include?(aTypeOfWork.content)) then
+               folio.genre_aat.push(aTypeOfWork.content)
             end
           end
         end
@@ -613,6 +632,7 @@ class XmlFolioImporter < ApplicationController
           if !subjects.content.blank?
             subjects.xpath("xmlns:DATA").each do |aSubject|
               folio.subject.push(aSubject.content)
+              folio.subject_lcsh.push(aSubject.content)
             end
           end
         end
@@ -624,6 +644,9 @@ class XmlFolioImporter < ApplicationController
               if !(owner_rec.keyword.include?(aSubject.content))
                  folio.keyword.push(aSubject.content)
               end
+              if !(owner_rec.subject_local_keyword.include?(aSubject.content))
+                 folio.subject_local_keyword.push(aSubject.content)
+              end
             end
           end
         end
@@ -633,6 +656,7 @@ class XmlFolioImporter < ApplicationController
           if !subjects.content.blank?
             subjects.xpath("xmlns:DATA").each do |aSubject|
                folio.subject.push(aSubject.content)
+               folio.subject_subj_name.push(aSubject.content)
             end
           end
         end

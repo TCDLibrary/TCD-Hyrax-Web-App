@@ -11,7 +11,11 @@ class ExportController < ApplicationController
       begin
           owner_rec = Work.find(objectId)
       rescue
-          owner_rec = Folio.find(objectId)
+          begin
+            owner_rec = Folio.find(objectId)
+          rescue
+            owner_rec = Subseries.find(objectId)
+          end
       end
 
       if !owner_rec.id.blank?
@@ -79,6 +83,8 @@ class ExportController < ApplicationController
                    xml.send('dcterms:identifier', attribute)
                 end
               end
+
+              xml.send('dcterms:identifier', request.original_url)
 
               owner_rec.language.each do |attribute|
                 if !attribute.blank?

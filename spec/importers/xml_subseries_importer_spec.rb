@@ -81,6 +81,15 @@ RSpec.describe XmlSubseriesImporter do
      expect(imported_subseries.project_number).to include('Project 1822')
      expect(imported_subseries.order_no).to include('LCN no')
      expect(imported_subseries.total_records).to include('4')
+     
+     # 29/03/2019 JL - split creator, genre and subject for Michelle
+     expect(imported_subseries.creator_loc).to include ('Clare, Wallace, 1895-1963') #AttributedArtist
+     expect(imported_subseries.creator_local).to include ("D’Alton, Catherine (Kate), approximately 1795-1859") #OtherArtist
+     expect(imported_subseries.genre_aat).to include ("letters (correspondence)") #TypeOfWork
+     expect(imported_subseries.genre_tgm).to include ("Manuscripts") #SubjectTMG
+     expect(imported_subseries.subject_lcsh).to be_empty #SubjectLCSH
+     expect(imported_subseries.subject_subj_name).to include ("D’Alton, John, 1792-1867--Correspondence") #LCSubjectNames
+     expect(imported_subseries.subject_local_keyword).to include ("D’Alton, Catherine (Kate), approximately 1795-1859--Correspondence") #OpenKeyword
 
   end
 

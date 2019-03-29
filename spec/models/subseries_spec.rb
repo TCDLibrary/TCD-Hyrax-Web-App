@@ -51,7 +51,16 @@ RSpec.describe Subseries do
         expect(subseries.order_no).to be_empty
         expect(subseries.total_records).to be_empty
         expect(subseries.location).to be_empty
-
+        # 29/03/2019 JL - split creator, genre and subject for Michelle
+        expect(subseries.creator_loc).to be_empty
+        expect(subseries.creator_local).to be_empty
+        expect(subseries.genre_aat).to be_empty
+        expect(subseries.genre_tgm).to be_empty
+        expect(subseries.subject_lcsh).to be_empty
+        expect(subseries.subject_subj_name).to be_empty
+        expect(subseries.subject_local_keyword).to be_empty
+        # 29/03/2019 JL - experimental belongs_to added to work objects
+        expect(subseries.i_belong_to).to be_empty
       end
     end
     context "with a subseries that has TCD metadata defined" do
@@ -101,6 +110,16 @@ RSpec.describe Subseries do
         subseries.order_no = ["An Order No"]
         subseries.total_records = ["A Total Records"]
         subseries.location = ["A Location"]
+        # 29/03/2019 JL - split creator, genre and subject for Michelle
+        subseries.creator_loc = ["A Creator - LOC"]
+        subseries.creator_local = ["A Creator - local"]
+        subseries.genre_aat = ["A Genre - AAT"]
+        subseries.genre_tgm = ["A Genre - TGM"]
+        subseries.subject_lcsh = ["A Subject - LCSH"]
+        subseries.subject_subj_name = ["A Subject - subject name"]
+        subseries.subject_local_keyword = ["A Subject - local keyword"]
+        # 29/03/2019 JL - experimental belongs_to added to work objects
+        subseries.i_belong_to = ["An I_Belong_To link"]
 
         expect(subseries.abstract).to eq(["An Abstract"])
         expect(subseries.genre).to eq(["A subseries Genre"])
@@ -146,6 +165,16 @@ RSpec.describe Subseries do
         expect(subseries.order_no).to eq (["An Order No"])
         expect(subseries.total_records).to eq (["A Total Records"])
         expect(subseries.location).to eq (["A Location"])
+        # 29/03/2019 JL - split creator, genre and subject for Michelle
+        expect(subseries.creator_loc).to eq (["A Creator - LOC"])
+        expect(subseries.creator_local).to eq (["A Creator - local"])
+        expect(subseries.genre_aat).to eq (["A Genre - AAT"])
+        expect(subseries.genre_tgm).to eq (["A Genre - TGM"])
+        expect(subseries.subject_lcsh).to eq (["A Subject - LCSH"])
+        expect(subseries.subject_subj_name).to eq (["A Subject - subject name"])
+        expect(subseries.subject_local_keyword).to eq (["A Subject - local keyword"])
+        # 29/03/2019 JL - experimental belongs_to added to work objects
+        expect(subseries.i_belong_to).to eq (["An I_Belong_To link"])
 
       end
     end

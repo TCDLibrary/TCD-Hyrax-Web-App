@@ -81,6 +81,20 @@ class XmlWorkImporter
               if !(owner_rec.contributor.include?(individual.content))
                 work.contributor.push(individual.content)
               end
+              if !(owner_rec.creator_loc.include?(individual.content))
+                work.creator_loc.push(individual.content)
+              end
+            end
+          end
+        end
+
+        # creator_local -> OtherArtist
+        link.xpath("xmlns:OtherArtist").each do |anArtist|
+          if !anArtist.content.blank?
+            anArtist.xpath("xmlns:DATA").each do |individual|
+              if !(owner_rec.creator_local.include?(individual.content))
+                work.creator_local.push(individual.content)
+              end
             end
           end
         end
@@ -126,6 +140,7 @@ class XmlWorkImporter
           if !subjects.content.blank?
             subjects.xpath("xmlns:DATA").each do |aSubject|
               work.genre.push(aSubject.content)
+              work.genre_tgm.push(aSubject.content)
             end
           end
         end
@@ -517,13 +532,13 @@ class XmlWorkImporter
         end
 
         # type_of_work
-        #link.xpath("xmlns:TypeOfWork").each do |aType|
-        #  if !aType.content.blank?
-        #    if !(owner_rec.type_of_work.include?(aType.content)) then
-        #       work.type_of_work.push(aType.content)
-        #    end
-        #  end
-        #end
+        link.xpath("xmlns:TypeOfWork").each do |aType|
+          if !aType.content.blank?
+            if !(owner_rec.genre_aat.include?(aType.content)) then
+               work.genre_aat.push(aType.content)
+            end
+          end
+        end
 
         # related_item_type
         link.xpath("xmlns:RelatedItemType").each do |relatedItemTypes|
@@ -563,6 +578,7 @@ class XmlWorkImporter
           if !subjects.content.blank?
             subjects.xpath("xmlns:DATA").each do |aSubject|
                work.subject.push(aSubject.content)
+               work.subject_lcsh.push(aSubject.content)
             end
           end
         end
@@ -574,6 +590,9 @@ class XmlWorkImporter
               if !(owner_rec.keyword.include?(aSubject.content))
                  work.keyword.push(aSubject.content)
               end
+              if !(owner_rec.subject_local_keyword.include?(aSubject.content))
+                 work.subject_local_keyword.push(aSubject.content)
+              end
             end
           end
         end
@@ -583,6 +602,7 @@ class XmlWorkImporter
           if !subjects.content.blank?
             subjects.xpath("xmlns:DATA").each do |aSubject|
                work.subject.push(aSubject.content)
+               work.subject_subj_name.push(aSubject.content)
             end
           end
         end

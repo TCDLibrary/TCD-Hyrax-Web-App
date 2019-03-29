@@ -55,7 +55,16 @@ RSpec.describe Work do
         expect(work.order_no).to be_empty
         expect(work.total_records).to be_empty
         expect(work.location).to be_empty
-
+        # 29/03/2019 JL - split creator, genre and subject for Michelle
+        expect(work.creator_loc).to be_empty
+        expect(work.creator_local).to be_empty
+        expect(work.genre_aat).to be_empty
+        expect(work.genre_tgm).to be_empty
+        expect(work.subject_lcsh).to be_empty
+        expect(work.subject_subj_name).to be_empty
+        expect(work.subject_local_keyword).to be_empty
+        # 29/03/2019 JL - experimental belongs_to added to work objects
+        expect(work.i_belong_to).to be_empty
       end
     end
     context "with a Work that has TCD metadata defined" do
@@ -108,6 +117,17 @@ RSpec.describe Work do
         work.order_no = ["An Order No"]
         work.total_records = ["A Total Records"]
         work.location = ["A Location"]
+        # 29/03/2019 JL - split creator, genre and subject for Michelle
+        work.creator_loc = ["A Creator - LOC"]
+        work.creator_local = ["A Creator - local"]
+        work.genre_aat = ["A Genre - AAT"]
+        work.genre_tgm = ["A Genre - TGM"]
+        work.subject_lcsh = ["A Subject - LCSH"]
+        work.subject_subj_name = ["A Subject - subject name"]
+        work.subject_local_keyword = ["A Subject - local keyword"]
+        # 29/03/2019 JL - experimental belongs_to added to work objects
+        work.i_belong_to = ["An I_Belong_To link"]
+
 
         expect(work.abstract).to eq(["An Abstract"])
         expect(work.genre).to eq(["A Work Genre"])
@@ -156,7 +176,16 @@ RSpec.describe Work do
         expect(work.order_no).to eq (["An Order No"])
         expect(work.total_records).to eq (["A Total Records"])
         expect(work.location).to eq (["A Location"])
-
+        # 29/03/2019 JL - split creator, genre and subject for Michelle
+        expect(work.creator_loc).to eq (["A Creator - LOC"])
+        expect(work.creator_local).to eq (["A Creator - local"])
+        expect(work.genre_aat).to eq (["A Genre - AAT"])
+        expect(work.genre_tgm).to eq (["A Genre - TGM"])
+        expect(work.subject_lcsh).to eq (["A Subject - LCSH"])
+        expect(work.subject_subj_name).to eq (["A Subject - subject name"])
+        expect(work.subject_local_keyword).to eq (["A Subject - local keyword"])
+        # 29/03/2019 JL - experimental belongs_to added to work objects
+        expect(work.i_belong_to).to eq (["An I_Belong_To link"])
       end
     end
   end

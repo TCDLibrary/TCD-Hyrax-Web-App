@@ -88,6 +88,14 @@ RSpec.describe XmlWorkImporter do
      expect(imported_work.order_no).to include('LCN no')
      expect(imported_work.total_records).to include('1')
 
+     # 29/03/2019 JL - split creator, genre and subject for Michelle
+     expect(imported_work.creator_loc).to include ('Clare, Wallace, 1895-1963') #AttributedArtist
+     expect(imported_work.creator_local).to include ("D’Alton, Catherine (Kate), approximately 1795-1859") #OtherArtist
+     expect(imported_work.genre_aat).to include ("objects") #TypeOfWork
+     expect(imported_work.genre_tgm).to include ("Manuscripts") #SubjectTMG
+     expect(imported_work.subject_lcsh).to be_empty #SubjectLCSH
+     expect(imported_work.subject_subj_name).to include ("D’Alton, John, 1792-1867--Correspondence") #LCSubjectNames
+     expect(imported_work.subject_local_keyword).to include ("D’Alton, Catherine (Kate), approximately 1795-1859--Correspondence") #OpenKeyword
 
   end
 

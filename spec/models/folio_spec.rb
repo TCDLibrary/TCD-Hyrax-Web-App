@@ -55,7 +55,16 @@ RSpec.describe Folio do
         expect(folio.order_no).to be_empty
         expect(folio.total_records).to be_empty
         expect(folio.location).to be_empty
-
+        # 29/03/2019 JL - split creator, genre and subject for Michelle
+        expect(folio.creator_loc).to be_empty
+        expect(folio.creator_local).to be_empty
+        expect(folio.genre_aat).to be_empty
+        expect(folio.genre_tgm).to be_empty
+        expect(folio.subject_lcsh).to be_empty
+        expect(folio.subject_subj_name).to be_empty
+        expect(folio.subject_local_keyword).to be_empty
+        # 29/03/2019 JL - experimental belongs_to added to work objects
+        expect(folio.i_belong_to).to be_empty
       end
     end
     context "with a Folio that has TCD metadata defined" do
@@ -108,6 +117,16 @@ RSpec.describe Folio do
         folio.order_no = ["An Order No"]
         folio.total_records = ["A Total Records"]
         folio.location = ["A Location"]
+        # 29/03/2019 JL - split creator, genre and subject for Michelle
+        folio.creator_loc = ["A Creator - LOC"]
+        folio.creator_local = ["A Creator - local"]
+        folio.genre_aat = ["A Genre - AAT"]
+        folio.genre_tgm = ["A Genre - TGM"]
+        folio.subject_lcsh = ["A Subject - LCSH"]
+        folio.subject_subj_name = ["A Subject - subject name"]
+        folio.subject_local_keyword = ["A Subject - local keyword"]
+        # 29/03/2019 JL - experimental belongs_to added to work objects
+        folio.i_belong_to = ["An I_Belong_To link"]
 
         expect(folio.abstract).to eq(["An Abstract"])
         expect(folio.genre).to eq(["A Folio Genre"])
@@ -156,6 +175,16 @@ RSpec.describe Folio do
         expect(folio.order_no).to eq (["An Order No"])
         expect(folio.total_records).to eq (["A Total Records"])
         expect(folio.location).to eq (["A Location"])
+        # 29/03/2019 JL - split creator, genre and subject for Michelle
+        expect(folio.creator_loc).to eq (["A Creator - LOC"])
+        expect(folio.creator_local).to eq (["A Creator - local"])
+        expect(folio.genre_aat).to eq (["A Genre - AAT"])
+        expect(folio.genre_tgm).to eq (["A Genre - TGM"])
+        expect(folio.subject_lcsh).to eq (["A Subject - LCSH"])
+        expect(folio.subject_subj_name).to eq (["A Subject - subject name"])
+        expect(folio.subject_local_keyword).to eq (["A Subject - local keyword"])
+        # 29/03/2019 JL - experimental belongs_to added to work objects
+        expect(folio.i_belong_to).to eq (["An I_Belong_To link"])
 
       end
     end
