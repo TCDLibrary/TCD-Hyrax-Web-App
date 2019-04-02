@@ -107,6 +107,12 @@ class ExportController < ApplicationController
                 end
               end
 
+              owner_rec.genre.each do |attribute|
+                if !attribute.blank?
+                   xml.send('dcterms:type', attribute)
+                end
+              end
+
             }
           end
 
