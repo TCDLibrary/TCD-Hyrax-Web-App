@@ -60,6 +60,12 @@ en:
     institution_name_full: Trinity College Dublin
     product_name: Digital Collections
     product_twitter_handle: "@DigitalColl"
+
+# JL 02/04/2019 Cloned from https://github.com/UNC-Libraries/hy-c. Thanks to Dean Farrell at UNC Libraries
+    relationships_parent_rows:
+      empty_text: "This object has no parent works or subseries."
+      label: "Parent works and subseries:"
+
     simple_form:
       labels:
         defaults:
