@@ -9,7 +9,7 @@ development:
   database: db/development
   pool: 5
   username: root
-  password: <%= ENV['HYRAX_DATABASE_PASSWORD'] %> 
+  password: <%= ENV['HYRAX_DATABASE_PASSWORD'] %>
     #Pa$$w0rd
 
 demovm045:
@@ -18,8 +18,8 @@ demovm045:
   reconnect: false
   database: db/development
   pool: 5
-  username: root
-  password: Pa$$w0rd
+  username: <%= ENV['HYRAX_DATABASE_USER'] %>
+  password: <%= ENV['HYRAX_DATABASE_PASSWORD'] %>
 
 
 # Warning: The database defined as "test" will be erased and
@@ -40,5 +40,5 @@ production:
   reconnect: false
   database: db/production
   pool: 5
-  username: root
-  password: Pa$$w0rd
+  username: <%= ENV['HYRAX_DATABASE_USER'] %>
+  password: <%= ENV['HYRAX_DATABASE_PASSWORD'] %>
