@@ -9,7 +9,8 @@ development:
   database: db/development
   pool: 5
   username: root
-  password: Pa$$w0rd
+  password: <%= ENV['HYRAX_DATABASE_PASSWORD'] %> 
+    #Pa$$w0rd
 
 demovm045:
   adapter: mysql2

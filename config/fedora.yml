@@ -1,7 +1,9 @@
+
 development:
-  user: fedoraAdmin
-  password: fedoraAdmin
-  url: http://127.0.0.1:<%= ENV['FCREPO_DEVELOPMENT_PORT'] || 8080 %>/fcrepo-webapp-4.7.5/rest
+  user: <%= ENV['FEDORA_ADMIN_USER'] %>
+  password: <%= ENV['FEDORA_ADMIN_PASSWORD'] %>
+    #fedoraAdmin
+  url: http://127.0.0.1:8080/fcrepo-webapp-4.7.5/rest
   base_path: /dev
 
 demovm045:
@@ -10,14 +12,14 @@ demovm045:
   url: http://134.226.115.55:8080/fcrepo-webapp-4.7.5/rest
   base_path: /dev
 
-
 test:
-  user: fedoraAdmin
-  password: fedoraAdmin
+  user: <%= ENV['FEDORA_ADMIN_USER'] %>
+  password: <%= ENV['FEDORA_ADMIN_PASSWORD'] %>
   url: http://127.0.0.1:<%= ENV['FCREPO_TEST_PORT'] || 8986 %>/rest
   base_path: /test
+
 production:
-  user: fedoraAdmin
-  password: fedoraAdmin
+  user: <%= ENV['FEDORA_ADMIN_USER'] %>
+  password: <%= ENV['FEDORA_ADMIN_PASSWORD'] %>
   url: http://127.0.0.1:8983/fedora/rest
   base_path: /prod
