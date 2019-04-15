@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'iso-639'
 
 RSpec.describe ExportController, type: :controller do
 
@@ -30,7 +31,7 @@ RSpec.describe ExportController, type: :controller do
       folio.date_modified = '2019-02-01'
       folio.resource_type << 'A Resource Type'
       folio.identifier << 'An Identifier'
-      folio.language << 'A Language'
+      folio.language << 'German'
       folio.copyright_status << 'A Copyright Status'
       folio.bibliographic_citation << 'A Bibliography'
 

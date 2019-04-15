@@ -1,5 +1,6 @@
 class ExportController < ApplicationController
   include Hydra::Controller::ControllerBehavior
+  require 'iso-639'
 
   def dublinCore
 
@@ -19,42 +20,50 @@ class ExportController < ApplicationController
       end
 
       if !owner_rec.id.blank?
-         builder = Nokogiri::XML::Builder.new do |xml|
-            xml.metadata('xmlns:dc' => "http://purl.org/dc/elements/1.1/", 'xmlns:dcterms' => "http://purl.org/dc/terms/") {
+         builder = Nokogiri::XML::Builder.new(:encoding => 'UTF-8') do |xml|
+            xml.qualifieddc('xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance",
+                         'xmlns:dc' => "http://purl.org/dc/elements/1.1/",
+                         #'xsi:schemaLocation' => "http://purl.org/dc/elements/1.1/dc.xsd",
+                         'xmlns:dcterms' => "http://purl.org/dc/terms/",
+                         'xmlns:marcrel' => "http://www.loc.gov/marc.relators/",
+                         'xsi:schemaLocation' => "http://www.loc.gov/marc.relators/marcrel.xsd",
+                         #'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance",
+                         'xsi:noNamespaceSchemaLocation' => "http://dublincore.org/schemas/xmls/qdc/2008/02/11/qualifieddc.xsd" ) {
 
               owner_rec.title.each do |attribute|
                 if !attribute.blank?
-                   xml.send('dcterms:title', attribute)
+                   xml.send('dc:title', attribute)
                 end
               end
 
               owner_rec.creator.each do |attribute|
                 if !attribute.blank?
-                   xml.send('dcterms:creator', attribute)
+                   xml.send('dc:creator', attribute)
                 end
               end
 
               owner_rec.subject.each do |attribute|
                 if !attribute.blank?
-                   xml.send('dcterms:subject', attribute)
+                   xml.send('dc:subject', attribute)
                 end
               end
 
               owner_rec.description.each do |attribute|
                 if !attribute.blank?
-                   xml.send('dcterms:description', attribute)
+                   xml.send('dc:description', attribute)
                 end
               end
 
               owner_rec.publisher.each do |attribute|
                 if !attribute.blank?
-                   xml.send('dcterms:publisher', attribute)
+                   xml.send('dc:publisher', attribute)
                 end
               end
 
               owner_rec.contributor.each do |attribute|
                 if !attribute.blank?
-                   xml.send('dcterms:contributor', attribute)
+                   # xml.send('dcterms:contributor', attribute)
+                   xml.send('marcrel:rcp', attribute)
                 end
               end
 
@@ -65,36 +74,37 @@ class ExportController < ApplicationController
               end
 
               if !owner_rec.date_uploaded.blank?
-                xml.send('dcterms:dateSubmitted', owner_rec.date_uploaded)
+                xml.send('dcterms:dateSubmitted', owner_rec.date_uploaded.to_date.iso8601)
               end
 
               if !owner_rec.date_modified.blank?
-                xml.send('dcterms:modified', owner_rec.date_modified)
+                xml.send('dcterms:modified', owner_rec.date_modified.to_date.iso8601)
               end
 
               owner_rec.resource_type.each do |attribute|
                 if !attribute.blank?
-                   xml.send('dcterms:type', attribute)
+                   xml.send('dc:type', attribute.camelize)
                 end
               end
 
               owner_rec.identifier.each do |attribute|
                 if !attribute.blank?
-                   xml.send('dcterms:identifier', attribute)
+                   xml.send('dc:identifier', attribute)
                 end
               end
 
-              xml.send('dcterms:identifier', request.original_url)
+              xml.send('dc:identifier', request.original_url)
 
               owner_rec.language.each do |attribute|
                 if !attribute.blank?
-                   xml.send('dcterms:language', attribute)
+                   xml.send('dc:language', ISO_639.find_by_english_name(attribute).alpha2)
                 end
               end
 
-              owner_rec.copyright_status.each do |attribute|
+              #owner_rec.copyright_status.each do |attribute|
+              owner_rec.rights_statement.each do |attribute|
                 if !attribute.blank?
-                   xml.send('dcterms:rights', attribute)
+                   xml.send('dc:rights', attribute)
                 end
               end
 
@@ -107,9 +117,15 @@ class ExportController < ApplicationController
                 end
               end
 
-              owner_rec.genre.each do |attribute|
+              owner_rec.genre_tgm.each do |attribute|
                 if !attribute.blank?
-                   xml.send('dcterms:type', attribute)
+                   xml.send('dc:type', attribute)
+                end
+              end
+
+              owner_rec.genre_aat.each do |attribute|
+                if !attribute.blank?
+                   xml.send('dc:type', attribute)
                 end
               end
 

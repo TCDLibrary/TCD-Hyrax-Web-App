@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # TODO: remove get import/picker
   get 'import/picker'
-  
+
   post 'import/picker'
   get 'export/dublinCore'
 
