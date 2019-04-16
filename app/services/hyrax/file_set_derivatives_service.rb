@@ -84,21 +84,22 @@ module Hyrax
 
       def create_image_derivatives(filename)
         # We're asking for layer 0, becauase otherwise pyramidal tiffs flatten all the layers together into the thumbnail
-        if filename.include?("_HI.jpg")
-          Hydra::Derivatives::ImageDerivatives.create(filename,
-                                                      outputs: [
-                                                        { label: 'pyramid',
-                                                          format: 'ptif',
-                                                          define: 'tiff:tile-geometry=256x256',
-                                                          url: derivative_url('/pyramid_tif')} ])
-          #
-        end                                            #    layers: 8 },
+      ##  if filename.include?("_HI.jpg")
+      ##    Hydra::Derivatives::ImageDerivatives.create(filename,
+      ##                                                outputs: [
+      ##                                                  { label: 'pyramid',
+      ##                                                    format: 'ptif',
+      ##                                                    define: 'tiff:tile-geometry=256x256',
+      ##                                                    url: derivative_url('/pyramid_tif')} ])
+      ##    #
+      ##  end                                            #    layers: 8 },
         #byebug
-        myThumbnail = filename.split('/').last
+      ##  myThumbnail = filename.split('/').last
         #byebug
         Hydra::Derivatives::ImageDerivatives.create(filename,
-                                                    outputs: [ { label: :thumbnail, format: 'jpg', size: '300x300>', url: derivative_url("#{'thumbnail_' + myThumbnail}") },
-                                                               { label: 'medium', format: 'jpg', size: '800x800>', url: derivative_url("#{'medium_' + myThumbnail}") } ])
+                                                    outputs: [
+                                        ##              { label: :thumbnail, format: 'jpg', size: '300x300>', url: derivative_url("#{'thumbnail_' + myThumbnail}") },
+                                        ##                       { label: 'medium', format: 'jpg', size: '800x800>', url: derivative_url("#{'medium_' + myThumbnail}") } ])
                                                     ##  { label: :medium,
                                                     ##    format: 'jpg',
                                                     ##    size: '800x800>',
@@ -110,11 +111,11 @@ module Hyrax
                                                     #    url: derivative_url('testing_ptiff')},
         #                                           #   layers: 8 },
         # magick convert MS6053_0450.tif -define tiff:tile-geometry=256x256 'ptif:MS6053_0450.ptif'
-                                                    ##  { label: :thumbnail,
-                                                    ##    format: 'jpg',
-                                                    ##    size: '300x300>',
-                                                  ##      url: derivative_url('thumbnail'),
-                                                  ##      layer: 0 }])
+                                                      { label: :thumbnail,
+                                                        format: 'jpg',
+                                                        size: '300x300>',
+                                                        url: derivative_url('thumbnail'),
+                                                        layer: 0 }])
         # JL 05/04/2019 : Can I create pyramid derivative?
         #Hydra::Derivatives::Jpeg2kDerivatives.create(filename, outputs: [{ label: :service, resize: "3600x3600>" }])
       end
