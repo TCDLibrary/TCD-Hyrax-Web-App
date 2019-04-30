@@ -5,6 +5,15 @@
 
 
 <%= form_tag("/import/picker", multipart: true, method: "get") do %>
+
+  <h2>Ingest Object Model Type</h2>
+  <br />
+  <%= select_tag :object_model, "<option>Single Object, Multiple Images</option><option selected='selected'>Multiple Objects, One Image Each</option>".html_safe %>
+  <br />
+
+
+
+
   <h2>Files available to ingest:</h2>
   Must be stored in <%= Rails.application.config.ingest_folder %>
   <br />

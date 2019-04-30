@@ -1,3 +1,5 @@
+  # REDUNDANT - See foxml_importer
+
 class XmlSubseriesImporter < ApplicationController
   include Hydra::Controller::ControllerBehavior
   include Blacklight::AccessControls::Catalog
@@ -10,6 +12,8 @@ class XmlSubseriesImporter < ApplicationController
   def ensure_admin!
       authorize! :read, :admin_dashboard
   end
+
+  # REDUNDANT - See foxml_importer
   # TODO : Tidy up
   # TODO : Check all fields are present and populated/deduplicated properly
   # TODO : Run this offline? What happens to credentials then?
@@ -30,7 +34,7 @@ class XmlSubseriesImporter < ApplicationController
   #   Culture
   #   Description
 
-  def initialize(user, file, parent = '000000000', parent_type = 'no_parent', image_type = 'LO', base_folder = Rails.application.config.ingest_folder)
+  def initialize(object_model, user, file, parent = '000000000', parent_type = 'no_parent', image_type = 'LO', base_folder = Rails.application.config.ingest_folder)
     @file = file
     #@user = ::User.batch_user
     @user = user
@@ -41,6 +45,7 @@ class XmlSubseriesImporter < ApplicationController
     @image_type = image_type
     @file_path = base_folder + file
     @filename = file
+    @object_model = object_model
   end
 
   require 'nokogiri'
@@ -54,7 +59,7 @@ class XmlSubseriesImporter < ApplicationController
       #@user = current_user
       #byebug
       admin_set_id =  AdminSet.find_or_create_default_admin_set_id
-      # byebug
+      byebug
       if @parent_type == "work"
         owner_rec = Work.new
         begin

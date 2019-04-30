@@ -3,7 +3,7 @@ require 'rails_helper'
 require 'active_fedora/cleaner'
 
 
-RSpec.describe XmlFolioImporter do
+RSpec.describe FoxmlImporter do
 
   #let(:file_example)       { 'spec/fixtures/Named_Collection_Example_PARTS_RECORDS_v3.6_20181207.xml' }
   let(:file_example)       { 'Named Collection Example_PARTS_ONE_OBJECT.XML' }
@@ -11,6 +11,7 @@ RSpec.describe XmlFolioImporter do
   let(:sub_folder)         { '' }
   let(:parent_id)          { '000000000' }
   let(:parent_type)        { 'no_parent' }
+  let(:object_model)       { 'Multiple Objects, One Image Each' }
 
 
   before do
@@ -21,7 +22,8 @@ RSpec.describe XmlFolioImporter do
 
   it "stores data in correct fields in the Folio" do
      #XmlFolioImporter.new(file_example).import
-     expect { XmlFolioImporter.new(::User.batch_user, file_example, parent_id, parent_type,  'LO', base_folder).import }.to change { Folio.count }.by 1
+     artefact = Folio.new
+     expect { FoxmlImporter.new(object_model, ::User.batch_user, file_example, parent_id, parent_type,  'LO', base_folder).import(artefact) }.to change { Folio.count }.by 1
 
      imported_folio = Folio.first
      expect(imported_folio.title.first).to eq('Letter from Catherine (Kate) D’Alton, Clonmore, 8th-12th August, 1824 to John D’Alton')

@@ -3,13 +3,14 @@ require 'rails_helper'
 require 'active_fedora/cleaner'
 
 
-RSpec.describe XmlWorkImporter do
+RSpec.describe FoxmlImporter do
 
   let(:file_example)       { 'Named Collection Example_WORKS_ONE_OBJECT.XML' }
   let(:base_folder)        { 'spec/fixtures/' }
   let(:sub_folder)         { '' }
   let(:parent_id)          { '000000000' }
   let(:parent_type)        { 'no_parent' }
+  let(:object_model)       { 'Multiple Objects, One Image Each' }
 
   before do
     DatabaseCleaner.strategy = :transaction
@@ -18,7 +19,8 @@ RSpec.describe XmlWorkImporter do
   end
 
   it "stores data in correct fields in the work" do
-     expect { XmlWorkImporter.new(::User.batch_user, file_example, parent_id, parent_type,  'LO', base_folder).import }.to change { Work.count }.by 1
+     artefact = Work.new
+     expect { FoxmlImporter.new(object_model, ::User.batch_user, file_example, parent_id, parent_type,  'LO', base_folder).import(artefact) }.to change { Work.count }.by 1
 
      imported_work = Work.first
      expect(imported_work.title.first).to eq('Letter from Catherine (Kate) D’Alton, Clonmore, 8th-12th August, 1824 to John D’Alton')

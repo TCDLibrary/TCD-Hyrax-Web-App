@@ -3,13 +3,14 @@ require 'rails_helper'
 require 'active_fedora/cleaner'
 
 
-RSpec.describe XmlSubseriesImporter do
+RSpec.describe FoxmlImporter do
 
   let(:file_example)       { 'Named Collection Example_SUBSERIES_ONE_OBJECT.XML' }
   let(:base_folder)        { 'spec/fixtures/' }
   let(:sub_folder)         { '' }
   let(:parent_id)          { '000000000' }
   let(:parent_type)        { 'no_parent' }
+  let(:object_model)       { 'Single Object, Multiple Images' }
 
 
   before do
@@ -19,8 +20,8 @@ RSpec.describe XmlSubseriesImporter do
   end
 
   it "stores data in correct fields in the Subseries" do
-
-     expect { XmlSubseriesImporter.new(::User.batch_user, file_example, parent_id, parent_type,  'LO', base_folder).import }.to change { Subseries.count }.by 1
+     artefact = Subseries.new
+     expect { FoxmlImporter.new(object_model, ::User.batch_user, file_example, parent_id, parent_type,  'LO', base_folder).import(artefact) }.to change { Subseries.count }.by 1
 
      imported_subseries = Subseries.first
      expect(imported_subseries.title.first).to eq('Letter from Catherine (Kate) D’Alton, Clonmore, 8th-12th August, 1824 to John D’Alton')
@@ -81,7 +82,7 @@ RSpec.describe XmlSubseriesImporter do
      expect(imported_subseries.project_number).to include('Project 1822')
      expect(imported_subseries.order_no).to include('LCN no')
      expect(imported_subseries.total_records).to include('4')
-     
+
      # 29/03/2019 JL - split creator, genre and subject for Michelle
      expect(imported_subseries.creator_loc).to include ('Clare, Wallace, 1895-1963') #AttributedArtist
      expect(imported_subseries.creator_local).to include ("D’Alton, Catherine (Kate), approximately 1795-1859") #OtherArtist

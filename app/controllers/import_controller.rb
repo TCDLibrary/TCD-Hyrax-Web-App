@@ -11,11 +11,14 @@ class ImportController < ApplicationController
 
   def picker
 
+    #byebug
     parent_type = 'no_parent'
     parent_id = '000000000'
     image_type = 'LO'
 
+    object_model = params[:object_model]
 
+    #byebug
     new_object_type = params[:import_object_type]
     # base_folder = 'spec/fixtures/'
     sub_folder = String.new
@@ -42,20 +45,24 @@ class ImportController < ApplicationController
     #testing = Rails.application.config.ingest_folder
     #byebug
     if new_object_type == "folio(s)"
-      XmlFolioImporter.new(current_user, file_name, parent_id, parent_type, image_type).import
+      #admin_set_id =  AdminSet.find_or_create_default_admin_set_id
+      artefact = Folio.new
+      FoxmlImporter.new(object_model,current_user, file_name, parent_id, parent_type, image_type).import(artefact)
     end
 
     if new_object_type == "subseries(s)"
-      XmlSubseriesImporter.new(current_user, file_name, parent_id, parent_type, image_type).import
+      artefact = Subseries.new
+      FoxmlImporter.new(object_model,current_user, file_name, parent_id, parent_type, image_type).import(artefact)
     end
 
     if new_object_type == "work(s)"
-        XmlWorkImporter.new(current_user,file_name, parent_id, parent_type, image_type).import
+        artefact = Work.new
+        FoxmlImporter.new(object_model, current_user,file_name, parent_id, parent_type, image_type).import(artefact)
     end
 
-    if new_object_type == "collection(s)"
-        XmlCollectionImporter.new(current_user, work_file_example).import
-    end
+    #if new_object_type == "collection(s)"
+    #    XmlCollectionImporter.new(current_user, work_file_example).import
+    #end
 
 
   end
