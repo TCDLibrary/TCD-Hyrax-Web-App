@@ -25,7 +25,7 @@ class ExportController < ApplicationController
                          'xmlns:dc' => "http://purl.org/dc/elements/1.1/",
                          #'xsi:schemaLocation' => "http://purl.org/dc/elements/1.1/dc.xsd",
                          'xmlns:dcterms' => "http://purl.org/dc/terms/",
-                         'xmlns:marcrel' => "http://www.loc.gov/marc.relators/",
+                         #'xmlns:marcrel' => "http://www.loc.gov/marc.relators/",
                          'xsi:schemaLocation' => "http://www.loc.gov/marc.relators/marcrel.xsd",
                          #'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance",
                          'xsi:noNamespaceSchemaLocation' => "http://dublincore.org/schemas/xmls/qdc/2008/02/11/qualifieddc.xsd" ) {
@@ -62,14 +62,14 @@ class ExportController < ApplicationController
 
               owner_rec.contributor.each do |attribute|
                 if !attribute.blank?
-                   # xml.send('dcterms:contributor', attribute)
-                   xml.send('marcrel:rcp', attribute)
+                   xml.send('dc:contributor', attribute)
+                   #xml.send('marcrel:rcp', attribute)
                 end
               end
 
               owner_rec.date_created.each do |attribute|
                 if !attribute.blank?
-                   xml.send('dcterms:created', attribute)
+                   xml.send('dc:created', attribute)
                 end
               end
 
@@ -102,7 +102,8 @@ class ExportController < ApplicationController
               end
 
               #owner_rec.copyright_status.each do |attribute|
-              owner_rec.rights_statement.each do |attribute|
+              #owner_rec.rights_statement.each do |attribute|
+              owner_rec.copyright_note.each do |attribute|
                 if !attribute.blank?
                    xml.send('dc:rights', attribute)
                 end
@@ -128,6 +129,12 @@ class ExportController < ApplicationController
                    xml.send('dc:type', attribute)
                 end
               end
+
+              owner_rec.provenance.each do |attribute|
+                if !attribute.blank?
+                   xml.send('dc:provenance', attribute)
+                end
+              end              
 
             }
           end

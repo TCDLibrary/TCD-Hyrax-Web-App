@@ -7,6 +7,11 @@ class FoxmlImporter < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_admin!
 
+  #$role_codes_contributor = {"ann" => "Annotator",
+  #                          "asn" => "Associated Name",
+  #                          "ato" => "Autographer",
+  #                          "auc" => "Auctioneer" }
+
   def ensure_admin!
       authorize! :read, :admin_dashboard
   end
@@ -94,8 +99,6 @@ class FoxmlImporter < ApplicationController
     #  if (@object_model == "Single Object, Multiple Images" && doc.xpath("//xmlns:ROW").count == 1)
     #    || (@object_model == "Multiple Objects, One Image Each")
     #  end
-
-
 
       #byebug
       doc.xpath("//xmlns:ROW").each do |link|
@@ -258,9 +261,9 @@ class FoxmlImporter < ApplicationController
       link.xpath("xmlns:AttributedArtist").each do |anArtist|
         if !anArtist.content.blank?
           anArtist.xpath("xmlns:DATA").each do |individual|
-            if !(owner_rec.contributor.include?(individual.content))
-              artefact.contributor.push(individual.content)
-            end
+            #if !(owner_rec.contributor.include?(individual.content))
+            #  artefact.contributor.push(individual.content)
+            #end
             if !(owner_rec.creator_loc.include?(individual.content))
               artefact.creator_loc.push(individual.content)
             end
@@ -291,6 +294,7 @@ class FoxmlImporter < ApplicationController
 
             name = ''
             role = ''
+            roleCode = ''
             dataToIngest = ''
             # loop through the sub array and check the key before choosing the value
             indivParts.each do | indivBlob |
@@ -298,18 +302,88 @@ class FoxmlImporter < ApplicationController
               calcVal = indivBlob.split(': ')
 
               if calcVal.count > 1
-                if calcVal[0] == 'AttributedArtistRole'
-                  role = calcVal[1]
+                if calcVal[0] == 'AttributedArtistRoleCode'
+                  roleCode = calcVal[1]
                 else if calcVal[0] == ' Attributed Artist'
                        name = calcVal[1]
+                     else if calcVal[0] == 'AttributedArtistRole'
+                             role = calcVal[1]
+                          end
                      end
                 end
               end
 
             end
+            # byebug
             dataToIngest = name + ', ' + role
             if !dataToIngest.blank?
-              artefact.creator.push(dataToIngest)
+              if Role_codes_creator.include?(roleCode)
+                 artefact.creator.push(dataToIngest)
+              else if Role_codes_contributor.include?(roleCode)
+                      artefact.contributor.push(dataToIngest)
+                   else if Role_codes_subject.include?(roleCode)
+                           artefact.subject.push(dataToIngest)
+                        end
+                   end
+              end
+               
+              if Role_codes_donor.include?(roleCode)
+                 artefact.provenance.push(dataToIngest)
+              end
+            end
+
+          end
+        end
+      end
+
+      # creator -> AttributedArtistCalculation
+      link.xpath("xmlns:OtherArtistCalculation").each do |anArtist|
+        if !anArtist.content.blank?
+          anArtist.xpath("xmlns:DATA").each do |individual|
+
+            # parse each AttributedArtistCalculation on ';' expecting 3 data fields
+            indivArtistCalc = individual.content
+            indivParts = indivArtistCalc.split(';')
+
+            name = ''
+            role = ''
+            roleCode = ''
+            dataToIngest = ''
+            # loop through the sub array and check the key before choosing the value
+            indivParts.each do | indivBlob |
+              # parse the part with ':' to get key/value pair
+              calcVal = indivBlob.split(': ')
+
+              if calcVal.count > 1
+                if calcVal[0] == ' OtherArtistRoleCode'
+                  roleCode = calcVal[1]
+                else if calcVal[0] == ' OtherArtist'
+                       name = calcVal[1]
+                     else if calcVal[0] == 'OtherArtistRole'
+                             role = calcVal[1]
+                          end
+                     end
+                end
+              end
+
+            end
+
+            dataToIngest = name + ', ' + role
+            if !dataToIngest.blank?
+              if Role_codes_creator.include?(roleCode)
+                 artefact.creator.push(dataToIngest)
+              else if Role_codes_contributor.include?(roleCode)
+                      artefact.contributor.push(dataToIngest)
+                   else if Role_codes_subject.include?(roleCode)
+                           artefact.subject.push(dataToIngest)
+                        end
+                   end
+              end
+
+              if Role_codes_donor.include?(roleCode)
+                 artefact.provenance.push(dataToIngest)
+              end
+
             end
 
           end

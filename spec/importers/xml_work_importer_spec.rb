@@ -25,7 +25,7 @@ RSpec.describe FoxmlImporter do
      imported_work = Work.first
      expect(imported_work.title.first).to eq('Letter from Catherine (Kate) D’Alton, Clonmore, 8th-12th August, 1824 to John D’Alton')
      expect(imported_work.depositor).to eq(::User.batch_user.email)
-     expect(imported_work.creator).to include('D’Alton, John, 1792-1867, Addressee')
+     expect(imported_work.creator).to include('D’Alton, Catherine (Kate), approximately 1795-1859, Author')
      expect(imported_work.keyword).to include('D’Alton, Catherine (Kate), approximately 1795-1859--Correspondence')
      expect(imported_work.rights_statement).to include('http://creativecommons.org/publicdomain/mark/1.0/')
 
