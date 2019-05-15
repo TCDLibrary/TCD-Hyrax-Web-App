@@ -53,12 +53,21 @@ class FoxmlImporter < ApplicationController
   require 'nokogiri'
   require 'open-uri'
 
-  def import(artefact)
+  def import(artefactClass)
       # is there a parent Work to own these new folios?
       #
       testing = Rails.application.config.ingest_folder
 
       admin_set_id =  AdminSet.find_or_create_default_admin_set_id
+
+      if @parent_type == "collection"
+        #coll_owner_rec = Collection.new
+        begin
+          coll_owner_rec = Collection.find(@parent)
+        rescue
+
+        end
+      end
 
       if @parent_type == "work"
         owner_rec = Work.new
@@ -82,13 +91,13 @@ class FoxmlImporter < ApplicationController
                 rescue
 
                 end
-            else
-              owner_rec = Work.new
+          #  else
+          #    owner_rec = Work.new
             end
          end
       end
 
-      Rails.logger.info "*** Begin Ingesting #{artefact.class} file #{@file_path}. =>TCD<="
+      Rails.logger.info "*** Begin Ingesting #{artefactClass} file #{@file_path}. =>TCD<="
 
       #byebug
       # Fetch and parse HTML document
@@ -103,6 +112,7 @@ class FoxmlImporter < ApplicationController
       #byebug
       doc.xpath("//xmlns:ROW").each do |link|
 
+        artefact = artefactClass.new
         #artefact = Folio.new
         artefact.depositor = @user.email
         artefact.visibility = 'open'
@@ -110,12 +120,13 @@ class FoxmlImporter < ApplicationController
         artefact.admin_set_id = admin_set_id
         #byebug
 
-        if !owner_rec.id.blank? && !owner_rec.id == '000000000'
-           #byebug
-           owner_rec.members << artefact
-           owner_rec.ordered_members << artefact
-           owner_rec.save
-        end
+        # TODO: JL why was this duplicated below?
+        #if !owner_rec.id.blank? && !owner_rec.id == '000000000'
+        #   #byebug
+        #   owner_rec.members << artefact
+        #   owner_rec.ordered_members << artefact
+        #   owner_rec.save
+        #end
 
         #imageLocation = ''
         #artefact =
@@ -135,6 +146,7 @@ class FoxmlImporter < ApplicationController
 
             if @image_type == 'LO'
               image_sub_folder = 'LO/'
+            else
               if @image_type == 'HI'
                 image_sub_folder = 'HI/'
               else if @image_type == 'TIFF'
@@ -146,7 +158,7 @@ class FoxmlImporter < ApplicationController
             imageFolderName = @base_folder + image_sub_folder
             fileName = imageFolderName + imageWildcard + "*"
 
-            imageLocation = Dir[fileName]
+            imageLocation = Dir[fileName].sort
             #byebug
         else
             # @object_model is "Multiple Objects, One Image Each"
@@ -158,16 +170,18 @@ class FoxmlImporter < ApplicationController
               end
             end
 
-            imageFileName = imageFileName + "_LO.jpg"
-            image_sub_folder = 'LO/'
-
-            if @image_type == 'HI'
-              imageFileName = imageFileName + "_HI.jpg"
-              image_sub_folder = 'HI/'
-            else if @image_type == 'TIFF'
-                    imageFileName = imageFileName + ".tiff"
-                    image_sub_folder = 'TIFF/'
-                 end
+            if @image_type == 'LO'
+                imageFileName = imageFileName + "_LO.jpg"
+                image_sub_folder = 'LO/'
+            else
+              if @image_type == 'HI'
+                imageFileName = imageFileName + "_HI.jpg"
+                image_sub_folder = 'HI/'
+              else if @image_type == 'TIFF'
+                      imageFileName = imageFileName + ".tiff"
+                      image_sub_folder = 'TIFF/'
+                   end
+              end
             end
 
             imageLocation = [@base_folder + image_sub_folder + imageFileName]
@@ -192,30 +206,47 @@ class FoxmlImporter < ApplicationController
         #byebug
         #  CharacterizeJob.perform_now(fs, fs.files.first.id)
         #end
+        if artefact.creator.empty?
+          artefact.creator = ['Unattributed']
+        end
+
+        if artefact.keyword.empty?
+          artefact.keyword = ['Unassigned']
+        end
 
         artefact.save
 
-        if !owner_rec.id.blank? && owner_rec.id != '000000000'
+        if owner_rec.present? && owner_rec.id != '000000000'
            owner_rec.members << artefact
            owner_rec.ordered_members << artefact
            owner_rec.save
         end
 
-        if Rails.env != "test"
-          archive_folder = @base_folder + Date.today.to_s + '_ingested_xml_files'
-          if Dir.exists?(archive_folder)
-            dest_file_path = archive_folder + '/' + @filename
-            FileUtils.mv(@file_path, dest_file_path)
-          else
-            FileUtils.mkdir(archive_folder)
-            dest_file_path = archive_folder + '/' + @filename
-            FileUtils.mv(@file_path, dest_file_path)
-          end
+        if coll_owner_rec.present? && coll_owner_rec.id != '000000000'
+           #coll_owner_rec.members << artefact
+           #coll_owner_rec.ordered_members << artefact
+           #coll_owner_rec.save
+           artefact.member_of_collections << coll_owner_rec
+           artefact.save
         end
 
       Rails.logger.info "*** End Ingesting #{artefact.class} file #{@file_path}. =>TCD<="
 
       end
+
+      if Rails.env != "test"
+        archive_folder = @base_folder + Date.today.to_s + '_ingested_xml_files'
+        if Dir.exists?(archive_folder)
+          dest_file_path = archive_folder + '/' + @filename
+          FileUtils.mv(@file_path, dest_file_path)
+        else
+          FileUtils.mkdir(archive_folder)
+          dest_file_path = archive_folder + '/' + @filename
+          FileUtils.mv(@file_path, dest_file_path)
+        end
+      end
+
+
   end
 
   def parse(link, artefact, owner_rec)
@@ -264,7 +295,7 @@ class FoxmlImporter < ApplicationController
             #if !(owner_rec.contributor.include?(individual.content))
             #  artefact.contributor.push(individual.content)
             #end
-            if !(owner_rec.creator_loc.include?(individual.content))
+            if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.creator_loc.include?(individual.content)))
               artefact.creator_loc.push(individual.content)
             end
             #artefact.creator.push(individual.content)
@@ -276,7 +307,7 @@ class FoxmlImporter < ApplicationController
       link.xpath("xmlns:OtherArtist").each do |anArtist|
         if !anArtist.content.blank?
           anArtist.xpath("xmlns:DATA").each do |individual|
-            if !(owner_rec.creator_local.include?(individual.content))
+            if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.creator_local.include?(individual.content)))
               artefact.creator_local.push(individual.content)
             end
           end
@@ -314,7 +345,7 @@ class FoxmlImporter < ApplicationController
               end
 
             end
-            # byebug
+            #
             dataToIngest = name + ', ' + role
             if !dataToIngest.blank?
               if Role_codes_creator.include?(roleCode)
@@ -326,7 +357,7 @@ class FoxmlImporter < ApplicationController
                         end
                    end
               end
-               
+
               if Role_codes_donor.include?(roleCode)
                  artefact.provenance.push(dataToIngest)
               end
@@ -437,7 +468,8 @@ class FoxmlImporter < ApplicationController
       # publisher
       link.xpath("xmlns:Publisher").each do |publisher|
         if !publisher.content.blank?
-          if !(owner_rec.publisher.include?(publisher.content)) then
+
+          if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.publisher.include?(publisher.content)))
              artefact.publisher = [publisher.content]
           end
         end
@@ -485,7 +517,7 @@ class FoxmlImporter < ApplicationController
       #      end
       #    end
       #  end
-      #end
+      #
 
       # language
       link.xpath("xmlns:Language").each do |languages|
@@ -509,7 +541,7 @@ class FoxmlImporter < ApplicationController
       link.xpath("xmlns:Location").each do |location|
         if !location.content.blank?
           location.xpath("xmlns:DATA").each do |aLocation|
-            if !(owner_rec.location.include?(aLocation.content))
+            if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.location.include?(aLocation.content)))
                artefact.location.push(aLocation.content)
             end
           end
@@ -525,7 +557,7 @@ class FoxmlImporter < ApplicationController
       # resource_type
       link.xpath("xmlns:Type").each do |aType|
         if !aType.content.blank?
-          if !(owner_rec.resource_type.include?(aType.content)) then
+          if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.resource_type.include?(aType.content)))
              artefact.resource_type = [aType.content]
           end
         end
@@ -534,10 +566,10 @@ class FoxmlImporter < ApplicationController
       # genre -> TypeOfWork
       link.xpath("xmlns:TypeOfWork").each do |aTypeOfWork|
         if !aTypeOfWork.content.blank?
-          if !(owner_rec.genre.include?(aTypeOfWork.content)) then
+          if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.genre.include?(aTypeOfWork.content)))
              artefact.genre.push(aTypeOfWork.content)
           end
-          if !(owner_rec.genre_aat.include?(aTypeOfWork.content)) then
+          if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.genre_aat.include?(aTypeOfWork.content)))
              artefact.genre_aat.push(aTypeOfWork.content)
           end
         end
@@ -546,7 +578,7 @@ class FoxmlImporter < ApplicationController
       # bibliography
       link.xpath("xmlns:Bibliography").each do |aBibliography|
         if !aBibliography.content.blank?
-          if !(owner_rec.bibliography.include?(aBibliography.content)) then
+          if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.bibliography.include?(aBibliography.content)))
              artefact.bibliography = [aBibliography.content]
           end
         end
@@ -556,7 +588,7 @@ class FoxmlImporter < ApplicationController
       if artefact.class == Folio || artefact.class == Subseries
           link.xpath("xmlns:DrisPageNo").each do |aDrisPageNo|
             if !aDrisPageNo.content.blank?
-              if !(owner_rec.dris_page_no.include?(aDrisPageNo.content)) then
+              if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.dris_page_no.include?(aDrisPageNo.content)))
                  artefact.dris_page_no = [aDrisPageNo.content]
               end
             end
@@ -566,7 +598,7 @@ class FoxmlImporter < ApplicationController
       # dris_document_no
       link.xpath("xmlns:DrisDocumentNo").each do |aDrisDocumentNo|
         if !aDrisDocumentNo.content.blank?
-          if !(owner_rec.dris_document_no.include?(aDrisDocumentNo.content)) then
+          if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.dris_document_no.include?(aDrisDocumentNo.content)))
              artefact.dris_document_no = [aDrisDocumentNo.content]
           end
         end
@@ -575,7 +607,7 @@ class FoxmlImporter < ApplicationController
       # dris_unique
       link.xpath("xmlns:DrisUnique").each do |aDrisUnique|
         if !aDrisUnique.content.blank?
-          if !(owner_rec.dris_unique.include?(aDrisUnique.content)) then
+          if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.dris_unique.include?(aDrisUnique.content)))
             artefact.dris_unique = [aDrisUnique.content]
           end
         end
@@ -584,7 +616,7 @@ class FoxmlImporter < ApplicationController
       # format_duration
       link.xpath("xmlns:FormatDur").each do |aFormatDuration|
         if !aFormatDuration.content.blank?
-          if !(owner_rec.format_duration.include?(aFormatDuration.content)) then
+          if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.format_duration.include?(aFormatDuration.content)))
              artefact.format_duration = [aFormatDuration.content]
           end
         end
@@ -593,7 +625,7 @@ class FoxmlImporter < ApplicationController
       # format_resolution
       link.xpath("xmlns:FormatResolution").each do |aFormatResolution|
         if !aFormatResolution.content.blank?
-          if !(owner_rec.format_resolution.include?(aFormatResolution.content)) then
+          if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.format_resolution.include?(aFormatResolution.content)))
              artefact.format_resolution = [aFormatResolution.content]
           end
         end
@@ -612,7 +644,7 @@ class FoxmlImporter < ApplicationController
       link.xpath("xmlns:CopyrightNotes").each do |copyrightNotes|
         if !copyrightNotes.content.blank?
           copyrightNotes.xpath("xmlns:DATA").each do |aCopyrightNote|
-            if !(owner_rec.copyright_note.include?(aCopyrightNote.content))
+            if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.copyright_note.include?(aCopyrightNote.content)))
                artefact.copyright_note.push(aCopyrightNote.content)
             end
           end
@@ -622,7 +654,7 @@ class FoxmlImporter < ApplicationController
       # digital_root_number -> CatNo
       link.xpath("xmlns:CatNo").each do |aDigitalRootNumber|
         if !aDigitalRootNumber.content.blank?
-          if !(owner_rec.digital_root_number.include?(aDigitalRootNumber.content)) then
+          if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.digital_root_number.include?(aDigitalRootNumber.content)))
              artefact.digital_root_number = [aDigitalRootNumber.content]
           end
         end
@@ -632,7 +664,7 @@ class FoxmlImporter < ApplicationController
       if artefact.class == Folio || artefact.class == Subseries
           link.xpath("xmlns:DRISPhotoID").each do |aDigitalObjectId|
             if !aDigitalObjectId.content.blank?
-              if !(owner_rec.digital_object_identifier.include?(aDigitalObjectId.content)) then
+              if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.digital_object_identifier.include?(aDigitalObjectId.content)))
                  artefact.digital_object_identifier = [aDigitalObjectId.content]
               end
             end
@@ -653,7 +685,7 @@ class FoxmlImporter < ApplicationController
       link.xpath("xmlns:LocationType").each do |locationTypes|
         if !locationTypes.content.blank?
           locationTypes.xpath("xmlns:DATA").each do |aLocationType|
-            if !(owner_rec.location_type.include?(aLocationType.content))
+            if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.location_type.include?(aLocationType.content)))
               artefact.location_type.push(aLocationType.content)
             end
           end
@@ -692,7 +724,7 @@ class FoxmlImporter < ApplicationController
       # sponsor -> Sponsor
       link.xpath("xmlns:Sponsor").each do |aSponsor|
         if !aSponsor.content.blank?
-          if !(owner_rec.sponsor.include?(aSponsor.content)) then
+          if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.sponsor.include?(aSponsor.content)))
              artefact.sponsor.push(aSponsor.content)
           end
         end
@@ -701,7 +733,7 @@ class FoxmlImporter < ApplicationController
       # conservation_history -> Introduction
       link.xpath("xmlns:Introduction").each do |aConsHist|
         if !aConsHist.content.blank?
-          if !(owner_rec.conservation_history.include?(aConsHist.content)) then
+          if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.conservation_history.include?(aConsHist.content)))
              artefact.conservation_history.push(aConsHist.content)
           end
         end
@@ -710,14 +742,14 @@ class FoxmlImporter < ApplicationController
       # publisher_location -> PublisherCity; PublisherCountry
       link.xpath("xmlns:PublisherCity").each do |aPublisherLoc|
         if !aPublisherLoc.content.blank?
-          if !(owner_rec.publisher_location.include?(aPublisherLoc.content)) then
+          if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.publisher_location.include?(aPublisherLoc.content)))
              artefact.publisher_location.push(aPublisherLoc.content)
           end
         end
       end
       link.xpath("xmlns:PublisherCountry").each do |aPublisherLoc|
         if !aPublisherLoc.content.blank?
-          if !(owner_rec.publisher_location.include?(aPublisherLoc.content)) then
+          if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.publisher_location.include?(aPublisherLoc.content)))
              artefact.publisher_location.push(aPublisherLoc.content)
           end
         end
@@ -726,14 +758,14 @@ class FoxmlImporter < ApplicationController
       # page_number -> PageNo; PageNoB
       link.xpath("xmlns:PageNo").each do |aPageNo|
         if !aPageNo.content.blank?
-          if !(owner_rec.page_number.include?(aPageNo.content)) then
+          if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.page_number.include?(aPageNo.content)))
              artefact.page_number.push(aPageNo.content)
           end
         end
       end
       link.xpath("xmlns:PageNoB").each do |aPageNo|
         if !aPageNo.content.blank?
-          if !(owner_rec.page_number.include?(aPageNo.content)) then
+          if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.page_number.include?(aPageNo.content)))
              artefact.page_number.push(aPageNo.content)
           end
         end
@@ -742,14 +774,14 @@ class FoxmlImporter < ApplicationController
       # page_type -> PageType; PageTypeB
       link.xpath("xmlns:PageType").each do |aPageType|
         if !aPageType.content.blank?
-          if !(owner_rec.page_type.include?(aPageType.content)) then
+          if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.page_type.include?(aPageType.content)))
              artefact.page_type.push(aPageType.content)
           end
         end
       end
       link.xpath("xmlns:PageTypeB").each do |aPageType|
         if !aPageType.content.blank?
-          if !(owner_rec.page_type.include?(aPageType.content)) then
+          if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.page_type.include?(aPageType.content)))
              artefact.page_type.push(aPageType.content)
           end
         end
@@ -758,7 +790,7 @@ class FoxmlImporter < ApplicationController
       # physical_extent -> FormatW
       link.xpath("xmlns:FormatW").each do |aPhysicalExtent|
         if !aPhysicalExtent.content.blank?
-          if !(owner_rec.physical_extent.include?(aPhysicalExtent.content)) then
+          if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.physical_extent.include?(aPhysicalExtent.content)))
              artefact.physical_extent.push(aPhysicalExtent.content)
           end
         end
@@ -795,7 +827,7 @@ class FoxmlImporter < ApplicationController
       link.xpath("xmlns:RelatedItemType").each do |relatedItemTypes|
         if !relatedItemTypes.content.blank?
           relatedItemTypes.xpath("xmlns:DATA").each do |aRelatedItemType|
-            if !(owner_rec.related_item_type.include?(aRelatedItemType.content))
+            if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.related_item_type.include?(aRelatedItemType.content)))
                artefact.related_item_type.push(aRelatedItemType.content)
             end
           end
@@ -806,7 +838,7 @@ class FoxmlImporter < ApplicationController
       link.xpath("xmlns:RelatedItemIdentifier").each do |relatedItemIdentifier|
         if !relatedItemIdentifier.content.blank?
           relatedItemIdentifier.xpath("xmlns:DATA").each do |aRelatedItemIdentifier|
-            if !(owner_rec.related_item_identifier.include?(aRelatedItemIdentifier.content))
+            if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.related_item_identifier.include?(aRelatedItemIdentifier.content)))
                artefact.related_item_identifier.push(aRelatedItemIdentifier.content)
             end
           end
@@ -817,7 +849,7 @@ class FoxmlImporter < ApplicationController
       link.xpath("xmlns:RelatedItemTitle").each do |relatedItemTitle|
         if !relatedItemTitle.content.blank?
           relatedItemTitle.xpath("xmlns:DATA").each do |aRelatedItemTitle|
-            if !(owner_rec.related_item_title.include?(aRelatedItemTitle.content))
+            if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.related_item_title.include?(aRelatedItemTitle.content)))
                artefact.related_item_title.push(aRelatedItemTitle.content)
             end
           end
@@ -838,16 +870,16 @@ class FoxmlImporter < ApplicationController
       link.xpath("xmlns:OpenKeyword").each do |subjects|
         if !subjects.content.blank?
           subjects.xpath("xmlns:DATA").each do |aSubject|
-            if !(owner_rec.keyword.include?(aSubject.content))
+            if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.keyword.include?(aSubject.content)))
                artefact.keyword.push(aSubject.content)
             end
-            if !(owner_rec.subject_local_keyword.include?(aSubject.content))
+            if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.subject_local_keyword.include?(aSubject.content)))
                artefact.subject_local_keyword.push(aSubject.content)
             end
           end
         end
       end
-
+     
       # subject_name -> LCSubjectNames
       link.xpath("xmlns:LCSubjectNames").each do |subjects|
         if !subjects.content.blank?
@@ -862,7 +894,7 @@ class FoxmlImporter < ApplicationController
       link.xpath("xmlns:OtherTitle").each do |titles|
         if !titles.content.blank?
           titles.xpath("xmlns:DATA").each do |aTitle|
-            if !(owner_rec.alternative_title.include?(aTitle.content))
+            if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.alternative_title.include?(aTitle.content)))
                artefact.alternative_title.push(aTitle.content)
             end
           end
@@ -873,7 +905,7 @@ class FoxmlImporter < ApplicationController
       link.xpath("xmlns:SeriesReportNo").each do |titles|
         if !titles.content.blank?
           titles.xpath("xmlns:DATA").each do |aTitle|
-            if !(owner_rec.series_title.include?(aTitle.content))
+            if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.series_title.include?(aTitle.content)))
                artefact.series_title.push(aTitle.content)
             end
           end
@@ -890,7 +922,7 @@ class FoxmlImporter < ApplicationController
       # virtual_collection_title -> TitleLargerEntity2
       link.xpath("xmlns:TitleLargerEntity2").each do |aTitle|
         if !aTitle.content.blank?
-          if !(owner_rec.virtual_collection_title.include?(aTitle.content)) then
+          if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.virtual_collection_title.include?(aTitle.content)))
              artefact.virtual_collection_title.push(aTitle.content)
           end
         end
@@ -906,7 +938,7 @@ class FoxmlImporter < ApplicationController
       # visibility_flag
       link.xpath("xmlns:Visibility").each do |visibilityFlag|
         if !visibilityFlag.content.blank?
-          if !(owner_rec.visibility_flag.include?(visibilityFlag.content)) then
+          if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.visibility_flag.include?(visibilityFlag.content)))
              artefact.visibility_flag.push(visibilityFlag.content)
           end
         end
@@ -915,7 +947,7 @@ class FoxmlImporter < ApplicationController
       # europeana
       link.xpath("xmlns:Europeana").each do |europeanaFlag|
         if !europeanaFlag.content.blank?
-          if !(owner_rec.europeana.include?(europeanaFlag.content)) then
+          if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.europeana.include?(europeanaFlag.content)))
              artefact.europeana.push(europeanaFlag.content)
           end
         end
@@ -924,7 +956,7 @@ class FoxmlImporter < ApplicationController
       # solr_flag -> Image
       link.xpath("xmlns:Image").each do |imageFlag|
         if !imageFlag.content.blank?
-          if !(owner_rec.solr_flag.include?(imageFlag.content)) then
+          if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.solr_flag.include?(imageFlag.content)))
              artefact.solr_flag.push(imageFlag.content)
           end
         end
@@ -942,7 +974,7 @@ class FoxmlImporter < ApplicationController
       # county -> CALM
       link.xpath("xmlns:CALM").each do |calmRef|
         if !calmRef.content.blank?
-          if !(owner_rec.county.include?(calmRef.content)) then
+          if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.county.include?(calmRef.content)))
              artefact.county.push(calmRef.content)
           end
         end
@@ -951,7 +983,7 @@ class FoxmlImporter < ApplicationController
       # project_number
       link.xpath("xmlns:ProjectNo").each do |projNo|
         if !projNo.content.blank?
-          if !(owner_rec.project_number.include?(projNo.content)) then
+          if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.project_number.include?(projNo.content)))
              artefact.project_number.push(projNo.content)
           end
         end
@@ -960,7 +992,7 @@ class FoxmlImporter < ApplicationController
       # order_no -> LCN
       link.xpath("xmlns:LCN").each do |orderNo|
         if !orderNo.content.blank?
-          if !(owner_rec.order_no.include?(orderNo.content)) then
+          if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.order_no.include?(orderNo.content)))
              artefact.order_no.push(orderNo.content)
           end
         end
@@ -969,7 +1001,7 @@ class FoxmlImporter < ApplicationController
       # total_records
       link.xpath("xmlns:PageTotal").each do |totalRecs|
         if !totalRecs.content.blank?
-          if !(owner_rec.total_records.include?(totalRecs.content)) then
+          if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.total_records.include?(totalRecs.content)))
              artefact.total_records.push(totalRecs.content)
           end
         end

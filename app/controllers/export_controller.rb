@@ -1,6 +1,6 @@
 class ExportController < ApplicationController
   include Hydra::Controller::ControllerBehavior
-  require 'iso-639'
+  #require 'iso-639'
 
   def dublinCore
 
@@ -97,7 +97,11 @@ class ExportController < ApplicationController
 
               owner_rec.language.each do |attribute|
                 if !attribute.blank?
-                   xml.send('dc:language', ISO_639.find_by_english_name(attribute).alpha2)
+                   lang = Iso639[attribute]
+                  
+                   if lang.present?
+                      xml.send('dc:language', Iso639[attribute].english_name)
+                   end
                 end
               end
 
@@ -134,7 +138,7 @@ class ExportController < ApplicationController
                 if !attribute.blank?
                    xml.send('dc:provenance', attribute)
                 end
-              end              
+              end
 
             }
           end

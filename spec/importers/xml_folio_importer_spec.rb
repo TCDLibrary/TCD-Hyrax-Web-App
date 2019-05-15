@@ -22,7 +22,7 @@ RSpec.describe FoxmlImporter do
 
   it "stores data in correct fields in the Folio" do
      #XmlFolioImporter.new(file_example).import
-     artefact = Folio.new
+     artefact = Folio
      expect { FoxmlImporter.new(object_model, ::User.batch_user, file_example, parent_id, parent_type,  'LO', base_folder).import(artefact) }.to change { Folio.count }.by 1
 
      imported_folio = Folio.first

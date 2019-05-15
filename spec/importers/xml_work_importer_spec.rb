@@ -19,7 +19,7 @@ RSpec.describe FoxmlImporter do
   end
 
   it "stores data in correct fields in the work" do
-     artefact = Work.new
+     artefact = Work
      expect { FoxmlImporter.new(object_model, ::User.batch_user, file_example, parent_id, parent_type,  'LO', base_folder).import(artefact) }.to change { Work.count }.by 1
 
      imported_work = Work.first

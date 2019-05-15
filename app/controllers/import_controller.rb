@@ -46,18 +46,18 @@ class ImportController < ApplicationController
     #byebug
     if new_object_type == "folio(s)"
       #admin_set_id =  AdminSet.find_or_create_default_admin_set_id
-      artefact = Folio.new
-      FoxmlImporter.new(object_model,current_user, file_name, parent_id, parent_type, image_type).import(artefact)
+      artefactClass = Folio
+      FoxmlImporter.new(object_model,current_user, file_name, parent_id, parent_type, image_type).import(artefactClass)
     end
 
     if new_object_type == "subseries(s)"
-      artefact = Subseries.new
-      FoxmlImporter.new(object_model,current_user, file_name, parent_id, parent_type, image_type).import(artefact)
+      artefactClass = Subseries
+      FoxmlImporter.new(object_model,current_user, file_name, parent_id, parent_type, image_type).import(artefactClass)
     end
 
     if new_object_type == "work(s)"
-        artefact = Work.new
-        FoxmlImporter.new(object_model, current_user,file_name, parent_id, parent_type, image_type).import(artefact)
+        artefactClass = Work
+        FoxmlImporter.new(object_model, current_user,file_name, parent_id, parent_type, image_type).import(artefactClass)
     end
 
     #if new_object_type == "collection(s)"

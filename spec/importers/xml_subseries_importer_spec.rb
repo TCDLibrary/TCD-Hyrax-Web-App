@@ -20,7 +20,7 @@ RSpec.describe FoxmlImporter do
   end
 
   it "stores data in correct fields in the Subseries" do
-     artefact = Subseries.new
+     artefact = Subseries
      expect { FoxmlImporter.new(object_model, ::User.batch_user, file_example, parent_id, parent_type,  'LO', base_folder).import(artefact) }.to change { Subseries.count }.by 1
 
      imported_subseries = Subseries.first
