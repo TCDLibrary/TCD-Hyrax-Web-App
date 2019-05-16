@@ -1,6 +1,6 @@
 set :stage, :demovm045
 set :rails_env, :demovm045
-set :branch, "csv-import"
+set :branch, "demo-ingests"
 
 # server-based syntax
 # ======================

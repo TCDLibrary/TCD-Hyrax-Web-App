@@ -8,7 +8,7 @@ set :repo_url, "https://github.com/joelakes/TCD-Hyrax-Web-App.git"
 set :passenger_restart_with_touch, true
 
 # Default branch is :master
-ask :branch, `git rev-parse --abbrev-ref csv-import`.chomp
+ask :branch, `git rev-parse --abbrev-ref demo-ingests`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/var/www/TCD-Hyrax-Web-App"
