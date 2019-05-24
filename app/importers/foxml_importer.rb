@@ -135,72 +135,73 @@ class FoxmlImporter < ApplicationController
         #imageLocation = "spec/fixtures/" + imageFileName
         #imageLocation = @base_folder + image_sub_folder + imageFileName
 
-        if @object_model == "Single Object, Multiple Images"
-            # image file names are derived from CatNo + wildcard
-            imageWildcard = ""
-            link.xpath("xmlns:CatNo").each do |catNo|
-              if !catNo.content.blank?
-                imageWildcard = catNo.content.to_s
-              end
-            end
-
-            if @image_type == 'LO'
-              image_sub_folder = 'LO/'
-            else
-              if @image_type == 'HI'
-                image_sub_folder = 'HI/'
-              else if @image_type == 'TIFF'
-                      image_sub_folder = 'TIFF/'
-                   end
-              end
-            end
-
-            imageFolderName = @base_folder + image_sub_folder
-            fileName = imageFolderName + imageWildcard + "*"
-
-            imageLocation = Dir[fileName].sort
-            #byebug
-        else
-            # @object_model is "Multiple Objects, One Image Each"
-            # image file name is in DRISPhotoID
-            imageFileName = ""
-            link.xpath("xmlns:DRISPhotoID").each do |drisPhotoId|
-              if !drisPhotoId.content.blank?
-                imageFileName = drisPhotoId.content.to_s
-              end
-            end
-
-            if @image_type == 'LO'
-                imageFileName = imageFileName + "_LO.jpg"
-                image_sub_folder = 'LO/'
-            else
-              if @image_type == 'HI'
-                imageFileName = imageFileName + "_HI.jpg"
-                image_sub_folder = 'HI/'
-              else if @image_type == 'TIFF'
-                      imageFileName = imageFileName + ".tiff"
-                      image_sub_folder = 'TIFF/'
-                   end
-              end
-            end
-
-            imageLocation = [@base_folder + image_sub_folder + imageFileName]
-        end
-
-        #byebug
-        uploaded_files = []
-        imageLocation.each do | oneImage |
-            artefact_binary = File.open("#{oneImage}")
-            uploaded_files << Hyrax::UploadedFile.create(user: @user, file: artefact_binary)
-        end
-        #byebug
-        fileMap = uploaded_files.map do | aFile |
-                    aFile.id
+        if @image_type == 'HI' || @image_type == 'LO' || @image_type == 'TIFF'
+            if @object_model == "Single Object, Multiple Images"
+                # image file names are derived from CatNo + wildcard
+                imageWildcard = ""
+                link.xpath("xmlns:CatNo").each do |catNo|
+                  if !catNo.content.blank?
+                    imageWildcard = catNo.content.to_s
                   end
-        #byebug
-        attributes_for_actor = { uploaded_files: fileMap }
-        env = Hyrax::Actors::Environment.new(artefact, ::Ability.new(@user), attributes_for_actor)
-        Hyrax::CurationConcern.actor.create(env)
+                end
+
+                if @image_type == 'LO'
+                  image_sub_folder = 'LO/'
+                else
+                  if @image_type == 'HI'
+                    image_sub_folder = 'HI/'
+                  else if @image_type == 'TIFF'
+                          image_sub_folder = 'TIFF/'
+                       end
+                  end
+                end
+
+                imageFolderName = @base_folder + image_sub_folder
+                fileName = imageFolderName + imageWildcard + "*"
+
+                imageLocation = Dir[fileName].sort
+                #byebug
+            else
+                # @object_model is "Multiple Objects, One Image Each"
+                # image file name is in DRISPhotoID
+                imageFileName = ""
+                link.xpath("xmlns:DRISPhotoID").each do |drisPhotoId|
+                  if !drisPhotoId.content.blank?
+                    imageFileName = drisPhotoId.content.to_s
+                  end
+                end
+
+                if @image_type == 'LO'
+                    imageFileName = imageFileName + "_LO.jpg"
+                    image_sub_folder = 'LO/'
+                else
+                  if @image_type == 'HI'
+                    imageFileName = imageFileName + "_HI.jpg"
+                    image_sub_folder = 'HI/'
+                  else if @image_type == 'TIFF'
+                          imageFileName = imageFileName + ".tiff"
+                          image_sub_folder = 'TIFF/'
+                       end
+                  end
+                end
+
+                imageLocation = [@base_folder + image_sub_folder + imageFileName]
+            end
+            #byebug
+            uploaded_files = []
+            imageLocation.each do | oneImage |
+                artefact_binary = File.open("#{oneImage}")
+                uploaded_files << Hyrax::UploadedFile.create(user: @user, file: artefact_binary)
+            end
+            #byebug
+            fileMap = uploaded_files.map do | aFile |
+                        aFile.id
+                      end
+            #byebug
+            attributes_for_actor = { uploaded_files: fileMap }
+            env = Hyrax::Actors::Environment.new(artefact, ::Ability.new(@user), attributes_for_actor)
+            Hyrax::CurationConcern.actor.create(env)
+        end
         # TODO: there are no filesets at this time. Probably added in separate thread above.
         #artefact.file_sets.each do | fs |
         #byebug
@@ -879,7 +880,7 @@ class FoxmlImporter < ApplicationController
           end
         end
       end
-     
+
       # subject_name -> LCSubjectNames
       link.xpath("xmlns:LCSubjectNames").each do |subjects|
         if !subjects.content.blank?
