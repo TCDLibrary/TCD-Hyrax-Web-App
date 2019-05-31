@@ -26,6 +26,7 @@ dump.rdb
 /fits.log
 
 # Ignore the ingest files
+!public/data/ingest/HI/fa-file.jpg
 /public/data/ingest/*
 
 # Ignore the branding files

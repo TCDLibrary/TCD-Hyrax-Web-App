@@ -8,6 +8,7 @@ development:
     - jlakes@tcd.ie
     - batchuser@example.com
     - test@example.com
+    - magar@tcd.ie
 
 demovm045:
   archivist:
@@ -17,6 +18,7 @@ demovm045:
     - jlakes@tcd.ie
     - batchuser@example.com
     - test@example.com
+    - magar@tcd.ie
 
 test:
   admin:

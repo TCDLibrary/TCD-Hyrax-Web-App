@@ -189,9 +189,18 @@ class FoxmlImporter < ApplicationController
             end
             #byebug
             uploaded_files = []
-            imageLocation.each do | oneImage |
-                artefact_binary = File.open("#{oneImage}")
-                uploaded_files << Hyrax::UploadedFile.create(user: @user, file: artefact_binary)
+            #byebug
+            begin
+              imageLocation.each do | oneImage |
+                  artefact_binary = File.open("#{oneImage}")
+                  uploaded_files << Hyrax::UploadedFile.create(user: @user, file: artefact_binary)
+              end
+            rescue
+              imageLocation = [@base_folder + 'HI/' + 'fa-file.jpg']
+              imageLocation.each do | oneImage |
+                  artefact_binary = File.open("#{oneImage}")
+                  uploaded_files << Hyrax::UploadedFile.create(user: @user, file: artefact_binary)
+              end
             end
             #byebug
             fileMap = uploaded_files.map do | aFile |
@@ -201,6 +210,34 @@ class FoxmlImporter < ApplicationController
             attributes_for_actor = { uploaded_files: fileMap }
             env = Hyrax::Actors::Environment.new(artefact, ::Ability.new(@user), attributes_for_actor)
             Hyrax::CurationConcern.actor.create(env)
+        else
+            imageLocation = [@base_folder + 'HI/' + 'fa-file.jpg']
+            uploaded_files = []
+            imageLocation.each do | oneImage |
+                artefact_binary = File.open("#{oneImage}")
+                uploaded_files << Hyrax::UploadedFile.create(user: @user, file: artefact_binary)
+            end
+            #byebug
+            fileMap = uploaded_files.map do | aFile |
+                        aFile.id
+                      end
+
+            attributes_for_actor = { uploaded_files: fileMap }
+            env = Hyrax::Actors::Environment.new(artefact, ::Ability.new(@user), attributes_for_actor)
+            Hyrax::CurationConcern.actor.create(env)
+            #uploaded_files = []
+            #imageLocation = [@base_folder + 'LO/Font Awesome Image.jpg']
+            #imageLocation.each do | oneImage |
+            #    artefact_binary = File.open("#{oneImage}")
+            #    uploaded_files << Hyrax::UploadedFile.create(user: @user, file: artefact_binary)
+            #end
+            #fileMap = uploaded_files.map do | aFile |
+            #              aFile.id
+            #          end
+            ##byebug
+            #attributes_for_actor = { uploaded_files: fileMap }
+            #env = Hyrax::Actors::Environment.new(artefact, ::Ability.new(@user), attributes_for_actor)
+            #Hyrax::CurationConcern.actor.create(env)
         end
         # TODO: there are no filesets at this time. Probably added in separate thread above.
         #artefact.file_sets.each do | fs |
