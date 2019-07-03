@@ -97,6 +97,7 @@ group :development, :test, :demovm045 do
 end
 
 gem 'riiif' #, '~> 1.1'
+
 gem 'yaml_db'
 
 # JL 10/04/2019 Added iso639 for language codes when building Dublin Core output

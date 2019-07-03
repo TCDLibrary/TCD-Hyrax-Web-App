@@ -60,6 +60,7 @@ class ImportController < ApplicationController
         FoxmlImporter.new(object_model, current_user,file_name, parent_id, parent_type, image_type).import(artefactClass)
     end
 
+    flash[:notice] = "Ingest has been submitted"
     #if new_object_type == "collection(s)"
     #    XmlCollectionImporter.new(current_user, work_file_example).import
     #end
