@@ -33,3 +33,6 @@ dump.rdb
 /public/branding/*
 
 .byebug_history
+
+# Ignore capistrano version
+/REVISION
