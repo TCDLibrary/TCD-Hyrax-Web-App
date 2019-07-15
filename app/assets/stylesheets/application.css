@@ -14,3 +14,12 @@
  *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
  *= require_self
  */
+
+ @font-face {
+   font-family: 'TCDWebFont';
+   src: url('OpenSans-Regular.ttf')  format('truetype'); /* Safari, Android, iOS */
+ }
+
+* {
+  font-family: 'TCDWebFont', Fallback, sans-serif;
+}

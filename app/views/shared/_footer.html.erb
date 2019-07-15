@@ -1,15 +1,35 @@
-<footer class="navbar navbar-inverse site-footer">
+<style>
+  a.foot { color:#dbdbdb; }
+  a.foot:visited { color:#dbdbdb; }
+  .navbar { background-color: #343c3f; }
+</style>
+
+<footer class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-text text-left">
+        <p>Trinity College Dublin, The University of Dublin</p>
+        <p>College Green</p>
+        <p>Dublin 2, Ireland</p>
+        <p>T: +353 1 896 1000</p>
+        <p>&nbsp;</p>
         <p>Revision: <%= File.read("REVISION") %></p>
-        <p><%= t('hyrax.footer.service_html') %></p>
-        <p><%= t('hyrax.product_name') %> v<%= Hyrax::VERSION %></p>
+      <!--  <p><%= t('hyrax.footer.service_html') %></p>
+        <p><%= t('hyrax.product_name') %> v<%= Hyrax::VERSION %></p> -->
     </div>
+    <!--    <p><%= t('hyrax.footer.copyright_html') %></p>
+        <p><%= t('hyrax.background_attribution_html') %></p> -->
+
+
     <div class="navbar-right">
-      <div class="navbar-text text-right">
-        <p><%= t('hyrax.footer.copyright_html') %></p>
-        <p><%= t('hyrax.background_attribution_html') %></p>
+          <div class="navbar-text text-left">
+
+        <p><a href="//www.tcd.ie/accessibility/" class="foot"><i class="fa fa-angle-double-right" style="font-size:12px; color:#2997bc;"></i>&nbsp; Trinity Accessibility</a></p>
+        <p><a href="//www.tcd.ie/privacy/" class="foot"><i class="fa fa-angle-double-right" style="font-size:12px; color:#2997bc;"></i>&nbsp; Trinity Privacy</a></p>
+        <p><a href="//www.tcd.ie/disclaim/" class="foot"><i class="fa fa-angle-double-right" style="font-size:12px; color:#2997bc;"></i>&nbsp; Trinity Disclaimer</a></p>
+        <p><a href="//www.tcd.ie/contacts/" class="foot"><i class="fa fa-angle-double-right" style="font-size:12px; color:#2997bc;"></i>&nbsp; Trinity Contact</a></p>
+
       </div>
     </div>
+
   </div>
 </footer>
