@@ -108,7 +108,8 @@ Hyrax.config do |config|
 
   # Hyrax can integrate with Zotero's Arkivo service for automatic deposit
   # of Zotero-managed research items.
-  # config.arkivo_api = false
+  # JL : 16/07/2019 : Try to turn Zotero service on
+  config.arkivo_api = true
 
   # Stream realtime notifications to users in the browser
   # config.realtime_notifications = true
@@ -207,7 +208,9 @@ Hyrax.config do |config|
   # config.audit_user_key = 'audituser@example.com'
   #
   # The banner image. Should be 5000px wide by 1000px tall
-  # config.banner_image = 'https://cloud.githubusercontent.com/assets/92044/18370978/88ecac20-75f6-11e6-8399-6536640ef695.jpg'
+  #config.banner_image = 'https://cloud.githubusercontent.com/assets/92044/18370978/88ecac20-75f6-11e6-8399-6536640ef695.jpg'
+  #config.banner_image = Rails.root.join('public', 'data/ingest/HI/countryside.jpg')
+  #config.banner_image = 'https://github.com/joelakes/TCD-Hyrax-Web-App/blob/master/public/branding/1g05fb60f/logo/trinity-college__2_.jpg?raw=true'
 
   # Temporary paths to hold uploads before they are ingested into FCrepo
   # These must be lambdas that return a Pathname. Can be configured separately
