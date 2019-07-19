@@ -111,6 +111,46 @@ class SolrDocument
     self[Solrizer.solr_name('provenance')]
   end
 
+  def camera_model
+    self[Solrizer.solr_name('camera_model')]
+  end
+
+  def camera_make
+    self[Solrizer.solr_name('camera_make')]
+  end
+
+  def date_taken
+    self[Solrizer.solr_name('date_taken')]
+  end
+
+  def exposure_time
+    self[Solrizer.solr_name('exposure_time')]
+  end
+
+  def f_number
+    self[Solrizer.solr_name('f_number')]
+  end
+
+  def iso_speed_rating
+    self[Solrizer.solr_name('iso_speed_rating')]
+  end
+
+  def flash
+    self[Solrizer.solr_name('flash')]
+  end
+
+  def exposure_program
+    self[Solrizer.solr_name('exposure_program')]
+  end
+
+  def focal_length
+    self[Solrizer.solr_name('focal_length')]
+  end
+
+  def software
+    self[Solrizer.solr_name('software')]
+  end
+
   def culture
     self[Solrizer.solr_name('culture')]
   end

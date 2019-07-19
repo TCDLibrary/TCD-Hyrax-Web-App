@@ -27,7 +27,16 @@ module Hyrax
         solr_doc['duration_tesim']          = object.duration
         solr_doc['sample_rate_tesim']       = object.sample_rate
         solr_doc['original_checksum_tesim'] = object.original_checksum
-        solr_doc['provenance_tesim'] = object.provenance
+        solr_doc['camera_model_tesim'] = object.camera_model
+        solr_doc['camera_make_tesim'] = object.camera_make
+        solr_doc['date_taken_tesim'] = object.date_taken
+        solr_doc['exposure_time_tesim'] = object.exposure_time
+        solr_doc['f_number_tesim'] = object.f_number
+        solr_doc['iso_speed_rating_tesim'] = object.iso_speed_rating
+        solr_doc['flash_tesim'] = object.flash
+        solr_doc['exposure_program_tesim'] = object.exposure_program
+        solr_doc['focal_length_tesim'] = object.focal_length
+        solr_doc['software_tesim'] = object.software
 
       end
     end

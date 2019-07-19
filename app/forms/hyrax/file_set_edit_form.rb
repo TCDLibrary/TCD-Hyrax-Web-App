@@ -1,5 +1,5 @@
-module Hyrax::Forms
-  class FileSetEditForm
+module Hyrax
+  class FileSetEditForm < Hyrax::Forms::WorkForm
     include HydraEditor::Form
     include HydraEditor::Form::Permissions
 
@@ -14,6 +14,7 @@ module Hyrax::Forms
                   :identifier, :based_near, :related_url,
                   :visibility_during_embargo, :visibility_after_embargo, :embargo_release_date,
                   :visibility_during_lease, :visibility_after_lease, :lease_expiration_date,
-                  :visibility, :provenance]
+                  :visibility, :camera_model, :camera_make, :date_taken, :exposure_time, :f_number,
+                  :iso_speed_rating, :flash, :exposure_program, :focal_length, :software]
   end
 end

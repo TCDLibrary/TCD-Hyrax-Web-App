@@ -102,3 +102,6 @@ gem 'yaml_db'
 
 # JL 10/04/2019 Added iso639 for language codes when building Dublin Core output
 gem 'iso639'
+
+# JL 17/07/2019 exifr to let me read image technical metadata
+gem 'exifr'

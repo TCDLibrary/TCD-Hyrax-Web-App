@@ -209,8 +209,18 @@ Hyrax.config do |config|
   #
   # The banner image. Should be 5000px wide by 1000px tall
   #config.banner_image = 'https://cloud.githubusercontent.com/assets/92044/18370978/88ecac20-75f6-11e6-8399-6536640ef695.jpg'
-  #config.banner_image = Rails.root.join('public', 'data/ingest/HI/countryside.jpg')
-  #config.banner_image = 'https://github.com/joelakes/TCD-Hyrax-Web-App/blob/master/public/branding/1g05fb60f/logo/trinity-college__2_.jpg?raw=true'
+  ##config.banner_image = Rails.root.join('public', 'data', 'ingest', 'HI', 'countryside.jpg')
+  ##byebug
+  ##config.banner_image = 'https://github.com/joelakes/TCD-Hyrax-Web-App/blob/master/public/branding/1g05fb60f/logo/trinity-college__2_.jpg?raw=true'
+  #config.banner_image = 'https://github.com/joelakes/TCD-Hyrax-Web-App/blob/demo-ingests/public/branding/DC-TestHeader-01%20no%20text.jpg?raw=true'
+  ## JL: NO:- config.banner_image = 'https://github.com/joelakes/TCD-Hyrax-Web-App/blob/demo-ingests/public/branding/DC-TestHeader-01.jpg?raw=true'
+  ## JL: NO:- config.banner_image = 'https://github.com/joelakes/TCD-Hyrax-Web-App/blob/demo-ingests/public/branding/DC-TestHeader-02.jpg?raw=true'
+  #config.banner_image = 'https://github.com/joelakes/TCD-Hyrax-Web-App/blob/demo-ingests/public/branding/MS10842-1-13_test%20header%20DC.jpg?raw=true'
+  #config.banner_image = 'https://github.com/joelakes/TCD-Hyrax-Web-App/blob/demo-ingests/public/branding/MS57_176%20-%20Test%20Header.jpg?raw=true'
+  #config.banner_image = 'https://github.com/joelakes/TCD-Hyrax-Web-App/blob/demo-ingests/public/branding/MS57_178%20-%20test%20header.jpg?raw=true'
+  #config.banner_image = 'https://github.com/joelakes/TCD-Hyrax-Web-App/blob/demo-ingests/public/branding/MapTest%20Banner%20Example%201.jpg?raw=true'
+  #config.banner_image = 'https://github.com/joelakes/TCD-Hyrax-Web-App/blob/demo-ingests/public/branding/MapTest%20Banner%20Example%202.jpg?raw=true'
+  config.banner_image = '/branding/MapTest Banner Example 2.jpg?raw=true'
 
   # Temporary paths to hold uploads before they are ingested into FCrepo
   # These must be lambdas that return a Pathname. Can be configured separately
