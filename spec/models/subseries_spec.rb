@@ -14,7 +14,7 @@ RSpec.describe Subseries do
         expect(subseries.dris_document_no).to be_empty
         expect(subseries.dris_unique).to be_empty
         expect(subseries.format_duration).to be_empty
-        expect(subseries.format_resolution).to be_empty
+
         expect(subseries.copyright_status).to be_empty
         expect(subseries.copyright_note).to be_empty
         expect(subseries.digital_root_number).to be_empty
@@ -32,18 +32,12 @@ RSpec.describe Subseries do
         expect(subseries.support).to be_empty
         expect(subseries.medium).to be_empty
 
-        expect(subseries.related_item_type).to be_empty
-        expect(subseries.related_item_identifier).to be_empty
-        expect(subseries.related_item_title).to be_empty
-
         expect(subseries.alternative_title).to be_empty
         expect(subseries.series_title).to be_empty
         expect(subseries.collection_title).to be_empty
-        expect(subseries.virtual_collection_title).to be_empty
+
         expect(subseries.provenance).to be_empty
-        expect(subseries.visibility_flag).to be_empty
-        expect(subseries.europeana).to be_empty
-        expect(subseries.solr_flag).to be_empty
+
         expect(subseries.culture).to be_empty
         expect(subseries.county).to be_empty
         expect(subseries.folder_number).to be_empty
@@ -73,7 +67,7 @@ RSpec.describe Subseries do
         subseries.dris_document_no = ["A subseries Dris Document No"]
         subseries.dris_unique = ["A Dris Unique"]
         subseries.format_duration = ["A Format Duration"]
-        subseries.format_resolution = ["A Format Resolution"]
+
         subseries.copyright_status = ["A Copyright Holder"]
         subseries.copyright_note = ["A Copyright Note"]
         subseries.digital_root_number = ["A Digital Root Number"]
@@ -91,18 +85,12 @@ RSpec.describe Subseries do
         subseries.support = ["A Support"]
         subseries.medium = ["A Medium"]
 
-        subseries.related_item_type = ["A Related Item Type"]
-        subseries.related_item_identifier = ["A Related Item Identifier"]
-        subseries.related_item_title = ["A Related Item Title"]
-
         subseries.alternative_title = ["An Alternative Title"]
         subseries.series_title = ["A Series Title"]
         subseries.collection_title = ["A Collection Title"]
-        subseries.virtual_collection_title = ["A Virtual Collection Title"]
+
         subseries.provenance = ["A Provenance"]
-        subseries.visibility_flag = ["A Visibility Flag"]
-        subseries.europeana = ["A Europeana"]
-        subseries.solr_flag = ["A Solr Flag"]
+
         subseries.culture = ["A Culture"]
         subseries.county = ["A County"]
         subseries.folder_number = ["A Folder Number"]
@@ -128,7 +116,7 @@ RSpec.describe Subseries do
         expect(subseries.dris_document_no).to eq(["A subseries Dris Document No"])
         expect(subseries.dris_unique).to eq(["A Dris Unique"])
         expect(subseries.format_duration).to eq (["A Format Duration"])
-        expect(subseries.format_resolution).to eq (["A Format Resolution"])
+
         expect(subseries.copyright_status).to eq (["A Copyright Holder"])
         expect(subseries.copyright_note).to eq (["A Copyright Note"])
         expect(subseries.digital_root_number).to eq (["A Digital Root Number"])
@@ -146,18 +134,12 @@ RSpec.describe Subseries do
         expect(subseries.support).to eq (["A Support"])
         expect(subseries.medium).to eq (["A Medium"])
 
-        expect(subseries.related_item_type).to eq (["A Related Item Type"])
-        expect(subseries.related_item_identifier).to eq (["A Related Item Identifier"])
-        expect(subseries.related_item_title).to eq (["A Related Item Title"])
-
         expect(subseries.alternative_title).to eq  (["An Alternative Title"])
         expect(subseries.series_title).to eq  (["A Series Title"])
         expect(subseries.collection_title).to eq (["A Collection Title"])
-        expect(subseries.virtual_collection_title).to eq (["A Virtual Collection Title"])
+
         expect(subseries.provenance).to eq (["A Provenance"])
-        expect(subseries.visibility_flag).to eq (["A Visibility Flag"])
-        expect(subseries.europeana).to eq (["A Europeana"])
-        expect(subseries.solr_flag).to eq (["A Solr Flag"])
+
         expect(subseries.culture).to eq (["A Culture"])
         expect(subseries.county).to eq (["A County"])
         expect(subseries.folder_number).to eq (["A Folder Number"])

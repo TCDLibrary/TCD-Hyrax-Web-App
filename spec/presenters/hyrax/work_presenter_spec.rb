@@ -34,7 +34,7 @@ RSpec.describe Hyrax::WorkPresenter do
   let(:alternative_title) {['An Alternative Title']}
   let(:series_title) {['A Series Title']}
   let(:collection_title) {['A Collection Title']}
-  let(:virtual_collection_title) {['A Virtual Collection Title']}
+
   let(:provenance) {['A Provenance']}
   let(:culture) {['A Culture']}
 
@@ -64,7 +64,7 @@ RSpec.describe Hyrax::WorkPresenter do
       alternative_title: alternative_title,
       series_title: series_title,
       collection_title: collection_title,
-      virtual_collection_title: virtual_collection_title,
+
       provenance: provenance,
       culture: culture
     )
@@ -166,11 +166,6 @@ RSpec.describe Hyrax::WorkPresenter do
   it "delegates collection_title to solr document" do
     expect(solr_document).to receive(:collection_title)
     presenter.collection_title
-  end
-
-  it "delegates virtual_collection_title to solr document" do
-    expect(solr_document).to receive(:virtual_collection_title)
-    presenter.virtual_collection_title
   end
 
   it "delegates provenance to solr document" do

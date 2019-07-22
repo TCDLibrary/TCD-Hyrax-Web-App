@@ -44,7 +44,7 @@ RSpec.feature 'Search for a work' do
         expect(page).to have_content work.alternative_title.first
         expect(page).to have_content work.series_title.first
         expect(page).to have_content work.collection_title.first
-        expect(page).to have_content work.virtual_collection_title.first
+
         expect(page).to have_content work.provenance.first
         expect(page).to have_content work.culture.first
 

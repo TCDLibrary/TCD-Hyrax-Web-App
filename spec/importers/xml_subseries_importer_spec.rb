@@ -45,7 +45,7 @@ RSpec.describe FoxmlImporter do
      expect(imported_subseries.dris_document_no).to include ('MS2327-64_folio [1]r_ ')
      expect(imported_subseries.dris_unique).to include ('0145516')
      expect(imported_subseries.format_duration).to include ('A format dur')
-     expect(imported_subseries.format_resolution).to include ('A format res')
+
      expect(imported_subseries.copyright_status).to include ('Public domain')
      expect(imported_subseries.copyright_note).to include ('Some copyright notes')
      expect(imported_subseries.digital_root_number).to include('MS2327-64')
@@ -65,18 +65,11 @@ RSpec.describe FoxmlImporter do
      expect(imported_subseries.medium).to include('ink')
      expect(imported_subseries.support).to include('paper (fiber product)')
 
-     expect(imported_subseries.related_item_type).to include('host')
-     expect(imported_subseries.related_item_identifier).to include('0145514')
-     expect(imported_subseries.related_item_title).to include('Letter from Catherine (Kate) D’Alton, Clonmore, 8th-12th August, 1824 to John D’Alton')
-
      expect(imported_subseries.alternative_title).to include('An other title')
      expect(imported_subseries.series_title).to include('A series report no')
      expect(imported_subseries.collection_title).to include('Correspondence of John and Catherine D\'Alton')
-     expect(imported_subseries.virtual_collection_title).to include('Second title larger entity')
+
      expect(imported_subseries.provenance).to include('Donated to the Library of Trinity College, Dublin by Father Wallace Clare, St. Joseph’s College, Ipswich, Suffolk, 8 December 1951.')
-     expect(imported_subseries.visibility_flag).to include('ONLINE')
-     expect(imported_subseries.europeana).to include('No')
-     expect(imported_subseries.solr_flag).to include('Cover')
      expect(imported_subseries.culture).to include('Irish')
      expect(imported_subseries.county).to include('Calm ref')
      expect(imported_subseries.project_number).to include('Project 1822')

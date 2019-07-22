@@ -21,7 +21,7 @@ en:
           alternative_title_tesim: Alternative Title
           series_title_tesim: Series Title
           collection_title_tesim: Collection Title
-          virtual_collection_title_tesim: Virtual Collection Title
+
           provenance_tesim: Provenance
           culture_tesim: Culture
           location_tesim: Location
@@ -53,7 +53,7 @@ en:
           alternative_title_tesim: Alternative Title
           series_title_tesim: Series Title
           collection_title_tesim: Collection Title
-          virtual_collection_title_tesim: Virtual Collection Title
+
           provenance_tesim: Provenance
           culture_tesim: Culture
           location_tesim: Location
@@ -92,7 +92,7 @@ en:
           alternative_title_tesim: Alternative Title
           series_title_tesim: Series Title
           collection_title_tesim: Collection Title
-          virtual_collection_title_tesim: Virtual Collection Title
+
           provenance_tesim: Provenance
           culture_tesim: Culture
           location_tesim: Location

@@ -26,7 +26,7 @@ module Hyrax
     delegate :alternative_title, to: :solr_document
     delegate :series_title, to: :solr_document
     delegate :collection_title, to: :solr_document
-    delegate :virtual_collection_title, to: :solr_document
+
     delegate :provenance, to: :solr_document
     delegate :culture, to: :solr_document
     delegate :location, to: :solr_document

@@ -15,7 +15,7 @@ RSpec.describe Folio do
         expect(folio.dris_document_no).to be_empty
         expect(folio.dris_unique).to be_empty
         expect(folio.format_duration).to be_empty
-        expect(folio.format_resolution).to be_empty
+
         expect(folio.copyright_status).to be_empty
         expect(folio.copyright_note).to be_empty
         expect(folio.digital_root_number).to be_empty
@@ -34,20 +34,16 @@ RSpec.describe Folio do
         expect(folio.support).to be_empty
         expect(folio.medium).to be_empty
         #expect(folio.type_of_work).to be_empty
-        expect(folio.related_item_type).to be_empty
-        expect(folio.related_item_identifier).to be_empty
-        expect(folio.related_item_title).to be_empty
+
         #expect(folio.subject_lcsh).to be_empty
         #expect(folio.subject_local).to be_empty
         #expect(folio.subject_name).to be_empty
         expect(folio.alternative_title).to be_empty
         expect(folio.series_title).to be_empty
         expect(folio.collection_title).to be_empty
-        expect(folio.virtual_collection_title).to be_empty
+
         expect(folio.provenance).to be_empty
-        expect(folio.visibility_flag).to be_empty
-        expect(folio.europeana).to be_empty
-        expect(folio.solr_flag).to be_empty
+
         expect(folio.culture).to be_empty
         expect(folio.county).to be_empty
         expect(folio.folder_number).to be_empty
@@ -77,7 +73,7 @@ RSpec.describe Folio do
         folio.dris_document_no = ["A Folio Dris Document No"]
         folio.dris_unique = ["A Dris Unique"]
         folio.format_duration = ["A Format Duration"]
-        folio.format_resolution = ["A Format Resolution"]
+
         folio.copyright_status = ["A Copyright Holder"]
         folio.copyright_note = ["A Copyright Note"]
         folio.digital_root_number = ["A Digital Root Number"]
@@ -96,20 +92,16 @@ RSpec.describe Folio do
         folio.support = ["A Support"]
         folio.medium = ["A Medium"]
         #folio.type_of_work = ["A Type Of Work"]
-        folio.related_item_type = ["A Related Item Type"]
-        folio.related_item_identifier = ["A Related Item Identifier"]
-        folio.related_item_title = ["A Related Item Title"]
+
         #folio.subject_lcsh = ["A Subject LCSH"]
         #folio.subject_local = ["A Subject Local"]
         #folio.subject_name = ["A Subject Name"]
         folio.alternative_title = ["An Alternative Title"]
         folio.series_title = ["A Series Title"]
         folio.collection_title = ["A Collection Title"]
-        folio.virtual_collection_title = ["A Virtual Collection Title"]
+
         folio.provenance = ["A Provenance"]
-        folio.visibility_flag = ["A Visibility Flag"]
-        folio.europeana = ["A Europeana"]
-        folio.solr_flag = ["A Solr Flag"]
+
         folio.culture = ["A Culture"]
         folio.county = ["A County"]
         folio.folder_number = ["A Folder Number"]
@@ -135,7 +127,7 @@ RSpec.describe Folio do
         expect(folio.dris_document_no).to eq(["A Folio Dris Document No"])
         expect(folio.dris_unique).to eq(["A Dris Unique"])
         expect(folio.format_duration).to eq (["A Format Duration"])
-        expect(folio.format_resolution).to eq (["A Format Resolution"])
+
         expect(folio.copyright_status).to eq (["A Copyright Holder"])
         expect(folio.copyright_note).to eq (["A Copyright Note"])
         expect(folio.digital_root_number).to eq (["A Digital Root Number"])
@@ -154,20 +146,15 @@ RSpec.describe Folio do
         expect(folio.support).to eq (["A Support"])
         expect(folio.medium).to eq (["A Medium"])
         #expect(folio.type_of_work).to eq (["A Type Of Work"])
-        expect(folio.related_item_type).to eq (["A Related Item Type"])
-        expect(folio.related_item_identifier).to eq (["A Related Item Identifier"])
-        expect(folio.related_item_title).to eq (["A Related Item Title"])
         #expect(folio.subject_lcsh).to eq (["A Subject LCSH"])
         #expect(folio.subject_local).to eq (["A Subject Local"])
         #expect(folio.subject_name).to eq (["A Subject Name"])
         expect(folio.alternative_title).to eq  (["An Alternative Title"])
         expect(folio.series_title).to eq  (["A Series Title"])
         expect(folio.collection_title).to eq (["A Collection Title"])
-        expect(folio.virtual_collection_title).to eq (["A Virtual Collection Title"])
+
         expect(folio.provenance).to eq (["A Provenance"])
-        expect(folio.visibility_flag).to eq (["A Visibility Flag"])
-        expect(folio.europeana).to eq (["A Europeana"])
-        expect(folio.solr_flag).to eq (["A Solr Flag"])
+
         expect(folio.culture).to eq (["A Culture"])
         expect(folio.county).to eq (["A County"])
         expect(folio.folder_number).to eq (["A Folder Number"])

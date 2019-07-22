@@ -15,22 +15,17 @@ module TcdExtendedMetadata
 
       property :dris_document_no, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#dris_document_no')
       property :format_duration, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#fd')
-      property :format_resolution, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#fr')
 
       property :abstract, predicate: ::RDF::Vocab::MODS.abstract do |index|
         index.type :text
         index.as :stored_searchable
       end
 
-      #  29/11/2018: JL - access condition in Michelle's xls (Expired, Active, etc) is not in her Mods File
-      #  JL: copyright status is in BasicMetadata
-
       property :copyright_status, predicate: ::RDF::Vocab::DC.rightsHolder do |index|
         index.as :stored_searchable
       end
 
       property :copyright_note, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#copyright_note')
-
 
       property :genre, predicate: ::RDF::URI.new("http://id.loc.gov/vocabulary/graphicMaterials") do |index|
         index.as :stored_searchable, :facetable
@@ -46,12 +41,6 @@ module TcdExtendedMetadata
         index.as :stored_searchable, :facetable
       end
 
-      #property :language_code, predicate: ::RDF::URI.new('https://www.loc.gov/standards/iso639-2') do |index|
-      #  index.as :stored_searchable
-      #end
-      #  JL: language is in BasicMetadata DC11.language
-
-      #  JL: location already exists
       property :location_type, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#lt')
       property :shelf_locator, predicate: ::RDF::Vocab::MODS.locationShelfLocator
 
@@ -98,67 +87,26 @@ module TcdExtendedMetadata
         index.as :stored_searchable
       end
 
-      #  JL: medium cant refer to same Mods field as support
-      property :medium, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#me') do |index|
+
+      property :medium, predicate: ::RDF::Vocab::DC.format do |index|
         index.as :stored_searchable
       end
-
-      #property :type_of_work, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#type_of_work') do |index|
-      #  index.as :stored_searchable
-      #end
-
-      #  JL: modification_date is in CoreMetadata
-      #  JL: creation_date is in CoreMetadata
-
-      property :related_item_type, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#related_item_type')
-      property :related_item_identifier, predicate: ::RDF::Vocab::MODS.relatedItem
-      property :related_item_title, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#related_item_title')
-
-      #property :subject_lcsh, predicate: ::RDF::Vocab::MODS.subject do |index|
-      #  index.as :stored_searchable
-      #end
-
-      #property :subject_local, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#subject_local') do |index|
-      #  index.as :stored_searchable
-      #end
-
-      #  JL: subject is in BasicMetadata
-
-      #property :subject_name, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#subject_name') do |index|
-      #  index.as :stored_searchable
-      #end
-
-      #  JL: caption/notes/description is in BasicMetadata
 
       property :alternative_title, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#alternative_title') do |index|
         index.as :stored_searchable
       end
 
-      #  JL: item_title is in CoreMetadata
-
       property :series_title, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#series_title') do |index|
         index.as :stored_searchable
       end
 
-      property :collection_title, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#collection_title') do |index|
+      property :collection_title, predicate: ::RDF::Vocab::MODS.relatedItem do |index|
         index.as :stored_searchable
       end
 
-      property :virtual_collection_title, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#virtual_collection_title') do |index|
+      property :provenance, predicate: ::RDF::Vocab::DC.provenance do |index|
         index.as :stored_searchable
       end
-
-      #  JL: type_of_resource is in BasicMetadata
-
-      property :provenance, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#provenance') do |index|
-        index.as :stored_searchable
-      end
-
-      #  JL:property :copyright_notice, see rights in BasicMetadata, DC.rights
-
-      property :visibility_flag, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#visibility')
-      property :europeana, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#europeana')
-      property :solr_flag, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#solr')
 
       property :culture, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#culture') do |index|
         index.as :stored_searchable

@@ -14,7 +14,6 @@ module Hyrax
     self.terms += [:dris_document_no]
     self.terms += [:dris_unique]
     self.terms += [:format_duration]
-    self.terms += [:format_resolution]
     self.terms += [:copyright_status]
     self.terms += [:copyright_note]
     self.terms += [:digital_root_number]
@@ -33,20 +32,16 @@ module Hyrax
     self.terms += [:support]
     self.terms += [:medium]
     #self.terms += [:type_of_work]
-    self.terms += [:related_item_type]
-    self.terms += [:related_item_identifier]
-    self.terms += [:related_item_title]
+
     #self.terms += [:subject_lcsh]
     #self.terms += [:subject_local]
     #self.terms += [:subject_name]
     self.terms += [:alternative_title]
     self.terms += [:series_title]
     self.terms += [:collection_title]
-    self.terms += [:virtual_collection_title]
+
     self.terms += [:provenance]
-    self.terms += [:visibility_flag]
-    self.terms += [:europeana]
-    self.terms += [:solr_flag]
+
     self.terms += [:culture]
     self.terms += [:county]
     self.terms += [:folder_number]
@@ -54,6 +49,6 @@ module Hyrax
     self.terms += [:order_no]
     self.terms += [:total_records]
     self.terms += [:location]
-    
+
   end
 end

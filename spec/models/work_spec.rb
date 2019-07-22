@@ -15,7 +15,7 @@ RSpec.describe Work do
         expect(work.dris_document_no).to be_empty
         expect(work.dris_unique).to be_empty
         expect(work.format_duration).to be_empty
-        expect(work.format_resolution).to be_empty
+
         expect(work.copyright_status).to be_empty
         expect(work.copyright_note).to be_empty
         expect(work.digital_root_number).to be_empty
@@ -34,20 +34,16 @@ RSpec.describe Work do
         expect(work.support).to be_empty
         expect(work.medium).to be_empty
         #expect(work.type_of_work).to be_empty
-        expect(work.related_item_type).to be_empty
-        expect(work.related_item_identifier).to be_empty
-        expect(work.related_item_title).to be_empty
+
         #expect(work.subject_lcsh).to be_empty
         #expect(work.subject_local).to be_empty
         #expect(work.subject_name).to be_empty
         expect(work.alternative_title).to be_empty
         expect(work.series_title).to be_empty
         expect(work.collection_title).to be_empty
-        expect(work.virtual_collection_title).to be_empty
+
         expect(work.provenance).to be_empty
-        expect(work.visibility_flag).to be_empty
-        expect(work.europeana).to be_empty
-        expect(work.solr_flag).to be_empty
+
         expect(work.culture).to be_empty
         expect(work.county).to be_empty
         expect(work.folder_number).to be_empty
@@ -77,7 +73,7 @@ RSpec.describe Work do
         work.dris_document_no = ["A Work Dris Document No"]
         work.dris_unique = ["A Dris Unique"]
         work.format_duration = ["A Format Duration"]
-        work.format_resolution = ["A Format Resolution"]
+
         work.copyright_status = ["A Copyright Holder"]
         work.copyright_note = ["A Copyright Note"]
         work.digital_root_number = ["A Digital Root Number"]
@@ -96,20 +92,16 @@ RSpec.describe Work do
         work.support = ["A Support"]
         work.medium = ["A Medium"]
         #work.type_of_work = ["A Type Of Work"]
-        work.related_item_type = ["A Related Item Type"]
-        work.related_item_identifier = ["A Related Item Identifier"]
-        work.related_item_title = ["A Related Item Title"]
+
         #work.subject_lcsh = ["A Subject LCSH"]
         #work.subject_local = ["A Subject Local"]
         #work.subject_name = ["A Subject Name"]
         work.alternative_title = ["An Alternative Title"]
         work.series_title = ["A Series Title"]
         work.collection_title = ["A Collection Title"]
-        work.virtual_collection_title = ["A Virtual Collection Title"]
+
         work.provenance = ["A Provenance"]
-        work.visibility_flag = ["A Visibility Flag"]
-        work.europeana = ["A Europeana"]
-        work.solr_flag = ["A Solr Flag"]
+
         work.culture = ["A Culture"]
         work.county = ["A County"]
         work.folder_number = ["A Folder Number"]
@@ -136,7 +128,7 @@ RSpec.describe Work do
         expect(work.dris_document_no).to eq(["A Work Dris Document No"])
         expect(work.dris_unique).to eq(["A Dris Unique"])
         expect(work.format_duration).to eq (["A Format Duration"])
-        expect(work.format_resolution).to eq (["A Format Resolution"])
+
         expect(work.copyright_status).to eq (["A Copyright Holder"])
         expect(work.copyright_note).to eq (["A Copyright Note"])
         expect(work.digital_root_number).to eq (["A Digital Root Number"])
@@ -155,20 +147,16 @@ RSpec.describe Work do
         expect(work.support).to eq (["A Support"])
         expect(work.medium).to eq (["A Medium"])
         #expect(work.type_of_work).to eq (["A Type Of Work"])
-        expect(work.related_item_type).to eq (["A Related Item Type"])
-        expect(work.related_item_identifier).to eq (["A Related Item Identifier"])
-        expect(work.related_item_title).to eq (["A Related Item Title"])
+
         #expect(work.subject_lcsh).to eq (["A Subject LCSH"])
         #expect(work.subject_local).to eq (["A Subject Local"])
         #expect(work.subject_name).to eq (["A Subject Name"])
         expect(work.alternative_title).to eq  (["An Alternative Title"])
         expect(work.series_title).to eq  (["A Series Title"])
         expect(work.collection_title).to eq (["A Collection Title"])
-        expect(work.virtual_collection_title).to eq (["A Virtual Collection Title"])
+
         expect(work.provenance).to eq (["A Provenance"])
-        expect(work.visibility_flag).to eq (["A Visibility Flag"])
-        expect(work.europeana).to eq (["A Europeana"])
-        expect(work.solr_flag).to eq (["A Solr Flag"])
+
         expect(work.culture).to eq (["A Culture"])
         expect(work.county).to eq (["A County"])
         expect(work.folder_number).to eq (["A Folder Number"])

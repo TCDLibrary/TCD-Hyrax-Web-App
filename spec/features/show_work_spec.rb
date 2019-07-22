@@ -26,7 +26,7 @@ RSpec.feature 'Display a Work' do
   let(:alternative_title)           {['An Alternative Title']}
   let(:series_title)                {['A Series Title']}
   let(:collection_title)            {['A Collection Title']}
-  let(:virtual_collection_title)    {['A Virtual Collection Title']}
+
   let(:provenance)                  {['A Provenance']}
   let(:culture)                     {['A Culture']}
 
@@ -57,7 +57,6 @@ RSpec.feature 'Display a Work' do
                 alternative_title:          alternative_title,
                 series_title:               series_title,
                 collection_title:           collection_title,
-                virtual_collection_title:   virtual_collection_title,
                 provenance:                 provenance,
                 culture:                    culture
               )
@@ -89,7 +88,7 @@ RSpec.feature 'Display a Work' do
     expect(page).to have_content work.alternative_title.first
     expect(page).to have_content work.series_title.first
     expect(page).to have_content work.collection_title.first
-    expect(page).to have_content work.virtual_collection_title.first
+
     expect(page).to have_content work.provenance.first
     expect(page).to have_content work.culture.first
   end

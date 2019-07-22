@@ -76,7 +76,6 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("date_created", :stored_searchable), itemprop: 'dateCreated'
     config.add_index_field solr_name("series_title", :stored_searchable), itemprop: 'series_title'
     config.add_index_field solr_name("collection_title", :stored_searchable), itemprop: 'collection_title'
-    config.add_index_field solr_name("virtual_collection_title", :stored_searchable), itemprop: 'virtual_collection_title'
     config.add_index_field solr_name("medium", :stored_searchable), itemprop: 'medium'
     config.add_index_field solr_name("support", :stored_searchable), itemprop: 'support'
     config.add_index_field solr_name("dris_page_no", :stored_searchable), itemprop: 'dris_page_no'
@@ -127,7 +126,7 @@ class CatalogController < ApplicationController
     config.add_show_field solr_name("alternative_title", :stored_searchable)
     config.add_show_field solr_name("series_title", :stored_searchable)
     config.add_show_field solr_name("collection_title", :stored_searchable)
-    config.add_show_field solr_name("virtual_collection_title", :stored_searchable)
+
     config.add_show_field solr_name("provenance", :stored_searchable)
     config.add_show_field solr_name("culture", :stored_searchable)
     config.add_show_field solr_name("location", :stored_searchable)
@@ -341,15 +340,6 @@ class CatalogController < ApplicationController
     config.add_search_field('collection_title') do |field|
       field.label = "Collection Title"
       solr_name = solr_name("collection_title", :stored_searchable)
-      field.solr_local_parameters = {
-        qf: solr_name,
-        pf: solr_name
-      }
-    end
-
-    config.add_search_field('virtual_collection_title') do |field|
-      field.label = "Virtual Collection Title"
-      solr_name = solr_name("virtual_collection_title", :stored_searchable)
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name

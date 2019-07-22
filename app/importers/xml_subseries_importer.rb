@@ -399,15 +399,6 @@ class XmlSubseriesImporter < ApplicationController
           end
         end
 
-        # format_resolution
-        link.xpath("xmlns:FormatResolution").each do |aFormatResolution|
-          if !aFormatResolution.content.blank?
-            if !(owner_rec.format_resolution.include?(aFormatResolution.content)) then
-               subseries.format_resolution = [aFormatResolution.content]
-            end
-          end
-        end
-
         # copyright_status
         link.xpath("xmlns:CopyrightHolder").each do |copyrightHolders|
           if !copyrightHolders.content.blank?
@@ -599,39 +590,6 @@ class XmlSubseriesImporter < ApplicationController
         #  end
         #end
 
-        # related_item_type
-        link.xpath("xmlns:RelatedItemType").each do |relatedItemTypes|
-          if !relatedItemTypes.content.blank?
-            relatedItemTypes.xpath("xmlns:DATA").each do |aRelatedItemType|
-              if !(owner_rec.related_item_type.include?(aRelatedItemType.content))
-                 subseries.related_item_type.push(aRelatedItemType.content)
-              end
-            end
-          end
-        end
-
-        # related_item_identifier
-        link.xpath("xmlns:RelatedItemIdentifier").each do |relatedItemIdentifier|
-          if !relatedItemIdentifier.content.blank?
-            relatedItemIdentifier.xpath("xmlns:DATA").each do |aRelatedItemIdentifier|
-              if !(owner_rec.related_item_identifier.include?(aRelatedItemIdentifier.content))
-                 subseries.related_item_identifier.push(aRelatedItemIdentifier.content)
-              end
-            end
-          end
-        end
-
-        # related_item_title
-        link.xpath("xmlns:RelatedItemTitle").each do |relatedItemTitle|
-          if !relatedItemTitle.content.blank?
-            relatedItemTitle.xpath("xmlns:DATA").each do |aRelatedItemTitle|
-              if !(owner_rec.related_item_title.include?(aRelatedItemTitle.content))
-                 subseries.related_item_title.push(aRelatedItemTitle.content)
-              end
-            end
-          end
-        end
-
         # subject_lcsh -> SubjectLCSH
         link.xpath("xmlns:SubjectLCSH").each do |subjects|
           if !subjects.content.blank?
@@ -695,46 +653,10 @@ class XmlSubseriesImporter < ApplicationController
           end
         end
 
-        # virtual_collection_title -> TitleLargerEntity2
-        link.xpath("xmlns:TitleLargerEntity2").each do |aTitle|
-          if !aTitle.content.blank?
-            if !(owner_rec.virtual_collection_title.include?(aTitle.content)) then
-               subseries.virtual_collection_title.push(aTitle.content)
-            end
-          end
-        end
-
         # provenance
         link.xpath("xmlns:Provenance").each do |aProvenance|
           if !aProvenance.content.blank?
              subseries.provenance.push(aProvenance.content)
-          end
-        end
-
-        # visibility_flag
-        link.xpath("xmlns:Visibility").each do |visibilityFlag|
-          if !visibilityFlag.content.blank?
-            if !(owner_rec.visibility_flag.include?(visibilityFlag.content)) then
-               subseries.visibility_flag.push(visibilityFlag.content)
-            end
-          end
-        end
-
-        # europeana
-        link.xpath("xmlns:Europeana").each do |europeanaFlag|
-          if !europeanaFlag.content.blank?
-            if !(owner_rec.europeana.include?(europeanaFlag.content)) then
-               subseries.europeana.push(europeanaFlag.content)
-            end
-          end
-        end
-
-        # solr_flag -> Image
-        link.xpath("xmlns:Image").each do |imageFlag|
-          if !imageFlag.content.blank?
-            if !(owner_rec.solr_flag.include?(imageFlag.content)) then
-               subseries.solr_flag.push(imageFlag.content)
-            end
           end
         end
 

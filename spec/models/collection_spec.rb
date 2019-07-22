@@ -24,7 +24,7 @@ RSpec.describe Collection do
           # expect(coll.dris_document_no).to be_empty
           # expect(coll.dris_unique).to be_empty
           # expect(coll.format_duration).to be_empty
-          # expect(coll.format_resolution).to be_empty
+
           # expect(coll.copyright_status).to be_empty
           # expect(coll.copyright_note).to be_empty
           # expect(coll.digital_root_number).to be_empty
@@ -43,20 +43,16 @@ RSpec.describe Collection do
           # expect(coll.support).to be_empty
           # expect(coll.medium).to be_empty
           # expect(coll.type_of_work).to be_empty
-          # expect(coll.related_item_type).to be_empty
-          # expect(coll.related_item_identifier).to be_empty
-          # expect(coll.related_item_title).to be_empty
+
           # expect(coll.subject_lcsh).to be_empty
           # expect(coll.subject_local).to be_empty
           # expect(coll.subject_name).to be_empty
           # expect(coll.alternative_title).to be_empty
           # expect(coll.series_title).to be_empty
           # expect(coll.collection_title).to be_empty
-          # expect(coll.virtual_collection_title).to be_empty
+
           # expect(coll.provenance).to be_empty
-          # expect(coll.visibility_flag).to be_empty
-          # expect(coll.europeana).to be_empty
-          # expect(coll.solr_flag).to be_empty
+
           # expect(coll.culture).to be_empty
           # expect(coll.county).to be_empty
           # expect(coll.folder_number).to be_empty
@@ -85,7 +81,7 @@ RSpec.describe Collection do
         # coll.dris_document_no = ["A Work Dris Document No"]
         # coll.dris_unique = ["A Dris Unique"]
         # coll.format_duration = ["A Format Duration"]
-        # coll.format_resolution = ["A Format Resolution"]
+
         # coll.copyright_status = ["A Copyright Holder"]
         # coll.copyright_note = ["A Copyright Note"]
         # coll.digital_root_number = ["A Digital Root Number"]
@@ -104,20 +100,16 @@ RSpec.describe Collection do
         # coll.support = ["A Support"]
         # coll.medium = ["A Medium"]
         # coll.type_of_work = ["A Type Of Work"]
-        # coll.related_item_type = ["A Related Item Type"]
-        # coll.related_item_identifier = ["A Related Item Identifier"]
-        # coll.related_item_title = ["A Related Item Title"]
+
         # coll.subject_lcsh = ["A Subject LCSH"]
         # coll.subject_local = ["A Subject Local"]
         # coll.subject_name = ["A Subject Name"]
         # coll.alternative_title = ["An Alternative Title"]
         # coll.series_title = ["A Series Title"]
         # coll.collection_title = ["A Collection Title"]
-        # coll.virtual_collection_title = ["A Virtual Collection Title"]
+
         # coll.provenance = ["A Provenance"]
-        # coll.visibility_flag = ["A Visibility Flag"]
-        # coll.europeana = ["A Europeana"]
-        # coll.solr_flag = ["A Solr Flag"]
+
         # coll.culture = ["A Culture"]
         # coll.county = ["A County"]
         # coll.folder_number = ["A Folder Number"]
@@ -141,7 +133,7 @@ RSpec.describe Collection do
         # expect(coll.dris_document_no).to eq(["A Work Dris Document No"])
         # expect(coll.dris_unique).to eq(["A Dris Unique"])
         # expect(coll.format_duration).to eq (["A Format Duration"])
-        # expect(coll.format_resolution).to eq (["A Format Resolution"])
+
         # expect(coll.copyright_status).to eq (["A Copyright Holder"])
         # expect(coll.copyright_note).to eq (["A Copyright Note"])
         # expect(coll.digital_root_number).to eq (["A Digital Root Number"])
@@ -160,20 +152,16 @@ RSpec.describe Collection do
         # expect(coll.support).to eq (["A Support"])
         # expect(coll.medium).to eq (["A Medium"])
         # expect(coll.type_of_work).to eq (["A Type Of Work"])
-        # expect(coll.related_item_type).to eq (["A Related Item Type"])
-        # expect(coll.related_item_identifier).to eq (["A Related Item Identifier"])
-        # expect(coll.related_item_title).to eq (["A Related Item Title"])
+
         # expect(coll.subject_lcsh).to eq (["A Subject LCSH"])
         # expect(coll.subject_local).to eq (["A Subject Local"])
         # expect(coll.subject_name).to eq (["A Subject Name"])
         # expect(coll.alternative_title).to eq  (["An Alternative Title"])
         # expect(coll.series_title).to eq  (["A Series Title"])
         # expect(coll.collection_title).to eq (["A Collection Title"])
-        # expect(coll.virtual_collection_title).to eq (["A Virtual Collection Title"])
+
         # expect(coll.provenance).to eq (["A Provenance"])
-        # expect(coll.visibility_flag).to eq (["A Visibility Flag"])
-        # expect(coll.europeana).to eq (["A Europeana"])
-        # expect(coll.solr_flag).to eq (["A Solr Flag"])
+
         # expect(coll.culture).to eq (["A Culture"])
         # expect(coll.county).to eq (["A County"])
         # expect(coll.folder_number).to eq (["A Folder Number"])

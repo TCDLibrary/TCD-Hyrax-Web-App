@@ -103,10 +103,6 @@ class SolrDocument
     self[Solrizer.solr_name('collection_title')]
   end
 
-  def virtual_collection_title
-    self[Solrizer.solr_name('virtual_collection_title')]
-  end
-
   def provenance
     self[Solrizer.solr_name('provenance')]
   end
