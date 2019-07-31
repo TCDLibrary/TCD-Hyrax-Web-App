@@ -23,3 +23,12 @@
 * {
   font-family: 'TCDWebFont', Fallback, sans-serif;
 }
+
+img.hidden-xs.file_listing_thumbnail_tcd {
+  min-width: 256px;
+  min-height: 120px;
+}
+
+img.hidden-xs.file_listing_thumbnail_tcd a {
+  vertical-align: top;
+}

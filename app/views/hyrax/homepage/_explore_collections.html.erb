@@ -3,18 +3,26 @@
     <% collections.each do |collection| %>
       <tr>
         <td>
-          <div class="media">
-            <div class="media-body">
-              <div class="media-heading">
-                <%= link_to [hyrax, collection] do %>
-                  <%= render_thumbnail_tag(collection, { class: 'hidden-xs file_listing_thumbnail' },
-                                           { suppress_link: true }) + collection.title_or_label %>
-                <% end %>
-              </div>
+
+          <div class="card mb-3">
+            <h5 class="card-title"><%= link_to [hyrax, collection] do %>
+              <b><%= collection.title_or_label %></b>
+            <% end %>
+          </h5>
+            <%= link_to [hyrax, collection],  'aria-hidden' => true do %>
+              <%= render_thumbnail_tag collection, { class: 'card-img-top hidden-xs file_listing_thumbnail_tcd' }, { suppress_link: true } %>
+            <% end %>
+            <div class="card-body">
+              <p></p>
+              <p class="card-text">
+                <%= collection.description.first.truncate(500, separator: '.') %>
+              </p>
             </div>
           </div>
+
         </td>
       </tr>
     <% end %>
+
   </tbody>
 </table>
