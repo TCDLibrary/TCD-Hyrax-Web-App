@@ -32,3 +32,7 @@ img.hidden-xs.file_listing_thumbnail_tcd {
 img.hidden-xs.file_listing_thumbnail_tcd a {
   vertical-align: top;
 }
+
+.control-label {
+    font-weight: normal;
+}
