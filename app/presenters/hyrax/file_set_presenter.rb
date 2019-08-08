@@ -29,8 +29,10 @@ module Hyrax
              :publisher, :language, :date_uploaded,
              :embargo_release_date, :lease_expiration_date,
              :depositor, :keyword, :title_or_label, :keyword,
-             :date_created, :date_modified, :itemtype, :camera_model,
-             :camera_make, :date_taken, :exposure_time, :f_number,
+             :date_created, :date_modified, :itemtype,
+             to: :solr_document
+
+    delegate :camera_model, :camera_make, :date_taken, :exposure_time, :f_number,
              :iso_speed_rating, :flash, :exposure_program, :focal_length, :software,
              to: :solr_document
 
