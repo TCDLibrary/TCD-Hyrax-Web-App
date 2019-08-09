@@ -33,7 +33,7 @@ module Hyrax
              to: :solr_document
 
     delegate :camera_model, :camera_make, :date_taken, :exposure_time, :f_number,
-             :iso_speed_rating, :flash, :exposure_program, :focal_length, :software,
+             :iso_speed_rating, :flash, :exposure_program, :focal_length, :software, :fedora_sha1,
              to: :solr_document
 
     def single_use_links

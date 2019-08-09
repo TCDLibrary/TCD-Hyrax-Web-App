@@ -154,4 +154,9 @@ class SolrDocument
   def location
     self[Solrizer.solr_name('location')]
   end
+
+  def fedora_sha1
+    self[Solrizer.solr_name('fedora_sha1')]
+  end
+
 end

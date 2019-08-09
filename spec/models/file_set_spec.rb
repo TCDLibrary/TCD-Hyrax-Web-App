@@ -17,6 +17,7 @@ RSpec.describe FileSet do
         expect(fs.exposure_program).to be_nil
         expect(fs.focal_length).to be_nil
         expect(fs.software).to be_nil
+        expect(fs.fedora_sha1).to be_nil
       end
     end
     context "with a FileSet that has techincal metadata defined" do
@@ -32,6 +33,7 @@ RSpec.describe FileSet do
         fs.exposure_program = "Exp Pgm"
         fs.focal_length = "Focal len"
         fs.software = "Software"
+        fs.fedora_sha1 ="1234567890abcd"
 
         expect(fs.camera_model).to eq("A Model")
         expect(fs.camera_make).to eq("A Make")
@@ -43,6 +45,7 @@ RSpec.describe FileSet do
         expect(fs.exposure_program).to eq ("Exp Pgm")
         expect(fs.focal_length).to eq ("Focal len")
         expect(fs.software).to eq ("Software")
+        expect(fs.fedora_sha1).to eq ("1234567890abcd")
 
       end
     end

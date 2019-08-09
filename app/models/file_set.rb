@@ -44,5 +44,9 @@ class FileSet < ActiveFedora::Base
     index.as :stored_searchable
   end
 
+  property :fedora_sha1, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#fedora_sha1'), multiple: false do |index|
+    index.as :stored_searchable
+  end
+
   include ::Hyrax::FileSetBehavior
 end

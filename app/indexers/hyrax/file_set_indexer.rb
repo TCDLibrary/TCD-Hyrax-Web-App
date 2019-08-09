@@ -37,6 +37,7 @@ module Hyrax
         solr_doc['exposure_program_tesim'] = object.exposure_program
         solr_doc['focal_length_tesim'] = object.focal_length
         solr_doc['software_tesim'] = object.software
+        solr_doc['fedora_sha1_tesim'] = object.fedora_sha1
 
       end
     end

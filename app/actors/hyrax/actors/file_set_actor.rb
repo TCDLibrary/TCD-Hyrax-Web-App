@@ -6,6 +6,7 @@ module Hyrax
       attr_reader :file_set, :user, :attributes
 
       require 'exifr/jpeg'
+      require 'digest'
 
       def initialize(file_set, user)
         @file_set = file_set
@@ -36,6 +37,7 @@ module Hyrax
           file_set.exposure_program = EXIFR::JPEG.new(file.file.to_s).exposure_program.to_s
           file_set.focal_length = EXIFR::JPEG.new(file.file.to_s).focal_length.to_s
           file_set.software = EXIFR::JPEG.new(file.file.to_s).software.to_s
+          file_set.fedora_sha1 = (Digest::SHA1.file file.file.to_s).to_s
         end
 
         #byebug

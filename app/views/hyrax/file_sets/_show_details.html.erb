@@ -8,6 +8,8 @@
   <dd itemprop="dateModified"><%= @presenter.date_modified %></dd>
   <dt>Fixity Check</dt>
   <dd><%= @presenter.fixity_check_status %></dd>
+  <dt>SHA1</dt>
+  <dd itemprop="fedora_sha1"><%= @presenter.fedora_sha1&.first %></dd>
   <dt>Characterization</dt>
   <dd>
     <% if @presenter.characterized? %>
@@ -49,4 +51,5 @@
 
   <dt>Software</dt>
   <dd itemprop="software"><%= @presenter.software&.first %></dd>
-</dl>
+
+  </dl>

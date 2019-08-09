@@ -15,6 +15,6 @@ module Hyrax
                   :visibility_during_embargo, :visibility_after_embargo, :embargo_release_date,
                   :visibility_during_lease, :visibility_after_lease, :lease_expiration_date,
                   :visibility, :camera_model, :camera_make, :date_taken, :exposure_time, :f_number,
-                  :iso_speed_rating, :flash, :exposure_program, :focal_length, :software]
+                  :iso_speed_rating, :flash, :exposure_program, :focal_length, :software, :fedora_sha1]
   end
 end

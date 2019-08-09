@@ -20,6 +20,7 @@ RSpec.describe Hyrax::FileSetEditForm do
     expect(form.terms).to include(:exposure_program)
     expect(form.terms).to include(:focal_length)
     expect(form.terms).to include(:software)
+    expect(form.terms).to include(:fedora_sha1)
   end
 
 end
