@@ -7,7 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.6'
+gem 'rails', '~> 5.1.6.2'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 # JL : 18/12/2018 Moving from Sqlite to MySql
@@ -81,7 +81,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'hyrax', '2.4.0'
+gem 'hyrax', '2.5.1'
 group :development, :test, :demovm045 do
   gem 'solr_wrapper', '>= 0.3'
 end

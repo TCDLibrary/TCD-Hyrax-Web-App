@@ -1,0 +1,63 @@
+<% if !flash[:notice].blank? %>
+  <div class="notice">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<%= link_to("<< Back to List", ingests_path, :class => 'back-link') %>
+
+<div class="row ingests new">
+  <h2>Create Ingest</h2>
+
+  <%= form_for(@ingest) do |f| %>
+
+        <h3>Ingest Object Model Type</h3>
+        <br />
+        <%= f.select(:object_model_type, "<option>Single Object, Multiple Images</option><option selected='selected'>Multiple Objects, One Image Each</option>".html_safe) %>
+        <br />
+        <h3>Files available to ingest:</h3>
+        <br />
+        Must be stored in <%= Rails.application.config.ingest_folder %>
+        <br />
+        <%
+            Dir.glob(Rails.application.config.ingest_folder + "*.{XML,xml}").each do |val|
+                   val.slice! "public/data/ingest/" %>
+               <%= f.radio_button(:xml_file_name, val) %> <%= val.to_s %>
+               <br />
+        <%  end %>
+
+        <br />
+        <h3>I want to import:</h3>
+        <br />
+        <%= f.radio_button(:new_work_type, "work(s)") %> Works
+        <br />
+        <%= f.radio_button(:new_work_type, "folio(s)") %> Folios
+        <br />
+        <%= f.radio_button(:new_work_type, "subseries(s)") %> Subseries
+        <br />
+        <h3>Object Hierarchy:</h3>
+        <br />
+        <%= f.radio_button(:parent_type, "collection") %> parent is a Collection
+        <br />
+        <%= f.radio_button(:parent_type, "work") %> parent is a Work
+        <br />
+        <%= f.radio_button(:parent_type, "folio") %> parent is a Folio
+        <br />
+        <%= f.radio_button(:parent_type, "subseries") %> parent is a Subseries
+        <br />
+        <%= f.radio_button(:parent_type, "no_parent") %> no parent
+        <br />
+        <h3>Optional parent id:</h3>
+        <br />
+        <%= f.text_field(:parent_id) %>
+        <br />
+        <h3>Attach images?</h3>
+        <br />
+        <%= f.select(:image_type, "<option>Not Now</option><option>HI</option><option selected='selected'>LO</option><option>TIFF</option>".html_safe) %>
+        <br />&nbsp;<br />
+    <div class="form-buttons">
+      <%= f.submit("Create Ingest") %> <br />&nbsp;<br />
+    </div>
+
+  <% end %>
+</div>

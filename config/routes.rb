@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :ingests
+
   get 'import/index'
 
   # TODO: remove get import/picker

@@ -1,0 +1,30 @@
+<% if !flash[:notice].blank? %>
+  <div class="notice">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<div class="row ingests index">
+  <h2>Ingests</h2>
+
+  <%= link_to("Add New Ingest", new_ingest_path, :class => 'action new') %>
+
+  <table class="ingest_table listing" summary="Ingest list">
+    <tr class="header">
+      <th>XML File Name</th>
+      <th>Submitted By</th>
+      <th>Submitted At</th>
+      <th>Actions</th>
+    </tr>
+    <% @ingests&.each do |ingest| %>
+    <tr>
+      <td><%= ingest.xml_file_name %></td>
+      <td><%= ingest.submitted_by %></td>
+      <td><%= ingest.created_at %></td>
+      <td class="actions">
+        <%= link_to("Show", ingest_path(ingest), :class => 'action show') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>

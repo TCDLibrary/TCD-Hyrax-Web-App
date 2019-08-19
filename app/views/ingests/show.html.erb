@@ -1,0 +1,48 @@
+<% if !flash[:notice].blank? %>
+  <div class="notice">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<%= link_to("<< Back to List", ingests_path, :class => 'back-link') %>
+
+<div class="row ingests show">
+  <h2>Show Ingest</h2>
+
+  <table class="ingest_table" summary="Ingest detail view">
+    <tr>
+      <th>Object Model</th>
+      <td><%= @ingest.object_model_type %></td>
+    </tr>
+    <tr>
+      <th>XML File Name</th>
+      <td><%= @ingest.xml_file_name %></td>
+    </tr>
+    <tr>
+      <th>New Work Type</th>
+      <td><%= @ingest.new_work_type %></td>
+    </tr>
+    <tr>
+      <th>Parent Type</th>
+      <td><%= @ingest.parent_type %></td>
+    </tr>
+    <tr>
+      <th>Parent ID</th>
+      <td><%= @ingest.parent_id %></td>
+    </tr>
+    <tr>
+      <th>Image Type</th>
+      <td><%= @ingest.image_type %></td>
+    </tr>
+    <tr>
+      <th>Submitted By</th>
+      <td><%= @ingest.submitted_by %></td>
+    </tr>
+    <tr>
+      <th>Created At</th>
+      <td><%= @ingest.created_at %></td>
+    </tr>
+
+  </table>
+
+</div>
