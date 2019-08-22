@@ -146,12 +146,12 @@ class FoxmlImporter < ApplicationController
                 end
 
                 if @image_type == 'LO'
-                  image_sub_folder = 'LO/'
+                  image_sub_folder = artefact.folder_number.first + '/LO/'
                 else
                   if @image_type == 'HI'
-                    image_sub_folder = 'HI/'
+                    image_sub_folder = artefact.folder_number.first + '/HI/'
                   else if @image_type == 'TIFF'
-                          image_sub_folder = 'TIFF/'
+                          image_sub_folder = artefact.folder_number.first + '/TIFF/'
                        end
                   end
                 end
@@ -173,14 +173,14 @@ class FoxmlImporter < ApplicationController
 
                 if @image_type == 'LO'
                     imageFileName = imageFileName + "_LO.jpg"
-                    image_sub_folder = 'LO/'
+                    image_sub_folder = artefact.folder_number.first + '/LO/'
                 else
                   if @image_type == 'HI'
                     imageFileName = imageFileName + "_HI.jpg"
-                    image_sub_folder = 'HI/'
+                    image_sub_folder = artefact.folder_number.first + '/HI/'
                   else if @image_type == 'TIFF'
                           imageFileName = imageFileName + ".tiff"
-                          image_sub_folder = 'TIFF/'
+                          image_sub_folder = artefact.folder_number.first + '/TIFF/'
                        end
                   end
                 end
@@ -202,7 +202,7 @@ class FoxmlImporter < ApplicationController
                   uploaded_files << Hyrax::UploadedFile.create(user: @user, file: artefact_binary)
               end
             end
-            #byebug
+            # byebug
             fileMap = uploaded_files.map do | aFile |
                         aFile.id
                       end
@@ -217,7 +217,7 @@ class FoxmlImporter < ApplicationController
                 artefact_binary = File.open("#{oneImage}")
                 uploaded_files << Hyrax::UploadedFile.create(user: @user, file: artefact_binary)
             end
-            #byebug
+            # byebug
             fileMap = uploaded_files.map do | aFile |
                         aFile.id
                       end
