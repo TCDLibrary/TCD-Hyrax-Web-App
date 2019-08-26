@@ -134,8 +134,9 @@ class FoxmlImporter < ApplicationController
 
         #imageLocation = "spec/fixtures/" + imageFileName
         #imageLocation = @base_folder + image_sub_folder + imageFileName
+        #byebug
 
-        if @image_type == 'HI' || @image_type == 'LO' || @image_type == 'TIFF'
+        if @image_type == 'HI' || @image_type == 'LO' || @image_type == 'TIFF' || @image_type == 'HI and TIFF'
             if @object_model == "Single Object, Multiple Images"
                 # image file names are derived from CatNo + wildcard
                 imageWildcard = ""
@@ -145,51 +146,66 @@ class FoxmlImporter < ApplicationController
                   end
                 end
 
+                imageLocation = []
+
                 if @image_type == 'LO'
                   image_sub_folder = artefact.folder_number.first + '/LO/'
-                else
-                  if @image_type == 'HI'
-                    image_sub_folder = artefact.folder_number.first + '/HI/'
-                  else if @image_type == 'TIFF'
-                          image_sub_folder = artefact.folder_number.first + '/TIFF/'
-                       end
-                  end
+                  imageFolderName = @base_folder + image_sub_folder
+                  fileName = imageFolderName + imageWildcard + "*"
+                  imageLocation = imageLocation + Dir[fileName].sort
                 end
 
-                imageFolderName = @base_folder + image_sub_folder
-                fileName = imageFolderName + imageWildcard + "*"
+                if @image_type == 'HI' || @image_type == 'HI and TIFF'
+                  image_sub_folder = artefact.folder_number.first + '/HI/'
+                  imageFolderName = @base_folder + image_sub_folder
+                  fileName = imageFolderName + imageWildcard + "*"
+                  imageLocation = imageLocation + Dir[fileName].sort
+                end
 
-                imageLocation = Dir[fileName].sort
+                if @image_type == 'TIFF' || @image_type == 'HI and TIFF'
+                  image_sub_folder = artefact.folder_number.first + '/TIFF/'
+                  imageFolderName = @base_folder + image_sub_folder
+                  fileName = imageFolderName + imageWildcard + "*"
+                  imageLocation = imageLocation + Dir[fileName].sort
+                end
+
                 #byebug
             else
                 # @object_model is "Multiple Objects, One Image Each"
                 # image file name is in DRISPhotoID
                 imageFileName = ""
+                imageFilePrefix = ""
                 link.xpath("xmlns:DRISPhotoID").each do |drisPhotoId|
                   if !drisPhotoId.content.blank?
-                    imageFileName = drisPhotoId.content.to_s
+                    imageFilePrefix = drisPhotoId.content.to_s
                   end
                 end
+
+                imageLocation = []
 
                 if @image_type == 'LO'
-                    imageFileName = imageFileName + "_LO.jpg"
-                    image_sub_folder = artefact.folder_number.first + '/LO/'
-                else
-                  if @image_type == 'HI'
-                    imageFileName = imageFileName + "_HI.jpg"
-                    image_sub_folder = artefact.folder_number.first + '/HI/'
-                  else if @image_type == 'TIFF'
-                          imageFileName = imageFileName + ".tiff"
-                          image_sub_folder = artefact.folder_number.first + '/TIFF/'
-                       end
-                  end
+                    imageFileName = imageFilePrefix + "_LO.jpg"
+                    image_sub_folder = imageFilePrefix + '/LO/'
+                    imageLocation << @base_folder + image_sub_folder + imageFileName
                 end
 
-                imageLocation = [@base_folder + image_sub_folder + imageFileName]
+                if @image_type == 'HI' || @image_type == 'HI and TIFF'
+                    imageFileName = imageFilePrefix + "_HI.jpg"
+                    image_sub_folder = artefact.folder_number.first + '/HI/'
+                    imageLocation << @base_folder + image_sub_folder + imageFileName
+                end
+
+                if @image_type == 'TIFF' || @image_type == 'HI and TIFF'
+                    imageFileName = imageFilePrefix + ".tif"
+                    # byebug
+                    image_sub_folder = artefact.folder_number.first + '/TIFF/'
+                    imageLocation << @base_folder + image_sub_folder + imageFileName
+                end
+
             end
             #byebug
             uploaded_files = []
-            #byebug
+            # byebug
             begin
               imageLocation.each do | oneImage |
                   artefact_binary = File.open("#{oneImage}")

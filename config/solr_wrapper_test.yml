@@ -2,7 +2,8 @@
 # version: 6.1.0
 port: 8985
 instance_dir: tmp/solr-test
-collection:
-    persist: false
-    dir: solr/config
-    name: hydra-test
+version: 7.5.0
+#collection:
+#    persist: false
+#    dir: solr/config
+#    name: hydra-test
