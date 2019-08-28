@@ -36,7 +36,7 @@ RSpec.feature 'Create an Ingest', js: true do
 
       expect(page).to have_content "Ingests"
       click_on('Add New Ingest')
-      expect(page).to have_content('XML File Name')
+      expect(page).to have_content('Files available to ingest:')
     end
   end
 end

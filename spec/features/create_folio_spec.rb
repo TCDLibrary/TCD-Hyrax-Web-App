@@ -37,9 +37,15 @@ RSpec.feature 'Create a Folio', js: true do
       click_link "Works"
       click_link "Add new work"
 
+      # JL: Try to fix random rspec spec failures
+      sleep 3
+      
       # If you generate more than one work uncomment these lines
       choose "payload_concern", option: "Folio"
       click_button "Create work"
+
+      # JL: Try to fix random rspec spec failures
+      sleep 3
 
       expect(page).to have_content "Add New Folio"
       click_link "Files" # switch tab

@@ -38,9 +38,16 @@ RSpec.feature 'Create a Work', js: true do
       click_link "Works"
       click_link "Add new work"
       # byebug
+
+      # JL: Try to fix random rspec spec failures
+      sleep 3
+            
       # If you generate more than one work uncomment these lines
       choose "payload_concern", option: "Work"
       click_button "Create work"
+
+      # JL: Try to fix random rspec spec failures
+      sleep 3
 
       expect(page).to have_content "Add New Work"
       click_link "Files" # switch tab
