@@ -1,6 +1,6 @@
 set :stage, :demovm045
 set :rails_env, :demovm045
-set :branch, "demo-ingests"
+set :branch, "master"
 
 # server-based syntax
 # ======================

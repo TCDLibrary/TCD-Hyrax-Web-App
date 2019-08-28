@@ -231,7 +231,7 @@ Hyrax.config do |config|
   # If you use a multi-server architecture, this MUST be a shared volume
   config.derivatives_path = Rails.root.join('tmp', 'derivatives')
 
-  config.branding_path = Rails.root.join('tmp', 'branding')
+  config.branding_path = Rails.root.join('public', 'branding')
   # Should schema.org microdata be displayed?
   # config.display_microdata = true
 
