@@ -1,6 +1,6 @@
 set :stage, :demovm045
 set :rails_env, :demovm045
-set :branch, "master"
+set :branch, "renaming-dbs"
 
 # server-based syntax
 # ======================

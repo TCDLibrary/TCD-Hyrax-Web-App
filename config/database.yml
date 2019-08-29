@@ -6,7 +6,7 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: db/development
+  database: dev_hyrax
   pool: 5
   username: root
   password: <%= ENV['HYRAX_DATABASE_PASSWORD'] %>
@@ -16,7 +16,7 @@ demovm045:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: db/development
+  database: vm045_hyrax
   pool: 5
   username: <%= ENV['HYRAX_DATABASE_USER'] %>
   password: <%= ENV['HYRAX_DATABASE_PASSWORD'] %>
@@ -29,7 +29,7 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: db/test
+  database: test_hyrax
   pool: 5
   username: travis
   password: Pa$$w0rd
