@@ -38,6 +38,19 @@ module Hyrax
           file_set.focal_length = EXIFR::JPEG.new(file.file.to_s).focal_length.to_s
           file_set.software = EXIFR::JPEG.new(file.file.to_s).software.to_s
           file_set.fedora_sha1 = (Digest::SHA1.file file.file.to_s).to_s
+        else if File.extname(file.file.to_s) == ".tif"
+                file_set.camera_model = EXIFR::TIFF.new(file.file.to_s).model.to_s
+                file_set.camera_make = EXIFR::TIFF.new(file.file.to_s).make.to_s
+                file_set.date_taken = EXIFR::TIFF.new(file.file.to_s).date_time_original.to_s
+                file_set.exposure_time = EXIFR::TIFF.new(file.file.to_s).exposure_time.to_s
+                file_set.f_number = EXIFR::TIFF.new(file.file.to_s).f_number.to_s
+                file_set.iso_speed_rating = EXIFR::TIFF.new(file.file.to_s).iso_speed_ratings.to_s
+                file_set.flash = EXIFR::TIFF.new(file.file.to_s).flash.to_s
+                file_set.exposure_program = EXIFR::TIFF.new(file.file.to_s).exposure_program.to_s
+                file_set.focal_length = EXIFR::TIFF.new(file.file.to_s).focal_length.to_s
+                file_set.software = EXIFR::TIFF.new(file.file.to_s).software.to_s
+                file_set.fedora_sha1 = (Digest::SHA1.file file.file.to_s).to_s
+              end
         end
 
         #byebug
