@@ -92,7 +92,10 @@ Hyrax.config do |config|
   config.fits_path = "~/Fits/fits-latest/fits.sh"
   if Rails.env == "demovm045"
     config.fits_path = "/home/jlakes/fits-1/fits.sh"
-  end
+  else if Rails.env == "demovm099"
+          config.fits_path = "/home/fits/fits.sh"
+       end
+  end  
   # config.fits_path = "Fits/fits-latest"
   # config.fits_path = "Fits/fits-latest"
 

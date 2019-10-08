@@ -4,6 +4,9 @@ development:
 demovm045:
   adapter: async
 
+demovm099:
+  adapter: async
+  
 test:
   adapter: async
 

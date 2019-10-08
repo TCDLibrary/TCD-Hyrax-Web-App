@@ -20,6 +20,12 @@ demovm045:
     - test@example.com
     - magar@tcd.ie
 
+demovm099:
+  admin:
+    - jlakes@tcd.ie
+    - batchuser@example.com
+    - magar@tcd.ie
+    
 test:
   admin:
       - jlakes@tcd.ie

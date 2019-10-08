@@ -21,6 +21,14 @@ demovm045:
   username: <%= ENV['HYRAX_DATABASE_USER'] %>
   password: <%= ENV['HYRAX_DATABASE_PASSWORD'] %>
 
+demovm099:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: hyrax
+  pool: 5
+  username: <%= ENV['HYRAX_DATABASE_USER'] %>
+  password: <%= ENV['HYRAX_DATABASE_PASSWORD'] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

@@ -1,5 +1,5 @@
-set :stage, :demovm045
-set :rails_env, :demovm045
+set :stage, :demovm099
+set :rails_env, :demovm099
 set :branch, "master"
 
 # server-based syntax
@@ -10,7 +10,7 @@ set :branch, "master"
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
-server "hprc-guest-115-045.tchpc.tcd.ie", user: "jlakes", roles: %w{app db web}
+server "hprc-guest-115-099.tchpc.tcd.ie", user: "jlakes", roles: %w{app db web}
 
 
 # role-based syntax
