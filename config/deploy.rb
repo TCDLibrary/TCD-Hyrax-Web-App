@@ -47,21 +47,21 @@ append :linked_dirs, "log", "tmp/derivatives", "tmp/uploads", "public/data/inges
 
 # JL : 10/07/2019
 # JL : Doesn't use the capistrano-sidekiq Gem because that is unsupported
-namespace :sidekiq do
+##namespace :sidekiq do
 
-  task :restart do
-    invoke 'sidekiq:stop'
-  end
+##  task :restart do
+##    invoke 'sidekiq:stop'
+##  end
 
-  before 'deploy:finished', 'sidekiq:restart'
+##  before 'deploy:finished', 'sidekiq:restart'
 
-  task :stop do
-    on roles(:app) do
-      within current_path do
-        #pid = p capture "sudo -S -u hyraxuser -g digcoll ps aux | grep sidekiq | awk '{print $2}' | sed -n 1p"
-        #execute("sudo -S -u hyraxuser -g digcoll kill -9 #{pid}")
-        execute ("sudo systemctl restart sidekiq")
-      end
-    end
-  end
-end
+##  task :stop do
+##    on roles(:app) do
+##      within current_path do
+##        #pid = p capture "sudo -S -u hyraxuser -g digcoll ps aux | grep sidekiq | awk '{print $2}' | sed -n 1p"
+##        #execute("sudo -S -u hyraxuser -g digcoll kill -9 #{pid}")
+##        execute ("sudo systemctl restart sidekiq")
+##      end
+##    end
+##  end
+##end
