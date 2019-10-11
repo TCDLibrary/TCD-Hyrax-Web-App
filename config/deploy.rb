@@ -63,7 +63,8 @@ namespace :sidekiq do
       within current_path do
         #pid = p capture "sudo -S -u hyraxuser -g digcoll ps aux | grep sidekiq | awk '{print $2}' | sed -n 1p"
         #execute("sudo -S -u hyraxuser -g digcoll kill -9 #{pid}")
-        execute ("sudo systemctl restart sidekiq")
+        ## execute ("sudo systemctl restart sidekiq")
+        sudo :service, :sidekiq, :restart
       end
     end
   end

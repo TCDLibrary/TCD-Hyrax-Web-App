@@ -105,3 +105,6 @@ gem 'iso639'
 
 # JL 17/07/2019 exifr to let me read image technical metadata
 gem 'exifr'
+
+# JL 11/10/2019 added to allow capistrano use sudo
+gem 'sshkit-sudo'
