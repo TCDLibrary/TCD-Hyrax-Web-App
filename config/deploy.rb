@@ -33,6 +33,9 @@ set :migration_role, :app
 append :linked_dirs, "log", "tmp/derivatives", "tmp/uploads", "public/data/ingest", "public/branding"
 # JL : note this creates a symlink from public/branding to shared/public/branding
 
+# JL : this is to fix problem with passwordless sudo for sidekiq
+set :pty, true
+
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
