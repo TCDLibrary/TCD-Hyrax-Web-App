@@ -65,7 +65,7 @@ namespace :sidekiq do
         #execute("sudo -S -u hyraxuser -g digcoll kill -9 #{pid}")
         ## execute ("sudo systemctl restart sidekiq")
         sudo :service, :sidekiq, :restart
-        execute("sudo chown -R hyraxuser:digcoll /var/www/TCD-Hyrax-Web-App/current")
+        execute("su - -c chown -R hyraxuser:digcoll /var/www/TCD-Hyrax-Web-App/current")
       end
     end
   end
