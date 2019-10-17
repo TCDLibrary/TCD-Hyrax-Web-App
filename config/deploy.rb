@@ -73,14 +73,7 @@ end
 namespace :ownership do
 
   task :restart do
-    on roles(:app) do
-      within current_path do
-        #pid = p capture "sudo -S -u hyraxuser -g digcoll ps aux | grep sidekiq | awk '{print $2}' | sed -n 1p"
-        execute("chown -R hyraxuser:digcoll /var/www/TCD-Hyrax-Web-App/current")
-        ## execute ("sudo systemctl restart sidekiq")
-        ##sudo :service, :sidekiq, :restart
-      end
-    end
+    execute("sudo chown -R hyraxuser:digcoll /var/www/TCD-Hyrax-Web-App/current")
   end
 
 end
