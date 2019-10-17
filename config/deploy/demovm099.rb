@@ -10,7 +10,7 @@ set :branch, "master"
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
-server "hprc-guest-115-099.tchpc.tcd.ie", user: "jlakes", roles: %w{app db web}
+## server "hprc-guest-115-099.tchpc.tcd.ie", user: "jlakes", roles: %w{app db web}
 
 
 # role-based syntax
@@ -59,3 +59,11 @@ server "hprc-guest-115-099.tchpc.tcd.ie", user: "jlakes", roles: %w{app db web}
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
+  server "hprc-guest-115-099.tchpc.tcd.ie",
+            user: "hyraxuser",
+           roles: %w{app db web},
+     ssh_options: { user: "jlakes" }
+   #     keys: %w(/home/user_name/.ssh/id_rsa),
+   #     forward_agent: false,
+   #     auth_methods: %w(publickey password)
+   #     # password: "please use keys"
