@@ -62,7 +62,10 @@ set :branch, "master"
   server "hprc-guest-115-099.tchpc.tcd.ie",
             user: "hyraxuser",
            roles: %w{app db web},
-     ssh_options: { user: "jlakes" }
+     ssh_options: { user: "jlakes"
+           forward_agent: false,
+            auth_methods: %w(password)
+     }
    #     keys: %w(/home/user_name/.ssh/id_rsa),
    #     forward_agent: false,
    #     auth_methods: %w(publickey password)
