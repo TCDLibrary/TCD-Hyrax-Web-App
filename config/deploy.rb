@@ -71,7 +71,7 @@ namespace :sidekiq do
   end
 end
 
-after "deploy:finalize_update" do
-  run "chown -R hyraxuser:digcoll #{latest_release}"
-  run "chmod -R 777 #{latest_release}/tmp"
-end
+#after "deploy:finalize_update" do
+#  run "chown -R hyraxuser:digcoll #{latest_release}"
+#  run "chmod -R 777 #{latest_release}/tmp"
+#end
