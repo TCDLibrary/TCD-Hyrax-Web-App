@@ -54,6 +54,7 @@ namespace :sidekiq do
 
   task :restart do
     invoke 'sidekiq:stop'
+    invoke 'sidekiq:start'
   end
 
   before 'deploy:finished', 'sidekiq:restart'
@@ -61,11 +62,16 @@ namespace :sidekiq do
   task :stop do
     on roles(:app) do
       within current_path do
-        #pid = p capture "sudo -S -u hyraxuser -g digcoll ps aux | grep sidekiq | awk '{print $2}' | sed -n 1p"
-        #execute("sudo -S -u hyraxuser -g digcoll kill -9 #{pid}")
-        #execute ("systemctl restart sidekiq")
-         sudo :service, :sidekiq, :restart
-      #  execute("chown -R hyraxuser:digcoll /var/www/TCD-Hyrax-Web-App/current")
+        pid = p capture "ps aux | grep sidekiq | awk '{print $2}' | sed -n 1p"
+        execute("kill -9 #{pid}")
+      end
+    end
+  end
+
+  task :start do
+    on roles(:app) do
+      within current_path do
+        execute :bundle, "exec sidekiq -e #{fetch(:stage)} -C config/sidekiq.yml -d"
       end
     end
   end
