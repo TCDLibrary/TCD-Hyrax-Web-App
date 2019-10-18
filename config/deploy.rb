@@ -63,13 +63,8 @@ namespace :sidekiq do
       within current_path do
         #pid = p capture "sudo -S -u hyraxuser -g digcoll ps aux | grep sidekiq | awk '{print $2}' | sed -n 1p"
         #execute("sudo -S -u hyraxuser -g digcoll kill -9 #{pid}")
-        execute ("service sidekiq restart")
+        execute ("sudo systemctl restart sidekiq")
       end
     end
   end
 end
-
-#after "deploy:finalize_update" do
-#  run "chown -R hyraxuser:digcoll #{latest_release}"
-#  run "chmod -R 777 #{latest_release}/tmp"
-#end
