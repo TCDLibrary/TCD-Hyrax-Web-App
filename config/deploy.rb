@@ -59,11 +59,11 @@ namespace :sidekiq do
   before 'deploy:finished', 'sidekiq:restart'
 
   task :stop do
-    on roles(:sidekiq) do
+    on roles(:app) do
       within current_path do
         #pid = p capture "sudo -S -u hyraxuser -g digcoll ps aux | grep sidekiq | awk '{print $2}' | sed -n 1p"
         #execute("sudo -S -u hyraxuser -g digcoll kill -9 #{pid}")
-        execute ("sudo systemctl restart sidekiq")
+        execute ("su - jlakes systemctl restart sidekiq")
       end
     end
   end
