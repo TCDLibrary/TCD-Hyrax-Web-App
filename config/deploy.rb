@@ -71,7 +71,8 @@ namespace :sidekiq do
   task :start do
     on roles(:app) do
       within current_path do
-        execute :bundle, "exec sidekiq -e #{fetch(:stage)} -C config/sidekiq.yml -d"
+      #  execute :bundle, "exec sidekiq -e #{fetch(:stage)} -C config/sidekiq.yml -d"
+         execute :bundle, "exec sidekiq -e #{fetch(:stage)}"
       end
     end
   end
