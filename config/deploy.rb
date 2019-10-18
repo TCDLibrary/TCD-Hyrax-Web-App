@@ -53,26 +53,17 @@ set :pty, true
 namespace :sidekiq do
 
   task :restart do
-  #  invoke 'sidekiq:stop'
-    invoke 'sidekiq:start'
+    invoke 'sidekiq:stop'
   end
 
   before 'deploy:finished', 'sidekiq:restart'
 
-#  task :stop do
-#    on roles(:app) do
-#      within current_path do
-#        pid = p capture "ps aux | grep sidekiq | awk '{print $2}' | sed -n 1p"
-#        execute("kill -9 #{pid}")
-#      end
-#    end
-#  end
-
-  task :start do
-    on roles(:app) do
+  task :stop do
+    on roles(:sidekiq) do
       within current_path do
-      #  execute :bundle, "exec sidekiq -e #{fetch(:stage)} -C config/sidekiq.yml -d"
-         execute "su - jlakes systemctl restart sidekiq"
+        #pid = p capture "sudo -S -u hyraxuser -g digcoll ps aux | grep sidekiq | awk '{print $2}' | sed -n 1p"
+        #execute("sudo -S -u hyraxuser -g digcoll kill -9 #{pid}")
+        execute ("sudo systemctl restart sidekiq")
       end
     end
   end
