@@ -66,4 +66,7 @@ Rails.application.configure do
   IIIF_SERVER_URL='http://134.226.115.52:8182/iiif/2/'
   #IIIF_SERVER_URL='http://127.0.0.1:8080/cantaloupe-4.1.2/iiif/2/'
 
+  # JL : TODO. Check if I need this. Added it because viewer giving errors on VM-099
+  config.public_file_server.enabled = true
+
 end
