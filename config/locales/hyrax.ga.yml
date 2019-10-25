@@ -896,6 +896,9 @@ ga:
         link: View all collections
         tab_label: Explore Collections
         title: Explore Collections
+      beta:
+        cant_html: "Can't find what you are looking for? Our old service can be found <a href='https://digitalcollections.tcd.ie'>here</a>."
+        welcome_html: "Welcome to our <strong>beta</strong> Digital Collections service. Please bear with us during our migration."
       featured_researcher:
         missing: No researchers have been featured.
         tab_label: Featured Researcher

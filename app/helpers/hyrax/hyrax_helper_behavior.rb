@@ -17,11 +17,11 @@ module Hyrax
     # @return [Hash<String,String>] locale abbreviations as keys and flags as values
     def available_translations
       {
-      #  'de' => 'Deutsch',
+        'de' => 'Deutsch',
         'en' => 'English',
         'es' => 'Español',
       #  'fr' => 'Français',
-        'ga' => 'Irish',
+        'ga' => 'Gaeilge',
       #  'it' => 'Italiano',
       #  'pt-BR' => 'Português do Brasil',
       #  'zh' => '中文'
