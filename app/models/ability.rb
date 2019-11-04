@@ -19,5 +19,13 @@ class Ability
     # if user_groups.include? 'special_group'
     #   can [:create], ActiveFedora::Base
     # end
+
+    # JL 04/11/2019 adding Admin users:
+    # https://github.com/samvera/hyrax/wiki/Making-Admin-Users-in-Hyrax
+    if current_user.admin?
+      can [:create, :show, :add_user, :remove_user, :index, :edit, :update, :destroy], Role
+    end
+
   end
+
 end
