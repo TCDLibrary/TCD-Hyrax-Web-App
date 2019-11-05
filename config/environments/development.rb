@@ -12,7 +12,7 @@ Rails.application.configure do
   # Show full error reports.
   # JL : 16/07/2019 : Turning off so I can see 404 page etc
   # TODO
-  config.consider_all_requests_local = true
+  config.consider_all_requests_local = false
 
   # 21/11/2018 JL:
   # config.active_job.queue_adapter     = :inline

@@ -25,6 +25,10 @@ RSpec.feature 'Import Work', js: true do
       # Create a single action that can be taken
       Sipity::WorkflowAction.create!(name: 'submit', workflow: workflow)
 
+      admin = Role.create(name: "admin")
+      admin.users << user
+      admin.save
+      
       # Grant the user access to deposit into the admin set.
       Hyrax::PermissionTemplateAccess.create!(
         permission_template_id: permission_template.id,

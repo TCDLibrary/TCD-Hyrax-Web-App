@@ -56,6 +56,14 @@ en:
     footer:
       copyright_html: "<strong>Copyright &copy; 2018 Samvera</strong> Licensed under the Apache License, Version 2.0"
       service_html: A service of <a href="http://samvera.org/" class="navbar-link" target="_blank">Samvera</a>.
+      accessibility: Trinity Accessibility
+      privacy: Trinity Privacy
+      disclaimer: Trinity Disclaimer
+      contact: Trinity Contact
+    homepage:
+      beta:
+        cant_html: "Can't find what you are looking for? Our old service can be found <a href='https://digitalcollections.tcd.ie'>here</a>."
+        welcome_html: "Welcome to our <strong>beta</strong> Digital Collections service. Please bear with us during our migration."
     institution_name: TCD
     institution_name_full: Trinity College Dublin
     product_name: Digital Collections

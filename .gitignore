@@ -30,7 +30,9 @@ dump.rdb
 /public/data/ingest/*
 
 # Ignore the branding files
-/public/branding/*
+#!/public/branding/
+/public/branding/**/
+!/public/branding/*.jpg
 
 .byebug_history
 

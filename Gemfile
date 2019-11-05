@@ -108,3 +108,7 @@ gem 'exifr'
 
 # JL 11/10/2019 added to allow capistrano use sudo
 gem 'sshkit-sudo'
+
+# JL 04/11/2019 adding Admin users:
+# https://github.com/samvera/hyrax/wiki/Making-Admin-Users-in-Hyrax
+gem 'hydra-role-management'
