@@ -31,8 +31,8 @@ dump.rdb
 
 # Ignore the branding files
 #!/public/branding/
-/public/branding/**/
 !/public/branding/*.jpg
+/public/branding/*
 
 .byebug_history
 
