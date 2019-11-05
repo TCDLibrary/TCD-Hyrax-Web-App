@@ -32,7 +32,7 @@ dump.rdb
 # Ignore the branding files
 #!/public/branding/
 /public/branding/**/
-!/public/branding/'MapTest Banner Example 2.jpg'
+!/public/branding/*.jpg
 
 .byebug_history
 
