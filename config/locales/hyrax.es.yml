@@ -12,6 +12,9 @@ es:
           language_sim: Idioma
           publisher_sim: Editor
           subject_sim: Tema
+          human_readable_type_sim : Tipo
+          title_sim: Titulo
+          contributor_sim: Contribuidor
         index:
           based_near_tesim: Ubicación
           contributor_tesim: Contribuidor
@@ -49,6 +52,9 @@ es:
     account_name: Mi identificador de cuenta institucional
     directory:
       suffix: "@example.org"
+    download:
+      metadata: Descargar metadatos
+      schema: (Dublin Core)
     footer:
       copyright_html: "<strong>Copyright &copy; 2018 Samvera</strong> bajo licencia de Apache, Version 2.0"
       service_html: Un servicio de <a href="http://samvera.org/" class="navbar-link" target="_blank">Samvera/a>.
@@ -63,4 +69,4 @@ es:
     institution_name: institución
     institution_name_full: El nombre de la institución
     product_name: Hyrax
-    product_twitter_handle: "@SamveraRepo"
+    product_twitter_handle: "@DigitalColl"

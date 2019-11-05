@@ -794,6 +794,11 @@ ga:
         title: User Activity
       user_notifications: User Notifications
       view_files: View Files
+
+    download:
+      metadata: Download Metadata
+      schema: (Dublin Core)
+
     document_language: en
     edit_profile: Edit Profile
     embargoes:
@@ -1006,7 +1011,7 @@ ga:
       updated: Pages updated.
     passive_consent_to_agreement: By saving this work I agree to the
     product_name: Bailiúcháin Dhigiteacha
-
+    product_twitter_handle: "@DigitalColl"   
     search:
       button:
         html: <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Go
