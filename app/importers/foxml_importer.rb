@@ -35,7 +35,7 @@ class FoxmlImporter < ApplicationController
   #   Culture
   #   Description
 
-  def initialize(object_model, user, file, parent = '000000000', parent_type = 'no_parent', image_type = 'LO', base_folder = Rails.application.config.ingest_folder)
+  def initialize(object_model, user, file, parent = '000000000', parent_type = 'no_parent', image_type = 'LO', visibility = 'Public', base_folder = Rails.application.config.ingest_folder)
     @file = file
     #@user = ::User.batch_user
     @user = user
@@ -47,6 +47,7 @@ class FoxmlImporter < ApplicationController
     @file_path = base_folder + file
     @filename = file
     @object_model = object_model
+    @visibility = visibility
     # @artefact = artefact
   end
 
@@ -108,7 +109,12 @@ class FoxmlImporter < ApplicationController
         artefact = artefactClass.new
         #artefact = Folio.new
         artefact.depositor = @user.email
-        artefact.visibility = 'open'
+        # byebug
+        if @visibility == 'Private'
+          artefact.visibility = 'restricted'
+        else
+          artefact.visibility = 'open'
+        end
 
         artefact.admin_set_id = admin_set_id
         #byebug

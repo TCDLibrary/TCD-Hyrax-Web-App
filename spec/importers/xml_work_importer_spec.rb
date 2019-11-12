@@ -11,6 +11,7 @@ RSpec.describe FoxmlImporter do
   let(:parent_id)          { '000000000' }
   let(:parent_type)        { 'no_parent' }
   let(:object_model)       { 'Multiple Objects, One Image Each' }
+  let(:visibility)         { '' }
 
   before do
     DatabaseCleaner.strategy = :transaction
@@ -20,7 +21,7 @@ RSpec.describe FoxmlImporter do
 
   it "stores data in correct fields in the work" do
      artefact = Work
-     expect { FoxmlImporter.new(object_model, ::User.batch_user, file_example, parent_id, parent_type,  'LO', base_folder).import(artefact) }.to change { Work.count }.by 1
+     expect { FoxmlImporter.new(object_model, ::User.batch_user, file_example, parent_id, parent_type,  'LO', visibility, base_folder).import(artefact) }.to change { Work.count }.by 1
 
      imported_work = Work.first
      expect(imported_work.title.first).to eq('Letter from Catherine (Kate) D’Alton, Clonmore, 8th-12th August, 1824 to John D’Alton')
@@ -92,6 +93,8 @@ RSpec.describe FoxmlImporter do
      expect(imported_work.subject_lcsh).to be_empty #SubjectLCSH
      expect(imported_work.subject_subj_name).to include ("D’Alton, John, 1792-1867--Correspondence") #LCSubjectNames
      expect(imported_work.subject_local_keyword).to include ("D’Alton, Catherine (Kate), approximately 1795-1859--Correspondence") #OpenKeyword
+     expect(imported_work.visibility).to include ("open")
+
 
   end
 

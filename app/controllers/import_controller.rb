@@ -33,7 +33,7 @@ class ImportController < ApplicationController
     end
 
     image_type = params[:image_type]
-    #byebug
+    # byebug
     # TODO : Need to get this controller to work with Folios, Works and Collections - depending on input
 
     #work_file_example = 'spec/fixtures/Named_Collection_Example_OBJECT RECORDS_v3.6_20181207.xml'
