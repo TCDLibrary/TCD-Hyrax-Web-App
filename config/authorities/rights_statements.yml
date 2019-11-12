@@ -35,15 +35,19 @@ terms:
 - id: http://rightsstatements.org/vocab/NKC/1.0/
   term: "No Known Copyright"
   active: false
-- id: https://rightsstatements.org/page/InC/1.0/
+#- #id: https://rightsstatements.org/page/InC/1.0/
+- id: "Active - In Copyright"
   term: "Active - In Copyright"
   active: true
-- id: http://creativecommons.org/publicdomain/mark/1.0/
+#- #id: http://creativecommons.org/publicdomain/mark/1.0/
+- id: "Expired - Public Domain (Creative Commons)"
   term: "Expired - Public Domain (Creative Commons)"
   active: true
-- id: https://rightsstatements.org/page/InC-OW-EU/1.0/
+#- #id: https://rightsstatements.org/page/InC-OW-EU/1.0/
+- id: "Orphan - In Copyright - EU Orphan Work"
   term: "Orphan - In Copyright - EU Orphan Work"
   active: true
-- id: https://rightsstatements.org/page/UND/1.0/
+#- #id: https://rightsstatements.org/page/UND/1.0/
+- id: "Uncertain - Copyright Undetermined"
   term: "Uncertain - Copyright Undetermined"
   active: true

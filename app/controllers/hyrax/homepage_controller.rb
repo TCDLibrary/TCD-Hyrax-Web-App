@@ -26,7 +26,7 @@ class Hyrax::HomepageController < ApplicationController
 
   private
 
-    # Return 5 collections
+    # Return 10 collections
     def collections(rows: 10)
       builder = Hyrax::CollectionSearchBuilder.new(self)
                                               .rows(rows)
@@ -38,7 +38,7 @@ class Hyrax::HomepageController < ApplicationController
 
     def recent
       # grab any recent documents
-      (_, @recent_documents) = search_results(q: '', sort: sort_field, rows: 4)
+      (_, @recent_documents) = search_results(q: '', sort: sort_field, rows: 10)
     rescue Blacklight::Exceptions::ECONNREFUSED, Blacklight::Exceptions::InvalidRequest
       @recent_documents = []
     end
