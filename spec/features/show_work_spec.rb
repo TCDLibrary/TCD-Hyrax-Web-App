@@ -9,7 +9,7 @@ RSpec.feature 'Display a Work' do
   let(:visibility) { Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC }
   let(:user)       { 'test@example.com' }
   let(:dris_page_no)                {['A Dris Page No']}
-  let(:copyright_status)            {['A Copyright Status']}
+  #let(:copyright_status)            {['A Copyright Status']}
   let(:genre)                       {['A Genre']}
   let(:digital_object_identifier)   {['A Digital Object Identifier']}
   let(:dris_unique)                 {['A Dris Unique']}
@@ -40,7 +40,7 @@ RSpec.feature 'Display a Work' do
                 visibility:                 visibility,
                 depositor:                  user,
                 dris_page_no:               dris_page_no,
-                copyright_status:           copyright_status,
+                #copyright_status:           copyright_status,
                 genre:                      genre,
                 digital_object_identifier:  digital_object_identifier,
                 dris_unique:                dris_unique,
@@ -70,7 +70,7 @@ RSpec.feature 'Display a Work' do
     expect(page).to have_content work.keyword.first
     expect(page).to have_content work.keyword.last
     expect(page).to have_content work.dris_page_no.first
-    expect(page).to have_content work.copyright_status.first
+    #expect(page).to have_content work.copyright_status.first
     expect(page).to have_content work.genre.first
     expect(page).to have_content work.digital_object_identifier.first
     # JL: 06/02/2019 dris_unique is ingested but not displayed

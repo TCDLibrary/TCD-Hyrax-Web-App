@@ -487,22 +487,24 @@ class FoxmlImporter < ApplicationController
       end
 
       # rights_statement -> CopyrightStatus
-      link.xpath("xmlns:CopyrightStatus").each do |statuses|
-         if !statuses.content.blank?
-           statuses.xpath("xmlns:DATA").each do |aStatus|
-             if aStatus.content == "Active"
-               artefact.rights_statement = ["Active - In Copyright"]
-             else if aStatus.content == "Expired"
-                    artefact.rights_statement = ["Expired - Public Domain (Creative Commons)"]
-                  else if aStatus.content == "Orphan"
-                         artefact.rights_statement = ["Orphan - In Copyright - EU Orphan Work"]
-                       else artefact.rights_statement = ["Uncertain - Copyright Undetermined"]
-                       end
-                  end
-             end
-           end
-         end
-      end
+      # JL : 18/11/2019. Use default rights statement
+      ##link.xpath("xmlns:CopyrightStatus").each do |statuses|
+      ##   if !statuses.content.blank?
+      ##     statuses.xpath("xmlns:DATA").each do |aStatus|
+      ##       if aStatus.content == "Active"
+      ##         artefact.rights_statement = ["Active - In Copyright"]
+      ##       else if aStatus.content == "Expired"
+      ##              artefact.rights_statement = ["Expired - Public Domain (Creative Commons)"]
+      ##            else if aStatus.content == "Orphan"
+      ##                   artefact.rights_statement = ["Orphan - In Copyright - EU Orphan Work"]
+      ##                 else artefact.rights_statement = ["Uncertain - Copyright Undetermined"]
+      ##                 end
+      ##            end
+      ##       end
+      ##     end
+      ##   end
+      ##end
+      artefact.rights_statement = ["Copyright The Board of Trinity College Dublin. Images are available for single-use academic application only. Publication, transmission or display is prohibited without formal written approval of the Library of Trinity College, Dublin."]
 
       # abstract
       #byebug

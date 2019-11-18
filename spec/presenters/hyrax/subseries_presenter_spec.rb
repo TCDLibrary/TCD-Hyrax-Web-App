@@ -12,7 +12,7 @@ RSpec.describe Hyrax::SubseriesPresenter do
   let(:depositor) { 'test@example.com' }
   # JL: 07/12/2018:
   let(:dris_page_no) {['A Dris Page No']}
-  let(:copyright_status) {['A Copyright Holder']}
+  #let(:copyright_status) {['A Copyright Holder']}
   let(:genre) {['A Genre']}
   let(:digital_object_identifier) {['A Digital Object Identifier']}
   let(:dris_unique) {['A Dris Unique']}
@@ -41,7 +41,7 @@ RSpec.describe Hyrax::SubseriesPresenter do
       depositor: depositor,
       visibility: visibility,
       dris_page_no: dris_page_no,
-      copyright_status: copyright_status,
+      #copyright_status: copyright_status,
       genre: genre,
       digital_object_identifier: digital_object_identifier,
       dris_unique: dris_unique,
@@ -76,10 +76,10 @@ RSpec.describe Hyrax::SubseriesPresenter do
     presenter.dris_page_no
   end
 
-  it "delegates copyright_status to solr document" do
-    expect(solr_document).to receive(:copyright_status)
-    presenter.copyright_status
-  end
+  #it "delegates copyright_status to solr document" do
+  #  expect(solr_document).to receive(:copyright_status)
+  #  presenter.copyright_status
+  #end
 
   it "delegates digital_object_identifier to solr document" do
     expect(solr_document).to receive(:digital_object_identifier)

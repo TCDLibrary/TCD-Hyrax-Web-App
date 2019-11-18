@@ -31,7 +31,7 @@ RSpec.describe FoxmlImporter do
      expect(imported_folio.depositor).to eq(::User.batch_user.email)
      expect(imported_folio.creator).to include('D’Alton, Catherine (Kate), approximately 1795-1859, Author')
      expect(imported_folio.keyword).to include('D’Alton, Catherine (Kate), approximately 1795-1859--Correspondence')
-     expect(imported_folio.rights_statement).to include('Expired - Public Domain (Creative Commons)')
+     expect(imported_folio.rights_statement).to include('Copyright The Board of Trinity College Dublin. Images are available for single-use academic application only. Publication, transmission or display is prohibited without formal written approval of the Library of Trinity College, Dublin.')
      expect(imported_folio.description).to include('TCD MS 2327/64 is a letter from Catherine (Kate) D’Alton (née Phillips, of Clonmore, Co. Mayo, 1815-1853) to her husband, John William Alexander D’Alton (of Bessville, Co. Meath, 1792-1867).  Written d...')
      #expect(imported_folio.abstract).to include('TCD MS 2327/64 is a letter from Catherine (Kate) D’Alton (née Phillips, of Clonmore, Co. Mayo, 1815-1853) to her...')
      expect(imported_folio.publisher).to include('A Publisher Name')
@@ -94,7 +94,7 @@ RSpec.describe FoxmlImporter do
      expect(imported_folio.subject_lcsh).to be_empty #SubjectLCSH
      expect(imported_folio.subject_subj_name).to include ("D’Alton, John, 1792-1867--Correspondence") #LCSubjectNames
      expect(imported_folio.subject_local_keyword).to include ("D’Alton, Catherine (Kate), approximately 1795-1859--Correspondence") #OpenKeyword
-     expect(imported_folio.visibility).to include ("restricted") 
+     expect(imported_folio.visibility).to include ("restricted")
 
   end
 
