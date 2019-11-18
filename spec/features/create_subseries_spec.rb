@@ -60,7 +60,8 @@ RSpec.feature 'Create a Subseries', js: true do
       fill_in('Title', with: 'My Test Subseries')
       fill_in('Creator', with: 'Doe, Jane')
       fill_in('Keyword', with: 'testing')
-      select('Expired - Public Domain (Creative Commons)', from: 'Rights statement')
+
+      select('Copyright The Board of Trinity College Dublin', from: 'Rights statement')
 
       # 13-12-2018 JL:
       click_link("Additional fields")

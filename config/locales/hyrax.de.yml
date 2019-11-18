@@ -49,6 +49,9 @@ de:
     account_name: Meine Institution Konto-ID
     directory:
       suffix: "@ Example.org"
+    download:
+      metadata: Download Metadata
+      schema: (Dublin Core)      
     footer:
       copyright_html: "<strong>Copyright © 2018 Samvera lizenziert</strong> unter der Apache Lizenz, Version 2.0"
       service_html: Ein Dienst von <a href="http://samvera.org/" class="navbar-link" target="_blank">Samvera</a> .

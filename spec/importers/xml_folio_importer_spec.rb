@@ -12,6 +12,7 @@ RSpec.describe FoxmlImporter do
   let(:parent_id)          { '000000000' }
   let(:parent_type)        { 'no_parent' }
   let(:object_model)       { 'Multiple Objects, One Image Each' }
+  let(:visibility)         { 'Private'}
 
 
   before do
@@ -23,14 +24,14 @@ RSpec.describe FoxmlImporter do
   it "stores data in correct fields in the Folio" do
      #XmlFolioImporter.new(file_example).import
      artefact = Folio
-     expect { FoxmlImporter.new(object_model, ::User.batch_user, file_example, parent_id, parent_type,  'HI and TIFF', base_folder).import(artefact) }.to change { Folio.count }.by 1
+     expect { FoxmlImporter.new(object_model, ::User.batch_user, file_example, parent_id, parent_type,  'HI and TIFF', visibility, base_folder).import(artefact) }.to change { Folio.count }.by 1
 
      imported_folio = Folio.first
      expect(imported_folio.title.first).to eq('Letter from Catherine (Kate) D’Alton, Clonmore, 8th-12th August, 1824 to John D’Alton')
      expect(imported_folio.depositor).to eq(::User.batch_user.email)
      expect(imported_folio.creator).to include('D’Alton, Catherine (Kate), approximately 1795-1859, Author')
      expect(imported_folio.keyword).to include('D’Alton, Catherine (Kate), approximately 1795-1859--Correspondence')
-     expect(imported_folio.rights_statement).to include('http://creativecommons.org/publicdomain/mark/1.0/')
+     expect(imported_folio.rights_statement).to include('Copyright The Board of Trinity College Dublin. Images are available for single-use academic application only. Publication, transmission or display is prohibited without formal written approval of the Library of Trinity College, Dublin.')
      expect(imported_folio.description).to include('TCD MS 2327/64 is a letter from Catherine (Kate) D’Alton (née Phillips, of Clonmore, Co. Mayo, 1815-1853) to her husband, John William Alexander D’Alton (of Bessville, Co. Meath, 1792-1867).  Written d...')
      #expect(imported_folio.abstract).to include('TCD MS 2327/64 is a letter from Catherine (Kate) D’Alton (née Phillips, of Clonmore, Co. Mayo, 1815-1853) to her...')
      expect(imported_folio.publisher).to include('A Publisher Name')
@@ -93,6 +94,7 @@ RSpec.describe FoxmlImporter do
      expect(imported_folio.subject_lcsh).to be_empty #SubjectLCSH
      expect(imported_folio.subject_subj_name).to include ("D’Alton, John, 1792-1867--Correspondence") #LCSubjectNames
      expect(imported_folio.subject_local_keyword).to include ("D’Alton, Catherine (Kate), approximately 1795-1859--Correspondence") #OpenKeyword
+     expect(imported_folio.visibility).to include ("restricted")
 
   end
 

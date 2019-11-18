@@ -39,7 +39,7 @@ RSpec.feature 'Create a Folio', js: true do
 
       # JL: Try to fix random rspec spec failures
       sleep 3
-      
+
       # If you generate more than one work uncomment these lines
       choose "payload_concern", option: "Folio"
       click_button "Create work"
@@ -60,7 +60,7 @@ RSpec.feature 'Create a Folio', js: true do
       fill_in('Title', with: 'My Test Folio')
       fill_in('Creator', with: 'Doe, Jane')
       fill_in('Keyword', with: 'testing')
-      select('Orphan - In Copyright - EU Orphan Work', from: 'Rights statement')
+      select('Copyright The Board of Trinity College Dublin', from: 'Rights statement')
 
       # 13-12-2018 JL:
       click_link("Additional fields")

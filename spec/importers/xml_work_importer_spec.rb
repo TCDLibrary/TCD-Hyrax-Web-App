@@ -11,6 +11,7 @@ RSpec.describe FoxmlImporter do
   let(:parent_id)          { '000000000' }
   let(:parent_type)        { 'no_parent' }
   let(:object_model)       { 'Multiple Objects, One Image Each' }
+  let(:visibility)         { '' }
 
   before do
     DatabaseCleaner.strategy = :transaction
@@ -20,14 +21,15 @@ RSpec.describe FoxmlImporter do
 
   it "stores data in correct fields in the work" do
      artefact = Work
-     expect { FoxmlImporter.new(object_model, ::User.batch_user, file_example, parent_id, parent_type,  'LO', base_folder).import(artefact) }.to change { Work.count }.by 1
+     expect { FoxmlImporter.new(object_model, ::User.batch_user, file_example, parent_id, parent_type,  'LO', visibility, base_folder).import(artefact) }.to change { Work.count }.by 1
 
      imported_work = Work.first
      expect(imported_work.title.first).to eq('Letter from Catherine (Kate) D’Alton, Clonmore, 8th-12th August, 1824 to John D’Alton')
      expect(imported_work.depositor).to eq(::User.batch_user.email)
      expect(imported_work.creator).to include('D’Alton, Catherine (Kate), approximately 1795-1859, Author')
      expect(imported_work.keyword).to include('D’Alton, Catherine (Kate), approximately 1795-1859--Correspondence')
-     expect(imported_work.rights_statement).to include('http://creativecommons.org/publicdomain/mark/1.0/')
+     # expect(imported_work.rights_statement).to include('http://creativecommons.org/publicdomain/mark/1.0/')
+     expect(imported_work.rights_statement).to include('Copyright The Board of Trinity College Dublin. Images are available for single-use academic application only. Publication, transmission or display is prohibited without formal written approval of the Library of Trinity College, Dublin.')
 
      expect(imported_work.description).to include('TCD MS 2327/64 is a letter from Catherine (Kate) D’Alton (née Phillips, of Clonmore, Co. Mayo, 1815-1853) to her husband, John William Alexander D’Alton (of Bessville, Co. Meath, 1792-1867).  Written d...')
      #expect(imported_work.abstract).to include('TCD MS 2327/64 is a letter from Catherine (Kate) D’Alton (née Phillips, of Clonmore, Co. Mayo, 1815-1853) to her...')
@@ -91,6 +93,8 @@ RSpec.describe FoxmlImporter do
      expect(imported_work.subject_lcsh).to be_empty #SubjectLCSH
      expect(imported_work.subject_subj_name).to include ("D’Alton, John, 1792-1867--Correspondence") #LCSubjectNames
      expect(imported_work.subject_local_keyword).to include ("D’Alton, Catherine (Kate), approximately 1795-1859--Correspondence") #OpenKeyword
+     expect(imported_work.visibility).to include ("open")
+
 
   end
 

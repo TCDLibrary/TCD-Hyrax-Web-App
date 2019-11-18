@@ -31,17 +31,17 @@ class IngestsController < ApplicationController
       if @ingest.new_work_type == "folio(s)"
         #admin_set_id =  AdminSet.find_or_create_default_admin_set_id
         artefactClass = Folio
-        FoxmlImporter.new(@ingest.object_model_type, current_user, @ingest.xml_file_name, @ingest.parent_id, @ingest.parent_type, @ingest.image_type).import(artefactClass)
+        FoxmlImporter.new(@ingest.object_model_type, current_user, @ingest.xml_file_name, @ingest.parent_id, @ingest.parent_type, @ingest.image_type, @ingest.visibility).import(artefactClass)
       end
 
       if @ingest.new_work_type == "subseries(s)"
         artefactClass = Subseries
-        FoxmlImporter.new(@ingest.object_model_type, current_user, @ingest.xml_file_name, @ingest.parent_id, @ingest.parent_type, @ingest.image_type).import(artefactClass)
+        FoxmlImporter.new(@ingest.object_model_type, current_user, @ingest.xml_file_name, @ingest.parent_id, @ingest.parent_type, @ingest.image_type, @ingest.visibility).import(artefactClass)
       end
 
       if @ingest.new_work_type == "work(s)"
           artefactClass = Work
-          FoxmlImporter.new(@ingest.object_model_type, current_user, @ingest.xml_file_name, @ingest.parent_id, @ingest.parent_type, @ingest.image_type).import(artefactClass)
+          FoxmlImporter.new(@ingest.object_model_type, current_user, @ingest.xml_file_name, @ingest.parent_id, @ingest.parent_type, @ingest.image_type, @ingest.visibility).import(artefactClass)
       end
 
       flash[:notice] = 'Ingest request created.'
@@ -69,7 +69,7 @@ class IngestsController < ApplicationController
 
   def ingest_params
     params.require(:ingest).permit(:object_model_type, :xml_file_name,
-          :new_work_type, :parent_type, :parent_id, :image_type)
+          :new_work_type, :parent_type, :parent_id, :image_type, :visibility)
   end
 
 end

@@ -35,7 +35,7 @@ class FoxmlImporter < ApplicationController
   #   Culture
   #   Description
 
-  def initialize(object_model, user, file, parent = '000000000', parent_type = 'no_parent', image_type = 'LO', base_folder = Rails.application.config.ingest_folder)
+  def initialize(object_model, user, file, parent = '000000000', parent_type = 'no_parent', image_type = 'LO', visibility = 'Public', base_folder = Rails.application.config.ingest_folder)
     @file = file
     #@user = ::User.batch_user
     @user = user
@@ -47,6 +47,7 @@ class FoxmlImporter < ApplicationController
     @file_path = base_folder + file
     @filename = file
     @object_model = object_model
+    @visibility = visibility
     # @artefact = artefact
   end
 
@@ -54,9 +55,6 @@ class FoxmlImporter < ApplicationController
   require 'open-uri'
 
   def import(artefactClass)
-      # is there a parent Work to own these new folios?
-      #
-      testing = Rails.application.config.ingest_folder
 
       admin_set_id =  AdminSet.find_or_create_default_admin_set_id
 
@@ -105,36 +103,23 @@ class FoxmlImporter < ApplicationController
       doc = Nokogiri::XML(open(@file_path))
       puts "### Search for nodes by xpath"
 
-    #  if (@object_model == "Single Object, Multiple Images" && doc.xpath("//xmlns:ROW").count == 1)
-    #    || (@object_model == "Multiple Objects, One Image Each")
-    #  end
-
       #byebug
       doc.xpath("//xmlns:ROW").each do |link|
 
         artefact = artefactClass.new
         #artefact = Folio.new
         artefact.depositor = @user.email
-        artefact.visibility = 'open'
+        # byebug
+        if @visibility == 'Private'
+          artefact.visibility = 'restricted'
+        else
+          artefact.visibility = 'open'
+        end
 
         artefact.admin_set_id = admin_set_id
         #byebug
 
-        # TODO: JL why was this duplicated below?
-        #if !owner_rec.id.blank? && !owner_rec.id == '000000000'
-        #   #byebug
-        #   owner_rec.members << artefact
-        #   owner_rec.ordered_members << artefact
-        #   owner_rec.save
-        #end
-
-        #imageLocation = ''
-        #artefact =
         self.parse(link, artefact, owner_rec)
-
-        #imageLocation = "spec/fixtures/" + imageFileName
-        #imageLocation = @base_folder + image_sub_folder + imageFileName
-        #byebug
 
         if @image_type == 'HI' || @image_type == 'LO' || @image_type == 'TIFF' || @image_type == 'HI and TIFF'
             if @object_model == "Single Object, Multiple Images"
@@ -146,30 +131,84 @@ class FoxmlImporter < ApplicationController
                   end
                 end
 
+                imageRangeLow = ""
+                imageRangeHi = ""
+                fileRange = []
+
+                link.xpath("xmlns:ImgRange").each do |imgRange|
+                  if !imgRange.content.blank?
+
+                    rangeArray = imgRange.content.to_s.split(':')
+
+                    if rangeArray.count > 1
+                      imageRangeLow = rangeArray[0]
+                      imageRangeHi = rangeArray[1]
+                      fileRange = (imageRangeLow..imageRangeHi).to_a
+                    end
+
+                  end
+                end
+                # byebug
+
                 imageLocation = []
 
                 if @image_type == 'LO'
                   image_sub_folder = artefact.folder_number.first + '/LO/'
                   imageFolderName = @base_folder + image_sub_folder
-                  fileName = imageFolderName + imageWildcard + "*"
-                  imageLocation = imageLocation + Dir[fileName].sort
+                  if fileRange.count == 0
+                    fileName = imageFolderName + imageWildcard + "*"
+                    imageLocation = imageLocation + Dir[fileName].sort
+                  else
+                    myDir = Dir[@base_folder + artefact.folder_number.first + '/LO/*']
+                    fileRange.each do | aFileNum |
+                      fileName = imageFolderName + imageWildcard + '_' + aFileNum + '_LO.jpg'
+                      if myDir.include?(fileName)
+                        imageLocation << fileName
+                      end
+                      # byebug
+                    end
+                  end
                 end
-
+                # JOE: Could check Dir[fileName] to see if the numbered file exists.
+                # myDir = Dir[@base_folder + artefact.folder_number.first + '/HI/*']
+                # myDir.include?(fileName)
                 if @image_type == 'HI' || @image_type == 'HI and TIFF'
                   image_sub_folder = artefact.folder_number.first + '/HI/'
                   imageFolderName = @base_folder + image_sub_folder
-                  fileName = imageFolderName + imageWildcard + "*"
-                  imageLocation = imageLocation + Dir[fileName].sort
+                  if fileRange.count == 0
+                    fileName = imageFolderName + imageWildcard + "*"
+                    imageLocation = imageLocation + Dir[fileName].sort
+                  else
+                    myDir = Dir[@base_folder + artefact.folder_number.first + '/HI/*']
+                    fileRange.each do | aFileNum |
+                      fileName = imageFolderName + imageWildcard + '_' + aFileNum + '_HI.jpg'
+                      if myDir.include?(fileName)
+                        imageLocation << fileName
+                      end
+                      # byebug
+                    end
+                  end
                 end
 
                 if @image_type == 'TIFF' || @image_type == 'HI and TIFF'
-                  image_sub_folder = artefact.folder_number.first + '/TIFF/'
+                  image_sub_folder = artefact.folder_number.first + '/TIF/'
                   imageFolderName = @base_folder + image_sub_folder
-                  fileName = imageFolderName + imageWildcard + "*"
-                  imageLocation = imageLocation + Dir[fileName].sort
+                  if fileRange.count == 0
+                    fileName = imageFolderName + imageWildcard + "*"
+                    imageLocation = imageLocation + Dir[fileName].sort
+                  else
+                    myDir = Dir[@base_folder + artefact.folder_number.first + '/TIF/*']
+                    fileRange.each do | aFileNum |
+                      fileName = imageFolderName + imageWildcard + '_' + aFileNum + '.tif'
+                      if myDir.include?(fileName)
+                        imageLocation << fileName
+                      end
+                      # byebug
+                    end
+                  end
                 end
 
-                #byebug
+                # byebug
             else
                 # @object_model is "Multiple Objects, One Image Each"
                 # image file name is in DRISPhotoID
@@ -198,7 +237,7 @@ class FoxmlImporter < ApplicationController
                 if @image_type == 'TIFF' || @image_type == 'HI and TIFF'
                     imageFileName = imageFilePrefix + ".tif"
                     # byebug
-                    image_sub_folder = artefact.folder_number.first + '/TIFF/'
+                    image_sub_folder = artefact.folder_number.first + '/TIF/'
                     imageLocation << @base_folder + image_sub_folder + imageFileName
                 end
 
@@ -241,25 +280,9 @@ class FoxmlImporter < ApplicationController
             attributes_for_actor = { uploaded_files: fileMap }
             env = Hyrax::Actors::Environment.new(artefact, ::Ability.new(@user), attributes_for_actor)
             Hyrax::CurationConcern.actor.create(env)
-            #uploaded_files = []
-            #imageLocation = [@base_folder + 'LO/Font Awesome Image.jpg']
-            #imageLocation.each do | oneImage |
-            #    artefact_binary = File.open("#{oneImage}")
-            #    uploaded_files << Hyrax::UploadedFile.create(user: @user, file: artefact_binary)
-            #end
-            #fileMap = uploaded_files.map do | aFile |
-            #              aFile.id
-            #          end
-            ##byebug
-            #attributes_for_actor = { uploaded_files: fileMap }
-            #env = Hyrax::Actors::Environment.new(artefact, ::Ability.new(@user), attributes_for_actor)
-            #Hyrax::CurationConcern.actor.create(env)
+
         end
-        # TODO: there are no filesets at this time. Probably added in separate thread above.
-        #artefact.file_sets.each do | fs |
-        #byebug
-        #  CharacterizeJob.perform_now(fs, fs.files.first.id)
-        #end
+
         if artefact.creator.empty?
           artefact.creator = ['Unattributed']
         end
@@ -277,9 +300,6 @@ class FoxmlImporter < ApplicationController
         end
 
         if coll_owner_rec.present? && coll_owner_rec.id != '000000000'
-           #coll_owner_rec.members << artefact
-           #coll_owner_rec.ordered_members << artefact
-           #coll_owner_rec.save
            artefact.member_of_collections << coll_owner_rec
            artefact.save
         end
@@ -327,32 +347,13 @@ class FoxmlImporter < ApplicationController
         end
       end
 
-      #imageFileName = artefact.dris_document_no.first + "_LO.jpg"
-      #image_sub_folder = 'LO/'
-
-      #if @image_type == 'HI'
-      #  imageFileName = artefact.dris_document_no.first + "_HI.jpg"
-      #  image_sub_folder = 'HI/'
-      #else if @image_type == 'TIFF'
-      #        imageFileName = artefact.dris_document_no.first + ".tiff"
-      #        image_sub_folder = 'TIFF/'
-      #     end
-      #end
-
-      #imageLocation = @base_folder + image_sub_folder + imageFileName
-      #byebug
-
       # contributor -> AttributedArtist
       link.xpath("xmlns:AttributedArtist").each do |anArtist|
         if !anArtist.content.blank?
           anArtist.xpath("xmlns:DATA").each do |individual|
-            #if !(owner_rec.contributor.include?(individual.content))
-            #  artefact.contributor.push(individual.content)
-            #end
             if (!owner_rec.present?) || (owner_rec.present? && !(owner_rec.creator_loc.include?(individual.content)))
               artefact.creator_loc.push(individual.content)
             end
-            #artefact.creator.push(individual.content)
           end
         end
       end
@@ -486,22 +487,24 @@ class FoxmlImporter < ApplicationController
       end
 
       # rights_statement -> CopyrightStatus
-      link.xpath("xmlns:CopyrightStatus").each do |statuses|
-         if !statuses.content.blank?
-           statuses.xpath("xmlns:DATA").each do |aStatus|
-             if aStatus.content == "Active"
-               artefact.rights_statement = ["https://rightsstatements.org/page/InC/1.0"]
-             else if aStatus.content == "Expired"
-                    artefact.rights_statement = ["http://creativecommons.org/publicdomain/mark/1.0/"]
-                  else if aStatus.content == "Orphan"
-                         artefact.rights_statement = ["https://rightsstatements.org/page/InC-OW-EU/1.0"]
-                       else artefact.rights_statement = ["https://rightsstatements.org/page/UND/1.0"]
-                       end
-                  end
-             end
-           end
-         end
-      end
+      # JL : 18/11/2019. Use default rights statement
+      ##link.xpath("xmlns:CopyrightStatus").each do |statuses|
+      ##   if !statuses.content.blank?
+      ##     statuses.xpath("xmlns:DATA").each do |aStatus|
+      ##       if aStatus.content == "Active"
+      ##         artefact.rights_statement = ["Active - In Copyright"]
+      ##       else if aStatus.content == "Expired"
+      ##              artefact.rights_statement = ["Expired - Public Domain (Creative Commons)"]
+      ##            else if aStatus.content == "Orphan"
+      ##                   artefact.rights_statement = ["Orphan - In Copyright - EU Orphan Work"]
+      ##                 else artefact.rights_statement = ["Uncertain - Copyright Undetermined"]
+      ##                 end
+      ##            end
+      ##       end
+      ##     end
+      ##   end
+      ##end
+      artefact.rights_statement = ["Copyright The Board of Trinity College Dublin. Images are available for single-use academic application only. Publication, transmission or display is prohibited without formal written approval of the Library of Trinity College, Dublin."]
 
       # abstract
       #byebug
@@ -515,9 +518,6 @@ class FoxmlImporter < ApplicationController
            artefact.abstract = [abstract.content]
         end
       end
-
-      # license
-      # TODO:
 
       # publisher
       link.xpath("xmlns:Publisher").each do |publisher|
@@ -562,17 +562,6 @@ class FoxmlImporter < ApplicationController
         end
       end
 
-      # subject
-      #link.xpath("xmlns:SubjectTMG").each do |subjects|
-      #  if !subjects.content.blank?
-      #    subjects.xpath("xmlns:DATA").each do |aSubject|
-      #      if !(owner_rec.subject.include?(aSubject.content))
-      #         artefact.subject.push(aSubject.content)
-      #      end
-      #    end
-      #  end
-      #
-
       # language
       link.xpath("xmlns:Language").each do |languages|
         if !languages.content.blank?
@@ -581,15 +570,6 @@ class FoxmlImporter < ApplicationController
           end
         end
       end
-
-      # identifier  -> CatNo
-      #link.xpath("xmlns:CatNo").each do |catno|
-      #  if !catno.content.blank?
-      #    if !(owner_rec.identifier.include?(catno.content)) then
-      #       artefact.identifier = [catno.content]
-      #    end
-      #  end
-      #end
 
       # location
       link.xpath("xmlns:Location").each do |location|
@@ -601,12 +581,6 @@ class FoxmlImporter < ApplicationController
           end
         end
       end
-
-      # related_url
-      # TODO:
-
-      # source
-      # TODO:
 
       # resource_type
       link.xpath("xmlns:Type").each do |aType|
@@ -715,16 +689,6 @@ class FoxmlImporter < ApplicationController
             end
           end
       end
-      # language_code -> LanguageTermCode
-      #link.xpath("xmlns:LanguageTermCode").each do |languageCodes|
-      #  if !languageCodes.content.blank?
-      #    languageCodes.xpath("xmlns:DATA").each do |aLanguageCode|
-      #      if !(owner_rec.language_code.include?(aLanguageCode.content))
-      #         artefact.language_code.push(aLanguageCode.content)
-      #      end
-      #    end
-      #  end
-      #end
 
       # location_type -> LocationType
       link.xpath("xmlns:LocationType").each do |locationTypes|
@@ -743,28 +707,6 @@ class FoxmlImporter < ApplicationController
            artefact.identifier = [aCitation.content]
         end
       end
-
-      # role_code -> AttributedArtistRoleCode
-      #link.xpath("xmlns:AttributedArtistRoleCode").each do |roleCodes|
-      #  if !roleCodes.content.blank?
-      #    roleCodes.xpath("xmlns:DATA").each do |aRoleCode|
-      #      if !(owner_rec.role_code.include?(aRoleCode.content))
-      #         artefact.role_code.push(aRoleCode.content)
-      #      end
-      #    end
-      #  end
-      #end
-
-      # role -> AttributedArtistRole
-      #link.xpath("xmlns:AttributedArtistRole").each do |roles|
-      #  if !roles.content.blank?
-      #    roles.xpath("xmlns:DATA").each do |aRole|
-      #      if !(owner_rec.role.include?(aRole.content))
-      #         artefact.role.push(aRole.content)
-      #      end
-      #    end
-      #  end
-      #end
 
       # sponsor -> Sponsor
       link.xpath("xmlns:Sponsor").each do |aSponsor|
@@ -858,15 +800,6 @@ class FoxmlImporter < ApplicationController
           end
         end
       end
-
-      # type_of_work
-      #link.xpath("xmlns:TypeOfWork").each do |aType|
-      #  if !aType.content.blank?
-      #    if !(owner_rec.type_of_work.include?(aType.content)) then
-      #       artefact.type_of_work.push(aType.content)
-      #    end
-      #  end
-      #end
 
       # subject_lcsh -> SubjectLCSH
       link.xpath("xmlns:SubjectLCSH").each do |subjects|
@@ -983,9 +916,6 @@ class FoxmlImporter < ApplicationController
         end
       end
 
-      #return artefact
   end
-
-
 
 end

@@ -41,7 +41,7 @@ RSpec.feature 'Create a Work', js: true do
 
       # JL: Try to fix random rspec spec failures
       sleep 3
-            
+
       # If you generate more than one work uncomment these lines
       choose "payload_concern", option: "Work"
       click_button "Create work"
@@ -61,7 +61,7 @@ RSpec.feature 'Create a Work', js: true do
       fill_in('Title', with: 'My Test Work')
       fill_in('Creator', with: 'Doe, Jane')
       fill_in('Keyword', with: 'testing')
-      select('Active - In Copyright', from: 'Rights statement')
+      select('Copyright The Board of Trinity College Dublin', from: 'Rights statement')
 
       # 20-11-2018 JL:
       # require tcd_metadata.rb
