@@ -67,7 +67,9 @@ en:
           date_uploaded_dtsi: Date Uploaded
           description_tesim: Description
           file_format_tesim: File Format
-          identifier_tesim: Identifier
+          identifier: Shelf Mark/Reference Number
+          identifier_tesim: Shelf Mark/Reference Number
+          identifier_label: Shelf Mark/Reference Number
           keyword_tesim: Keyword
           language_tesim: Language
           license_tesim: License
@@ -106,7 +108,10 @@ en:
           date_uploaded_dtsi: Date Uploaded
           description_tesim: Description
           file_format_tesim: File Format
-          identifier_tesim: Identifier
+          identifier: Shelf Mark/Reference Number
+          identifier_tesim: Shelf Mark/Reference Number
+          identifier_label: Shelf Mark/Reference Number
+
           keyword_tesim: Keyword
           language_tesim: Language
           license_tesim: License
@@ -137,5 +142,7 @@ en:
         based_near: Based Near
         dris_page_no: Page no
         description: Description
+        identifier: Shelf Mark/Reference Number AA
+       
 
 #  hyrax:
