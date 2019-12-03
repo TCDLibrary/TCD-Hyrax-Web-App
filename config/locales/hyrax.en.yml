@@ -11,7 +11,7 @@ en:
           file_format_sim: Format
           generic_type_sim: Type
           keyword_sim: Keyword
-          language_sim: Language
+          language_sim: Language A
           publisher_sim: Publisher
           subject_sim: Subject
         index:
@@ -26,7 +26,7 @@ en:
           file_format_tesim: File Format
           identifier_tesim: Identifier
           keyword_tesim: Keyword
-          language_tesim: Language
+          language_tesim: Language B
           license_tesim: License
           publisher_tesim: Publisher
           rights_statement_tesim: Rights Statement
@@ -43,7 +43,7 @@ en:
           file_format_tesim: File Format
           identifier_tesim: Identifier
           keyword_tesim: Keyword
-          language_tesim: Language
+          language_tesim: Language C
           license_tesim: License
           publisher_tesim: Publisher
           rights_statement_tesim: Rights Statement

@@ -5,18 +5,24 @@ es:
       fields:
         facet:
           based_near_label_sim: Ubicación
+          contributor: Contribuidor
+          contributor_sim: Contribuidor
+          contributor_label: Contribuidor
+          contributor_tesim: Contribuidor
           creator_sim: Creador
           file_format_sim: Formato
           generic_type_sim: Tipo
+          human_readable_type_sim : Tipo
           keyword_sim: Palabra clave
           language_sim: Idioma
           publisher_sim: Editor
           subject_sim: Tema
-          human_readable_type_sim : Tipo
           title_sim: Titulo
-          contributor_sim: Contribuidor
         index:
           based_near_tesim: Ubicación
+          contributor: Contribuidor
+          contributor_sim: Contribuidor
+          contributor_label: Contribuidor
           contributor_tesim: Contribuidor
           creator_tesim: Creador
           date_created_tesim: Fecha de Creacion
@@ -33,6 +39,8 @@ es:
           subject_tesim: Tema
         show:
           based_near_tesim: Ubicación
+          contributor: Contribuidor
+          contributor_label: Contribuidor
           contributor_tesim: Contribuidor
           creator_tesim: Creador
           date_created_tesim: Fecha de Creacion
@@ -45,6 +53,7 @@ es:
           language_tesim: Idioma
           license_tesim: Licencia
           publisher_tesim: Editor
+          resource_type_tesim: Tipo de Recurso
           rights_statement_tesim: Derechos
           subject_tesim: Tema
           title_tesim: Título
@@ -70,3 +79,12 @@ es:
     institution_name_full: El nombre de la institución
     product_name: Hyrax
     product_twitter_handle: "@DigitalColl"
+
+  simple_form:
+    labels:
+      defaults:
+        contributor: Contribuidor
+        identifier: Identificador
+        language: Lengua
+        resource_type: Tipo de recurso
+        subject: Tema

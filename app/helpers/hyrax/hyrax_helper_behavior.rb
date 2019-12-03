@@ -20,11 +20,11 @@ module Hyrax
         'de' => 'Deutsch',
         'en' => 'English',
         'es' => 'Español',
-      #  'fr' => 'Français',
+        'fr' => 'Français',
         'ga' => 'Gaeilge',
-      #  'it' => 'Italiano',
-      #  'pt-BR' => 'Português do Brasil',
-      #  'zh' => '中文'
+        'it' => 'Italiano',
+        'pt-BR' => 'Português do Brasil',
+        'zh' => '中文'
       }
     end
 
