@@ -13,9 +13,11 @@
         <p class="recent-field">
           <span class="recent-label"><%= t('hyrax.homepage.recently_uploaded.document.keyword_label') %>:</span> <%= link_to_facet_list(recent_document.keyword, 'keyword', t('hyrax.homepage.recently_uploaded.document.keyword_missing')).html_safe %>
         </p>
-        <p class="recent-field">
-          <span class="recent-label"><%= render_visibility_link recent_document %></span>
-        </p>
+        <% if current_ability.can_create_any_work? %>
+          <p class="recent-field">
+            <span class="recent-label"><%= render_visibility_link recent_document %></span>
+          </p>
+        <% end %>
       </div>
     </div>
 </li>
