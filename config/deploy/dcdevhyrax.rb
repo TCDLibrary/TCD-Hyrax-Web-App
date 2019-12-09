@@ -71,3 +71,5 @@ server "dcdev-hyrax.tcd.ie", user: "hyraxuser", roles: %w{app db web}
    #     forward_agent: false,
    #     auth_methods: %w(publickey password)
    #     # password: "please use keys"
+
+before 'deploy:setup', 'rvm:install_rvm'
