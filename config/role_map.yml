@@ -25,7 +25,13 @@ demovm099:
     - jlakes@tcd.ie
     - batchuser@example.com
     - magar@tcd.ie
-    
+
+dcdevhyrax:
+  admin:
+    - jlakes@tcd.ie
+    - batchuser@example.com
+    - magar@tcd.ie
+
 test:
   admin:
       - jlakes@tcd.ie

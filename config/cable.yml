@@ -6,7 +6,10 @@ demovm045:
 
 demovm099:
   adapter: async
-  
+
+dcdevhyrax:
+  adapter: async
+
 test:
   adapter: async
 
