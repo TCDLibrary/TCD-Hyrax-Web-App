@@ -15,7 +15,7 @@ gem 'mysql2'
 
 group :development, :test do
   # Use Puma as the app server
-  gem 'puma', '~> 3.7'
+  gem 'puma', '~> 3.12'
 end
 
 group :production, :demovm045, :demovm099, :dcdevhyrax do
