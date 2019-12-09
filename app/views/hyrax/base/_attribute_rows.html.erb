@@ -18,7 +18,7 @@
 <%= presenter.attribute_to_html(:subject, render_as: :faceted, html_dl: true) %>
 <%= presenter.attribute_to_html(:keyword, render_as: :faceted, html_dl: true) %>
 <%= presenter.attribute_to_html(:genre, html_dl: true) %>
-<%= presenter.attribute_to_html(:identifier, label: t('Shelf Mark'),render_as: :linked, search_field: 'identifier_tesim', html_dl: true) %>
+<%= presenter.attribute_to_html(:identifier, html_dl: true) %>
 <%= presenter.attribute_to_html(:location, html_dl: true) %>
 <%= presenter.attribute_to_html(:rights_statement, render_as: :rights_statement, html_dl: true) %>
 <%= presenter.attribute_to_html(:copyright_status, html_dl: true) %>
