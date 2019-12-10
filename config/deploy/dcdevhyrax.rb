@@ -72,7 +72,7 @@ server "dcdev-hyrax.tcd.ie", user: "hyraxuser", roles: %w{app db web}
    #     auth_methods: %w(publickey password)
    #     # password: "please use keys"
 
-set :rvm_type, :system
-set :default_shell, :bash
-before 'deploy:check', 'rvm:install_rvm'
-before 'deploy', 'rvm:install_rvm'
+#set :rvm_type, :system
+#set :default_shell, :bash
+#before 'deploy:check', 'rvm:install_rvm'
+#before 'deploy', 'rvm:install_rvm'
