@@ -7,7 +7,7 @@ demovm045:
 demovm099:
   host: localhost
   port: 6379
-dcdev-hyrax:
+dcdevhyrax:
   host: localhost
   port: 6379
 test:
