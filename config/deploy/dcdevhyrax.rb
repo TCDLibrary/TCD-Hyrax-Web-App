@@ -12,7 +12,7 @@ set :deploy_to, "/opt/app/TCD-Hyrax-Web-App"
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
-server "dcdev-hyrax.tcd.ie", user: "hyraxuser", roles: %w{app db web}
+server "dcdev-hyrax.tcd.ie", user: "hyraxuser", roles: %w{app db web}, password: <%= ENV['HYRAX_DATABASE_PASSWORD'] %>
 
 # role-based syntax
 # ==================
