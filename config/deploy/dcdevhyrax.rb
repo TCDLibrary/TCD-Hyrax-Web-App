@@ -73,4 +73,5 @@ server "dcdev-hyrax.tcd.ie", user: "hyraxuser", roles: %w{app db web}
    #     # password: "please use keys"
 
 set :rvm_type, :system
+set :default_shell, :bash
 before 'deploy', 'rvm:install_rvm'
