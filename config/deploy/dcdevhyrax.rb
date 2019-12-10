@@ -13,8 +13,7 @@ set :deploy_to, "/opt/app/TCD-Hyrax-Web-App"
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
-set :password, ask('Server password:', nil)
-server "dcdev-hyrax.tcd.ie", user: "hyraxuser", roles: %w{app db web}, password: fetch(:password)
+server "dcdev-hyrax.tcd.ie", user: "hyraxuser", roles: %w{app db web}
 
 # role-based syntax
 # ==================
