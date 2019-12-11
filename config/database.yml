@@ -36,8 +36,8 @@ dcdevhyrax:
   reconnect: false
   database: hyrax
   pool: 5
-  username: <%= ENV['HYRAX_DATABASE_USER'] %>
-  password: <%= ENV['HYRAX_DATABASE_PASSWORD'] %>
+  username: <%= ENV['DCDEV_HYRAX_DATABASE_USER'] %>
+  password: <%= ENV['DCDEV_HYRAX_DATABASE_PASSWORD'] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
