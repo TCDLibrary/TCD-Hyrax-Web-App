@@ -30,13 +30,13 @@ set :migration_role, :app
 
 # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
-append :linked_dirs, "log", "tmp/derivatives", "tmp/uploads", "public/data/ingest", "public/branding"
+append :linked_dirs, "log", "tmp/derivatives", "tmp/uploads", "public/data/ingest", "public/branding", "config/database.yml"
 # JL : note this creates a symlink from public/branding to shared/public/branding
 
-desc "Symlink shared config files"
-task :symlink_config_files do
-    run "#{ try_sudo } ln -s #{ deploy_to }/shared/config/database.yml #{ current_path }/config/database.yml"
-end
+#desc "Symlink shared config files"
+#task :symlink_config_files do
+#    run "#{ try_sudo } ln -s #{ deploy_to }/shared/config/database.yml #{ current_path }/config/database.yml"
+#end
 
 # JL : this is to fix problem with passwordless sudo for sidekiq
 set :pty, true
