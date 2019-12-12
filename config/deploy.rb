@@ -3,6 +3,7 @@ lock "~> 3.11.0"
 
 set :application, "TCD-Hyrax-Web-App"
 set :repo_url, "https://github.com/joelakes/TCD-Hyrax-Web-App.git"
+set :rvm_ruby_version, '2.5.1'
 
 # JL : see notes when installing capistrano 21/03/2019
 set :passenger_restart_with_touch, true
