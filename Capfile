@@ -20,9 +20,10 @@ install_plugin Capistrano::SCM::Git
 #   https://github.com/capistrano/rails
 #   https://github.com/capistrano/passenger
 #
-group :demovm045, :demovm099 do
-   require "capistrano/rvm"
-end
+
+# JL : 16/12/2019 Moving away from rvm??
+##require "capistrano/rvm"
+
 #require "capistrano/rbenv"
 #require "capistrano/chruby"
 require "capistrano/bundler"
