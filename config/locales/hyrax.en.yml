@@ -65,8 +65,8 @@ en:
       contact: Trinity Contact
     homepage:
       beta:
-        cant_html: "Can't find what you are looking for? Our old service can be found <a href='https://digitalcollections.tcd.ie'>here</a>."
-        welcome_html: "Welcome to our <strong>beta</strong> Digital Collections service. Please bear with us during our migration."
+        cant_html: "Can’t find what you’re looking for? Our old service can be found <a href='https://digitalcollections.tcd.ie' target='_blank'>here</a>."
+        welcome_html: "Welcome to Digital Collections <strong>beta</strong> version, please bear with us as we add collections."
     institution_name: TCD
     institution_name_full: Trinity College Dublin
     product_name: Digital Collections
