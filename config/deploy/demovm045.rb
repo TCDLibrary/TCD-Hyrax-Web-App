@@ -1,6 +1,7 @@
 set :stage, :demovm045
 set :rails_env, :demovm045
 set :branch, "master"
+set :rvm_ruby_version, '2.5.1'
 
 # server-based syntax
 # ======================
