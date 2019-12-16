@@ -1,7 +1,9 @@
 set :stage, :demovm099
 set :rails_env, :demovm099
 set :branch, "master"
-set :rvm_ruby_version, '2.5.1'
+#set :rvm_ruby_version, '2.5.1'
+set :ruby_version, '/usr/bin/ruby2.5'
+set :default_env, -> {{ path: [fetch(:ruby_version), "#{release_path}/bin", "$PATH"].join(":") }}
 
 # server-based syntax
 # ======================
