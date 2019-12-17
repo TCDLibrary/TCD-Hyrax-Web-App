@@ -89,11 +89,15 @@ Hyrax.config do |config|
   # config.redis_namespace = "hyrax"
 
   # Path to the file characterization tool
-  config.fits_path = "~/Fits/fits-latest/fits.sh"
+  config.fits_path = "/opt/app/Fits/fits.sh"
+  #config.fits_path = "~/Fits/fits-latest/fits.sh"
   if Rails.env == "demovm045"
     config.fits_path = "/home/jlakes/fits-1/fits.sh"
   else if Rails.env == "demovm099"
           config.fits_path = "/home/fits/fits.sh"
+       else if Rails.env == "development"
+                config.fits_path = "~/Fits/fits-latest/fits.sh"
+             end
        end
   end
   # config.fits_path = "Fits/fits-latest"
