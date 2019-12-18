@@ -4,8 +4,8 @@ dist: trusty
 
 addons:
   chrome: stable
-cache:
-  bundler: true
+#cache:
+#  bundler: true
 
 before_install:
   - gem update --system
