@@ -7,6 +7,8 @@ demovm099:
   url: http://127.0.0.1:<%= ENV['SOLR_TEST_PORT'] || 8983 %>/solr/tcd-hyrax
 dcdevhyrax:
   url: http://dcdev-solr.tcd.ie:8983/solr/tcd-hyrax
+digcollhyrax01:
+  url: http://digcoll-solr01.tcd.ie:8983/solr/tcd-hyrax  
 test:
   url: http://127.0.0.1:<%= ENV['SOLR_TEST_PORT'] || 8985 %>/solr/hydra-test
 production:
