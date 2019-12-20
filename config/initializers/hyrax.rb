@@ -97,7 +97,10 @@ Hyrax.config do |config|
           config.fits_path = "/home/fits/fits.sh"
        else if Rails.env == "development"
                 config.fits_path = "~/Fits/fits-latest/fits.sh"
-             end
+            else if Rails.env == "test"
+                       config.fits_path = "~/Fits/fits-latest/fits.sh"
+                 end    
+            end
        end
   end
   # config.fits_path = "Fits/fits-latest"

@@ -18,7 +18,7 @@ group :development, :test do
   gem 'puma', '~> 3.12'
 end
 
-group :production, :demovm045, :demovm099, :dcdevhyrax do
+group :production, :demovm045, :demovm099, :dcdevhyrax, :digcollhyrax01 do
   # JL 07/03/2019 use Passenger instead of Puma
   gem "passenger", ">= 5.3.2", require: "phusion_passenger/rack_handler"
 end
@@ -54,7 +54,7 @@ group :development do
   gem 'capistrano-passenger'
 end
 
-group :development, :test, :demovm045, :demovm099, :dcdevhyrax do
+group :development, :test, :demovm045, :demovm099, :dcdevhyrax, :digcollhyrax01 do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
@@ -71,7 +71,7 @@ group :development do
   gem 'web-console', '>= 3.3.0'
 end
 
-group :development, :demovm045, :demovm099, :dcdevhyrax do
+group :development, :demovm045, :demovm099, :dcdevhyrax, :digcollhyrax01 do
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
@@ -82,7 +82,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'hyrax', '2.5.1'
-group :development, :test, :demovm045, :demovm099, :dcdevhyrax do
+group :development, :test, :demovm045, :demovm099, :dcdevhyrax, :digcollhyrax01 do
   gem 'solr_wrapper', '>= 0.3'
 end
 
@@ -90,7 +90,7 @@ gem 'rsolr', '>= 1.0'
 gem 'jquery-rails'
 gem 'devise', '~> 4.7.1'
 gem 'devise-guests', '~> 0.6'
-group :development, :test, :demovm045, :demovm099, :dcdevhyrax do
+group :development, :test, :demovm045, :demovm099, :dcdevhyrax, :digcollhyrax01 do
   gem 'fcrepo_wrapper'
   gem 'rspec-rails'
   gem 'database_cleaner'

@@ -10,6 +10,9 @@ demovm099:
 dcdevhyrax:
   host: localhost
   port: 6379
+digcollhyrax01:
+  host: localhost
+  port: 6379
 test:
   host: localhost
   port: 6379
