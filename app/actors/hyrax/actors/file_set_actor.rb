@@ -75,7 +75,9 @@ module Hyrax
       # @param [Symbol, #to_s] relation
       # @return [IngestJob] the queued job
       def update_content(file, relation = :original_file)
-        IngestJob.perform_later(wrapper!(file: file, relation: relation), notification: true)
+      # JL: Cloned from Dean Farrell @ samvera slack
+      # IngestJob.perform_later(wrapper!(file: file, relation: relation), notification: true)
+        IngestJob.perform_now(wrapper!(file: file, relation: relation), notification: true)
       end
 
       # @!endgroup
