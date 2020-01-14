@@ -6,7 +6,7 @@ Mailboxer.setup do |config|
   #Configures the default from for emails sent for Messages and Notifications
 
   # TODO : set from address
-  config.default_from = "no-reply@mailboxer.com"
+  config.default_from = "no-reply@tcd.ie"
 
   #Configures the methods needed by mailboxer
   config.email_method = :mailboxer_email

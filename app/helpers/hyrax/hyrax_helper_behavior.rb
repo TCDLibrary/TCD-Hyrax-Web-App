@@ -21,7 +21,7 @@ module Hyrax
         'en' => 'English',
         'es' => 'Español',
         'fr' => 'Français',
-        'ga' => 'Gaeilge',
+      #  'ga' => 'Gaeilge',  # JL : hide for now
         'it' => 'Italiano',
         'pt-BR' => 'Português do Brasil',
         'zh' => '中文'

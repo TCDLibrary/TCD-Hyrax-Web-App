@@ -9,8 +9,11 @@ demovm099:
 
 dcdevhyrax:
   adapter: async
-  
+
 digcollhyrax01:
+  adapter: async
+
+digcollhyrax02:
   adapter: async
 
 test:

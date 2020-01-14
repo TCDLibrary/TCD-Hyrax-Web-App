@@ -28,10 +28,10 @@ Hyrax.config do |config|
   # config.rendering_predicate = ::RDF::DC.hasFormat
 
   # Email recipient of messages sent via the contact form
-  # config.contact_email = "repo-admin@example.org"
+  config.contact_email = "digitalcollections@tcd.ie"
 
   # Text prefacing the subject entered in the contact form
-  # config.subject_prefix = "Contact form:"
+  config.subject_prefix = "Contact form:"
 
   # How many notifications should be displayed on the dashboard
   # config.max_notifications_for_dashboard = 5
@@ -99,7 +99,7 @@ Hyrax.config do |config|
                 config.fits_path = "~/Fits/fits-latest/fits.sh"
             else if Rails.env == "test"
                        config.fits_path = "~/Fits/fits-latest/fits.sh"
-                 end    
+                 end
             end
        end
   end

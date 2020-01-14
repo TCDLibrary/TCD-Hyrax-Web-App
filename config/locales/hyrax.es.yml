@@ -43,20 +43,48 @@ es:
           contributor_label: Contribuidor
           contributor_tesim: Contribuidor
           creator_tesim: Creador
-          date_created_tesim: Fecha de Creacion
-          date_modified_dtsi: Fecha Modificada
-          date_uploaded_dtsi: Fecha de Subida
+          creator: Creador
+          date_created_tesim: Fecha de creacion
+          date_created: Fecha de creacion
+          date_modified_dtsi: Fecha modificada
+          date_modified: Fecha modificada
+          date_uploaded_dtsi: Fecha de subida
+          date_uploaded: Fecha de subida
           description_tesim: Descripción
           file_format_tesim: Formato de Archivo
           identifier_tesim: Identificador
+          identifier: Número de referencia
           keyword_tesim: Palabra clave
+          genre: Género de objeto
           language_tesim: Idioma
           license_tesim: Licencia
+          license: Licencia
           publisher_tesim: Editor
-          resource_type_tesim: Tipo de Recurso
+          publisher: Editor
+          resource_type_tesim: Tipo de recurso
+          resource_type: Tipo de recurso
           rights_statement_tesim: Derechos
+          rights_statement: Declaración de derechos
+          digital_object_identifier: Identificador de objeto digital
           subject_tesim: Tema
+          subject: Tema
+          provenance: Procedencia
+          culture: Cultura
+          language: Lengua
+          dris_page_no: DRIS_número de página
+          support: Soporte
+          medium: Medio
+          collection_title: Título de la colección
+          series_title: Título de la serie
+          abstract: Resumen
+          alternative_title: Título alternativo
+          publisher_location: Ubicación del editor
           title_tesim: Título
+          location: Ubicación
+          related_url: URL relacionada
+          source: Fuente
+          sponsor: Patrocinador
+          characterization: Caracterización
   hyrax:
     account_name: Mi identificador de cuenta institucional
     directory:
@@ -64,6 +92,27 @@ es:
     download:
       metadata: Descargar metadatos
       schema: (Dublin Core)
+    technical_metadata:
+      file_details: Detalles del archivo
+      sha1: Sha1
+      depositor: Depositante
+      date_uploaded: Fecha de subida
+      date_modified: Fecha de modificación
+      fixity_check: Control de fijeza
+      characterization: Caracterización
+      not_yet_characterized: Aún no caracterizado
+      technical_metadata: Metadatos técnicos
+      camera_make: Marca de la cámara
+      camera_model: Modelo de cámara
+      date_taken: Fecha tomada
+      exposure_time: Tiempo de exposición
+      F_number: Número F
+      ISO_speed_rating: Clasificación de velocidad ISO
+      flash: Flash
+      exposure_program: Programa de exposición
+      focal_length: Longitud focal
+      software: Software
+
     footer:
       copyright_html: "<strong>Copyright &copy; 2018 Samvera</strong> bajo licencia de Apache, Version 2.0"
       service_html: Un servicio de <a href="http://samvera.org/" class="navbar-link" target="_blank">Samvera/a>.

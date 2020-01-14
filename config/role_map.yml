@@ -52,6 +52,19 @@ digcollhyrax01:
     - laura.shanahan@tcd.ie
     - bioletts@tcd.ie
 
+digcollhyrax02:
+  admin:
+    - jlakes@tcd.ie
+    - batchuser@example.com
+    - magar@tcd.ie
+    - smsutton@tcd.ie
+    - arhealy@tcd.ie
+    - whelangp@tcd.ie
+    - doylej37@tcd.ie
+    - schmidc@tcd.ie
+    - laura.shanahan@tcd.ie
+    - bioletts@tcd.ie
+
 test:
   admin:
       - jlakes@tcd.ie

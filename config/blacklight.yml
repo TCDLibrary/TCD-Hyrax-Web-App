@@ -12,7 +12,10 @@ dcdevhyrax:
   url: http://dcdev-solr.tcd.ie:8983/solr/tcd-hyrax
 digcollhyrax01:
   adapter: solr
-  url: http://digcoll-solr01.tcd.ie:8983/solr/tcd-hyrax  
+  url: http://digcoll-solr01.tcd.ie:8983/solr/tcd-hyrax
+digcollhyrax02:
+  adapter: solr
+  url: http://digcoll-solr02.tcd.ie:8983/solr/tcd-hyrax    
 test: &test
   adapter: solr
   url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:#{ENV.fetch('SOLR_TEST_PORT', 8985)}/solr/hydra-test" %>
