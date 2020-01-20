@@ -902,7 +902,7 @@ ga:
         tab_label: Explore Collections
         title: Explore Collections
       beta:
-        cant_html: "Can't find what you are looking for? Our old service can be found <a href='https://digitalcollections.tcd.ie'>here</a>."
+        cant_html: "Can't find what you are looking for? Our old service can be found <a href='https://www.tcd.ie/Library/digitalcollections' target='_blank'>here</a>."
         welcome_html: "Welcome to our <strong>beta</strong> Digital Collections service. Please bear with us during our migration."
       featured_researcher:
         missing: No researchers have been featured.
@@ -1011,7 +1011,7 @@ ga:
       updated: Pages updated.
     passive_consent_to_agreement: By saving this work I agree to the
     product_name: Bailiúcháin Dhigiteacha
-    product_twitter_handle: "@DigitalColl"   
+    product_twitter_handle: "@DigitalColl"
     search:
       button:
         html: <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Go
