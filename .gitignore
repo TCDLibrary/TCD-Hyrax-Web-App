@@ -13,6 +13,9 @@
 
 # Ignore database.yml. Store on servers in shared/congig instead
 /config/database.yml
+# Ignore secrets.yml. Store on servers in shared/congig instead
+/config/secrets.yml
+
 
 # Ignore all logfiles and tempfiles.
 /log/*
