@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Rake::Task['hyrax:default_admin_set:create'].invoke
+Rake::Task['hyrax:default_collection_types:create'].invoke
+
+User.first_or_create!(email: 'julie@notch8.com', password: 'testing123')

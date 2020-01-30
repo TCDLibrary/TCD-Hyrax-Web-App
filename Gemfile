@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'activerecord-nulldb-adapter'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6.2'
@@ -82,7 +83,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'hyrax', '2.5.1'
-gem 'bulkrax', git: 'https://github.com/samvera-labs/bulkrax', branch: 'foxml-importer'
+gem 'bulkrax', git: 'https://github.com/samvera-labs/bulkrax', branch: 'xml-importer'
+# gem 'bulkrax', path: 'vendor/engines/bulkrax'
 
 group :development, :test, :demovm045, :demovm099, :dcdevhyrax, :digcollhyrax01, :digcollhyrax02 do
   gem 'solr_wrapper', '>= 0.3'
