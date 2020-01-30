@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount Bulkrax::Engine, at: '/'
   resources :ingests
 
   get 'import/index'

@@ -82,6 +82,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'hyrax', '2.5.1'
+gem 'bulkrax', git: 'https://github.com/samvera-labs/bulkrax', branch: 'foxml-importer'
+
 group :development, :test, :demovm045, :demovm099, :dcdevhyrax, :digcollhyrax01, :digcollhyrax02 do
   gem 'solr_wrapper', '>= 0.3'
 end
@@ -112,3 +114,5 @@ gem 'sshkit-sudo'
 # JL 04/11/2019 adding Admin users:
 # https://github.com/samvera/hyrax/wiki/Making-Admin-Users-in-Hyrax
 gem 'hydra-role-management'
+
+gem 'willow_sword', github: 'notch8/willow_sword'
