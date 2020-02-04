@@ -1,34 +1,35 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.ingest_folder = 'public/data/ingest/'
-  # Code is not reloaded between requests.
-  config.cache_classes = true
+  # In the development environment your application's code is reloaded on
+  # every request. This slows down response time but is perfect for development
+  # since you don't have to restart the web server when you make code changes.
+  config.cache_classes = false
 
-  # Eager load code on boot. This eager loads most of Rails and
-  # your application in memory, allowing both threaded web servers
-  # and those relying on copy on write to perform better.
-  # Rake tasks automatically ignore this option for performance.
-  config.eager_load = true
+  # Do not eager load code on boot.
+  config.eager_load = false
 
   # Show full error reports.
   # JL : 16/07/2019 : Turning off so I can see 404 page etc
   config.consider_all_requests_local = false
-  config.action_controller.perform_caching = true
-  #config.cache_store = :mem_cache_store
 
   # 21/11/2018 JL:
   # config.active_job.queue_adapter     = :inline
   config.active_job.queue_adapter     = :sidekiq
 
-  # Disable serving static files from the `/public` folder by default since
-  # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  # Enable/disable caching. By default caching is disabled.
+  if Rails.root.join('tmp/caching-dev.txt').exist?
+    config.action_controller.perform_caching = true
 
-  # Compress JavaScripts and CSS.
-  config.assets.js_compressor = :uglifier
+    config.cache_store = :memory_store
+    config.public_file_server.headers = {
+      'Cache-Control' => "public, max-age=#{2.days.seconds.to_i}"
+    }
+  else
+    config.action_controller.perform_caching = false
 
-  # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+    config.cache_store = :null_store
+  end
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
@@ -44,7 +45,7 @@ Rails.application.configure do
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
-  config.assets.debug = false
+  config.assets.debug = true
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
@@ -64,5 +65,8 @@ Rails.application.configure do
   #IIIF_SERVER_URL='http://127.0.0.1:8182/iiif/2/'
   IIIF_SERVER_URL='http://digcoll-imgsrv02.tcd.ie:8182/iiif/2/'
   #IIIF_SERVER_URL='http://127.0.0.1:8080/cantaloupe-4.1.2/iiif/2/'
+
+  # JL : TODO. Check if I need this. Added it because viewer giving errors on VM-099
+  config.public_file_server.enabled = true
 
 end
