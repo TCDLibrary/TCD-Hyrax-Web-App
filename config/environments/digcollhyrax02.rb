@@ -14,7 +14,7 @@ Rails.application.configure do
   # JL : 16/07/2019 : Turning off so I can see 404 page etc
   config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
-  config.cache_store = :mem_cache_store
+  #config.cache_store = :mem_cache_store
 
   # 21/11/2018 JL:
   # config.active_job.queue_adapter     = :inline
