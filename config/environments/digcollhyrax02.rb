@@ -4,10 +4,17 @@ Rails.application.configure do
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
-  config.cache_classes = false
+  # JL: 2020-02-05
+  #config.cache_classes = false
 
-  # Do not eager load code on boot.
-  config.eager_load = false
+  # JL: 2020-02-05 Do not eager load code on boot.
+  #config.eager_load = false
+
+  # JL: pre-production config 2020/05/02
+  # Code is not reloaded between requests.
+  config.cache_classes = true
+  config.eager_load = true
+  config.assets.js_compressor = :uglifier
 
   # Show full error reports.
   # JL : 16/07/2019 : Turning off so I can see 404 page etc
