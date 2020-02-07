@@ -65,7 +65,7 @@ Rails.application.configure do
   #IIIF_SERVER_URL='http://127.0.0.1:8182/iiif/2/'
   ##IIIF_SERVER_URL='http://dcdev-web.tcd.ie/iiif/'
   ## > IIIF_SERVER_URL='/iiif/2/'
-  IIIF_SERVER_URL='http://dcdev-imgsrv.tcd.ie:8182/iiif/2/'
+  IIIF_SERVER_URL='http://dcdev-imgsrv.tcd.ie:8182/iiif/'
 
   #IIIF_SERVER_URL='http://127.0.0.1:8080/cantaloupe-4.1.2/iiif/2/'
 
