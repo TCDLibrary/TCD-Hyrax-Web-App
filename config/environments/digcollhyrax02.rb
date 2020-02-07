@@ -71,7 +71,7 @@ Rails.application.configure do
   # If there is a non-RIIIF IIIF server, uncomment; else, leave commented
   #IIIF_SERVER_URL='http://127.0.0.1:8182/iiif/2/'
   # JL: 07/02/2020 : IIIF_SERVER_URL='http://digcoll-imgsrv02.tcd.ie:8182/iiif/2/'
-  IIIF_SERVER_URL='http://digcoll-imgsrv02.tcd.ie/iiif/2/'
+  IIIF_SERVER_URL='http://digcoll-web02.tcd.ie/iiif/2/'
   #IIIF_SERVER_URL='http://127.0.0.1:8080/cantaloupe-4.1.2/iiif/2/'
 
   # JL : TODO. Check if I need this. Added it because viewer giving errors on VM-099
