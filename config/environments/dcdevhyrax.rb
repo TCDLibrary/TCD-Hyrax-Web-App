@@ -64,8 +64,8 @@ Rails.application.configure do
   # If there is a non-RIIIF IIIF server, uncomment; else, leave commented
   #IIIF_SERVER_URL='http://127.0.0.1:8182/iiif/2/'
   ##IIIF_SERVER_URL='http://dcdev-web.tcd.ie/iiif/'
-  ## > IIIF_SERVER_URL='/iiif/2/'
-  IIIF_SERVER_URL='http://dcdev-web.tcd.ie/iiif/2/'
+  IIIF_SERVER_URL='/iiif/2/'
+  ## JL: 2020-10-02 : IIIF_SERVER_URL='http://dcdev-web.tcd.ie/iiif/2/'
 
   #IIIF_SERVER_URL='http://127.0.0.1:8080/cantaloupe-4.1.2/iiif/2/'
 
