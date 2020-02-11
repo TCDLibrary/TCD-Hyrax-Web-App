@@ -18,7 +18,8 @@ Rails.application.configure do
 
   # Show full error reports.
   # JL : 16/07/2019 : Turning off so I can see 404 page etc
-  config.consider_all_requests_local = false
+  ##config.consider_all_requests_local = false
+    config.consider_all_requests_local = true
 
   # 21/11/2018 JL:
   # config.active_job.queue_adapter     = :inline
@@ -72,7 +73,7 @@ Rails.application.configure do
   #IIIF_SERVER_URL='http://127.0.0.1:8182/iiif/2/'
   # JL : 07/02/2020: IIIF_SERVER_URL='http://digcoll-imgsrv01.tcd.ie:8182/iiif/2/'
   # JL : 2020-02-10 : IIIF_SERVER_URL='http://digcoll-web01.tcd.ie/iiif/2/'
-  IIIF_SERVER_URL='/iiif/2/' 
+  IIIF_SERVER_URL='/iiif/2/'
   #IIIF_SERVER_URL='http://127.0.0.1:8080/cantaloupe-4.1.2/iiif/2/'
 
   # JL : TODO. Check if I need this. Added it because viewer giving errors on VM-099
