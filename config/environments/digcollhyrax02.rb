@@ -16,6 +16,9 @@ Rails.application.configure do
   config.eager_load = true
   config.assets.js_compressor = :uglifier
 
+  # JL: turn on asset fingerprinting. Relates to secrets and token verification
+  config.assets.digest = true
+
   # Show full error reports.
   # JL : 16/07/2019 : Turning off so I can see 404 page etc
   config.consider_all_requests_local = false
