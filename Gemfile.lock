@@ -1,3 +1,29 @@
+GIT
+  remote: https://github.com/notch8/willow_sword.git
+  revision: 0a669d78617c6003e4aa1a46a10447be92be27d5
+  specs:
+    willow_sword (0.2.0)
+      bagit (~> 0.4.1)
+      rails (>= 5.1.6)
+      rubyzip (>= 1.0.0)
+
+GIT
+  remote: https://github.com/samvera-labs/bulkrax
+  revision: 5c6d843dc4e2934e10a60c301dffd794f3736913
+  branch: foxml-importer
+  specs:
+    bulkrax (0.1.0)
+      bagit (~> 0.4)
+      iso8601 (~> 0.9.0)
+      language_list (~> 1.2, >= 1.2.1)
+      libxml-ruby (~> 3.1.0)
+      loofah (>= 2.2.3)
+      oai (~> 0.4)
+      rack (>= 2.0.6)
+      rails (>= 5.1.6)
+      rdf (>= 2.0.2, < 4.0)
+      simple_form
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -91,6 +117,9 @@ GEM
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
+    bagit (0.4.3)
+      docopt (~> 0.5.0)
+      validatable (~> 1.6)
     bcp47 (0.3.3)
       i18n
     bcrypt (3.1.13)
@@ -196,6 +225,7 @@ GEM
     devise-guests (0.6.1)
       devise
     diff-lcs (1.3)
+    docopt (0.5.0)
     dropbox_api (0.1.17)
       faraday (>= 0.8, <= 0.15.4)
       oauth2 (~> 1.1)
@@ -259,6 +289,8 @@ GEM
       multipart-post (>= 1.2, < 3)
     faraday-encoding (0.0.4)
       faraday
+    faraday_middleware (0.14.0)
+      faraday (>= 0.7.4, < 1.0)
     fcrepo_wrapper (0.9.0)
       ruby-progressbar
     ffi (1.9.25)
@@ -403,6 +435,7 @@ GEM
       activesupport (>= 4)
     io-like (0.3.0)
     iso639 (1.3.2)
+    iso8601 (0.9.1)
     jbuilder (2.8.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -443,6 +476,7 @@ GEM
     kaminari-core (1.1.1)
     kaminari_route_prefix (0.1.1)
       kaminari (~> 1.0)
+    language_list (1.2.1)
     launchy (2.4.3)
       addressable (~> 2.3)
     ld-patch (0.3.3)
@@ -463,6 +497,7 @@ GEM
       slop
     legato (0.7.0)
       multi_json
+    libxml-ruby (3.1.0)
     link_header (0.0.8)
     linkeddata (3.0.1)
       equivalent-xml (~> 0.6)
@@ -530,6 +565,10 @@ GEM
       mini_portile2 (~> 2.4.0)
     nokogumbo (1.5.0)
       nokogiri
+    oai (0.4.0)
+      builder (>= 3.1.0)
+      faraday
+      faraday_middleware
     oauth (0.5.4)
     oauth2 (1.4.1)
       faraday (>= 0.8, < 0.16.0)
@@ -796,6 +835,7 @@ GEM
     uber (0.1.0)
     uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
+    validatable (1.6.7)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (3.7.0)
@@ -821,6 +861,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bulkrax!
   byebug
   capistrano
   capistrano-bundler
@@ -861,7 +902,8 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
   webdrivers (~> 3.0)
+  willow_sword!
   yaml_db
 
 BUNDLED WITH
-   1.16.2
+   1.17.3
