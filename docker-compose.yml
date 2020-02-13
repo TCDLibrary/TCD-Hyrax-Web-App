@@ -60,7 +60,7 @@ services:
     command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
 
   solr:
-    # image: registry.gitlab.com/notch8/trinity-collegee-dublin/solr:latest
+    image: "${REGISTRY_HOST}${REGISTRY_URI}/solr:latest"
     build:
       context: .
       dockerfile: Dockerfile.solr
