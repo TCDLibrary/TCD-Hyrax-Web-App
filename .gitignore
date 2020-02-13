@@ -46,3 +46,6 @@ dump.rdb
 
 # Ignore vendor/engines
 vendor/engines
+
+# Ignore assets
+public/assets
