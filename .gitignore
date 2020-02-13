@@ -16,7 +16,6 @@
 # Ignore secrets.yml. Store on servers in shared/congig instead
 /config/secrets.yml
 
-
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
@@ -44,3 +43,9 @@ dump.rdb
 
 # Ignore capistrano version
 /REVISION
+
+# Ignore vendor/engines
+vendor/engines
+
+# Ignore assets
+public/assets
