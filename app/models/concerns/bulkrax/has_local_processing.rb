@@ -14,6 +14,7 @@ module Bulkrax::HasLocalProcessing
   end
 
   def image_paths
+    return [] if self.importerexporter.parser_fields['image_type'] == 'Not Now'
     image_full_paths.map do |path|
       Dir.glob(path)
     end.flatten.compact.uniq.sort
@@ -36,7 +37,6 @@ module Bulkrax::HasLocalProcessing
   end
 
   def image_id
-    return if self.importerexporter.parser_fields['image_type'] == 'Not Now'
     if self.importerexporter.parser_fields['import_type'] == 'multiple'
       record.xpath("//*[name()='DRISPhotoID']").first.content
     elsif self.importerexporter.parser_fields['import_type'] == 'single'
