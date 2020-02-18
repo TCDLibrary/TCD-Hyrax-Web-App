@@ -9,4 +9,7 @@
 Rake::Task['hyrax:default_admin_set:create'].invoke
 Rake::Task['hyrax:default_collection_types:create'].invoke
 
-User.first_or_create!(email: 'julie@notch8.com', password: 'testing123')
+user = User.first_or_create!(email: 'jlakes@tcd.ie', password: 'testing123')
+admin = Role.first_or_create!(name: "admin")
+admin.users << user
+admin.save
