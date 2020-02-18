@@ -37,9 +37,9 @@ module Bulkrax::HasLocalProcessing
   end
 
   def image_id
-    if self.importerexporter.parser_fields['import_type'] == 'multiple'
+    if self.importerexporter.parser_fields['import_type'] == 'multiple' && image_range.blank?
       record.xpath("//*[name()='DRISPhotoID']").first.content
-    elsif self.importerexporter.parser_fields['import_type'] == 'single'
+    else
       record.xpath("//*[name()='CatNo']").first.content
     end
   end
