@@ -33,7 +33,13 @@ module Bulkrax::HasLocalProcessing
   end
 
   def image_base_path
-    self.importerexporter.parser_fields['import_file_path']
+    if File.file?(self.importerexporter.parser_fields['import_file_path'])
+      path = self.importerexporter.parser_fields['import_file_path'].split('/')
+      path.pop
+      path.join('/')
+    else
+      self.importerexporter.parser_fields['import_file_path']
+    end
   end
 
   def image_id

@@ -15,10 +15,22 @@
     input_html: { class: 'form-control' }
     %>
 
+  <h4>Visiblity</h4>
+
+  <%= fi.input :visibility, 
+		collection: [
+      ['Public', 'open'],
+      ['Private', 'restricted']
+		], 
+    selected: importer.parser_fields['visibility'] || 'open',
+    input_html: { class: 'form-control' }
+    %>
+
 	<h4>Optional parent id:</h4>
 
 	<%= fi.input :parent_id, as: :string, input_html: { value: importer.parser_fields['parent_id'] }, required: false %>
 
+  
   <h4>Files To Import:</h4>
   <p>
 		Provide the path to the directory containing project folders to import. Or to the individual project folder.
