@@ -8,10 +8,8 @@ development:
   reconnect: false
   database: dev_hyrax
   pool: 5
-  #username: root
-  username: hyraxuser
+  username: root
   password: <%= ENV['HYRAX_DATABASE_PASSWORD'] %>
-    #Pa$$w0rd
 
 demovm045:
   adapter: mysql2
