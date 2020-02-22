@@ -58,7 +58,7 @@ module Bulkrax::HasLocalProcessing
   end
 
   def image_folder
-    folder = record.xpath("//*[name()='ProjectNo']").first.content
+    folder = record.xpath("//*[name()='ProjectName']").first.content
     if image_base_path.include?(folder)
       return ''
     else

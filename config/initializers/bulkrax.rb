@@ -7,8 +7,8 @@ Bulkrax.setup do |config|
   # ]
 
   config.parsers = [
-    { class_name: 'Bulkrax::FoxmlParser', name: 'FOXML importer', partial: 'foxml_fields' } 
-    #, { class_name: 'Bulkrax::CsvParser', name: 'CSV importer', partial: 'csv_fields' }
+    { class_name: 'Bulkrax::FoxmlParser', name: 'FOXML importer', partial: 'foxml_fields' }, 
+    { class_name: 'Bulkrax::CsvParser', name: 'CSV importer', partial: 'csv_fields' }
   ]
 
   # Field to use during import to identify if the Work or Collection already exists.
