@@ -20,6 +20,7 @@ services:
     volumes:
       - .:/home/app/webapp:delegated
 
+  # try https://www.gitmemory.com/issue/phusion/passenger/2211/505533958
   web:
     extends: app
     environment:
@@ -44,7 +45,7 @@ services:
       - mysql
 
   redis:
-    image: redis:3
+    image: redis:4
     ports:
       - '6379'
     volumes:
@@ -54,6 +55,7 @@ services:
     image: mysql:5.7
     env_file:
       - .env
+      - .env.development
     ports:
       - '3306:3306'
     volumes:
