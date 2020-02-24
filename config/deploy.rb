@@ -1,5 +1,7 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.11.0"
+#lock "~> 3.11.0"
+lock "~> 3.12.0"
+
 
 set :application, "TCD-Hyrax-Web-App"
 set :repo_url, "https://github.com/joelakes/TCD-Hyrax-Web-App.git"
