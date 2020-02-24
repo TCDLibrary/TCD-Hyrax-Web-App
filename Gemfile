@@ -44,7 +44,7 @@ gem 'sidekiq'
 
 # Use Capistrano for deployment
 group :development do
-  gem 'capistrano'
+  gem 'capistrano', '~> 3.11.0'
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
   #gem 'capistrano-rbenv'
