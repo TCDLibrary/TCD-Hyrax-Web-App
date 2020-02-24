@@ -13,8 +13,14 @@ default: &default
   pool: 5
 
 development:
-  <<: *default
-  username: root
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: dev_hyrax
+  pool: 5
+  username: hyraxuser
+  password: <%= ENV['HYRAX_DATABASE_PASSWORD'] %>
+    #Pa$$w0rd
 
 demovm045:
   <<: *default
