@@ -34,9 +34,7 @@ module Bulkrax::HasLocalProcessing
 
   def image_base_path
     if File.file?(self.importerexporter.parser_fields['import_file_path'])
-      path = self.importerexporter.parser_fields['import_file_path'].split('/')
-      path.pop
-      path.join('/')
+      File.dirname(self.importerexporter.parser_fields['import_file_path'])
     else
       self.importerexporter.parser_fields['import_file_path']
     end

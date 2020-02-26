@@ -8,19 +8,15 @@ default: &default
   adapter:  <%= ENV['DB_ADAPTER'] || 'mysql2' %>
   reconnect: false
   host:     <%= ENV['MYSQL_HOST'] || 'localhost' %>
+  username: <%= ENV['MYSQL_USER'] %>
   password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
   database: <%= ENV['MYSQL_DATABASE'] || 'dev_hyrax' %>
   pool: 5
 
 development:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: dev_hyrax
-  pool: 5
-  username: hyraxuser
-  password: <%= ENV['HYRAX_DATABASE_PASSWORD'] %>
-    #Pa$$w0rd
+  <<: *default
+  username: <%= ENV['HYRAX_DATABASE_USER'] || 'hyraxuser' %>
+  password: <%= ENV['HYRAX_DATABASE_PASSWORD'] || '#Pa$$w0rd' %>
 
 demovm045:
   <<: *default

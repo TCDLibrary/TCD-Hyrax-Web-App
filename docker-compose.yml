@@ -55,7 +55,6 @@ services:
     image: mysql:5.7
     env_file:
       - .env
-      - .env.development
     ports:
       - '3306:3306'
     volumes:
