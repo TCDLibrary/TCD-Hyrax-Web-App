@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/samvera-labs/bulkrax
-  revision: d2789e20666be40dff583ae15174c152a3f04f53
+  revision: 11946b048ac23d53d573a3d8488c560cb6ac8637
   branch: xml-importer
   specs:
     bulkrax (0.1.0)
