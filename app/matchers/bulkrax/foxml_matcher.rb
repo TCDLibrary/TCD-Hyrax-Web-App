@@ -152,7 +152,8 @@ module Bulkrax
     def artist_to_hash(src)
       return nil unless src.include?('OtherArtist') || src.include?('AttributedArtist')
       array = src.gsub('Attributed', '').gsub('Other', '').split(';')
-      Hash[array.map { |el| el.split(':').map { |s| s.strip } } ]
+      # substitue ' : ' in strings, we only want to split on ': '
+      Hash[ array.map { |el| el.gsub(' : ', '---').split(':').map { |s| s.strip.gsub('---', ' : ') } } ]
     end
   end
 end
