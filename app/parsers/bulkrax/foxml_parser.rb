@@ -24,6 +24,37 @@ module Bulkrax
       false
     end
 
+    def create_collections
+      return if parser_fields['parent_id'].blank?
+      return if parent.blank?
+      identifier = parent.send(Bulkrax.system_identifier_field).first
+      return if identifier.blank?
+
+      new_entry = find_or_create_entry(collection_entry_class, identifier, 'Bulkrax::Importer')
+      ImportWorkCollectionJob.perform_now(new_entry.id, current_importer_run.id)
+      increment_counters(0, true)
+    end
+
+    # Override bulkrax method
+    def create_parent_child_relationships
+      return if parent.blank?
+      parent_id = importerexporter.entries.select {|e| e.class == collection_entry_class }.first.id
+      child_entry_ids = importerexporter.entries.map {|e| e.id if e.class == entry_class }.compact
+      ChildRelationshipsJob.perform_later(parent_id, child_entry_ids, current_importer_run.id)
+    end
+
+    def collection_entry_class
+      Bulkrax::FoxmlCollectionEntry
+    end
+
+    private
+
+    def parent
+      @parent ||= ActiveFedora::Base.find(self.parser_fields['parent_id'])
+    rescue StandardError
+      nil
+    end
+
     # Move contents of public/data/ingest to Bulkrax.import_path/importer_id
     def move_import_files
       # Gather the files

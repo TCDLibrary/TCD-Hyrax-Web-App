@@ -33,10 +33,6 @@ module Bulkrax
         unless self.importerexporter.validate_only
           raise CollectionsCreatedError unless collections_created?
           @item = factory.run
-          if parent? && !parent_collection? && !@item.nil?
-            parent.members += [@item]
-            parent.save
-          end
         end
       rescue RSolr::Error::Http, CollectionsCreatedError => e
         raise e
