@@ -5,6 +5,7 @@ module Bulkrax::HasLocalProcessing
   # add any special processing here, for example to reset a metadata property
   # to add a custom property from outside of the import data
   def add_local
+    # byebug
     self.parsed_metadata['keyword'] = ['Unassigned'] if self.parsed_metadata['keyword'].blank?
     self.parsed_metadata['creator'] = ['Unattributed'] if self.parsed_metadata['creator'].blank?
     self.parsed_metadata['file'] = image_paths
@@ -33,11 +34,7 @@ module Bulkrax::HasLocalProcessing
   end
 
   def image_base_path
-    if File.file?(self.importerexporter.parser_fields['import_file_path'])
-      File.dirname(self.importerexporter.parser_fields['import_file_path'])
-    else
-      self.importerexporter.parser_fields['import_file_path']
-    end
+    self.importerexporter.parser_fields['import_file_path']
   end
 
   def image_id

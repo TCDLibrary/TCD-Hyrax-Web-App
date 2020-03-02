@@ -83,6 +83,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'hyrax', '2.5.1'
+# Temporary branch until global errors PR is merged
 gem 'bulkrax', git: 'https://github.com/samvera-labs/bulkrax', branch: 'xml-importer'
 # gem 'bulkrax', path: 'vendor/engines/bulkrax'
 

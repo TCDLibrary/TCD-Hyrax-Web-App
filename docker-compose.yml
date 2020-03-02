@@ -34,6 +34,8 @@ services:
       - fcrepo
       - mysql
       - workers
+    stdin_open: true
+    tty: true
   
   workers:
     extends: app
@@ -43,6 +45,8 @@ services:
       - solr
       - fcrepo
       - mysql
+    stdin_open: true
+    tty: true
 
   redis:
     image: redis:4

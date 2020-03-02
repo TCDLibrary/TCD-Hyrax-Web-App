@@ -4,14 +4,39 @@ module Bulkrax
       Bulkrax::FoxmlMatcher
     end
 
+    # Override to gsub the following:
+    # \u0096 => space
+    # \u0092 => ’
+    # \u0091 => ‘
+    def self.data_for_entry(data, path = nil)
+      collections = []
+      children = []
+      xpath_for_source_id = ".//*[name()='#{source_identifier_field}']"
+      return {
+        source_identifier: data.xpath(xpath_for_source_id).first.text,
+        data:
+          data.to_xml(
+            encoding: 'UTF-8',
+            save_with:
+              Nokogiri::XML::Node::SaveOptions::AS_XML | Nokogiri::XML::Node::SaveOptions::NO_DECLARATION | Nokogiri::XML::Node::SaveOptions::NO_EMPTY_TAGS
+          ).gsub("\n",'').gsub("\t", '').gsub("\u0091",'‘').gsub("\u0092",'’').gsub("\u0096",' '),
+        collection: collections,
+        file: record_file_paths(path),
+        children: children
+      }
+    end
+
+    # Override bulkrax to add parent handling
     def build_for_importer
       begin
         build_metadata
-        raise CollectionsCreatedError unless collections_created?
-        @item = factory.run
-        if parent? && !parent_collection?
-          parent.members += [@item]
-          parent.save
+        unless self.importerexporter.validate_only
+          raise CollectionsCreatedError unless collections_created?
+          @item = factory.run
+          if parent? && !parent_collection? && !@item.nil?
+            parent.members += [@item]
+            parent.save
+          end
         end
       rescue RSolr::Error::Http, CollectionsCreatedError => e
         raise e
