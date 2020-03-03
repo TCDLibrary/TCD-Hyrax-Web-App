@@ -10,34 +10,35 @@ module Bulkrax
 
     # Override bulkrax to move files to Bulkrax.import_path/importer_id/
     def valid_import?
-      Rails.logger.info('I AM HERE!!!')
       if parser_fields['import_file_path'].include?('public/data/ingest')
         move_import_files
         parser_fields['import_file_path'] = path_for_import
         importerexporter.save!
       end
-      raise 'No metadata files found' if metadata_paths.blank?
-      raise 'No records found' if records.blank?
+      raise StandardError, 'No metadata files found' if metadata_paths.blank?
+      raise StandardError, 'No records found' if records.blank?
       true
     rescue => e
       status_info(e)
       false
     end
 
+    # Create collection objects for works only.
+    # Although this sounds counter intuitive, we need Collection Entries only where they are works in order to create
+    #   work-work relationships with create_parent_child_relationships
     def create_collections
-      return if parser_fields['parent_id'].blank?
-      return if parent.blank?
+      return if parser_fields['parent_id'].blank? || parent.blank? || parent.class == Collection 
       identifier = parent.send(Bulkrax.system_identifier_field).first
-      return if identifier.blank?
+      raise StandardError, "Could not create the Collection Entry, #{parent.id} has no #{Bulkrax.system_identifier_field}" if identifier.blank?
 
       new_entry = find_or_create_entry(collection_entry_class, identifier, 'Bulkrax::Importer')
       ImportWorkCollectionJob.perform_now(new_entry.id, current_importer_run.id)
       increment_counters(0, true)
     end
 
-    # Override bulkrax method
+    # Override bulkrax method to create only work-work relationships
     def create_parent_child_relationships
-      return if parent.blank?
+      return if parent.blank? || parent.class == Collection
       parent_id = importerexporter.entries.select {|e| e.class == collection_entry_class }.first.id
       child_entry_ids = importerexporter.entries.map {|e| e.id if e.class == entry_class }.compact
       ChildRelationshipsJob.perform_later(parent_id, child_entry_ids, current_importer_run.id)
