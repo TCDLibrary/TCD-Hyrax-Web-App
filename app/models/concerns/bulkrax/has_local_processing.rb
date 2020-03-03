@@ -5,11 +5,10 @@ module Bulkrax::HasLocalProcessing
   # add any special processing here, for example to reset a metadata property
   # to add a custom property from outside of the import data
   def add_local
-    # byebug
     self.parsed_metadata['keyword'] = ['Unassigned'] if self.parsed_metadata['keyword'].blank?
     self.parsed_metadata['creator'] = ['Unattributed'] if self.parsed_metadata['creator'].blank?
     self.parsed_metadata['file'] = image_paths
-    self.parsed_metadata['dris_unique'].uniq!
+    self.parsed_metadata[Bulkrax.system_identifier_field] = [self.raw_metadata['source_identifier']]
     self.parsed_metadata['collections'] = [] unless parent_collection?
     cleanup_parent_work if parent? && !parent_collection?
   end

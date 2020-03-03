@@ -26,24 +26,6 @@ module Bulkrax
       }
     end
 
-    # Override bulkrax to add parent handling
-    def build_for_importer
-      begin
-        build_metadata
-        unless self.importerexporter.validate_only
-          raise CollectionsCreatedError unless collections_created?
-          @item = factory.run
-        end
-      rescue RSolr::Error::Http, CollectionsCreatedError => e
-        raise e
-      rescue StandardError => e
-        status_info(e)
-      else
-        status_info
-      end
-      return @item
-    end
-
     def collections_created?
       return true if self.importerexporter.parser_fields['parent_id'].blank?
       return true unless find_or_create_collection_ids.blank?
