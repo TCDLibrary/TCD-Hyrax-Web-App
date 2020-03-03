@@ -10,14 +10,13 @@ module Bulkrax
 
     # Override bulkrax to move files to Bulkrax.import_path/importer_id/
     def valid_import?
-      Rails.logger.info('I AM HERE!!!')
       if parser_fields['import_file_path'].include?('public/data/ingest')
         move_import_files
         parser_fields['import_file_path'] = path_for_import
         importerexporter.save!
       end
-      raise 'No metadata files found' if metadata_paths.blank?
-      raise 'No records found' if records.blank?
+      raise StandardError, 'No metadata files found' if metadata_paths.blank?
+      raise StandardError, 'No records found' if records.blank?
       true
     rescue => e
       status_info(e)
