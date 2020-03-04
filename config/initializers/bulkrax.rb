@@ -13,7 +13,7 @@ Bulkrax.setup do |config|
 
   # Field to use during import to identify if the Work or Collection already exists.
   # Default is 'source'.
-  config.system_identifier_field = 'dris_unique'
+  config.system_identifier_field = 'source'
 
   # WorkType to use as the default if none is specified in the import
   # Default is the first returned by Hyrax.config.curation_concerns
@@ -76,7 +76,6 @@ Bulkrax.setup do |config|
   #   config.field_mappings["Bulkrax::OaiDcParser"].each {|key,value| config.field_mappings["Bulkrax::OaiOmekaParser"][key] = value }
 
   config.field_mappings['Bulkrax::FoxmlParser'] = {
-
     # @todo understand owner_rec
 
     # DATA sub-properties - multiple in source

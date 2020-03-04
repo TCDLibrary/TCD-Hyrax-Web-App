@@ -27,11 +27,10 @@ module Bulkrax
     # Although this sounds counter intuitive, we need Collection Entries only where they are works in order to create
     #   work-work relationships with create_parent_child_relationships
     def create_collections
-      return if parser_fields['parent_id'].blank? || parent.blank? || parent.class == Collection 
-      identifier = parent.send(Bulkrax.system_identifier_field).first
-      raise StandardError, "Could not create the Collection Entry, #{parent.id} has no #{Bulkrax.system_identifier_field}" if identifier.blank?
-
-      new_entry = find_or_create_entry(collection_entry_class, identifier, 'Bulkrax::Importer')
+      return if parser_fields['parent_id'].blank?
+      @parent = setup_parent_for_collection_entry
+      raise StandardError, "problem setting #{Bulkrax.system_identifier_field} on parent #{parent.id}" if parent.send(Bulkrax.system_identifier_field).blank?
+      new_entry = find_or_create_entry(collection_entry_class, parent.send(Bulkrax.system_identifier_field).first, 'Bulkrax::Importer')
       ImportWorkCollectionJob.perform_now(new_entry.id, current_importer_run.id)
       increment_counters(0, true)
     end
@@ -39,7 +38,9 @@ module Bulkrax
     # Override bulkrax method to create only work-work relationships
     def create_parent_child_relationships
       return if parent.blank? || parent.class == Collection
-      parent_id = importerexporter.entries.select {|e| e.class == collection_entry_class }.first.id
+      parents = importerexporter.entries.select {|e| e.class == collection_entry_class }
+      raise StandardError, "Could not find the Collection Entry for #{parent.id}" if parents.blank?
+      parent_id = parents.first.id
       child_entry_ids = importerexporter.entries.map {|e| e.id if e.class == entry_class }.compact
       ChildRelationshipsJob.perform_later(parent_id, child_entry_ids, current_importer_run.id)
     end
@@ -48,12 +49,16 @@ module Bulkrax
       Bulkrax::FoxmlCollectionEntry
     end
 
-    private
-
     def parent
       @parent ||= ActiveFedora::Base.find(self.parser_fields['parent_id'])
-    rescue StandardError
-      nil
+    end
+
+    def setup_parent_for_collection_entry
+      if parent.send(Bulkrax.system_identifier_field).blank?
+        parent.send("#{Bulkrax.system_identifier_field}=", [parent.id])
+        parent.save!
+      end
+      return parent.reload
     end
 
     # Move contents of public/data/ingest to Bulkrax.import_path/importer_id
