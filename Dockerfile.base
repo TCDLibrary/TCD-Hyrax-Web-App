@@ -37,8 +37,6 @@ ENV BUNDLE_GEMFILE=$APP_HOME/Gemfile \
   BUNDLE_JOBS=4
 
 COPY  --chown=app Gemfile* $APP_HOME/
-# @todo N8 dev specific
-# COPY --chown=app vendor/engines/bulkrax "$APP_HOME"/vendor/engines/bulkrax
 
 RUN /sbin/setuser app gem install bundler
 RUN /sbin/setuser app bundle install
