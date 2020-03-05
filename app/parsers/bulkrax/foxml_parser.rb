@@ -40,7 +40,7 @@ module Bulkrax
 
     # Override bulkrax method to create only work-work relationships
     def create_parent_child_relationships
-      return if parent.blank? || parent.class == Collection
+      return if parser_fields['parent_id'].blank? || parent.blank? || parent.class == Collection
 
       parents = importerexporter.entries.select { |e| e.class == collection_entry_class }
       raise StandardError, "Could not find the Collection Entry for #{parent.id}" if parents.blank?
