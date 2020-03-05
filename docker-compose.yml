@@ -1,7 +1,7 @@
 version: '2.2'
 services:
   base:
-    image: "${REGISTRY_HOST}${REGISTRY_URI}/base:latest"
+    # image: "${REGISTRY_HOST}${REGISTRY_URI}/base:latest"
     build:
       context: .
       dockerfile: Dockerfile.base
@@ -10,7 +10,7 @@ services:
       - .env.development
 
   app:
-    image: "${REGISTRY_HOST}${REGISTRY_URI}:latest"
+    # image: "${REGISTRY_HOST}${REGISTRY_URI}:latest"
     build:
       context: .
       dockerfile: Dockerfile
@@ -34,8 +34,6 @@ services:
       - fcrepo
       - mysql
       - workers
-    stdin_open: true
-    tty: true
   
   workers:
     extends: app
@@ -66,7 +64,7 @@ services:
     command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
 
   solr:
-    image: "${REGISTRY_HOST}${REGISTRY_URI}/solr:latest"
+    # image: "${REGISTRY_HOST}${REGISTRY_URI}/solr:latest"
     build:
       context: .
       dockerfile: Dockerfile.solr
