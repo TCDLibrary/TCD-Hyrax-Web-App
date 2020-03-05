@@ -33,6 +33,7 @@ dump.rdb
 # Ignore the ingest files
 !public/data/ingest/HI/fa-file.jpg
 /public/data/ingest/*
+/public/data/tidy
 
 # Ignore the branding files
 #!/public/branding/
