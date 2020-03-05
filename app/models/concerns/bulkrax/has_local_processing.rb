@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Bulkrax::HasLocalProcessing
+  
   # This method is called during build_metadata
   # add any special processing here, for example to reset a metadata property
   # to add a custom property from outside of the import data
@@ -13,6 +14,7 @@ module Bulkrax::HasLocalProcessing
     cleanup_parent_work if parent? && !parent_collection?
   end
 
+  # Retrieve paths to the images according to the image_type selection
   def image_paths
     return [] if importerexporter.parser_fields['image_type'] == 'Not Now'
 
@@ -35,6 +37,7 @@ module Bulkrax::HasLocalProcessing
 
   def image_base_path
     import_path = importerexporter.parser_fields['import_file_path']
+    # If the import_file_path is to a file, use the containing directory
     if File.file?(import_path)
       File.dirname(import_path)
     else
@@ -42,6 +45,7 @@ module Bulkrax::HasLocalProcessing
     end
   end
 
+  # Use CatNo for 'single' and range, use DRISPhotoID for multiple
   def image_id
     if importerexporter.parser_fields['import_type'] == 'multiple' && image_range.blank?
       record.xpath("//*[name()='DRISPhotoID']").first.content
@@ -58,6 +62,7 @@ module Bulkrax::HasLocalProcessing
     (range[0]..range[1]).to_a
   end
 
+  # Use ProjectName for the folder containing images
   def image_folder
     folder = record.xpath("//*[name()='ProjectName']").first.content
     if image_base_path.include?(folder)
@@ -87,6 +92,7 @@ module Bulkrax::HasLocalProcessing
     ]
   end
 
+  # Remove metadata from the skip_fields elements if it matches that in the parent
   def cleanup_parent_work
     skip_fields.each do |field|
       next unless parsed_metadata[field].present?
