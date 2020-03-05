@@ -96,6 +96,15 @@ module Bulkrax
           foxml_parser.create_parent_child_relationships
         end
       end
+
+      context 'no parent' do
+        let(:parent) { nil }
+
+        it 'does not call ChildRelationshipsJob' do
+          expect(Bulkrax::ChildRelationshipsJob).not_to receive(:perform_later)
+          foxml_parser.create_parent_child_relationships
+        end
+      end
     end
   end
 end

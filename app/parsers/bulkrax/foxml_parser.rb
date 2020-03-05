@@ -28,7 +28,7 @@ module Bulkrax
     # Although this sounds counter intuitive, we need Collection Entries only where they are works in order to create
     #   work-work relationships with create_parent_child_relationships
     def create_collections
-      return if parser_fields['parent_id'].blank?
+      return if parser_fields['parent_id'].blank? || parent.blank?
 
       @parent = setup_parent_for_collection_entry
       raise StandardError, "problem setting #{Bulkrax.system_identifier_field} on parent #{parent.id}" if parent.send(Bulkrax.system_identifier_field).blank?
@@ -40,7 +40,7 @@ module Bulkrax
 
     # Override bulkrax method to create only work-work relationships
     def create_parent_child_relationships
-      return if parent.blank? || parent.class == Collection
+      return if parser_fields['parent_id'].blank? || parent.blank? || parent.class == Collection
 
       parents = importerexporter.entries.select { |e| e.class == collection_entry_class }
       raise StandardError, "Could not find the Collection Entry for #{parent.id}" if parents.blank?
@@ -56,6 +56,8 @@ module Bulkrax
 
     def parent
       @parent ||= ActiveFedora::Base.find(parser_fields['parent_id'])
+    rescue StandardError
+      nil
     end
 
     def setup_parent_for_collection_entry
