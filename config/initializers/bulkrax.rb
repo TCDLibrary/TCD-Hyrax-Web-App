@@ -7,7 +7,7 @@ Bulkrax.setup do |config|
   # ]
 
   config.parsers = [
-    { class_name: 'Bulkrax::FoxmlParser', name: 'FOXML importer', partial: 'foxml_fields' }, 
+    { class_name: 'Bulkrax::FoxmlParser', name: 'FOXML importer', partial: 'foxml_fields' },
     { class_name: 'Bulkrax::CsvParser', name: 'CSV importer', partial: 'csv_fields' }
   ]
 
@@ -76,7 +76,6 @@ Bulkrax.setup do |config|
   #   config.field_mappings["Bulkrax::OaiDcParser"].each {|key,value| config.field_mappings["Bulkrax::OaiOmekaParser"][key] = value }
 
   config.field_mappings['Bulkrax::FoxmlParser'] = {
-    # @todo understand owner_rec
 
     # DATA sub-properties - multiple in source
     'creator_loc' => { from: ['AttributedArtist'], parsed: true },
@@ -86,8 +85,8 @@ Bulkrax.setup do |config|
     'copyright_status' => { from: ['CopyrightHolder'], parsed: true },
     'copyright_note' => { from: ['CopyrightNotes'], parsed: true },
     'location_type' => { from: ['LocationType'], parsed: true },
-    'support' => { from: ['Medium'], parsed: true }, # @todo check with joe
-    'medium' => { from: ['Support'], parsed: true }, # @todo check with joe
+    'support' => { from: ['Medium'], parsed: true },
+    'medium' => { from: ['Support'], parsed: true },
     'subject_lcsh' => { from: ['SubjectLCSH'], parsed: true },
     'keyword' => { from: ['OpenKeyword'], parsed: true },
     'subject_local_keyword' => { from: ['OpenKeyword'], parsed: true },
@@ -96,11 +95,11 @@ Bulkrax.setup do |config|
     'series_title' => { from: ['SeriesReportNo'], parsed: true },
     'culture' => { from: ['Culture'], parsed: true },
     # Custom parsing
-    'creator' => { from: ['AttributedArtistCalculation', 'OtherArtistCalculation'], parsed: true },
-    'contributor' => { from: ['AttributedArtistCalculation', 'OtherArtistCalculation'], parsed: true },
-    'provenance' => { from: ['AttributedArtistCalculation', 'OtherArtistCalculation', 'Provenance'], parsed: true },
-    'subject' => { from: ['AttributedArtistCalculation', 'OtherArtistCalculation', 'SubjectLCSH', 'LCSubjectNames'], parsed: true },
-    'genre' => { from: ['SubjectTMG', 'TypeOfWork'], parsed: true },
+    'creator' => { from: %w[AttributedArtistCalculation OtherArtistCalculation], parsed: true },
+    'contributor' => { from: %w[AttributedArtistCalculation OtherArtistCalculation], parsed: true },
+    'provenance' => { from: %w[AttributedArtistCalculation OtherArtistCalculation Provenance], parsed: true },
+    'subject' => { from: %w[AttributedArtistCalculation OtherArtistCalculation SubjectLCSH LCSubjectNames], parsed: true },
+    'genre' => { from: %w[SubjectTMG TypeOfWork], parsed: true },
     'genre_tgm' => { from: ['SubjectTMG'], parsed: true },
     'genre_aat' => { from: ['TypeOfWork'], parsed: true },
     'description' => { from: ['Abstract'], parsed: true },
@@ -121,12 +120,12 @@ Bulkrax.setup do |config|
     'sponsor' => { from: ['Sponsor'] },
     'conservation_history' => { from: ['Introduction'] },
     'publisher' => { from: ['Publisher'] },
-    'publisher_location' => { from: ['PublisherCity', 'PublisherCountry'] },
-    'page_number' => { from: ['PageNo','PageNoB'] },
-    'page_type' => { from: ['PageType', 'PageTypeB'] },
+    'publisher_location' => { from: %w[PublisherCity PublisherCountry] },
+    'page_number' => { from: %w[PageNo PageNoB] },
+    'page_type' => { from: %w[PageType PageTypeB] },
     'physical_extent' => { from: ['FormatW'] },
     'collection_title' => { from: ['TitleLargerEntity'] },
-    'county' => { from: ['CALM'] }, # @todo check with Joe
+    'county' => { from: ['CALM'] },
     'project_number' => { from: ['ProjectNo'] },
     'order_no' => { from: ['LCN'] },
     'total_records' => { from: ['PageTotal'] }

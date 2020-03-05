@@ -83,9 +83,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'hyrax', '2.5.1'
-# Temporary branch until global errors PR is merged
-gem 'bulkrax', git: 'https://github.com/samvera-labs/bulkrax', branch: 'xml-importer'
-# gem 'bulkrax', path: 'vendor/engines/bulkrax'
+gem 'bulkrax', git: 'https://github.com/samvera-labs/bulkrax'
 
 group :development, :test, :demovm045, :demovm099, :dcdevhyrax, :digcollhyrax01, :digcollhyrax02 do
   gem 'solr_wrapper', '>= 0.3'
