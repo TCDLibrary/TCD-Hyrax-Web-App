@@ -5,39 +5,45 @@ module Bulkrax::HasLocalProcessing
   # add any special processing here, for example to reset a metadata property
   # to add a custom property from outside of the import data
   def add_local
-    self.parsed_metadata['keyword'] = ['Unassigned'] if self.parsed_metadata['keyword'].blank?
-    self.parsed_metadata['creator'] = ['Unattributed'] if self.parsed_metadata['creator'].blank?
-    self.parsed_metadata['file'] = image_paths
-    self.parsed_metadata[Bulkrax.system_identifier_field] = [self.raw_metadata['source_identifier']]
-    self.parsed_metadata['collections'] = [] unless parent_collection?
+    parsed_metadata['keyword'] = ['Unassigned'] if parsed_metadata['keyword'].blank?
+    parsed_metadata['creator'] = ['Unattributed'] if parsed_metadata['creator'].blank?
+    parsed_metadata['file'] = image_paths
+    parsed_metadata[Bulkrax.system_identifier_field] = [raw_metadata['source_identifier']]
+    parsed_metadata['collections'] = [] unless parent_collection?
     cleanup_parent_work if parent? && !parent_collection?
   end
 
   def image_paths
-    return [] if self.importerexporter.parser_fields['image_type'] == 'Not Now'
+    return [] if importerexporter.parser_fields['image_type'] == 'Not Now'
+
     image_full_paths.map do |path|
       Dir.glob(path)
     end.flatten.compact.uniq.sort
   end
 
   def image_full_paths
-    image_type_subpaths.map do | image_type |
+    image_type_subpaths.map do |image_type|
       if image_range.blank?
-        File.join(image_base_path,image_folder,image_type,"#{image_id}*")
+        File.join(image_base_path, image_folder, image_type, "#{image_id}*")
       else
-        image_range.map {|range| 
-          File.join(image_base_path,image_folder,image_type,"#{image_id}_#{range}_*") 
-        }.flatten
+        image_range.map do |range|
+          File.join(image_base_path, image_folder, image_type, "#{image_id}_#{range}_*")
+        end.flatten
       end
     end.flatten
   end
 
   def image_base_path
-    self.importerexporter.parser_fields['import_file_path']
+    import_path = importerexporter.parser_fields['import_file_path']
+    if File.file?(import_path)
+      File.dirname(import_path)
+    else
+      import_path
+    end
   end
 
   def image_id
-    if self.importerexporter.parser_fields['import_type'] == 'multiple' && image_range.blank?
+    if importerexporter.parser_fields['import_type'] == 'multiple' && image_range.blank?
       record.xpath("//*[name()='DRISPhotoID']").first.content
     else
       record.xpath("//*[name()='CatNo']").first.content
@@ -47,8 +53,9 @@ module Bulkrax::HasLocalProcessing
   def image_range
     range_el = record.xpath("//*[name()='ImgRange']")
     return [] if range_el.blank?
+
     range = range_el.first.content.split(':')
-    return (range[0]..range[1]).to_a
+    (range[0]..range[1]).to_a
   end
 
   def image_folder
@@ -61,7 +68,7 @@ module Bulkrax::HasLocalProcessing
   end
 
   def image_type_subpaths
-    case self.importerexporter.parser_fields['image_type']
+    case importerexporter.parser_fields['image_type']
     when 'HI'
       ['/HI/']
     when 'LO'
@@ -75,16 +82,17 @@ module Bulkrax::HasLocalProcessing
 
   # override Bulkrax add_rights_statement with boilerplate
   def add_rights_statement
-    self.parsed_metadata['rights_statement'] = [
+    parsed_metadata['rights_statement'] = [
       'Copyright The Board of Trinity College Dublin. Images are available for single-use academic application only. Publication, transmission or display is prohibited without formal written approval of the Library of Trinity College, Dublin.'
     ]
   end
 
   def cleanup_parent_work
     skip_fields.each do |field|
-      next unless self.parsed_metadata[field].present?
-      self.parsed_metadata[field].each do |val|
-        self.parsed_metadata[field].delete(val) if parent_attributes[field].include?(val)
+      next unless parsed_metadata[field].present?
+
+      parsed_metadata[field].each do |val|
+        parsed_metadata[field].delete(val) if parent_attributes[field].include?(val)
       end
     end
   end
