@@ -12,14 +12,14 @@ module Bulkrax
       collections = []
       children = []
       xpath_for_source_id = ".//*[name()='#{source_identifier_field}']"
-      return {
+      {
         source_identifier: data.xpath(xpath_for_source_id).first.text,
         data:
           data.to_xml(
             encoding: 'UTF-8',
             save_with:
               Nokogiri::XML::Node::SaveOptions::AS_XML | Nokogiri::XML::Node::SaveOptions::NO_DECLARATION | Nokogiri::XML::Node::SaveOptions::NO_EMPTY_TAGS
-          ).gsub("\n",'').gsub("\t", '').gsub("\u0091",'‘').gsub("\u0092",'’').gsub("\u0096",' '),
+          ).delete("\n").delete("\t").tr("\u0091", '‘').tr("\u0092", '’').tr("\u0096", ' '),
         collection: collections,
         file: record_file_paths(path),
         children: children
@@ -27,13 +27,13 @@ module Bulkrax
     end
 
     def collections_created?
-      return true if self.importerexporter.parser_fields['parent_id'].blank?
+      return true if importerexporter.parser_fields['parent_id'].blank?
       return true unless find_or_create_collection_ids.blank?
     end
 
     def find_or_create_collection_ids
       self.collection_ids = [parent.id] if parent?
-      return self.collection_ids
+      collection_ids
     rescue StandardError
       []
     end
@@ -57,7 +57,7 @@ module Bulkrax
     end
 
     def factory_class
-      self.importerexporter.parser_fields['object_type'].constantize
+      importerexporter.parser_fields['object_type'].constantize
     end
   end
 end

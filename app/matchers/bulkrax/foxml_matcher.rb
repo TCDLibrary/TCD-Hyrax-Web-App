@@ -129,7 +129,7 @@ module Bulkrax
 
     def parse_description(src)
       # 'Abstract'
-      if (src.length > 200)
+      if src.length > 200
         (src.slice(0..200) + '...')
       else
         src
@@ -151,9 +151,10 @@ module Bulkrax
     # OtherArtist
     def artist_to_hash(src)
       return nil unless src.include?('OtherArtist') || src.include?('AttributedArtist')
+
       array = src.gsub('Attributed', '').gsub('Other', '').split(';')
       # substitue ' : ' in strings, we only want to split on ': '
-      Hash[ array.map { |el| el.gsub(' : ', '---').split(':').map { |s| s.strip.gsub('---', ' : ') } } ]
+      Hash[array.map { |el| el.gsub(' : ', '---').split(':').map { |s| s.strip.gsub('---', ' : ') } }]
     end
   end
 end
