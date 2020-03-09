@@ -2,39 +2,37 @@
 
 # TODO : Need to encrypt passwords
 
-development:
-  adapter: mysql2
-  encoding: utf8
+default: &default
+  encoding: utf8mb4
+  collation: utf8mb4_unicode_ci
+  adapter:  <%= ENV['DB_ADAPTER'] || 'mysql2' %>
   reconnect: false
-  database: dev_hyrax
+  host:     <%= ENV['MYSQL_HOST'] || 'localhost' %>
+  username: <%= ENV['MYSQL_USER'] %>
+  password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
+  database: <%= ENV['MYSQL_DATABASE'] || 'dev_hyrax' %>
   pool: 5
-  username: root
-  password: <%= ENV['HYRAX_DATABASE_PASSWORD'] %>
+
+development:
+  <<: *default
+  username: <%= ENV['HYRAX_DATABASE_USER'] || 'hyraxuser' %>
+  password: <%= ENV['HYRAX_DATABASE_PASSWORD'] || '#Pa$$w0rd' %>
 
 demovm045:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
+  <<: *default
   database: vm045_hyrax
-  pool: 5
   username: <%= ENV['HYRAX_DATABASE_USER'] %>
   password: <%= ENV['HYRAX_DATABASE_PASSWORD'] %>
 
 demovm099:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
+  <<: *default
   database: hyrax
-  pool: 5
-  username: root
+  username: <%= ENV['MYSQL_USER'] || 'root' %>
   password: Pa$$w0rd
 
 dcdevhyrax:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
+  <<: *default
   database: hyrax
-  pool: 5
   username: <%= ENV['DCDEV_HYRAX_DATABASE_USER'] %>
   password: <%= ENV['DCDEV_HYRAX_DATABASE_PASSWORD'] %>
 
@@ -42,19 +40,13 @@ dcdevhyrax:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
+  <<: *default
   database: test_hyrax
-  pool: 5
-  username: travis
+  username: <%= ENV['MYSQL_USER'] || 'travis' %>
   password: Pa$$w0rd
 
 production:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
+  <<: *default
   database: db/production
-  pool: 5
   username: <%= ENV['HYRAX_DATABASE_USER'] %>
   password: <%= ENV['HYRAX_DATABASE_PASSWORD'] %>

@@ -93,16 +93,14 @@ Hyrax.config do |config|
   #config.fits_path = "~/Fits/fits-latest/fits.sh"
   if Rails.env == "demovm045"
     config.fits_path = "/home/jlakes/fits-1/fits.sh"
-  else if Rails.env == "demovm099"
-          config.fits_path = "/home/fits/fits.sh"
-       else if Rails.env == "development"
-                config.fits_path = "~/Fits/fits-latest/fits.sh"
-            else if Rails.env == "test"
-                       config.fits_path = "~/Fits/fits-latest/fits.sh"
-                 end
-            end
-       end
+  elsif Rails.env == "demovm099"
+    config.fits_path = "/home/fits/fits.sh"
+  elsif Rails.env == "development"
+    config.fits_path = ENV.fetch('FITS_PATH', "~/Fits/fits-latest/fits.sh")
+  elsif Rails.env == "test"
+    config.fits_path = "~/Fits/fits-latest/fits.sh"
   end
+  
   # config.fits_path = "Fits/fits-latest"
   # config.fits_path = "Fits/fits-latest"
 
@@ -341,3 +339,8 @@ Date::DATE_FORMATS[:standard] = "%d/%m/%Y"
 Qa::Authorities::Local.register_subauthority('subjects', 'Qa::Authorities::Local::TableBasedAuthority')
 Qa::Authorities::Local.register_subauthority('languages', 'Qa::Authorities::Local::TableBasedAuthority')
 Qa::Authorities::Local.register_subauthority('genres', 'Qa::Authorities::Local::TableBasedAuthority')
+
+# set bulkrax default work type to first curation_concern if it isn't already set
+if Bulkrax.default_work_type.blank?
+  Bulkrax.default_work_type = Hyrax.config.curation_concerns.first.to_s
+end

@@ -38,19 +38,19 @@ module Hyrax
           file_set.focal_length = EXIFR::JPEG.new(file.file.to_s).focal_length.to_s
           file_set.software = EXIFR::JPEG.new(file.file.to_s).software.to_s
           file_set.fedora_sha1 = (Digest::SHA1.file file.file.to_s).to_s
-        else if File.extname(file.file.to_s) == ".tif"
-                file_set.camera_model = EXIFR::TIFF.new(file.file.to_s).model.to_s
-                file_set.camera_make = EXIFR::TIFF.new(file.file.to_s).make.to_s
-                file_set.date_taken = EXIFR::TIFF.new(file.file.to_s).date_time_original.to_s
-                file_set.exposure_time = EXIFR::TIFF.new(file.file.to_s).exposure_time.to_s
-                file_set.f_number = EXIFR::TIFF.new(file.file.to_s).f_number.to_s
-                file_set.iso_speed_rating = EXIFR::TIFF.new(file.file.to_s).iso_speed_ratings.to_s
-                file_set.flash = EXIFR::TIFF.new(file.file.to_s).flash.to_s
-                file_set.exposure_program = EXIFR::TIFF.new(file.file.to_s).exposure_program.to_s
-                file_set.focal_length = EXIFR::TIFF.new(file.file.to_s).focal_length.to_s
-                file_set.software = EXIFR::TIFF.new(file.file.to_s).software.to_s
-                file_set.fedora_sha1 = (Digest::SHA1.file file.file.to_s).to_s
-              end
+        elsif File.extname(file.file.to_s) == ".tif"
+          file_set.camera_model = EXIFR::TIFF.new(file.file.to_s).model.to_s
+          file_set.camera_make = EXIFR::TIFF.new(file.file.to_s).make.to_s
+          file_set.date_taken = EXIFR::TIFF.new(file.file.to_s).date_time_original.to_s
+          file_set.exposure_time = EXIFR::TIFF.new(file.file.to_s).exposure_time.to_s
+          file_set.f_number = EXIFR::TIFF.new(file.file.to_s).f_number.to_s
+          file_set.iso_speed_rating = EXIFR::TIFF.new(file.file.to_s).iso_speed_ratings.to_s
+          file_set.flash = EXIFR::TIFF.new(file.file.to_s).flash.to_s
+          file_set.exposure_program = EXIFR::TIFF.new(file.file.to_s).exposure_program.to_s
+          file_set.focal_length = EXIFR::TIFF.new(file.file.to_s).focal_length.to_s
+          file_set.software = EXIFR::TIFF.new(file.file.to_s).software.to_s
+          file_set.fedora_sha1 = (Digest::SHA1.file file.file.to_s).to_s
+          file_set.visibility = 'restricted'
         end
 
         #byebug
@@ -63,7 +63,7 @@ module Hyrax
           file_actor.ingest_file(wrapper!(file: file, relation: relation))
           # Copy visibility and permissions from parent (work) to
           # FileSets even if they come in from BrowseEverything
-          VisibilityCopyJob.perform_later(file_set.parent)
+          VisibilityCopyJob.perform_later(file_set.parent) unless file_set.visibility == 'restricted'
           InheritPermissionsJob.perform_later(file_set.parent)
         else
           IngestJob.perform_later(wrapper!(file: file, relation: relation))
@@ -107,7 +107,7 @@ module Hyrax
         acquire_lock_for(work.id) do
           # Ensure we have an up-to-date copy of the members association, so that we append to the end of the list.
           work.reload unless work.new_record?
-          file_set.visibility = work.visibility unless assign_visibility?(file_set_params)
+          file_set.visibility = work.visibility unless assign_visibility?(file_set_params) || file_set.visibility == 'restricted'
           work.ordered_members << file_set
           work.representative = file_set if work.representative_id.blank?
           work.thumbnail = file_set if work.thumbnail_id.blank?

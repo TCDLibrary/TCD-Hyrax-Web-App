@@ -1,0 +1,91 @@
+version: '2.2'
+services:
+  base:
+    # image: "${REGISTRY_HOST}${REGISTRY_URI}/base:latest"
+    build:
+      context: .
+      dockerfile: Dockerfile.base
+    env_file:
+      - .env
+      - .env.development
+
+  app:
+    # image: "${REGISTRY_HOST}${REGISTRY_URI}:latest"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+      - .env.development
+    volumes:
+      - .:/home/app/webapp:delegated
+
+  # try https://www.gitmemory.com/issue/phusion/passenger/2211/505533958
+  web:
+    extends: app
+    environment:
+      VIRTUAL_HOST: trinity.docker
+      VIRTUAL_PORT: 80
+    ports:
+      - "${DEV_PORT}"
+    depends_on:
+      - redis
+      - solr
+      - fcrepo
+      - mysql
+      - workers
+  
+  workers:
+    extends: app
+    command: bundle exec sidekiq
+    depends_on:
+      - redis
+      - solr
+      - fcrepo
+      - mysql
+    stdin_open: true
+    tty: true
+
+  redis:
+    image: redis:4
+    ports:
+      - '6379'
+    volumes:
+      - 'redis:/data'
+
+  mysql:
+    image: mysql:5.7
+    env_file:
+      - .env
+    ports:
+      - '3306:3306'
+    volumes:
+      - 'mysql:/var/lib/mysql'
+    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+
+  solr:
+    # image: "${REGISTRY_HOST}${REGISTRY_URI}/solr:latest"
+    build:
+      context: .
+      dockerfile: Dockerfile.solr
+    ports:
+      - "8983:8983"
+    volumes:
+      - './solr/config:/opt/config'
+    entrypoint:
+      - docker-entrypoint.sh
+      - solr-precreate
+      - hyrax
+      - /opt/config
+
+  fcrepo:
+    image: botimer/fcrepo:4.5.1
+    volumes:
+      - 'fcrepo:/opt/data'
+    ports:
+      - "8984:8080"
+
+volumes:
+  fcrepo:
+  mysql:
+  redis:
