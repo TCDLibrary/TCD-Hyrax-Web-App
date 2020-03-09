@@ -31,7 +31,7 @@ append :linked_files, "config/database.yml", "config/secrets.yml"
 
 # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
-append :linked_dirs, "log", "tmp/derivatives", "tmp/uploads", "public/data/ingest", "public/branding"
+append :linked_dirs, "log", "tmp/derivatives", "tmp/uploads", "public/data/ingest", "public/branding", "tmp/imports", "public/data/tidy"
 # JL : note this creates a symlink from public/branding to shared/public/branding
 
 #desc "Symlink shared config files"
