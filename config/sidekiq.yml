@@ -1,5 +1,7 @@
 :queues:
   - default
   - ingest
+  - import
+  - export
 
 :logfile: ./log/sidekiq.log

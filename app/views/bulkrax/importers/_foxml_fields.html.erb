@@ -1,0 +1,48 @@
+<div class='foxml_fields'>
+
+  <%= fi.input :object_type, 
+		collection: ['Work','Folio','Subseries'], 
+    selected: importer.parser_fields['object_type'],
+    input_html: { class: 'form-control' }
+    %>
+
+  <%= fi.input :import_type, 
+		collection: [
+      ['Single Object, Multiple Images', 'single'],
+      ['Multiple Objects, One Image Each', 'multiple']
+		], 
+    selected: importer.parser_fields['import_type'],
+    input_html: { class: 'form-control' }
+    %>
+
+  <h4>Visiblity</h4>
+
+  <%= fi.input :visibility, 
+		collection: [
+      ['Public', 'open'],
+      ['Private', 'restricted']
+		], 
+    selected: importer.parser_fields['visibility'] || 'open',
+    input_html: { class: 'form-control' }
+    %>
+
+	<h4>Optional parent id:</h4>
+
+	<%= fi.input :parent_id, as: :string, input_html: { value: importer.parser_fields['parent_id'] }, required: false %>
+
+  
+  <h4>Files To Import:</h4>
+  <p>
+		Provide the path to the directory containing project folders to import. Or to the individual project folder.
+	</p>
+
+  <%= fi.input :import_file_path, as: :string, input_html: { value: importer.parser_fields['import_file_path'] || 'public/data/ingest' } %>
+
+<h4>Attach images?</h4>
+
+<%= fi.input :image_type, 
+		collection: ['HI and TIFF','HI','LO','TIF','Not Now'], 
+    selected: importer.parser_fields['image_type'],
+    input_html: { class: 'form-control' }
+    %>
+</div>

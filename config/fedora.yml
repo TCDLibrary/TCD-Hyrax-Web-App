@@ -1,9 +1,9 @@
 
 development:
-  user: <%= ENV['FEDORA_ADMIN_USER'] %>
-  password: <%= ENV['FEDORA_ADMIN_PASSWORD'] %>
+  user: <%= ENV['FEDORA_ADMIN_USER'] || 'fedoraAdmin' %>
+  password: <%= ENV['FEDORA_ADMIN_PASSWORD'] || 'fedoraAdmin' %>
     #fedoraAdmin
-  url: http://127.0.0.1:8080/fcrepo-webapp-4.7.5/rest
+  url: <%= ENV['FEDORA_URL'] || 'http://127.0.0.1:8080/fcrepo-webapp-4.7.5/rest' %>
   base_path: /dev
 
 demovm045:

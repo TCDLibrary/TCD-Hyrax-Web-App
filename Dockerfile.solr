@@ -1,0 +1,2 @@
+FROM solr:7.1
+COPY ./solr/config /opt/config

@@ -1,6 +1,8 @@
 set :stage, :dcdevhyrax
 set :rails_env, :dcdevhyrax
 set :branch, "master"
+#set :branch, "Notch8-Batch-Ingest"
+
 # Default deploy_to directory is /var/www/my_app_name. Override it:
 set :deploy_to, "/opt/app/TCD-Hyrax-Web-App"
 set :rvm_ruby_version, '2.5.1'
