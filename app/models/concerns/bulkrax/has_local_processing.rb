@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Bulkrax::HasLocalProcessing
-  
+
   # This method is called during build_metadata
   # add any special processing here, for example to reset a metadata property
   # to add a custom property from outside of the import data
@@ -36,7 +36,8 @@ module Bulkrax::HasLocalProcessing
   end
 
   def image_base_path
-    import_path = importerexporter.parser_fields['import_file_path']
+    #import_path = importerexporter.parser_fields['import_file_path']
+    import_path = 'datastore'
     # If the import_file_path is to a file, use the containing directory
     if File.file?(import_path)
       File.dirname(import_path)
