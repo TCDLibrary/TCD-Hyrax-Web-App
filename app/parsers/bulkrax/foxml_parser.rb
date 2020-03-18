@@ -97,5 +97,24 @@ module Bulkrax
         FileUtils.mv(f, File.join(path_for_import, File.basename(f)), force: true)
       end
     end
+
+    # JL: 18-03-2020 Added the following methods to app/parsers/bulkrax/foxml_parser.rb
+    # This is Julie's fix for multiple XML records in a Single Object,Multiple Image import
+    def records(_opts = {})
+      @records ||= build_records
+    end
+
+    # single/multiple doesn't matter here, we want all the ROWs
+    def build_records
+      r = []
+      metadata_paths.map do |md|
+       # Retrieve all records
+       elements = entry_class.read_data(md).xpath("//#{record_element}")
+       r += elements.map { |el| entry_class.data_for_entry(el, md) }
+      end
+      # Flatten because we may have multiple records per array
+      r.compact.flatten
+    end
+
   end
 end
