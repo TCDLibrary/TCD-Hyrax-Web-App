@@ -6,4 +6,4 @@ version: 7.5.0
 collection:
   persist: true
   dir: solr/config/
-  name: tcd-hyrax
+  name: hydra-development
