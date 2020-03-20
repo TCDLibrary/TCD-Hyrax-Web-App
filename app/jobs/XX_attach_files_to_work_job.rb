@@ -23,7 +23,7 @@ class AttachFilesToWorkJob < Hyrax::ApplicationJob
       end
 
       actor.file_set.permissions_attributes = work_permissions
-      byebug
+      # byebug
       actor.create_metadata(metadata)
       actor.create_content(uploaded_file)
       actor.attach_to_work(work)
