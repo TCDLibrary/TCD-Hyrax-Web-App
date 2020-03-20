@@ -37,7 +37,8 @@ module Bulkrax::HasLocalProcessing
 
   def image_base_path
     #import_path = importerexporter.parser_fields['import_file_path']
-    import_path = 'datastore'
+    byebug
+    import_path = '/digicolapp/datastore/web'
     # If the import_file_path is to a file, use the containing directory
     if File.file?(import_path)
       File.dirname(import_path)
