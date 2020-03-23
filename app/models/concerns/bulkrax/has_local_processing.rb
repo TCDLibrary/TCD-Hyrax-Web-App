@@ -29,7 +29,11 @@ module Bulkrax::HasLocalProcessing
         File.join(image_base_path, image_folder, image_type, "#{image_id}*")
       else
         image_range.map do |range|
-          File.join(image_base_path, image_folder, image_type, "#{image_id}_#{range}_*")
+          if image_type == "/TIF/"
+            File.join(image_base_path, image_folder, image_type, "#{image_id}_#{range}*")
+          else
+            File.join(image_base_path, image_folder, image_type, "#{image_id}_#{range}_*")
+          end
         end.flatten
       end
     end.flatten
