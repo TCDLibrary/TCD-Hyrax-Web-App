@@ -5,3 +5,6 @@
   - export
 
 :logfile: ./log/sidekiq.log
+
+# JL : 23-03-2020 : lower concurrency to take pressure off MySQL and minimagick /tmp
+:concurrency: 5
