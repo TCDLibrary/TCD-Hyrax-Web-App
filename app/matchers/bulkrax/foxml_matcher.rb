@@ -70,7 +70,8 @@ module Bulkrax
       role_code = data['ArtistRoleCode']
 
       if role_code && Role_codes_creator[role_code]
-        "#{data['Artist']}, #{data['ArtistRole']}"
+      #  "#{data['Artist']}, #{data['ArtistRole']}"
+         "#{data['Artist']}, #{Role_codes_creator[role_code]}"
       end
     end
 
@@ -91,7 +92,8 @@ module Bulkrax
       if data
         role_code = data['ArtistRoleCode']
         if role_code && Role_codes_donor[role_code]
-          "#{data['Artist']}, #{data['ArtistRole']}"
+        #  "#{data['Artist']}, #{data['ArtistRole']}"
+           "#{data['Artist']}, #{Role_codes_donor[role_code]}"
         end
       else
         # 'Provenance'
@@ -105,7 +107,8 @@ module Bulkrax
       if data
         role_code = data['ArtistRoleCode']
         if role_code && Role_codes_subject[role_code]
-          "#{data['Artist']}, #{data['ArtistRole']}"
+        #  "#{data['Artist']}, #{data['ArtistRole']}"
+           "#{data['Artist']}, #{Role_codes_subject[role_code]}"
         end
       else
         # 'SubjectLCSH', 'LCSubjectNames'
