@@ -64,12 +64,14 @@ module Bulkrax::HasLocalProcessing
     return [] if range_el.blank?
 
     range = range_el.first.content.split(':')
+    return [] if range.count == 0
+
     (range[0]..range[1]).to_a
   end
 
   # Use ProjectName for the folder containing images
   def image_folder
-    folder = record.xpath("//*[name()='ProjectName']").first.content
+    folder = record.xpath("//*[name()='ProjectName']").first.content.strip
     if image_base_path.include?(folder)
       return ''
     else
