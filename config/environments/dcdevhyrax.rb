@@ -4,10 +4,12 @@ Rails.application.configure do
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
-  config.cache_classes = false
+  config.cache_classes = true
 
   # Do not eager load code on boot.
-  config.eager_load = false
+  # config.eager_load = false
+  # JL : 25-03-2020
+  config.eager_load = true
 
   # Show full error reports.
   # JL : 16/07/2019 : Turning off so I can see 404 page etc
@@ -18,18 +20,19 @@ Rails.application.configure do
   config.active_job.queue_adapter     = :sidekiq
 
   # Enable/disable caching. By default caching is disabled.
-  if Rails.root.join('tmp/caching-dev.txt').exist?
-    config.action_controller.perform_caching = true
-
-    config.cache_store = :memory_store
-    config.public_file_server.headers = {
-      'Cache-Control' => "public, max-age=#{2.days.seconds.to_i}"
-    }
-  else
-    config.action_controller.perform_caching = false
-
-    config.cache_store = :null_store
-  end
+  #if Rails.root.join('tmp/caching-dev.txt').exist?
+  #  config.action_controller.perform_caching = true
+  #
+  #  config.cache_store = :memory_store
+  #  config.public_file_server.headers = {
+  #    'Cache-Control' => "public, max-age=#{2.days.seconds.to_i}"
+  #  }
+  #else
+  #  config.action_controller.perform_caching = false
+  #
+  #  config.cache_store = :null_store
+  #end
+  config.action_controller.perform_caching = true
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false

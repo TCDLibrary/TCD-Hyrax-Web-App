@@ -70,7 +70,8 @@ module Bulkrax
       role_code = data['ArtistRoleCode']
 
       if role_code && Role_codes_creator[role_code]
-        "#{data['Artist']}, #{data['ArtistRole']}"
+      #  "#{data['Artist']}, #{data['ArtistRole']}"
+         "#{data['Artist']}, #{Role_codes_creator[role_code]}"
       end
     end
 
@@ -78,9 +79,10 @@ module Bulkrax
     def parse_contributor(src)
       data = artist_to_hash(src)
       role_code = data['ArtistRoleCode']
-
       if role_code && Role_codes_contributor[role_code]
-        "#{data['Artist']}, #{data['ArtistRole']}"
+      #  "#{data['Artist']}, #{data['ArtistRole']}"
+      # JL : XML files from old DB are missing role text, so use my lookup
+        "#{data['Artist']}, #{Role_codes_contributor[role_code]}"
       end
     end
 
@@ -90,7 +92,8 @@ module Bulkrax
       if data
         role_code = data['ArtistRoleCode']
         if role_code && Role_codes_donor[role_code]
-          "#{data['Artist']}, #{data['ArtistRole']}"
+        #  "#{data['Artist']}, #{data['ArtistRole']}"
+           "#{data['Artist']}, #{Role_codes_donor[role_code]}"
         end
       else
         # 'Provenance'
@@ -104,7 +107,8 @@ module Bulkrax
       if data
         role_code = data['ArtistRoleCode']
         if role_code && Role_codes_subject[role_code]
-          "#{data['Artist']}, #{data['ArtistRole']}"
+        #  "#{data['Artist']}, #{data['ArtistRole']}"
+           "#{data['Artist']}, #{Role_codes_subject[role_code]}"
         end
       else
         # 'SubjectLCSH', 'LCSubjectNames'
@@ -150,6 +154,7 @@ module Bulkrax
     # OtherArtistRoleCode
     # OtherArtist
     def artist_to_hash(src)
+      #byebug
       return nil unless src.include?('OtherArtist') || src.include?('AttributedArtist')
 
       array = src.gsub('Attributed', '').gsub('Other', '').split(';')
