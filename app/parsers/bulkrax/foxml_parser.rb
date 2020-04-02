@@ -24,9 +24,11 @@ module Bulkrax
       false
     end
 
-    # Create collection objects for works only.
-    # Although this sounds counter intuitive, we need Collection Entries only where they are works in order to create
-    #   work-work relationships with create_parent_child_relationships
+    # Create collection entries.
+    # We NEED Collection Entries for parent Work/Folio/Subseries
+    # These Collection Entries are used by #create_parent_child_relationships to build the work-work relationship
+    # We do not NEED Collection Entries for Collections, as the relationship from Work/Folio/Subseries to Collection is already handled
+    # But for consistency we create a collection entry for the parent Collection anyway
     def create_collections
       return if parser_fields['parent_id'].blank? || parent.blank?
 
