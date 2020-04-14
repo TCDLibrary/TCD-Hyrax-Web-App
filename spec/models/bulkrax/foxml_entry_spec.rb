@@ -127,6 +127,10 @@ module Bulkrax
         let(:path) { './spec/fixtures/Named Collection Example_PARTS_ONE_OBJECT.XML' }
         let(:data) { described_class.read_data(path) }
 
+        before do
+          allow(foxml_entry).to receive(:image_base_path).and_return('./spec/fixtures')
+        end
+
         it 'adds an array of only LO files' do
           foxml_entry.build
           expect(foxml_entry.parsed_metadata['file']).to eq(
