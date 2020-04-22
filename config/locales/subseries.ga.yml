@@ -1,0 +1,164 @@
+ga:
+
+  blacklight:
+    search:
+      fields:
+        facet:
+          based_near_label_sim: Based Near
+          based_near_label: Based Near
+          dris_page_no: Uimhir leathanaigh
+          dris_page_no_tesim: Uimhir leathanaigh
+          dris_page_no_label: Uimhir leathanaigh
+          genre_tesim: Genre
+          abstract_tesim: Achoimre
+          digital_object_identifier_tesim: Aitheantóir Oibiachta Digití
+          dris_unique_tesim: Dris Unique
+          sponsor_tesim: Sponsor
+          bibliography_tesim: Bibliography
+          publisher_location_tesim: Suíomh an fhoilsitheora
+          support_tesim: Tacaíocht
+          medium_tesim: Medium
+          alternative_title_tesim: Teideal malartach
+          series_title_tesim: Series Title
+          collection_title_tesim: Collection Title
+
+          provenance_tesim: Provenance
+          culture_tesim: Culture
+          location_tesim: Location
+
+          copyright_status_tesim: Copyright Status
+          joetesting: Joe Testing
+          creator_sim: Cruthaitheoir
+          file_format_sim: Format
+          generic_type_sim: Type
+          keyword_sim: Eochairfhocal
+          language_sim: Teanga
+          publisher_sim: Foilsitheoir
+          subject_sim: Ábhar
+          contributor_sim: Cuiditheoir
+          title_sim: Teideal
+          type_sim: Cineál
+          type_ssim: Cineál
+          type_tesim: Cineál
+          type: Cineál
+          type_label: Cineál
+        index:
+          based_near_tesim: Based Near
+          based_near_label: Based Near
+          dris_page_no: Uimhir leathanaigh
+          dris_page_no_tesim: Uimhir leathanaigh
+          dris_page_no_label: Uimhir leathanaigh
+          genre_tesim: Genre
+          abstract_tesim: Achoimre
+          digital_object_identifier_tesim: Aitheantóir Oibiachta Digití
+          dris_unique_tesim: Dris Unique
+          sponsor_tesim: Sponsor
+          bibliography_tesim: Bibliography
+          publisher_location_tesim: Suíomh an fhoilsitheora
+          support_tesim: Tacaíocht
+          medium_tesim: Medium
+          alternative_title_tesim: Teideal malartach
+          series_title_tesim: Series Title
+          collection_title_tesim: Collection Title
+
+          provenance_tesim: Provenance
+          culture_tesim: Culture
+          location_tesim: Location
+
+          copyright_status_tesim: Copyright Status
+          joetesting: Joe Testing
+          contributor_tesim: Cuiditheoir
+          creator_tesim: Cruthaitheoir
+          date_created_tesim: Dáta a cruthaíodh
+          date_modified_dtsi: Date Modified
+          date_uploaded_dtsi: Date Uploaded
+          description_tesim: Description
+          file_format_tesim: File Format
+          identifier_tesim: Identifier
+          keyword_tesim: Eochairfhocal
+          language_tesim: Language
+          license_tesim: License
+          title_tesim: Teideal
+          publisher_tesim: Publisher
+          rights_statement_tesim: Rights Statement
+          subject_tesim: Subject
+        show:
+          based_near_tesim: Based Near
+          based_near_label: Based Near
+          dris_page_no: Uimhir leathanaigh
+          dris_page_no_tesim: Uimhir leathanaigh
+          dris_page_no_label: Uimhir leathanaigh
+          genre_tesim: Genre
+          abstract_tesim: Achoimre
+          digital_object_identifier: Aitheantóir Oibiachta Digití
+          dris_unique_tesim: Dris Unique
+          sponsor_tesim: Sponsor
+          bibliography_tesim: Bibliography
+          publisher_location_tesim: Suíomh an fhoilsitheora
+          support_tesim: Tacaíocht
+          support: Tacaíocht
+          medium_tesim: Medium
+          alternative_title_tesim: Teideal malartach
+          alternative_title: Teideal malartach
+          series_title_tesim: Series Title
+          collection_title_tesim: Collection Title
+
+          provenance_tesim: Provenance
+          culture_tesim: Culture
+          location_tesim: Location
+
+          copyright_status_tesim: Copyright Status
+          joetesting: Joe Testing
+          contributor_tesim: Contributor
+          creator_tesim: Cruthaitheoir
+          creator: Cruthaitheoir
+          date_created_tesim: Dáta a cruthaíodh
+          date_modified_dtsi: Date Modified
+          date_uploaded_dtsi: Date Uploaded
+          description_tesim: Description
+          file_format_tesim: File Format
+          identifier_tesim: Identifier
+          keyword_tesim: Eochairfhocal
+          language_tesim: Language
+          license_tesim: License
+          publisher_tesim: Publisher
+          rights_statement_tesim: Rights Statement
+          subject_tesim: Subject
+          title_tesim: Teideal
+          title: Teideal
+  hyrax:
+    account_name: Trinity College Dublin Admin
+    directory:
+      suffix: "@example.org"
+    footer:
+      copyright_html: "<strong>Copyright &copy; 2018 Samvera</strong> Licensed under the Apache License, Version 2.0"
+      service_html: A service of <a href="http://samvera.org/" class="navbar-link" target="_blank">Samvera</a>.
+    institution_name: TCD
+    institution_name_full: Trinity College Dublin
+    product_name: Digital Collections
+    product_twitter_handle: "@DigitalColl"
+    select_type:
+      folio:
+        description:        "Fóilió works"
+        name:               "Fóilió"
+      subseries:
+        description:        "Foshraitheanna works"
+        name:               "Foshraitheanna"
+    subseries:
+      create:
+        breadcrumb: Add New Subseries
+        header: Add New Subseries
+      progress:
+        header: Save Subseries
+      update:
+        header: Edit Subseries
+    icons:
+      folio:     'fa fa-file-text-o'
+      subseries:     'fa fa-file-text-o'
+
+  simple_form:
+    labels:
+      defaults:
+        based_near: Based Near
+        dris_page_no: Uimhir leathanaigh
+        description: Description

@@ -19,13 +19,16 @@ ga:
         facet:
           admin_set_sim: Admin Set
           member_of_collections_ssim: Collection
-          resource_type_sim: Resource type
+          resource_type_sim: Cineál acmhainne
           suppressed_bsi: Status
+          type_tesim: Cineál
+          human_readable_type_sim : Cineál
+          generic_type_sim: Cineál
         show:
           admin_set: 'In Administrative Set:'
           based_near_label: Location
-          contributor: Contributors
-          keyword: Keyword
+          contributor: Cuiditheoiri
+          keyword: Eochairfhocal
       filters:
         title: 'Filtering by:'
       start_over: Start Over
@@ -114,7 +117,7 @@ ga:
             help: Depositors can add new works to this administrative set.
             remove: Remove
             title: Depositors
-            type: Type
+            type: Cineál
           managers:
             action: Action
             agent_name: Managers of This Set
@@ -122,7 +125,7 @@ ga:
             help: Managers of this administrative set can edit the set metadata, participants, and release and visibility settings. Managers can also edit work metadata, add to or remove files from a work, and add new works to the set.
             remove: Remove
             title: Managers
-            type: Type
+            type: Cineál
           registered_users: Registered Users
           viewers:
             action: Action
@@ -131,7 +134,7 @@ ga:
             help: Viewers of this administrative set can view works in the set regardless of the visibility settings applied to the work. For example, viewers can view works in this set even if the works are currently embargoed or restricted.
             remove: Remove
             title: Viewers
-            type: Type
+            type: Cineál
         form_participants:
           add_group: 'Add group:'
           add_participants: Add Participants
@@ -207,14 +210,14 @@ ga:
             empty: No creators have been added to this collection type.
             help: Creators of collections of this type can create and manage their own collections.
             title: Creators
-            type: Type
+            type: Cineál
           managers:
             action: Action
             agent_name: Collection Managers
             empty: No managers have been added to this collection type.
             help: Managers of collections of this type can edit collections other users have created, including adding to and removing works from a collection, modifying collection metadata, and deleting collections.
             title: Managers
-            type: Type
+            type: Cineál
         form_participants:
           add_group: Add group
           add_participants: Add Participants
@@ -242,7 +245,7 @@ ga:
           more_toggle_content_html: "<p>Typical scenarios for collection types include:</p> <ul> <li><strong>User Collections</strong> that any registered user can create to organize items they deposit.</li> <li><strong>Exhibits</strong> that staff create and curate for public display, where items can be included in any number of exhibits.</li> <li><strong>Controlled Collections</strong> created and managed by staff and not intended for public display, such as collections associated with organizational units or departments.</li> <li><strong>Community Collections</strong> that are intended for public display, similar to how DSpace communities and collections are sometimes used.</li> </ul>"
           more_toggle_header_html: "<span>More</span> about collection types"
           table:
-            actions: Actions
+            actions: Gníomhartha
             name: Name
         multiple_membership_checker:
           error_preamble: 'Error: You have specified more than one of the same single-membership collection type '
@@ -262,7 +265,7 @@ ga:
         activity: Activity
         appearance: Appearance
         collection_types: Collection Types
-        collections: Collections
+        collections: Bailiúchán
         configuration: Configuration
         content_blocks: Content Blocks
         notifications: Notifications
@@ -278,7 +281,7 @@ ga:
         users: Manage Users
         workflow_review: Review Submissions
         workflow_roles: Workflow Roles
-        works: Works
+        works: Saothair
       stats:
         deposited_form:
           end_label: end [defaults to now]
@@ -347,7 +350,7 @@ ga:
     background_attribution_html: ''
     base:
       citations:
-        header: 'Citations:'
+        header: 'Luanna:'
       form_child_work_relationships:
         actions:
           remove: Remove from this work
@@ -406,19 +409,19 @@ ga:
         directions: Regardless of the visibility settings for this work, you can also share it with other users and groups.
       form_thumbnail:
         help_html: Select the file to be used as the thumbnail for this work.
-        legend_html: Thumbnail
+        legend_html: Mionsamhail
       items:
-        actions: Actions
-        date_uploaded: Date Uploaded
+        actions: Gníomhartha
+        date_uploaded: Dáta a uaslódáladh
         empty: This %{type} has no files associated with it. Click "edit" to add more files.
-        header: Items
-        thumbnail: Thumbnail
-        title: Title
+        header: Earraí
+        thumbnail: Mionsamhail
+        title: Teideal
         unauthorized: There are no publicly available items in this %{type}.
-        visibility: Visibility
+        visibility: Infheictheacht
       relationships:
         empty: This %{type} is not currently in any collections.
-        header: Relationships
+        header: Gaoi
       relationships_parent_row:
         label: 'In %{type}:'
       share_with:
@@ -426,7 +429,7 @@ ga:
         definitions_html: "<strong>View/Download:</strong> this file (both contents and metadata) is accessible from within %{application_name}.<br /> <strong>Edit:</strong> this file (both contents and metadata) can be edited. You may only grant this permission to %{institution_name} users and/or groups."
         share_with_html: You may grant &quot;View/Download&quot; or &quot;Edit&quot; access for specific users and/or groups to files. Enter a valid %{account_name}, one at a time, select the access level for that user, and click +Add.
       show:
-        last_modified: Last modified
+        last_modified: Mionathraithe go deireanach
       social_media:
         facebook: Facebook
         google: Google+
@@ -469,7 +472,7 @@ ga:
         edit:
           desc: Edit this collection
           label: Edit collection
-        header: Actions
+        header: Gníomhartha
         nest_collections:
           button_label: Add a subcollection
           desc: Nest other collections within this Collection
@@ -490,7 +493,7 @@ ga:
       form:
         additional_fields: Additional fields
         description: Descriptions
-      is_part_of: Is part of
+      is_part_of: Mar chuid de
       select_form:
         close: Close
         create: Save
@@ -508,9 +511,9 @@ ga:
         default_description: A User Collection can be created by any user to organize their works.
     collections:
       search_form:
-        button_label: Go
+        button_label: Iontráil
         label: Search Collection %{title}
-        placeholder: Search subcollections and works in this collection
+        placeholder: Cuardaigh fobhailiúcháin agus saothair sa bhailiúchán seo
       show:
         buttons:
           remove_from_collection: Remove
@@ -520,24 +523,24 @@ ga:
         parent_collection_header: Parent Collections
         show_less_parent_collections: "...show less"
         show_more_parent_collections: show more...
-        subcollection_count: Subcollections
-        works_in_collection: Works
+        subcollection_count: Fobhailiúcháin
+        works_in_collection: Saothair
     contact_form:
-      button_label: Send
-      email_label: Your Email
-      header: Contact Form
+      button_label: Seol
+      email_label: Do sheoladh ríomhphoist
+      header: Foirm Theagmhála
       issue_types:
-        browsing: Browsing and searching
-        changing: Making changes to my content
-        depositing: Depositing content
-        general: General inquiry or request
-        reporting: Reporting a problem
-      message_label: Message
-      name_label: Your Name
-      notice: Please use the contact form to submit inquiries about this system; to report a problem you are experiencing with the system; to request assistance using the system; or to provide general feedback. See the Help page for additional information about this system.
-      select_type: Select an Issue Type
-      subject_label: Subject
-      type_label: Issue Type
+        browsing: Brabhsáil agus cuardach
+        changing: Mo chuid ábhair a athrú
+        depositing: Ábhar a chur i dtaisce
+        general: Fiosrúchán nó iarratas ginearálta
+        reporting: Ag tuairisciú faidhbe
+      message_label: Teachtaireacht
+      name_label: D’ainm
+      notice: Bain úsáid as an bhfoirm theagmhála le do thoil chun fiosrúcháin faoin gcóras seo a sheoladh; chun tuairisc a dhéanamh ar fhadhb atá agat leis an gcóras; chun cabhair a lorg ag úsáid an chórais; nó chun aiseolas ginearálta a thabhairt. Féach ar an leathanach ‘Cabhair’ le haghaidh tuilleadh eolais ar an gcóras seo.
+      select_type: Roghnaigh Cineál Faidhbe
+      subject_label: Ábhar
+      type_label: Cineál Faidhbe
     content_blocks:
       cancel: Cancel
       tabs:
@@ -546,10 +549,10 @@ ga:
         marketing_text: Marketing Text
       updated: Content blocks updated.
     controls:
-      about: About
-      contact: Contact
-      help: Help
-      home: Home
+      about: Faoi
+      contact: Teagmháil
+      help: Cabhair
+      home: Baile
     dashboard:
       additional_notifications: See all notifications
       admin_sets:
@@ -557,7 +560,7 @@ ga:
         files: Files
         subtitle: Recent activity
         title: Administrative Sets
-        works: Works
+        works: Saothair
       all:
         collections: All Collections
         works: All Works
@@ -581,7 +584,7 @@ ga:
             branding: Branding
             description: Description
             discovery: Discovery
-            relationships: Relationships
+            relationships: Gaoi
             sharing: Sharing
         form_branding:
           banner:
@@ -629,7 +632,7 @@ ga:
             help: Depositors of this collection can view the collection and add works to it, even if the visibility permissions of the collection otherwise would not permit them to view it.
             remove: Remove
             title: Depositors
-            type: Type
+            type: Cineál
           managers:
             action: Action
             agent_name: User/Group
@@ -638,7 +641,7 @@ ga:
             help_with_works: For collections of type %{type_title}, when works are created directly in this collection, the managers are given edit access to the new work.
             remove: Remove
             title: Managers
-            type: Type
+            type: Cineál
           viewers:
             action: Action
             agent_name: User/Group
@@ -647,13 +650,13 @@ ga:
             help_with_works: For collections of type %{type_title}, when works are created directly in this collection, the viewers are given read access to the new work.
             remove: Remove
             title: Viewers
-            type: Type
+            type: Cineál
         new:
           header: New %{type_title}
         show:
           header: Collection
-          item_count: Works
-          metadata_header: Collection Details
+          item_count: Saothair
+          metadata_header: Sonraí an bhailiúcháin
           parent_collection_header: Parent Collections
           public_view_label: Public view of Collection
           search_results: Search Results within this Collection
@@ -716,7 +719,7 @@ ga:
             manage: Manage
             view: View
           users: 'Users:'
-        collections: Collections
+        collections: Bailiúchán
         facet_label:
           collections: 'Filter collections:'
           highlighted: 'Filter highlights:'
@@ -726,14 +729,14 @@ ga:
           access: Access
           action: Actions
           collection_type: Collection Type
-          date_modified: Last Modified
-          date_uploaded: Date Added
+          date_modified: Mionathraithe go deireanach
+          date_uploaded: Dáta a cuireadh ar an gcóras
           highlighted: Highlighted
-          items: Items
-          last_modified: Last modified
-          title: Title
-          type: Type
-          visibility: Visibility
+          items: Earraí
+          last_modified: Mionathraithe go deireanach
+          title: Teideal
+          type: Cineál
+          visibility: Infheictheacht
         highlighted: My Highlights
         shared: Works Shared with Me
         sr:
@@ -744,7 +747,7 @@ ga:
           press_to: Press to
           results_per_page: Number of results to display per page
           show_label: Display all details of
-        works: Works
+        works: Saothair
         your_collections: Your Collections
         your_works: Your Works
       nest_collections_form:
@@ -761,7 +764,7 @@ ga:
       proxy_help: Select a user who can deposit works on your behalf. Both you and your proxy will be able to make changes to these works. You can revoke a proxy by clicking the Delete Proxy button. To revoke their ability to edit a work they previously submitted, remove them from the Sharing tab on each work.
       proxy_user: Proxy User
       repository_growth:
-        collections: Collections
+        collections: Bailiúchán
         date: Date
         objects: Objects
         subtitle: Past 90 days
@@ -777,7 +780,7 @@ ga:
         total_visitors: Total Visitors
       stats:
         collections: Collections created
-        file_downloads: Download
+        file_downloads: Uaslódáil
         file_views: View
         files: Files deposited
         heading: Your Statistics
@@ -791,12 +794,12 @@ ga:
         date: Date
         new_users: New Users
         subtitle: New user signups
-        title: User Activity
+        title: gníomhaíocht úsáideora
       user_notifications: User Notifications
       view_files: View Files
 
     download:
-      metadata: Download Metadata
+      metadata: Íoslódáil meiteashonraí
       schema: (Dublin Core)
 
     document_language: en
@@ -827,7 +830,7 @@ ga:
         missing: There are no expired embargoes in effect at this time.
       table_headers:
         release_date: Embargo Release Date
-        title: Title
+        title: Teideal
         type: Type of Item
         viz_after: Visibility will Change to
         viz_current: Current Visibility
@@ -844,7 +847,7 @@ ga:
           audio_link: Download audio
           default_link: Download file
           heading: Downloadable Content
-          image_link: Download image
+          image_link: Íoslódáil íomha
           office_link: Download file
           pdf_link: Download PDF
           video_link: Download video
@@ -853,11 +856,11 @@ ga:
         delete: Delete
         delete_confirm: Deleting %{file_set} from %{application_name} is permanent. Click OK to delete this from %{application_name}, or Cancel to cancel this operation
         delete_title: Delete %{file_set}
-        download: Download
-        download_title: Download %{file_set}
+        download: Uaslódáil
+        download_title: Uaslódáil %{file_set}
         edit: Edit
         edit_title: Edit %{file_set}
-        header: Select an action
+        header: Roghnaigh gníomh
         versions: Versions
         versions_title: Display previous versions
       edit:
@@ -869,7 +872,7 @@ ga:
         attach_to: Attach to %{parent}
         cancel: Cancel
         save: Save
-        title: Title
+        title: Teideal
       groups_description:
         description_html: The list of groups in the drop-down marked "Select a group" is a list of User Managed Groups that you are a member of.  You may select a specific group and assign an access level for a file within %{application_name}, similarly to adding user access levels.
       permission:
@@ -893,47 +896,56 @@ ga:
         restore_from: Restore From
         save: Save Revision
         upload: Upload New Version
+    footer:
+      accessibility: Inrochtaineacht Choláiste na Tríonóide
+      privacy: Príobháideacht Choláiste na Tríonóide
+      disclaimer: Séanadh Choláiste na Tríonóide
+      contact: Teagmháil Choláiste na Tríonóide
     help:
       header: User Support
       override_text: Use app/views/static/help.html.erb to override this file.
     homepage:
       admin_sets:
-        link: View all collections
+        link: Féach ar na bailiúcháin go léir
         tab_label: Explore Collections
         title: Explore Collections
       beta:
-        cant_html: "Can't find what you are looking for? Our old service can be found <a href='https://www.tcd.ie/Library/digitalcollections' target='_blank'>here</a>."
-        welcome_html: "Welcome to our <strong>beta</strong> Digital Collections service. Please bear with us during our migration."
+        cant_html: "Mura bhfuil tú in ann teacht ar an méid atá á lorg agat, is féidir ár sean-seirbhís a fháil <a href='https://www.tcd.ie/Library/digitalcollections' target='_blank'>anseo</a>."
+        welcome_html: "Fáilte go leagan <strong>béite</strong> na mBailiúchán Digiteach. Bí foighneach linn, le do thoil, agus sinn ag cur leis na bailiúcháin."
       featured_researcher:
         missing: No researchers have been featured.
         tab_label: Featured Researcher
         title: Featured Researcher
       featured_works:
         document:
-          depositor_label: Depositor
+          depositor_label: Taisceoir
           depositor_missing: no depositor value
-          keyword_label: Keywords
+          keyword_label: Eochairfhocail
           keyword_missing: no keywords specified
-          title_label: Title
+          title_label: Teideal
         drag: Drag
         no_works: No works have been featured
-        tab_label: Featured Works
-        title: Featured Works
+        tab_label: Saothair atá le fáil
+        title: Saothair atá le fáil
       recently_uploaded:
-        depositor: Depositor
+        depositor: Taisceoir
         details: Details
         document:
-          depositor_label: Depositor
+          depositor_label: Taisceoir
           depositor_missing: no depositor value
-          keyword_label: Keywords
+          keyword_label: Eochairfhocail
           keyword_missing: no keywords specified
-          title_label: Title
+          title_label: Teideal
         no_public: No public work has been contributed.
-        tab_label: Recently Uploaded
-        title: Recently Uploaded
+        tab_label: Uaslódáilte le déanaí
+        title: Uaslódáilte le déanaí
+    relationships_parent_rows:
+      empty_text: "Ní bhaineann máthairshaothair ná foshraitheanna leis an ábhar seo."
+      label: "Máthairshaothair agus foshraitheanna:"
     icons:
       collection: fa fa-cubes
       default: fa fa-cube
+    institution_name: TCD
     leases:
       edit:
         header:
@@ -960,7 +972,7 @@ ga:
         missing: There are no expired leases in effect at this time.
       table_headers:
         release_date: Lease Release Date
-        title: Title
+        title: Teideal
         type: Type of Item
         viz_after: Visibility will Change to
         viz_current: Current Visibility
@@ -1014,25 +1026,25 @@ ga:
     product_twitter_handle: "@DigitalColl"
     search:
       button:
-        html: <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Go
-        text: Search
+        html: <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Iontráil
+        text: Cuardaigh
       form:
         option:
           all:
-            label_long: All of %{application_name}
-            label_short: All
+            label_long: Gach %{application_name}
+            label_short: Gach
           my_collections:
-            label_long: My Collections
-            label_short: My Collections
+            label_long: Mo Bhailiúcháin
+            label_short: Mo Bhailiúcháin
           my_shares:
-            label_long: My Shares
-            label_short: My Shares
+            label_long: Mo Scaireanna
+            label_short: Mo Scaireanna
           my_works:
-            label_long: My Works
-            label_short: My Works
+            label_long: Mo Shaothair
+            label_short: Mo Shaothair
         q:
-          label: Search %{application_name}
-          placeholder: Cuir isteach téarmaí cuardaigh
+          label: Cuardaigh %{application_name}
+          placeholder: Cuir isteach téarmaí an chuardaigh
     select_type:
       description: General purpose worktype
       name: Work
@@ -1044,7 +1056,7 @@ ga:
         tooltip: Copied!
       delete: Delete
       download:
-        type: Download
+        type: Uaslódáil
       expiration:
         lesser_time: in less than one hour
         time: in %{value} hours
@@ -1058,7 +1070,29 @@ ga:
         link: Link
         no_links: No links have been generated
       title: Single-Use Links
-    sort_label: Sort the listing of items
+    sort_label:
+      relevance_label: ábharthachta
+      relevance: ábharthachta
+    technical_metadata:
+      file_details: Sonraí comhaid
+      sha1: Sha1
+      depositor: Taisceoir
+      date_uploaded: Dáta a uaslódáladh
+      date_modified: Dáta a mionathraíodh
+      fixity_check: Seiceáil buaine
+      characterization: Tréithriú
+      not_yet_characterized: Nach bhfuil tréithrithe fós
+      technical_metadata: Meiteashonraí teicniúla
+      camera_make: Déanamh an cheamara
+      camera_model: Múnla an cheamara
+      date_taken: Dáta ar tógadh
+      exposure_time: Aga nochta
+      F_number: Uimhir F
+      ISO_speed_rating: Rátáil Luais ISO
+      flash: Splanc
+      exposure_program: Clár nochta
+      focal_length: Fad fócasach
+      software: Bogearraí
     toolbar:
       dashboard:
         menu: Dashboard
@@ -1068,8 +1102,8 @@ ga:
         one: You have one unread notification
         zero: You have no unread notifications
       profile:
-        login: Login
-        logout: Logout
+        login: Logáil isteach
+        logout: Logáil amach
         sr_action: View
         sr_target: profile
     transfers:
@@ -1128,7 +1162,7 @@ ga:
         text: Lease
       open:
         note_html: Make available to all.
-        text: Public
+        text: Poiblí
         warning_html: '<p> <strong>Please note</strong>, making something visible to the world (i.e. marking this as %{label}) may be viewed as publishing which could impact your ability to: </p> <ul> <li>Patent your work</li> <li>Publish your work in a journal</li> </ul> <p> Check out <a href="http://www.sherpa.ac.uk/romeo/">SHERPA/RoMEO</a> for more information about publisher copyright policies. </p>'
       open_title_attr: Change the visibility of this resource
       restricted:
@@ -1150,13 +1184,13 @@ ga:
         breadcrumb: Edit
       form:
         additional_fields: Additional fields
-        in_collections: Collections
+        in_collections: Bailiúchán
         in_other_works: This Work in Other Works
         in_this_work: Other Works in this Work
         tab:
           files: Files
           metadata: Descriptions
-          relationships: Relationships
+          relationships: Gaoi
           share: Sharing
         visibility_until: until
       progress:
@@ -1165,6 +1199,7 @@ ga:
         no_preview: No preview available
       update:
         header: Edit Work
+
   simple_form:
     hints:
       admin_set:
@@ -1214,11 +1249,11 @@ ga:
         title: A name to aid in identifying a work.
     labels:
       collection:
-        size: Size
-        total_items: Total items
+        size: Méid
+        total_items: Líon iomlán na n-earra
       collection_type:
         allow_multiple_membership: MULTIPLE MEMBERSHIP
-        assigns_visibility: VISIBILITY
+        assigns_visibility: Infheictheacht
         assigns_workflow: WORKFLOW
         badge_color: Badge Color
         brandable: BRANDING
@@ -1233,17 +1268,17 @@ ga:
         admin_set_id: Administrative Set
         based_near: Location
         creator: Creator
-        date_created: Date Created
+        date_created: Dáta a cruthaíodh
         description: Abstract or Summary
         embargo_release_date: until
         files: Upload a file
-        keyword: Keyword
+        keyword: Eochairfhocal
         lease_expiration_date: until
         license: License
         member_of_collection_ids: Add to collection
-        related_url: Related URL
+        related_url: URL gaolmha
         rights_statement: Rights statement
-        title: Title
+        title: Teideal
         visibility_after_embargo: then open it up to
         visibility_after_lease: then restrict it to
         visibility_during_embargo: Restricted to

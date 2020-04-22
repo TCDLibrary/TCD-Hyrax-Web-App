@@ -1,0 +1,228 @@
+ga:
+
+  blacklight:
+    search:
+      fields:
+        facet:
+          based_near_label_sim: Based Near
+          based_near_label: Based Near
+          dris_page_no: Uimhir leathanaigh
+          dris_page_no_tesim: Uimhir leathanaigh
+          dris_page_no_label: Uimhir leathanaigh
+          genre_tesim: Seánra
+          abstract_tesim: Achoimre
+          abstract_sim: Achoimre
+          abstract_label: Achoimre
+          abstract: Achoimre
+          digital_object_identifier_tesim: Aitheantóir Oibiachta Digití
+          digital_object_identifier: Aitheantóir Oibiachta Digití
+          dris_unique_tesim: Dris Unique
+          sponsor_tesim: Urraitheoir
+          bibliography_tesim: Bibliography
+          publisher_location_tesim: Suíomh an fhoilsitheora
+          publisher_location: Suíomh an fhoilsitheora
+          publisher_location_label: Suíomh an fhoilsitheora
+          publisher_location_sim: Suíomh an fhoilsitheora
+          publisher_sim: Eagarthóir
+          support_tesim: Tacaíocht
+          medium_tesim: Medium
+          alternative_title_tesim: Teideal malartach
+          series_title_tesim: Teideal sraithe
+          collection_title_tesim: Collection Title
+
+          provenance_tesim: Stair
+          culture_tesim: Cultúr
+          location_tesim: Suíomh
+
+          copyright_status_tesim: Copyright Status
+          joetesting: Joe Testing
+          creator_sim: Cruthaitheoir
+          file_format_sim: Format
+          generic_type_sim: Type
+          keyword_sim: Eochairfhocal
+          keyword_ssim: Eochairfhocal
+          keyword_tesim: Eochairfhocal
+          keyword: Eochairfhocal
+          keyword_label: Eochairfhocal
+          language_sim: Teanga
+          publisher_sim: Foilsitheoir
+          subject_sim: Ábhar
+          contributor_sim: Cuiditheoir
+          contributor_tesim: Cuiditheoir
+          contributor: Cuiditheoir
+          title_sim: Teideal
+          resource_type_sim: Cineál acmhainne
+          resource_type_ssim: Cineál acmhainne
+          resource_type_tesim: Cineál acmhainne
+          resource_type: Cineál acmhainne
+          resource_type_label: Cineál acmhainne
+          generic_type_sim: Cineál
+          editor_tesim: Eagarthóir
+          editor_sim: Eagarthóir
+          editor: Eagarthóir
+          editor_label: Eagarthóir
+        index:
+          based_near_tesim: Based Near
+          based_near_label: Based Near
+          dris_page_no: Uimhir leathanaigh
+          dris_page_no_tesim: Uimhir leathanaigh
+          dris_page_no_label: Uimhir leathanaigh
+          genre_tesim: Seánra
+          abstract_tesim: Achoimre
+          abstract_sim: Achoimre
+          abstract_label: Achoimre
+          abstract: Achoimre
+          digital_object_identifier_tesim: Aitheantóir Oibiachta Digití
+          digital_object_identifier: Aitheantóir Oibiachta Digití
+          dris_unique_tesim: Dris Unique
+          sponsor_tesim: Urraitheoir
+          bibliography_tesim: Bibliography
+          publisher_location_tesim: Suíomh an fhoilsitheora
+          publisher_location: Suíomh an fhoilsitheora
+          publisher_location_label: Suíomh an fhoilsitheora
+          publisher_location_sim: Suíomh an fhoilsitheora
+          support_tesim: Tacaíocht
+          medium_tesim: Medium
+          alternative_title_tesim: Teideal malartach
+          series_title_tesim: Teideal sraithe
+          collection_title_tesim: Collection Title
+
+          provenance_tesim: Stair
+          culture_tesim: Cultúr
+          location_tesim: Suíomh
+
+          copyright_status_tesim: Copyright Status
+          joetesting: Joe Testing
+          contributor_tesim: Cuiditheoir
+          contributor_sim: Cuiditheoir
+          contributor: Cuiditheoir
+          creator_tesim: Cruthaitheoir
+          date_created_tesim: Dáta a cruthaíodh
+          date_modified_dtsi: Date Modified
+          date_uploaded_dtsi: Dáta a uaslódáladh
+          description_tesim: Description
+          file_format_tesim: File Format
+          identifier: Cód seilf/Uimhir thagartha
+          identifier_tesim: Cód seilf/Uimhir thagartha
+          identifier_label: Cód seilf/Uimhir thagartha
+          keyword_sim: Eochairfhocal
+          keyword_ssim: Eochairfhocal
+          keyword_tesim: Eochairfhocal
+          keyword: Eochairfhocal
+          keyword_label: Eochairfhocal
+          language_tesim: Teanga
+          title_tesim: Teideal
+          title: Teideal
+          license_tesim: License
+          publisher_tesim: Publisher
+          rights_statement_tesim: Ráiteas cearta
+          subject_tesim: Ábhar
+          editor_tesim: Eagarthóir
+          editor_sim: Eagarthóir
+          publisher: Eagarthóir
+          editor_label: Eagarthóir
+        show:
+          based_near_tesim: Based Near
+          based_near_label: Based Near
+          dris_page_no: Uimhir leathanaigh
+          dris_page_no_tesim: Uimhir leathanaigh
+          dris_page_no_label: Uimhir leathanaigh
+          genre_tesim: Seánra
+          genre: Seánra
+          abstract: Achoimre
+          digital_object_identifier: Aitheantóir Oibiachta Digití
+          digital_object_identifier_tesim: Aitheantóir Oibiachta Digití
+          dris_unique_tesim: Dris Unique
+          sponsor_tesim: Urraitheoir
+          sponsor: Urraitheoir
+          bibliography_tesim: Bibliography
+          publisher_location_tesim: Suíomh an fhoilsitheora
+          publisher_location: Suíomh an fhoilsitheora
+          publisher_location_label: Suíomh an fhoilsitheora
+          publisher_location_sim: Suíomh an fhoilsitheora
+          support_tesim: Tacaíocht
+          support: Tacaíocht
+          medium_tesim: Meán
+          medium: Meán
+          alternative_title_tesim: Teideal malartach
+          alternative_title: Teideal malartach
+          series_title_tesim: Teideal sraithe
+          series_title: Teideal sraithe
+          collection_title_tesim: Teideal bailiúcháin
+          collection_title: Teideal bailiúcháin
+          provenance_tesim: Stair
+          provenance: Stair
+          culture_tesim: Cultúr
+          culture: Cultúr
+          location_tesim: Suíomh
+          location: Suíomh
+          copyright_status_tesim: Copyright Status
+          joetesting: Joe Testing
+          contributor_tesim: Cuiditheoir
+          contributor_sim: Cuiditheoir
+          contributor: Cuiditheoir
+          creator_tesim: Cruthaitheoir
+          creator: Cruthaitheoir
+          date_created_dtsi: Dáta a cruthaíodh
+          date_created_tesim: Dáta a cruthaíodh
+          date_created: Dáta a cruthaíodh
+          date_modified_dtsi: Date Modified
+          date_uploaded_dtsi: Dáta a uaslódáladh
+          description_tesim: Description
+          publisher_tesim: Eagarthóir
+          publisher_sim: Eagarthóir
+          publisher: Eagarthóir
+          publisher_label: Eagarthóir
+          file_format_tesim: File Format
+          identifier: Cód seilf/Uimhir thagartha
+          identifier_tesim: Cód seilf/Uimhir thagartha
+          identifier_label: Cód seilf/Uimhir thagartha
+          keyword_sim: Eochairfhocal
+          keyword_ssim: Eochairfhocal
+          keyword_tesim: Eochairfhocal
+          keyword: Eochairfhocal
+          keyword_label: Eochairfhocall
+          language_tesim: Teanga
+          language: Teanga
+          license_tesim: Ceadúnas
+          license: Ceadúnas
+          rights_statement_tesim: Ráiteas cearta
+          rights_statement: Ráiteas cearta
+          relevance_label: ábharthachta
+          relevance: ábharthachta
+          subject_tesim: Ábhar
+          subject: Ábhar
+          title_tesim: Teideal
+          title: Teideal
+          title_sim: Teideal
+          title_ssim: Teideal
+          resource_type: Cineál acmhainne
+          source: Foinse
+          related_url: URL gaolmha
+  hyrax:
+    account_name: Trinity College Dublin Admin
+    directory:
+      suffix: "@example.org"
+    footer:
+      copyright_html: "<strong>Copyright &copy; 2018 Samvera</strong> Licensed under the Apache License, Version 2.0"
+      service_html: A service of <a href="http://samvera.org/" class="navbar-link" target="_blank">Samvera</a>.
+    institution_name: TCD
+    institution_name_full: Trinity College Dublin
+    product_name: Digital Collections
+    product_twitter_handle: "@DigitalColl"
+    select_type:
+      folio:
+        description:        "Fóilió works"
+        name:               "Fóilió"
+    icons:
+      folio:     'fa fa-file-text-o'
+  simple_form:
+    labels:
+      defaults:
+        based_near: Based Near
+        dris_page_no: Uimhir leathanaigh
+        description: Description
+        identifier: Cód seilf/Uimhir thagartha
+
+
+#  hyrax:
