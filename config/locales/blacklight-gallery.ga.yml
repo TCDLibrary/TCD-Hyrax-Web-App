@@ -1,0 +1,15 @@
+ga:
+  blacklight:
+    search:
+      view:
+        gallery: "Gallery"
+        slideshow: "Slideshow"
+        masonry: "Masonry"
+  blacklight_gallery:
+    catalog:
+      grid_slideshow:
+        missing_image: 'Missing'
+      document_slideshow:
+        header: Roghnaigh íomhá chun an taispeántas sleamhnán a thosú
+      modal_slideshow:
+        counter: "%{counter} of %{count}"
