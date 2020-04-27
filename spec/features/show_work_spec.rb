@@ -69,7 +69,8 @@ RSpec.feature 'Display a Work' do
     expect(page).to have_content work.creator.first
     expect(page).to have_content work.keyword.first
     expect(page).to have_content work.keyword.last
-    expect(page).to have_content work.dris_page_no.first
+    # JL: 2020-04-27 suppress Page No
+    #expect(page).to have_content work.dris_page_no.first
     #expect(page).to have_content work.copyright_status.first
     expect(page).to have_content work.genre.first
     expect(page).to have_content work.digital_object_identifier.first

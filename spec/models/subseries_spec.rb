@@ -112,7 +112,8 @@ RSpec.describe Subseries do
         expect(subseries.abstract).to eq(["An Abstract"])
         expect(subseries.genre).to eq(["A subseries Genre"])
         expect(subseries.bibliography).to eq(["A subseries Bibliography"])
-        expect(subseries.dris_page_no).to eq(["A subseries Dris Page No"])
+        # JL: 2020-04-27 suppress Page No
+        #expect(subseries.dris_page_no).to eq(["A subseries Dris Page No"])
         expect(subseries.dris_document_no).to eq(["A subseries Dris Document No"])
         expect(subseries.dris_unique).to eq(["A Dris Unique"])
         expect(subseries.format_duration).to eq (["A Format Duration"])

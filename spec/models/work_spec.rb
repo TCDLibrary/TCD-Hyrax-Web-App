@@ -124,7 +124,8 @@ RSpec.describe Work do
         expect(work.abstract).to eq(["An Abstract"])
         expect(work.genre).to eq(["A Work Genre"])
         expect(work.bibliography).to eq(["A Work Bibliography"])
-        expect(work.dris_page_no).to eq(["A Work Dris Page No"])
+        # JL: 2020-04-27 suppress Page No
+        #expect(work.dris_page_no).to eq(["A Work Dris Page No"])
         expect(work.dris_document_no).to eq(["A Work Dris Document No"])
         expect(work.dris_unique).to eq(["A Dris Unique"])
         expect(work.format_duration).to eq (["A Format Duration"])

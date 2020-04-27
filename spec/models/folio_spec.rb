@@ -123,7 +123,8 @@ RSpec.describe Folio do
         expect(folio.abstract).to eq(["An Abstract"])
         expect(folio.genre).to eq(["A Folio Genre"])
         expect(folio.bibliography).to eq(["A Folio Bibliography"])
-        expect(folio.dris_page_no).to eq(["A Folio Dris Page No"])
+        # JL: 2020-04-27 suppress Page No
+        #expect(folio.dris_page_no).to eq(["A Folio Dris Page No"])
         expect(folio.dris_document_no).to eq(["A Folio Dris Document No"])
         expect(folio.dris_unique).to eq(["A Dris Unique"])
         expect(folio.format_duration).to eq (["A Format Duration"])
