@@ -19,6 +19,9 @@ Rails.application.configure do
   # JL: turn on asset fingerprinting. Relates to secrets and token verification
   config.assets.digest = true
 
+  # JL: 2020-04-27 : Do not fallback to assets pipeline if a precompiled asset is missed.
+  config.assets.compile = false
+
   # Show full error reports.
   # JL : 16/07/2019 : Turning off so I can see 404 page etc
   config.consider_all_requests_local = false
@@ -82,4 +85,11 @@ Rails.application.configure do
   # JL : TODO. Check if I need this. Added it because viewer giving errors on VM-099
   config.public_file_server.enabled = true
 
+  # JL : 2020-04-27 : Use the lowest log level to ensure availability of diagnostic information
+  # when problems arise.
+  config.log_level = :debug
+
+  # JL : 2020-04-27 :  Prepend all log lines with the following tags.
+  config.log_tags = [ :request_id ]
+  
 end
