@@ -20,7 +20,8 @@ Rails.application.configure do
   config.assets.digest = true
 
   # JL: 2020-04-27 : Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  ## config.assets.compile = false
+  config.assets.compile = true
 
   # Show full error reports.
   # JL : 16/07/2019 : Turning off so I can see 404 page etc
@@ -91,5 +92,5 @@ Rails.application.configure do
 
   # JL : 2020-04-27 :  Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
-  
+
 end
