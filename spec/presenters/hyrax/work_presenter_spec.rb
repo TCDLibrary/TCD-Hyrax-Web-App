@@ -83,10 +83,11 @@ RSpec.describe Hyrax::WorkPresenter do
     presenter.genre
   end
 
-  it "delegates dris_page_no to solr document" do
-    expect(solr_document).to receive(:dris_page_no)
-    presenter.dris_page_no
-  end
+  # JL: 2020-04-27 suppress Page No
+  #it "delegates dris_page_no to solr document" do
+  #  expect(solr_document).to receive(:dris_page_no)
+  #  presenter.dris_page_no
+  #end
 
   #it "delegates copyright_status to solr document" do
   #  expect(solr_document).to receive(:copyright_status)
