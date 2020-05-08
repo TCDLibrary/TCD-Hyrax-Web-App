@@ -85,7 +85,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'hyrax', '2.7.1'
+gem 'hyrax', '2.7.2'
 gem 'bulkrax', git: 'https://github.com/samvera-labs/bulkrax'
 
 group :development, :test, :demovm045, :demovm099 do
