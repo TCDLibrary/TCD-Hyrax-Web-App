@@ -100,16 +100,16 @@ GEM
     awesome_nested_set (3.2.0)
       activerecord (>= 4.0.0, < 7.0)
     aws-eventstream (1.1.0)
-    aws-partitions (1.309.0)
-    aws-sdk-core (3.94.1)
+    aws-partitions (1.311.0)
+    aws-sdk-core (3.95.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.239.0)
       aws-sigv4 (~> 1.1)
       jmespath (~> 1.0)
-    aws-sdk-kms (1.30.0)
+    aws-sdk-kms (1.31.0)
       aws-sdk-core (~> 3, >= 3.71.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-s3 (1.63.1)
+    aws-sdk-s3 (1.64.0)
       aws-sdk-core (~> 3, >= 3.83.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.1)
@@ -383,7 +383,7 @@ GEM
       hydra-derivatives (~> 3.0)
       hydra-file_characterization (~> 1.0)
       hydra-pcdm (>= 0.9)
-    hyrax (2.7.1)
+    hyrax (2.7.2)
       active-fedora (~> 11.5, >= 11.5.2)
       almond-rails (~> 0.1)
       awesome_nested_set (~> 3.1)
@@ -888,7 +888,7 @@ DEPENDENCIES
   exifr
   fcrepo_wrapper
   hydra-role-management
-  hyrax (= 2.7.1)
+  hyrax (= 2.7.2)
   iso639
   jbuilder (~> 2.5)
   jquery-rails
