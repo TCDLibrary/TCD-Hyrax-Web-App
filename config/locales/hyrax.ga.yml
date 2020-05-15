@@ -27,7 +27,7 @@ ga:
         show:
           admin_set: 'In Administrative Set:'
           based_near_label: Location
-          contributor: Cuiditheoiri
+          contributor: Cuiditheoirí
           keyword: Eochairfhocal
       filters:
         title: 'Filtering by:'
@@ -421,7 +421,7 @@ ga:
         visibility: Infheictheacht
       relationships:
         empty: This %{type} is not currently in any collections.
-        header: Gaoi
+        header: Gaoil
       relationships_parent_row:
         label: 'In %{type}:'
       share_with:
@@ -584,7 +584,7 @@ ga:
             branding: Branding
             description: Description
             discovery: Discovery
-            relationships: Gaoi
+            relationships: Gaoil
             sharing: Sharing
         form_branding:
           banner:
@@ -1190,7 +1190,7 @@ ga:
         tab:
           files: Files
           metadata: Descriptions
-          relationships: Gaoi
+          relationships: Gaoil
           share: Sharing
         visibility_until: until
       progress:
@@ -1250,7 +1250,7 @@ ga:
     labels:
       collection:
         size: Méid
-        total_items: Líon iomlán na n-earra
+        total_items: Líon iomlán na n-earraí
       collection_type:
         allow_multiple_membership: MULTIPLE MEMBERSHIP
         assigns_visibility: Infheictheacht
