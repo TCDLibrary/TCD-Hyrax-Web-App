@@ -1,0 +1,91 @@
+.TCD-flex-container {
+  /* We first create a flex layout context */
+  display: flex;
+  /* Then we define the flow direction
+     and if we allow the items to wrap
+   * Remember this is the same as:
+   * flex-direction: row;
+   * flex-wrap: wrap;
+   */
+  flex-flow: row wrap;
+
+  /* Then we define how is distributed the remaining space */
+  justify-content: space-around;
+
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.TCD-flex-item {
+  position: relative;
+  background: #5F5D5D;
+  padding: 0px;
+  width: 32%;
+  height: 32%;
+  margin-top: 10px;
+  line-height: 150px;
+  color: white;
+  font-weight: bold;
+  font-size: 3em;
+  text-align: center;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .TCD-flex-item {
+    -ms-flex: 49%;
+    flex: 49%;
+    max-width: 49%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .TCD-flex-item {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+.TCD-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.TCD-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #5F5D5D;
+}
+
+.TCD-container:hover .TCD-overlay {
+  opacity: 0.75;
+}
+
+.TCD-flex-item:hover .TCD-overlay {
+  opacity: 0.75;
+}
+
+.TCD-text {
+  width: 100%;
+  color: white;
+  line-height: 25px;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
