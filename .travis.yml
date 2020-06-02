@@ -9,7 +9,7 @@ cache:
 
 before_install:
   #- gem update --system
-  #- gem install bundler
+  - gem install bundler
   ####################################################################
   # JL : 18/12/2019                                                  #
   # Various changes made to fix issues arising from new release of   #
