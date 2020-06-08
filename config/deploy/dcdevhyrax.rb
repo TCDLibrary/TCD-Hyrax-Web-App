@@ -1,7 +1,8 @@
 set :stage, :dcdevhyrax
 set :rails_env, :dcdevhyrax
-set :branch, "master"
-#set :branch, "Notch8-Batch-Ingest"
+#set :branch, "master"
+set :branch, "Notch8-2020-06-08-Manifest-Caching"
+
 #set :branch, "2020-03-11-Change-Img-Folder-For-Imports"
 #set :branch, "2020-03-25-Small-tweaks"
 
