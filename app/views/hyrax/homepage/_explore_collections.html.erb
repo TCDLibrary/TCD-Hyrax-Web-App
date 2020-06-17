@@ -4,7 +4,7 @@
     <% col_rec = Collection.find(collection.id) %>
     <div class="TCD-flex-item">
         <%= link_to [hyrax, collection],  'aria-hidden' => true do %>
-          <img src="/<%= col_rec.joetesting %>" alt=<%= collection.title_or_label %> class="TCD-image">
+          <img src="/<%= col_rec.joetesting ? col_rec.joetesting : 'default_flex_img.jpg' %>" alt=<%= collection.title_or_label %> class="TCD-image">
 
           <div class="TCD-overlay">
             <div class="TCD-text"><%= collection.title_or_label %></div>
