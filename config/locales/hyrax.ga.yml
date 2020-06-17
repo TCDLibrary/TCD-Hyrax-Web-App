@@ -553,6 +553,7 @@ ga:
       contact: Teagmháil
       help: Cabhair
       home: Baile
+      library: Leabharlann
     dashboard:
       additional_notifications: See all notifications
       admin_sets:
@@ -910,7 +911,7 @@ ga:
         tab_label: Explore Collections
         title: Explore Collections
       beta:
-        cant_html: "Mura bhfuil tú in ann teacht ar an méid atá á lorg agat, is féidir ár sean-seirbhís a fháil <a href='https://www.tcd.ie/Library/digitalcollections' target='_blank'>anseo</a>."
+        cant_html: "<a href='https://www.tcd.ie/Library/digitalcollections' target='_blank'>Mura bhfuil tú in ann teacht ar an méid atá á lorg agat, is féidir ár sean-seirbhís a fháil anseo</a>."
         welcome_html: "Fáilte go leagan <strong>béite</strong> na mBailiúchán Digiteach. Bí foighneach linn, le do thoil, agus sinn ag cur leis na bailiúcháin."
       featured_researcher:
         missing: No researchers have been featured.

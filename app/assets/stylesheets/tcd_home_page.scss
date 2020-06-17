@@ -94,9 +94,16 @@
   color:#ffffff;
   font-size:28px;
   font-family:TCDWebFont;
-  font-weight:300;
+  font-weight:200;
 }
 
+
+.TCD-small-library-text {
+  color:#ffffff;
+  font-size:18px;
+  font-family:TCDWebFont;
+  font-weight:200;
+}
 
 .TCDhome_marketing_text {
   color: #ffffff;
@@ -105,4 +112,24 @@
 #TCDmasthead {
   background-color: #fff;
   z-index: 1050;
+}
+
+.TCD_library_bar {
+  border: 0px;
+  height: 40px;
+  color: #ffffff;
+  background-color: #1074b7;
+  padding-left: 20px;
+  font-weight: 200;
+  text-align: left;
+}
+
+.TCD_small_library_bar {
+  border: 0px;
+  height: 30px;
+  color: #ffffff;
+  background-color: #1074b7;
+  padding-left: 20px;
+  font-weight: 200;
+  text-align: left;
 }
