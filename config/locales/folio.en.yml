@@ -27,7 +27,7 @@ en:
           location_tesim: Location
 
           copyright_status_tesim: Copyright Status
-          joetesting: Joe Testing
+          flex_image: Homepage Flex Image
           creator_sim: Creator
           file_format_sim: Format
           generic_type_sim: Type
@@ -59,7 +59,7 @@ en:
           location_tesim: Location
 
           copyright_status_tesim: Copyright Status
-          joetesting: Joe Testing
+          flex_image: Homepage Flex Image
           contributor_tesim: Contributor
           creator_tesim: Creator
           date_created_tesim: Date Created
@@ -100,7 +100,7 @@ en:
           location_tesim: Location
 
           copyright_status_tesim: Copyright Status
-          joetesting: Joe Testing
+          flex_image: Homepage Flex Image
           contributor_tesim: Contributor
           creator_tesim: Creator
           date_created_tesim: Date Created

@@ -23,7 +23,7 @@ module Hyrax
       self.terms = [:resource_type, :title, :creator, :contributor, :description,
                     :keyword, :license, :publisher, :date_created, :subject, :language,
                     :representative_id, :thumbnail_id, :identifier, :based_near,
-                    :related_url, :visibility, :collection_type_gid, :joetesting]
+                    :related_url, :visibility, :collection_type_gid, :flex_image]
 
       self.required_fields = [:title]
 
@@ -72,7 +72,7 @@ module Hyrax
          :based_near,
          :related_url,
          :resource_type,
-         :joetesting]
+         :flex_image]
       end
 
       def banner_info

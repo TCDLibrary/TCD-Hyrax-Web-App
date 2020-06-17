@@ -6,7 +6,7 @@ en:
       fields:
         facet:
           based_near_label_sim: Based Near
-          joetesting: Joe Testing
+          flex_image: Homepage Flex Image
           creator_sim: Creator
           file_format_sim: Format
           generic_type_sim: Type
@@ -16,7 +16,7 @@ en:
           subject_sim: Subject
         index:
           based_near_tesim: Based Near
-          joetesting: Joe Testing
+          flex_image: Homepage Flex Image
           contributor_tesim: Contributor
           creator_tesim: Creator
           date_created_tesim: Date Created
@@ -33,7 +33,7 @@ en:
           subject_tesim: Subject
         show:
           based_near_tesim: Based Near
-          joetesting: Joe Testing
+          flex_image: Homepage Flex Image
           contributor_tesim: Contributor
           creator_tesim: Creator
           date_created_tesim: Date Created
