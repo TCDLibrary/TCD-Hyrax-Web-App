@@ -4,6 +4,7 @@ set :branch, "master"
 #set :branch, "Notch8-Batch-Ingest"
 #set :branch, "2020-03-11-Change-Img-Folder-For-Imports"
 #set :branch, "2020-03-25-Small-tweaks"
+#set :branch, "2020-05-15-UX-Homepage"
 
 # Default deploy_to directory is /var/www/my_app_name. Override it:
 set :deploy_to, "/opt/app/TCD-Hyrax-Web-App"

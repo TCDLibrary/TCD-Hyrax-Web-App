@@ -57,7 +57,7 @@ de:
       service_html: Ein Dienst von <a href="http://samvera.org/" class="navbar-link" target="_blank">Samvera</a> .
     homepage:
       beta:
-        cant_html: "Can’t find what you’re looking for? Our old service can be found <a href='https://www.tcd.ie/library/digitalcollections/' target='_blank'>here</a>."
+        cant_html: "Can’t find what you’re looking for? <a href='https://www.tcd.ie/Library/digitalcollections' target='_blank'>Our old service can be found here</a>."
         welcome_html: "Welcome to Digital Collections <strong>beta</strong> version, please bear with us as we add collections."
     institution_name: Institution
     institution_name_full: Name des Instituts
