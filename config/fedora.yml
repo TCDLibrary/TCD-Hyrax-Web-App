@@ -6,18 +6,6 @@ development:
   url: <%= ENV['FEDORA_URL'] || 'http://127.0.0.1:8080/fcrepo-webapp-4.7.5/rest' %>
   base_path: /dev
 
-demovm045:
-  user: fedoraAdmin
-  password: fedoraAdmin
-  url: http://134.226.115.55:8080/fcrepo-webapp-4.7.5/rest
-  base_path: /dev
-
-demovm099:
-  user: <%= ENV['FEDORA_ADMIN_USER'] %>
-  password: <%= ENV['FEDORA_ADMIN_PASSWORD'] %>
-  url: http://134.226.115.75:8080/fcrepo-webapp-4.7.5/rest
-  base_path: /dev
-
 dcdevhyrax:
   user: <%= ENV['FEDORA_ADMIN_USER'] %>
   password: <%= ENV['FEDORA_ADMIN_PASSWORD'] %>
@@ -35,7 +23,7 @@ digcollhyrax02:
   password: <%= ENV['FEDORA_ADMIN_PASSWORD'] %>
   url: http://digcoll-fedora02.tcd.ie:8080/fcrepo-webapp-4.7.5/rest
   base_path: /dev
-      
+
 test:
   user: <%= ENV['FEDORA_ADMIN_USER'] %>
   password: <%= ENV['FEDORA_ADMIN_PASSWORD'] %>
