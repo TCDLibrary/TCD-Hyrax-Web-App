@@ -87,7 +87,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # gem 'hyrax', '2.7.2'
 # temporarily use 2.x-stable to pick up Tom's Notch8 changes
-gem 'hyrax', git: 'https://github.com/samvera/hyrax', branch: '2.x-stable'
+#gem 'hyrax', git: 'https://github.com/samvera/hyrax', branch: '2.x-stable'
+gem 'hyrax', git: 'https://github.com/samvera/hyrax', branch: 'manifest-cache-key-backport'
 #gem 'hyrax', '2.8.0'
 
 gem 'bulkrax', git: 'https://github.com/samvera-labs/bulkrax'
