@@ -26,7 +26,7 @@ install_plugin Capistrano::SCM::Git
 
 require "capistrano/rbenv"
 set :rbenv_type, :user # :user or :system, depends on your rbenv setup
-set :rbenv_ruby, File.read('.ruby-version').strip
+
 #require "capistrano/chruby"
 require "capistrano/bundler"
 #require "capistrano/rails/assets"
