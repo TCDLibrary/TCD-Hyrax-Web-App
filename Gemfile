@@ -47,7 +47,7 @@ group :development do
   gem 'capistrano', '~> 3.12.0'
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
-  #gem 'capistrano-rbenv'
+  gem 'capistrano-rbenv'
   #gem 'capistrano-chruby'
   gem 'capistrano-bundler'
   #gem 'capistrano-rails/assets'
