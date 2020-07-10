@@ -24,7 +24,7 @@ install_plugin Capistrano::SCM::Git
 # JL : 16/12/2019 Moving away from rvm??
 ##require "capistrano/rvm"
 
-require "capistrano/rbenv"
+require "capistrano/rbenv", github: "capistrano/rbenv"
 set :rbenv_type, :user # :user or :system, depends on your rbenv setup
 set :rbenv_ruby, File.read('.ruby-version').strip
 #require "capistrano/chruby"
