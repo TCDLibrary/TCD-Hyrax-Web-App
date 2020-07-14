@@ -27,6 +27,7 @@ module Hyrax
         solr_doc['duration_tesim']          = object.duration
         solr_doc['sample_rate_tesim']       = object.sample_rate
         solr_doc['original_checksum_tesim'] = object.original_checksum
+        solr_doc['original_file_id_ssi']    = original_file_id
         solr_doc['camera_model_tesim'] = object.camera_model
         solr_doc['camera_make_tesim'] = object.camera_make
         solr_doc['date_taken_tesim'] = object.date_taken
@@ -49,6 +50,11 @@ module Hyrax
         object.original_file.digest.first.to_s
       end
 
+      def original_file_id
+        return unless object.original_file
+        Hyrax::VersioningService.versioned_file_id object.original_file
+      end
+      
       def file_format
         if object.mime_type.present? && object.format_label.present?
           "#{object.mime_type.split('/').last} (#{object.format_label.join(', ')})"
