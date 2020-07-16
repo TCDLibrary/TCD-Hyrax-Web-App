@@ -25,8 +25,8 @@ GIT
 
 GIT
   remote: https://github.com/samvera/hyrax
-  revision: b7c9d4a1afba467a0f34496f6900e89c7d6fb57a
-  branch: 2.x-stable
+  revision: f28962f225778960dd98b5b3d5a593b51c74bb59
+  branch: iiif-manifest-order-backport
   specs:
     hyrax (2.8.0)
       active-fedora (>= 11.5.2, < 12.2)
@@ -161,8 +161,8 @@ GEM
     awesome_nested_set (3.2.1)
       activerecord (>= 4.0.0, < 7.0)
     aws-eventstream (1.1.0)
-    aws-partitions (1.341.0)
-    aws-sdk-core (3.103.0)
+    aws-partitions (1.342.0)
+    aws-sdk-core (3.104.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.239.0)
       aws-sigv4 (~> 1.1)
@@ -349,7 +349,7 @@ GEM
       dry-equalizer (~> 0.3)
       dry-inflector (~> 0.1, >= 0.1.2)
       dry-logic (~> 1.0, >= 1.0.2)
-    dry-validation (1.5.1)
+    dry-validation (1.5.2)
       concurrent-ruby (~> 1.0)
       dry-container (~> 0.7, >= 0.7.1)
       dry-core (~> 0.4)
@@ -620,7 +620,7 @@ GEM
     passenger (6.0.4)
       rack
       rake (>= 0.8.1)
-    posix-spawn (0.3.14)
+    posix-spawn (0.3.15)
     power_converter (0.1.2)
     public_suffix (4.0.5)
     pul_uv_rails (2.0.1)
@@ -858,7 +858,7 @@ GEM
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    tinymce-rails (4.9.10)
+    tinymce-rails (4.9.11)
       railties (>= 3.1.1)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
