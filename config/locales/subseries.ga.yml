@@ -27,7 +27,7 @@ ga:
           location_tesim: Location
 
           copyright_status_tesim: Copyright Status
-          joetesting: Joe Testing
+          flex_image: Homepage Flex Image
           creator_sim: Cruthaitheoir
           file_format_sim: Format
           generic_type_sim: Type
@@ -66,7 +66,7 @@ ga:
           location_tesim: Location
 
           copyright_status_tesim: Copyright Status
-          joetesting: Joe Testing
+          flex_image: Homepage Flex Image
           contributor_tesim: Cuiditheoir
           creator_tesim: Cruthaitheoir
           date_created_tesim: Dáta a cruthaíodh
@@ -108,7 +108,7 @@ ga:
           location_tesim: Location
 
           copyright_status_tesim: Copyright Status
-          joetesting: Joe Testing
+          flex_image: Homepage Flex Image
           contributor_tesim: Contributor
           creator_tesim: Cruthaitheoir
           creator: Cruthaitheoir

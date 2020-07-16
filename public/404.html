@@ -1,12 +1,14 @@
+
+
 <!DOCTYPE html>
 <html lang="en" prefix="og:http://ogp.me/ns#">
-  <head>
+<head>
     <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="Pab5scNQ2KXPXQouGLbBTLEjYo7zlkh+3A5Is+7qaU9ChkEwz/O4tAdqGXrGLUfb9aX/NKKM689PyTd3RetSyQ==" />
+<meta name="csrf-token" content="I3GR2+jYmnC3HnyeSCk5od9/tBSweJWlUgpGHxv9AddU7ltqvXMHRFWHmCNcEbcNgaFtwXDnCs0TYOFOfI5Y3Q==" />
 <meta charset="utf-8" />
 <!-- added for use on small devices like phones -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="resourcesync" href="http://localhost:3000/capabilitylist?locale=en" />
+<link rel="resourcesync" href="http://dcdev-web.tcd.ie/capabilitylist?locale=en" />
 
 <!-- Twitter card metadata -->
 
@@ -16,6 +18,7 @@
 <title>Digital Collections</title>
 
 <!-- application css -->
+<link rel="stylesheet" media="screen" href="/assets/_bootstrap-default-overrides.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" />
 <link rel="stylesheet" media="screen" href="/assets/export.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" />
 <link rel="stylesheet" media="screen" href="/assets/jquery-ui/theme.self-830c3407ba1359ea36eee978235be14de5b78dacfa658a31226fe4f2b0faa7e7.css?body=1" />
 <link rel="stylesheet" media="screen" href="/assets/jquery-ui/core.self-e4bdefd3813c8a715955a6c65b9e730846dcae6a0576618563d635ff0b18a3ca.css?body=1" />
@@ -40,13 +43,15 @@
 <link rel="stylesheet" media="screen" href="/assets/jquery-ui/base.self-76599afe9b7687b8479ce5344363edbf948b417613a3beec7a7a74bacb0cc1c8.css?body=1" />
 <link rel="stylesheet" media="screen" href="/assets/jquery-ui/all.self-131cc322272828d76a6354d061a4660293e55426159aa19231ad578926b73f4a.css?body=1" />
 <link rel="stylesheet" media="screen" href="/assets/jquery-ui.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" />
-<link rel="stylesheet" media="screen" href="/assets/select2.self-02422f16ace02b103574f2ba71f783632c75d7ac397724b26c5ceca68b05e9cf.css?body=1" />
-<link rel="stylesheet" media="screen" href="/assets/hyrax.self-2b59e0655671e8484331382df6548d1d754ecec4cc744ce5d5a7c8043db0694b.css?body=1" />
+<link rel="stylesheet" media="screen" href="/assets/select2.self-abadc87a5fb37e822db4415c4b0c9ff78b4bdf5cb605a1850754cc3f6ced7da2.css?body=1" />
+<link rel="stylesheet" media="screen" href="/assets/hyrax.self-1c2f58e107ba3085b15eb1c4efcc7b1f173163cb3d301554b7ae9c018fc17da9.css?body=1" />
 <link rel="stylesheet" media="screen" href="/assets/import.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" />
+<link rel="stylesheet" media="screen" href="/assets/ingests.self-5e8658d7272162353f7b634bb85e772524bd046272ab8206077f9fe0707fdf1b.css?body=1" />
 <link rel="stylesheet" media="screen" href="/assets/openseadragon/openseadragon.self-59993793758f5500d22a31cb2c4f397d4cbd76059d4e3b3b22d7c4c3a1bbac68.css?body=1" />
 <link rel="stylesheet" media="screen" href="/assets/openseadragon.self-432f7642176cbbe3478c7986ce439b2c99642bf0f1a81ae971e7c7e6c1e3c3b5.css?body=1" />
-<link rel="stylesheet" media="screen" href="/assets/dataTables/bootstrap/3/jquery.dataTables.bootstrap.self-2b03c79f2e2b6de06c7c37d6ec2a885058450a162fa2847fcf33eaba9cee0ffc.css?body=1" />
-<link rel="stylesheet" media="screen" href="/assets/application.self-f5c26feff0b18c3fc62e611ab818cc045d4dcffaa2b2d62004d0fb1f23ce0084.css?body=1" />
+<link rel="stylesheet" media="screen" href="/assets/tcd_home_page.self-fe6fd637f3a2bff5c30f95500298254c3f6add9c0f1b324ac95018fc639c752d.css?body=1" />
+<link rel="stylesheet" media="screen" href="/assets/dataTables/bootstrap/3/jquery.dataTables.bootstrap.self-547bac2bf7f939a647726806c119214cf6cc93d93d1ec1a54fc5fb79b453fcb2.css?body=1" />
+<link rel="stylesheet" media="screen" href="/assets/application.self-f7bf13ec5e31ac94f8d00dfef3f0a34562ef746c16edcaa828674c688a2f6ff5.css?body=1" />
 
 <!-- application js -->
 <script src="/assets/turbolinks.self-569ee74eaa15c1e2019317ff770b8769b1ec033a0f572a485f64c82ddc8f989e.js?body=1"></script>
@@ -63,14 +68,18 @@
 <script src="/assets/blacklight/ajax_modal.self-eedfbbd08c210d762d3260a2fe7b1cacc6f957151c847a5334719dc3acdcae3d.js?body=1"></script>
 <script src="/assets/blacklight/search_context.self-2600a4e7ba05ee0b6c2d892e01920b07ff621fc981e4420fb4c98c771c44ffaa.js?body=1"></script>
 <script src="/assets/blacklight/autofocus.self-75e5bb13fa3c2c53abba6aff56bc53151d7df7aeba68903c788a4958b50a91b9.js?body=1"></script>
-<script src="/assets/bootstrap/transition.self-6ad2488465135ab731a045a8ebbe3ea2fc501aed286042496eda1664fdd07ba9.js?body=1"></script>
-<script src="/assets/bootstrap/collapse.self-2eb697f62b587bb786ff940d82dd4be88cdeeaf13ca128e3da3850c5fcaec301.js?body=1"></script>
-<script src="/assets/bootstrap/dropdown.self-561cca1cbaf67474e01e9536f106bad541594860a6df997004591c1c1957a147.js?body=1"></script>
-<script src="/assets/bootstrap/alert.self-742145c5bb847aafdadc6e339be795628f8bc25f177e851f03a8c42278eb0312.js?body=1"></script>
-<script src="/assets/bootstrap/modal.self-3e78617ade5663314b7ee0ea10375a5b34d59ffbade44939e3f2a4e4ef2019b3.js?body=1"></script>
+<script src="/assets/bootstrap/transition.self-3c74f1999fcbf39cfb240b67c9a9e900863859f82f53fb27e5a388fe5e1a1c5c.js?body=1"></script>
+<script src="/assets/bootstrap/collapse.self-4db094cc14a1aafa93e51e6f298115323037bb9e24c060dd0de52f27446f6227.js?body=1"></script>
+<script src="/assets/bootstrap/dropdown.self-7efa4aa654357ae664a98ec52151c25cd4927eacd1fabe038d068d9344b62cbd.js?body=1"></script>
+<script src="/assets/bootstrap/alert.self-7c7aa23778284da0e4aa395a0a6d858c7efd891c9312fe71908b28292654ac0c.js?body=1"></script>
+<script src="/assets/bootstrap/modal.self-4ca048907279f4bb9187ba2541ae5d03296917d5c42e8fef0b58ec31c8902f0f.js?body=1"></script>
 <script src="/assets/twitter/typeahead/typeahead.bundle.self-07ac3152c91da597ccb340e32a6b84f92c29bb7b89c65ec5b22b4cdbbed44de0.js?body=1"></script>
 <script src="/assets/twitter/typeahead.self-01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b.js?body=1"></script>
 <script src="/assets/blacklight/blacklight.self-e31ad10d3575ebb78ddbd51b884e3c9d3babd3d89cf52711e1279bfcade4ded8.js?body=1"></script>
+<script src="/assets/bulkrax/entries.self-160ccab40b4074078e0e083c82e52c9e60f3b87d720980a8cdb938f65b839400.js?body=1"></script>
+<script src="/assets/bulkrax/exporters.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1"></script>
+<script src="/assets/bulkrax/importers.self-32d280d78589d960f9d34ad8c7ef90e35e1d530b1abbd9108c8026433803e5eb.js?body=1"></script>
+<script src="/assets/bulkrax/application.self-8dc2a3cacd66fd7300426892a90634a10bb317ed9359d939717783b6e7435301.js?body=1"></script>
 <script src="/assets/imagesloaded.min.self-a1d38a7050f5d1d4da7719834b92e58cddf6f8905313f17dabcddb3c644dee60.js?body=1"></script>
 <script src="/assets/masonry.min.self-5e03815c1ed5debc3d4954e8313c12c3b83567fe877b14f0fb889ed4a0adcd77.js?body=1"></script>
 <script src="/assets/blacklight_gallery/slideshow.self-69e5b3441bf2ccd08d53bfb446e5df5c471c0773cc0bcd7b58caea34c4c1ee92.js?body=1"></script>
@@ -84,6 +93,7 @@
 <script src="/assets/cable.self-8484513823f404ed0c0f039f75243bfdede7af7919dda65f2e66391252443ce9.js?body=1"></script>
 <script src="/assets/export.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1"></script>
 <script src="/assets/import.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1"></script>
+<script src="/assets/ingests.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1"></script>
 <script src="/assets/openseadragon/openseadragon.self-481342ad4278f8fae8d9a2f8d8fae6ba19b0a361b91bbf7caf51ac87f8333f7e.js?body=1"></script>
 <script src="/assets/openseadragon.self-75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070.js?body=1"></script>
 <script src="/assets/jquery-ui/version.self-c8e3d1203da26ea7efdf83c1eabb3f0ba55cb68e463f5ccf0d77bd15ce6a8e61.js?body=1"></script>
@@ -111,11 +121,11 @@
 <script src="/assets/jquery-ui/effects/effect-highlight.self-842a0db414abed8fbccb48908bd933b32c93c6b9d725160c85dc2bde708fa753.js?body=1"></script>
 <script src="/assets/jquery-ui/widgets/mouse.self-f0790a202dcf54fab051e71b042335d5346f9cceb0f645223c1dab93f349a04b.js?body=1"></script>
 <script src="/assets/jquery-ui/widgets/sortable.self-6e5e1f07a29b5a89ec1d359363d2800904e3ae548a38ab2f8eded36746d1adbe.js?body=1"></script>
-<script src="/assets/bootstrap/button.self-126ac9bf0e7f2d8568f8da3a00fd5f0fac6eae0946331003370161fbf8d7975e.js?body=1"></script>
-<script src="/assets/bootstrap/tooltip.self-05afb177e08f98997ccfc84fa08a215e4b27d48d5fe4d049080675e9dffd8199.js?body=1"></script>
-<script src="/assets/bootstrap/popover.self-0aa93860b59fe7393f1dd490f54b3cb994f9d6155adffce034d4e14ae361b041.js?body=1"></script>
-<script src="/assets/bootstrap/tab.self-5bf7078b682f8b131332eefa46b45fa5eff2eca745fc0d03e2991450888f7c28.js?body=1"></script>
-<script src="/assets/bootstrap/affix.self-6d6f1a7fc5c8aabf3547fa1b794fab6268f54bc55ad815e55873c71f52513517.js?body=1"></script>
+<script src="/assets/bootstrap/button.self-b7a8ce9f47662b97ab74ef3dd416e93d3a4f644b252307a28231976a0149feef.js?body=1"></script>
+<script src="/assets/bootstrap/tooltip.self-82858d5843f55bfed321ea59fc5b180f3d2a8afc498ebc4d665561110b807875.js?body=1"></script>
+<script src="/assets/bootstrap/popover.self-a1e6d4555fb912f0405099135eaddbe8273ba8f08323477a471d34419d57b446.js?body=1"></script>
+<script src="/assets/bootstrap/tab.self-7fbfa844201ceeb4b896e4d185a33df19a284fe461281b7c0f78dbea2ef6da5a.js?body=1"></script>
+<script src="/assets/bootstrap/affix.self-b2bd74404ab3c627c5129dcdd3bdc2fc0a9d4bff4e1b6f1bae96412f9a1e9723.js?body=1"></script>
 <script src="/assets/select2.self-1c5f606a53ee7fae6f11ffa522c8ccf8076493d9d5b5ae25564bd853679f48d2.js?body=1"></script>
 <script src="/assets/fixedsticky.self-ef7304223111679161f601c588073799f4d6acb7df26eaa92f0ba5b0d83a66de.js?body=1"></script>
 <script src="/assets/jquery.flot.self-c14ce1ecd2ce4c63225ea890baab32a8844dc3a9934549b5e9eb1161587a5ec6.js?body=1"></script>
@@ -146,7 +156,7 @@
 <script src="/assets/hyrax/featured_works.self-32a61b1e97a65ea8ac9291c9fa364e5a7f055cecf898d14b2235d48145bf0b1a.js?body=1"></script>
 <script src="/assets/hyrax/batch_select_all.self-cb8b63f433eb4a9d7962b4df94f9a4fc52720df06a9e1596f2f548ebaaedc91f.js?body=1"></script>
 <script src="/assets/jquery.treetable.self-6c7eabd37c355bcbb29f778d184e2e917db0f29b97aa3ddb6342c42af5ff1102.js?body=1"></script>
-<script src="/assets/browse_everything/behavior.self-54dee5171bb01ef6991ec0f1aca7dcd3c61f0efa6ecaa5fb4c80ecac24e64f9e.js?body=1"></script>
+<script src="/assets/browse_everything/behavior.self-d7e61d29d6aec812ea2f2453bc190825d61aa3208eb3dc58b2e586368787aa0e.js?body=1"></script>
 <script src="/assets/hyrax/browse_everything.self-9588213227c8b437d42756789087e8f7a9321bad5be6d323993b20a710404d8f.js?body=1"></script>
 <script src="/assets/hyrax/search.self-2a5d298db3239d158585944eabcbf3162540c2a0ad2307829837c76faa13aae9.js?body=1"></script>
 <script src="/assets/hyrax/content_blocks.self-bbae379bdc3fe678a1cb32440bb1eb2dd184491ed077c32cd5126ece6a908471.js?body=1"></script>
@@ -169,7 +179,7 @@
 <script src="/assets/hyrax/admin/collection_type_controls.self-704bb5af7f0c171f588f925af9437d0787e497cd438f0fe94aec7c00545cfb19.js?body=1"></script>
 <script src="/assets/hyrax/admin/collection_type/participants.self-d65a281b12c43eeff0031d69ea31e9f775eec2bc05a30e410c50b4425af90818.js?body=1"></script>
 <script src="/assets/hyrax/admin/collection_type/settings.self-384590ff7e3bb89c5df93c35f6724e831ba650fe0ad38d530864b1828c68f601.js?body=1"></script>
-<script src="/assets/hyrax/collections/editor.self-ed1352d2e05e2c0631baf6de3c197b394e059be83f5bd56e3f0830a4462b92ae.js?body=1"></script>
+<script src="/assets/hyrax/collections/editor.self-e973ae6b6444688976df3161a851bf4e05df3779cb048458cc67e058d1ec1226.js?body=1"></script>
 <script src="/assets/hyrax/editor.self-d4b42f461672cfe20ef87215388ef76b512bcfae1facdeefc68ded5be0ee9374.js?body=1"></script>
 <script src="/assets/hyrax/editor/admin_set_widget.self-f389ec7794624f403b23c8f7d70588394203b9e66153cbff83e87dbb317ec795.js?body=1"></script>
 <script src="/assets/handlebars-v4.0.5.self-116b0b2b49efb2bff20053e70f8f53fd1faf66552647067c04b30f19e281ac34.js?body=1"></script>
@@ -225,17 +235,17 @@
 <script src="/assets/hyrax/i18n_helper.self-196822b53d6a0940049a1ca4147eba82d0c124ae7a6c6a9a0ae103dc75e977a2.js?body=1"></script>
 <script src="/assets/hyrax/batch_edit.self-c3bc01f9c27974a467bb6345e331845d4db0b21410e9ab133c06a99bbe862cbc.js?body=1"></script>
 <script src="/assets/hyrax.self-1008256d5bbc5fc9200844ad6fd5b027940bd1fc65a18479edd29ebad76fd235.js?body=1"></script>
-<script src="/assets/application.self-482fd8438e3f6d40649ca76edc4093581bd192f5ce98fbe49a4423b45d86d6a3.js?body=1"></script>
+<script src="/assets/application.self-9aca096e5731ea3b75a3fe374af6fad939e43c63e697e01ae171e2086355628b.js?body=1"></script>
 
 <style>
 a { color: #2e74b2; }
 .navbar-inverse .navbar-link { color: #ffebcd; }
 
-.navbar-inverse { background-color: #343c3f; }
+.navbar-inverse { background-color: #3c3c3c; }
 
 .navbar-inverse .navbar-nav > .open > a,
 .navbar-inverse .navbar-nav > .open > a:hover,
-.navbar-inverse .navbar-nav > .open > a:focus { background-color: #343c3f; }
+.navbar-inverse .navbar-nav > .open > a:focus { background-color: #3c3c3c; }
 
 .navbar-inverse .navbar-nav > li > a,
 .navbar-inverse .navbar-text,
@@ -300,9 +310,9 @@ a { color: #2e74b2; }
       <a href="#skip-to-content">Skip to Content</a>
     </div>
     <header>
-  <nav id="masthead" class="navbar navbar-inverse navbar-static-top" role="navigation" style="min-height:110px;">
+  <nav id="TCDmasthead" class="navbar navbar-inverse navbar-static-top" role="navigation" style="min-height:100px;">
     <div class="container-fluid">
-      <div class="navbar-header" style="min-height:130px;">
+      <div class="navbar-header" style="min-height:100px;">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-collapse" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
@@ -313,13 +323,13 @@ a { color: #2e74b2; }
 <!--    <span class="institution_name">Trinity College Dublin</span> -->
 <!-- </a> -->
 
-<a id="logo" class="navbar-brand" href="/?locale=en" data-no-turbolink="true">
-  <span class="institution_name">  <img src= "/trinity-common-use-white.png" alt="Trinity College Dublin logo" style="height:100px;object-fit: contain;"/>
+<a id="logo" class="navbar-brand" href="https://www.tcd.ie" target="_blank" data-no-turbolink="true">
+  <span class="institution_name">  <img src= "/tcd-logo-2x.png" alt="Trinity College Dublin logo"  style="width:232px;object-fit: contain;"/>
 </a>
 
       </div>
 
-      <div class="collapse navbar-collapse" id="top-navbar-collapse" style="min-height:130px;">
+      <div class="collapse navbar-collapse" id="top-navbar-collapse" style="min-height:100px;">
         <ul id="user_utility_links" class="nav navbar-nav navbar-right">
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="language-dropdown-menu">
@@ -339,8 +349,20 @@ a { color: #2e74b2; }
             <li role="presentation" lang="es">
                 <a class="dropdown-item" role="menuitem" tabindex="-1" data-locale="es" href="?locale=es">Español</a>
             </li>
+            <li role="presentation" lang="fr">
+                <a class="dropdown-item" role="menuitem" tabindex="-1" data-locale="fr" href="?locale=fr">Français</a>
+            </li>
             <li role="presentation" lang="ga">
                 <a class="dropdown-item" role="menuitem" tabindex="-1" data-locale="ga" href="?locale=ga">Gaeilge</a>
+            </li>
+            <li role="presentation" lang="it">
+                <a class="dropdown-item" role="menuitem" tabindex="-1" data-locale="it" href="?locale=it">Italiano</a>
+            </li>
+            <li role="presentation" lang="pt-BR">
+                <a class="dropdown-item" role="menuitem" tabindex="-1" data-locale="pt-BR" href="?locale=pt-BR">Português do Brasil</a>
+            </li>
+            <li role="presentation" lang="zh">
+                <a class="dropdown-item" role="menuitem" tabindex="-1" data-locale="zh" href="?locale=zh">中文</a>
             </li>
     </ul>
 </li>
@@ -354,10 +376,12 @@ a { color: #2e74b2; }
       </div>
     </div>
   </nav>
+   <div class="TCD_library_bar TCD-library-text">Digital Collections</div>
+   <div class="TCD_small_library_bar TCD-small-library-text">The Library of Trinity College Dublin</div>
 </header>
 
       <div class="image-masthead">
-    <div class="background-container" style="background-image: url('branding/MapTest Banner Example 2.jpg')"></div>
+    <div class="background-container" style="background-image: url('/branding/MapTest Banner Example 2.jpg?raw=true')"></div>
     <span class="background-container-gradient"></span>
 
     <div class="container site-title-container">
@@ -370,23 +394,26 @@ a { color: #2e74b2; }
   <div class="container-fluid">
     <div class="row">
       <ul class="nav navbar-nav col-sm-5">
-        <li >
-          <a href="/?locale=en">Home</a></li>
+        <li class=active>
+          <a aria-current="page" href="/?locale=en">Home</a></li>
         <li >
           <a href="/about?locale=en">About</a></li>
         <li >
           <a href="/help?locale=en">Help</a></li>
         <li >
           <a href="/contact?locale=en">Contact</a></li>
+        <li >
+          <a href="https://www.tcd.ie/library">Library</a></li>
+
       </ul><!-- /.nav -->
       <div class="searchbar-right navbar-right col-sm-7">
         <form class="form-horizontal search-form" id="search-form-header" role="search" action="/catalog?locale=en" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
-
+  <input type="hidden" name="locale" value="en" />
   <input type="hidden" name="search_field" id="search_field" value="all_fields" />
   <div class="form-group">
 
     <label class="control-label col-sm-3" for="search-field-header">
-      Search Digital Collections
+      Search
     </label>
 
     <div class="input-group">
@@ -422,7 +449,7 @@ a { color: #2e74b2; }
   <p>&nbsp;</p>
   <p>  We are currently upgrading our digital repository and transferring our collections to our new, improved platform.</p>
   <p>&nbsp;</p>
-  <p>  Have you tried using the search box above? Still can’t find what you’re looking for? Try our old service <a href="https://www.tcd.ie/library/digitalcollections/" target="_blank">here</a></p>
+  <p>  Have you tried using the search box above? Still can’t find what you’re looking for? <a href="https://www.tcd.ie/Library/digitalcollections" target="_blank">Try our old service here</a></p>
   <p>&nbsp;</p>
   <p>&nbsp;</p>
 
@@ -430,7 +457,7 @@ a { color: #2e74b2; }
   <p>&nbsp;</p>
   <p>  Táthar i mbun uasghrádaithe ar ár stór digiteach faoi láthair agus ag aistriú ár mbailiúchán chuig ár n-ardán nua, feabhsaithe. </p>
   <p>&nbsp;</p>
-  <p>  An ndearna tú iarracht an bosca cuardaigh thuas a úsáid? Mura féidir teacht ar an méid atá á lorg agat go fóill, bain triail ár sean-seirbhís <a href="https://www.tcd.ie/library/digitalcollections/" target="_blank">anseo</a>.</p>
+  <p>  An ndearna tú iarracht an bosca cuardaigh thuas a úsáid? <a href="https://www.tcd.ie/Library/digitalcollections" target="_blank">Mura féidir teacht ar an méid atá á lorg agat go fóill, bain triail ár sean-seirbhís anseo</a>.</p>
 
 </div><!-- /.col-xs-6 -->
 
@@ -443,47 +470,62 @@ a { color: #2e74b2; }
 
     </div><!-- /#content-wrapper -->
     <style>
-  a.foot { color:#dbdbdb; }
-  a.foot:visited { color:#dbdbdb; }
-  .navbar { background-color: #343c3f; }
-</style>
+   a.foot { color:#ffffff; }
+   a.foot:visited { color:#ffffff; }
+   a.foot:hover  { color:#ffffff; }
 
-<footer class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-text text-left">
-        <p>Trinity College Dublin, The University of Dublin</p>
-        <p>College Green</p>
-        <p>Dublin 2, Ireland</p>
-        <p>T: +353 1 896 1000</p>
-        <p>&nbsp;</p>
+   a.navbar-inverse:hover { color:#3c3c3c; }
+   a.navbar-nav:hover { color:#3c3c3c; }
+   a.nav-item:hover { color:#3c3c3c; }
+   a.dropdown:hover { color:#3c3c3c; }
+   a.dropdown-toggle:hover { color:#3c3c3c; }
+   li.navbar-inverse:hover{ color:#3c3c3c; }
+   li.navbar-nav:hover{ color:#3c3c3c; }
+   a.navbar-inverse:hover{ color:#3c3c3c; }
+   a.navbar-nav:hover { color:#3c3c3c; }
+   .navbar-inverse .navbar-nav > li > a:hover  { color:#3c3c3c; }
+   .navbar-inverse .navbar-nav > li > a  { color:#3c3c3c; }
+   .navbar-static-top {background-color: #3c3c3c;}
 
-      <!--  <p>A service of <a href="http://samvera.org/" class="navbar-link" target="_blank">Samvera</a>.</p>
-        <p>Digital Collections v2.4.0</p> -->
-    </div>
-    <!--    <p><strong>Copyright &copy; 2018 Samvera</strong> Licensed under the Apache License, Version 2.0</p>
-        <p></p> -->
+ </style>
+
+ <footer class="navbar navbar-inverse">
+   <div class="container-fluid">
+     <div class="navbar-text text-left">
+         <p>Trinity College Dublin, The University of Dublin</p>
+         <p>College Green</p>
+         <p>Dublin 2, Ireland</p>
+         <p>T: +353 1 896 1000</p>
+         <p>&nbsp;</p>
+      <!--   <p>Revision: local -->
+ </p>
+       <!--  <p>A service of <a href="http://samvera.org/" class="navbar-link" target="_blank">Samvera</a>.</p>
+         <p>Digital Collections v2.7.2</p> -->
+     </div>
+     <!--    <p><strong>Copyright &copy; 2018 Samvera</strong> Licensed under the Apache License, Version 2.0</p>
+         <p></p> -->
 
 
-    <div class="navbar-right">
-          <div class="navbar-text text-left">
+     <div class="navbar-right">
+           <div class="navbar-text text-left">
 
-        <p><a href="//www.tcd.ie/accessibility/" class="foot"><i class="fa fa-angle-double-right" style="font-size:12px; color:#2997bc;"></i>&nbsp; Trinity Accessibility</a></p>
-        <p><a href="//www.tcd.ie/privacy/" class="foot"><i class="fa fa-angle-double-right" style="font-size:12px; color:#2997bc;"></i>&nbsp; Trinity Privacy</a></p>
-        <p><a href="//www.tcd.ie/disclaim/" class="foot"><i class="fa fa-angle-double-right" style="font-size:12px; color:#2997bc;"></i>&nbsp; Trinity Disclaimer</a></p>
-        <p><a href="//www.tcd.ie/contacts/" class="foot"><i class="fa fa-angle-double-right" style="font-size:12px; color:#2997bc;"></i>&nbsp; Trinity Contact</a></p>
+         <p><a href="//www.tcd.ie/accessibility/" class="foot"><i class="fa fa-angle-double-right" style="font-size:12px; color:#2997bc;"></i>&nbsp; Trinity Accessibility</a></p>
+         <p><a href="//www.tcd.ie/privacy/" class="foot"><i class="fa fa-angle-double-right" style="font-size:12px; color:#2997bc;"></i>&nbsp; Trinity Privacy</a></p>
+         <p><a href="//www.tcd.ie/disclaim/" class="foot"><i class="fa fa-angle-double-right" style="font-size:12px; color:#2997bc;"></i>&nbsp; Trinity Disclaimer</a></p>
+         <p><a href="//www.tcd.ie/contacts/" class="foot"><i class="fa fa-angle-double-right" style="font-size:12px; color:#2997bc;"></i>&nbsp; Trinity Contact</a></p>
 
-      </div>
-    </div>
+       </div>
+     </div>
 
-  </div>
-</footer>
+   </div>
+ </footer>
 
-    <div id="ajax-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal menu" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-    </div>
-  </div>
-</div>
+     <div id="ajax-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal menu" aria-hidden="true">
+   <div class="modal-dialog">
+     <div class="modal-content">
+     </div>
+   </div>
+ </div>
 
-  </body>
-</html>
+   </body>
+ </html>

@@ -8,8 +8,9 @@
           <% end %>
         </h3>
         <p class="recent-field">
-          <span class="recent-label"><%= t('hyrax.homepage.recently_uploaded.document.depositor_label') %>:</span> <%= link_to_profile recent_document.depositor(t('hyrax.homepage.recently_uploaded.document.depositor_missing')) %>
+          <span class="recent-label"><%= t('hyrax.homepage.recently_uploaded.document.abstract') %>:</span> <%= recent_document.abstract ? recent_document.abstract[0].slice(0..200) + '...' : "No abstract available" %>
         </p>
+
         <p class="recent-field">
           <span class="recent-label"><%= t('hyrax.homepage.recently_uploaded.document.keyword_label') %>:</span> <%= link_to_facet_list(recent_document.keyword, 'keyword', t('hyrax.homepage.recently_uploaded.document.keyword_missing')).html_safe %>
         </p>

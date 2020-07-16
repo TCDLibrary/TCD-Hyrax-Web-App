@@ -1,28 +1,17 @@
-<table class="table table-striped collection-highlights">
-  <tbody>
-    <% collections.each do |collection| %>
-      <tr>
-        <td>
 
-          <div class="card mb-3">
-            <h5 class="card-title"><%= link_to [hyrax, collection] do %>
-              <b><%= collection.title_or_label %></b>
-            <% end %>
-          </h5>
-            <%= link_to [hyrax, collection],  'aria-hidden' => true do %>
-              <%= render_thumbnail_tag collection, { class: 'card-img-top hidden-xs file_listing_thumbnail_tcd' }, { suppress_link: true } %>
-            <% end %>
-            <div class="card-body">
-              <p></p>
-              <p class="card-text">
-                <%= collection.description.first.truncate(500, separator: '.') %>
-              </p>
-            </div>
+<div class="TCD-flex-container">
+  <% collections.each do |collection| %>
+    <% col_rec = Collection.find(collection.id) %>
+    <div class="TCD-flex-item">
+        <%= link_to [hyrax, collection],  'aria-hidden' => true do %>
+          <img src="/<%= col_rec.flex_image ? col_rec.flex_image : 'default_flex_img.jpg' %>" alt=<%= collection.title_or_label %> class="TCD-image">
+
+          <div class="TCD-overlay">
+            <div class="TCD-text"><%= collection.title_or_label %></div>
           </div>
+        <% end %>
+    </div>
+  <% end %>
+</div>
 
-        </td>
-      </tr>
-    <% end %>
-
-  </tbody>
-</table>
+<div>&nbsp;</div>

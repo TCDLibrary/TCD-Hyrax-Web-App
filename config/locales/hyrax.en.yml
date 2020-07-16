@@ -6,7 +6,7 @@ en:
       fields:
         facet:
           based_near_label_sim: Based Near
-          joetesting: Joe Testing
+          flex_image: Homepage Flex Image
           creator_sim: Creator
           file_format_sim: Format
           generic_type_sim: Type
@@ -16,7 +16,7 @@ en:
           subject_sim: Subject
         index:
           based_near_tesim: Based Near
-          joetesting: Joe Testing
+          flex_image: Homepage Flex Image
           contributor_tesim: Contributor
           creator_tesim: Creator
           date_created_tesim: Date Created
@@ -33,7 +33,7 @@ en:
           subject_tesim: Subject
         show:
           based_near_tesim: Based Near
-          joetesting: Joe Testing
+          flex_image: Homepage Flex Image
           contributor_tesim: Contributor
           creator_tesim: Creator
           date_created_tesim: Date Created
@@ -51,6 +51,8 @@ en:
           title_tesim: Title
   hyrax:
     account_name: Trinity College Dublin Admin
+    controls:
+      library: Library
     directory:
       suffix: "@example.org"
     download:
@@ -64,8 +66,10 @@ en:
       disclaimer: Trinity Disclaimer
       contact: Trinity Contact
     homepage:
+      admin_sets:
+        link: Explore More
       beta:
-        cant_html: "Can’t find what you’re looking for? Our old service can be found <a href='https://www.tcd.ie/library/digitalcollections/' target='_blank'>here</a>."
+        cant_html: "Can’t find what you’re looking for? <a href='https://www.tcd.ie/Library/digitalcollections' target='_blank'>Our old service can be found here</a>."
         welcome_html: "Welcome to Digital Collections <strong>beta</strong> version, please bear with us as we add collections."
     institution_name: TCD
     institution_name_full: Trinity College Dublin

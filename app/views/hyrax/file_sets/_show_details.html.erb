@@ -1,7 +1,5 @@
 <h2><%= t('hyrax.technical_metadata.file_details') %></h2>
 <dl class="dl-vertical file-show-term file-show-details">
-  <dt><%= t('hyrax.technical_metadata.depositor') %></dt>
-  <dd itemprop="accountablePerson" itemscope itemtype="http://schema.org/Person"><span itemprop="name"><%= link_to_profile @presenter.depositor %></span></dd>
   <dt><%= t('hyrax.technical_metadata.date_uploaded') %></dt>
   <dd itemprop="datePublished"><%= @presenter.date_uploaded %></dd>
   <dt><%= t('hyrax.technical_metadata.date_modified') %></dt>
