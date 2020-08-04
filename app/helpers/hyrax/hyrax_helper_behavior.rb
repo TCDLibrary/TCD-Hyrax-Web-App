@@ -12,6 +12,7 @@ module Hyrax
     include Hyrax::ChartsHelper
     include Hyrax::DashboardHelperBehavior
     include Hyrax::IiifHelper
+    include Hyrax::WorkFormHelper
 
     # Which translations are available for the user to select
     # @return [Hash<String,String>] locale abbreviations as keys and flags as values
@@ -21,7 +22,7 @@ module Hyrax
         'en' => 'English',
         'es' => 'Español',
         'fr' => 'Français',
-        'ga' => 'Gaeilge',  
+        'ga' => 'Gaeilge',
         'it' => 'Italiano',
         'pt-BR' => 'Português do Brasil',
         'zh' => '中文'
