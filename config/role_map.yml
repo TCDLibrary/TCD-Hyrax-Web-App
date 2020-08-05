@@ -10,22 +10,6 @@ development:
     - test@example.com
     - magar@tcd.ie
 
-demovm045:
-  archivist:
-    - archivist1@example.com
-#    - cataloger@tcd.ie
-  admin:
-    - jlakes@tcd.ie
-    - batchuser@example.com
-    - test@example.com
-    - magar@tcd.ie
-
-demovm099:
-  admin:
-    - jlakes@tcd.ie
-    - batchuser@example.com
-    - magar@tcd.ie
-
 dcdevhyrax:
   admin:
     - jlakes@tcd.ie

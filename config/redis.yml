@@ -1,12 +1,6 @@
 development:
   host: <%= ENV['REDIS_HOST'] || 'localhost' %>
   port: 6379
-demovm045:
-  host: localhost
-  port: 6379
-demovm099:
-  host: localhost
-  port: 6379
 dcdevhyrax:
   host: localhost
   port: 6379
