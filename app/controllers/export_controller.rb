@@ -93,12 +93,12 @@ class ExportController < ApplicationController
                 end
               end
 
-              xml.send('dc:identifier', request.original_url)
+              xml.send('dc:identifier', request.referrer)
 
               owner_rec.language.each do |attribute|
                 if !attribute.blank?
                    lang = Iso639[attribute]
-                  
+
                    if lang.present?
                       xml.send('dc:language', Iso639[attribute].english_name)
                    end
