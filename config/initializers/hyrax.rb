@@ -161,7 +161,8 @@ Hyrax.config do |config|
     #Riiif::Engine.routes.url_helpers.image_url(file_id, host: base_url, size: size)
     #byebug
     if ENV['IIIF_SERVER_URL'].present?
-      ENV['IIIF_SERVER_URL'] + file_id.gsub('/', '%2F') + "/" + size + "/full/0/default.jpg"
+#      ENV['IIIF_SERVER_URL'] + file_id.gsub('/', '%2F') + "/" + size + "/full/0/default.jpg"
+      ENV['IIIF_SERVER_URL'] + file_id.gsub('/', '%2F') + "/full/" + size + "/0/default.jpg"
     else
       Riiif::Engine.routes.url_helpers.image_url(file_id, host: base_url, size: size)
     end
@@ -197,8 +198,8 @@ Hyrax.config do |config|
   config.iiif_image_compliance_level_uri = 'http://iiif.io/api/image/2/level2.json'
 
   # Returns a IIIF image size default
-  #config.iiif_image_size_default = '600,'
-  config.iiif_image_size_default = 'full'
+  config.iiif_image_size_default = '600,'
+  #config.iiif_image_size_default = 'full'
 
   # Fields to display in the IIIF metadata section; default is the required fields
   config.iiif_metadata_fields = Hyrax::Forms::WorkForm.required_fields

@@ -74,8 +74,6 @@ group :development do
 end
 
 group :development do
-# , :dcdevhyrax
-# , :digcollhyrax01, :digcollhyrax02
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
@@ -131,3 +129,5 @@ gem 'sshkit-sudo'
 gem 'hydra-role-management'
 
 gem 'willow_sword', github: 'notch8/willow_sword'
+
+gem 'kaminari'
