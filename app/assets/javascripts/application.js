@@ -10,7 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= 
+//=
 //= require turbolinks
 //
 // Required by Blacklight
@@ -23,4 +23,4 @@
 //= require bulkrax/application
 //= require_tree .
 //= require hyrax
-
+//= require tcd
