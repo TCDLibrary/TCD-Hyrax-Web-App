@@ -31,7 +31,7 @@ module Hyrax
     delegate :provenance, to: :solr_document
     delegate :culture, to: :solr_document
     delegate :location, to: :solr_document
-
+    delegate :folder_number, to: :solr_document
 
   end
 end

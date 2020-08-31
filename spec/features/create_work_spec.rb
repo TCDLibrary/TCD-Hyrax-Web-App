@@ -108,7 +108,7 @@ RSpec.feature 'Create a Work', js: true do
       fill_in "Order no", with: "An Order No"
       fill_in "Total records", with: "A Total Records"
       fill_in "Location", with: "A Location"
-
+      
       # 29/11/2018 JL - abstract already exists
       # fill_in "Abstract", with: "An Abstract"
 

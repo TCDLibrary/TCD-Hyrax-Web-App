@@ -107,6 +107,10 @@ class SolrDocument
     self[Solrizer.solr_name('provenance')]
   end
 
+  def folder_number
+    self[Solrizer.solr_name('folder_number')]
+  end
+
   def camera_model
     self[Solrizer.solr_name('camera_model')]
   end

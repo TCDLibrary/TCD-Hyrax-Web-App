@@ -48,8 +48,12 @@
   <%= presenter.attribute_to_html(:digital_object_identifier, html_dl: true) %>
   <!--%= presenter.attribute_to_html(:language_code) %> -->
   <!-- %= presenter.attribute_to_html(:role) %> -->
+
   <%= presenter.attribute_to_html(:sponsor, html_dl: true) %>
 
+  <% if current_ability.can_create_any_work? %>
+      <%= presenter.attribute_to_html(:folder_number, html_dl: true) %>
+  <% end %>
 
   <!-- %= presenter.attribute_to_html(:type_of_work) %> -->
   <!--%= presenter.attribute_to_html(:subject_lcsh) %> -->
