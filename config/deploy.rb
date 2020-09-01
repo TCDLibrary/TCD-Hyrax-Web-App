@@ -92,7 +92,7 @@ namespace :deploy do
       #execute :bundle , 'config', '--local', 'path', shared_path.join('bundle')
       ##execute :bundle, :config, "--local path #{shared_path.join('bundle')}"
       execute :bundle, 'config', '--local deployment', true
-      execute :bundle, 'config', '--local', 'without', "development:test"
+      execute :bundle, 'config', '--local', 'without', "development test"
       execute :bundle, 'config', '--local', 'path', shared_path.join('bundle')
     end
   end
