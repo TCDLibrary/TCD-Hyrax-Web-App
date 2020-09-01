@@ -829,10 +829,6 @@ GEM
     sparql-client (3.1.0)
       net-http-persistent (~> 3.1)
       rdf (~> 3.1)
-    spring (2.1.0)
-    spring-watcher-listen (2.0.1)
-      listen (>= 2.7, < 4.0)
-      spring (>= 1.2, < 3.0)
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -932,8 +928,6 @@ DEPENDENCIES
   selenium-webdriver
   sidekiq
   solr_wrapper (>= 0.3)
-  spring
-  spring-watcher-listen (~> 2.0.0)
   sshkit-sudo
   turbolinks (~> 5)
   tzinfo-data
