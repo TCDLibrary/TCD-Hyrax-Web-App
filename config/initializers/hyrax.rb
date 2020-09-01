@@ -226,7 +226,8 @@ Hyrax.config do |config|
   #config.banner_image = 'https://github.com/joelakes/TCD-Hyrax-Web-App/blob/demo-ingests/public/branding/MS57_178%20-%20test%20header.jpg?raw=true'
   #config.banner_image = 'https://github.com/joelakes/TCD-Hyrax-Web-App/blob/demo-ingests/public/branding/MapTest%20Banner%20Example%201.jpg?raw=true'
   #config.banner_image = 'https://github.com/joelakes/TCD-Hyrax-Web-App/blob/demo-ingests/public/branding/MapTest%20Banner%20Example%202.jpg?raw=true'
-  config.banner_image = '/branding/MapTest Banner Example 2.jpg?raw=true'
+  #config.banner_image = '/branding/MapTest Banner Example 2.jpg?raw=true'
+  config.banner_image = '/branding/MapTest-Banner-Example-2-Gill.jpg'
 
   # Temporary paths to hold uploads before they are ingested into FCrepo
   # These must be lambdas that return a Pathname. Can be configured separately
