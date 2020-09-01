@@ -134,3 +134,6 @@ gem 'hydra-role-management'
 gem 'willow_sword', github: 'notch8/willow_sword'
 
 gem 'kaminari'
+
+# temporarily add this to prompt bundle install in cap deploy
+gem 'paperclip'
