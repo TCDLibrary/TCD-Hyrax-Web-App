@@ -49,7 +49,7 @@ group :development do
   gem 'capistrano-rvm'
   #gem 'capistrano-rbenv'
   #gem 'capistrano-chruby'
-  gem 'capistrano-bundler'
+  gem 'capistrano-bundler', '~> 2.0'
   #gem 'capistrano-rails/assets'
   #gem 'capistrano-rails/migrations'
   gem 'capistrano-passenger'
@@ -134,6 +134,3 @@ gem 'hydra-role-management'
 gem 'willow_sword', github: 'notch8/willow_sword'
 
 gem 'kaminari'
-
-# temporarily add this to prompt bundle install in cap deploy
-gem 'paperclip'
