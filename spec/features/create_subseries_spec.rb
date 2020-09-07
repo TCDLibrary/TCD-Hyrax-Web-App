@@ -106,8 +106,6 @@ RSpec.feature 'Create a Subseries', js: true do
       fill_in "Total records", with: "A Total Records"
       fill_in "Location", with: "A Location"
 
-
-
       # With selenium and the chrome driver, focus remains on the
       # select box. Click outside the box so the next line can't find
       # its element

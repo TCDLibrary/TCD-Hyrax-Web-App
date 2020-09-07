@@ -8,6 +8,7 @@ set :branch, "master"
 #set :branch, "2020-05-15-UX-Homepage"
 #set :branch, "2020-07-06-Change-Default-Ingest-Folder"
 #set :branch, "2020-08-13-Various-Display-Changes"
+#set :branch,"2020-08-25-Metadata-Wrap-and-Folder-Number"
 
 # Default deploy_to directory is /var/www/my_app_name. Override it:
 set :deploy_to, "/opt/app/TCD-Hyrax-Web-App"

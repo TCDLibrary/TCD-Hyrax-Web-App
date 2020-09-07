@@ -9,7 +9,6 @@ module Hyrax
     # JL: 2020-04-27 suppress Page No
     #delegate :dris_page_no, to: :solr_document
 
-
     #delegate :copyright_status, to: :solr_document
 
     delegate :digital_object_identifier, to: :solr_document
@@ -31,7 +30,7 @@ module Hyrax
     delegate :provenance, to: :solr_document
     delegate :culture, to: :solr_document
     delegate :location, to: :solr_document
-
+    delegate :folder_number, to: :solr_document
 
   end
 end

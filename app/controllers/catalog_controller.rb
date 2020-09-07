@@ -94,6 +94,7 @@ class CatalogController < ApplicationController
 
 
     #config.add_index_field solr_name("dris_unique", :stored_searchable), itemprop: 'dris_unique'
+    config.add_index_field solr_name("folder_number", :stored_searchable), itemprop: 'folder_number'
     config.add_index_field solr_name("sponsor", :stored_searchable), itemprop: 'sponsor'
     config.add_index_field solr_name("bibliography", :stored_searchable), itemprop: 'bibliography'
     config.add_index_field solr_name("contributor", :stored_searchable), itemprop: 'contributor', link_to_search: solr_name("contributor", :facetable)
@@ -106,7 +107,6 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("file_format", :stored_searchable), link_to_search: solr_name("file_format", :facetable)
     config.add_index_field solr_name("embargo_release_date", :stored_sortable, type: :date), label: "Embargo release date", helper_method: :human_readable_date
     config.add_index_field solr_name("lease_expiration_date", :stored_sortable, type: :date), label: "Lease expiration date", helper_method: :human_readable_date
-
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
@@ -148,7 +148,7 @@ class CatalogController < ApplicationController
     config.add_show_field solr_name("resource_type", :stored_searchable), label: "Resource Type"
     config.add_show_field solr_name("format", :stored_searchable)
     config.add_show_field solr_name("identifier", :stored_searchable)
-
+    config.add_show_field solr_name("folder_number", :stored_searchable)
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
     #
@@ -465,6 +465,15 @@ class CatalogController < ApplicationController
 
     config.add_search_field('license') do |field|
       solr_name = solr_name("license", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('folder_number') do |field|
+      field.label = "Folder number"
+      solr_name = solr_name("folder_number", :stored_searchable)
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name

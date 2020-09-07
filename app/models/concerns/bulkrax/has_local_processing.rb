@@ -138,6 +138,7 @@ module Bulkrax::HasLocalProcessing
       project_number
       order_no
       total_records
+      folder_number
     ]
   end
 end

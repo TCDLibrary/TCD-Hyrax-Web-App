@@ -29,7 +29,7 @@ RSpec.feature 'Display a Work' do
 
   let(:provenance)                  {['A Provenance']}
   let(:culture)                     {['A Culture']}
-
+  let(:folder_number)               {['123']}
 
   #let()
 
@@ -58,7 +58,8 @@ RSpec.feature 'Display a Work' do
                 series_title:               series_title,
                 collection_title:           collection_title,
                 provenance:                 provenance,
-                culture:                    culture
+                culture:                    culture,
+                folder_number:              folder_number
               )
   end
 
@@ -92,5 +93,7 @@ RSpec.feature 'Display a Work' do
 
     expect(page).to have_content work.provenance.first
     expect(page).to have_content work.culture.first
+    # you have to be logged in to see folder_number
+    # expect(page).to have_content work.folder_number.first
   end
 end
