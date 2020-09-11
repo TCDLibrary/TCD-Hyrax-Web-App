@@ -3,6 +3,25 @@
 <% end %>
 
 <div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <% case ENV["RAILS_ENV"] %>
+          <% when 'development' %>
+               <span class="label label-info">Environment : <%= ENV["RAILS_ENV"]%></span>
+          <% when 'dcdevhyrax' %>
+               <span class="label label-warning">Environment : Demo (dcdev)</span>
+          <% when 'digcollhyrax01' %>
+               <span class="label label-success">Environment : Primary (Production)</span>
+          <% when 'digcollhyrax02' %>
+               <span class="label label-danger">Environment : Secondary</span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
   <div class="col-md-3">
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -51,14 +70,7 @@
 
 <%= render 'admin_sets' %>
 
-<div class="row">
-  <div class="col-md-12">
-    <div class="panel panel-default">
-    <!-- <a href="import/index">Ingest >> </a> <br /> -->
-    <%= link_to("Ingest (new) >>" , "ingests", :class => 'link') %>
-    </div>
-  </div>
-</div>
+
 
 
 
