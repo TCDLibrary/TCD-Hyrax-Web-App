@@ -23,7 +23,7 @@ RSpec.feature 'Create an Ingest', js: true do
       admin = Role.create(name: "admin")
       admin.users << user
       admin.save
-      
+
       # Grant the user access to deposit into the admin set.
       Hyrax::PermissionTemplateAccess.create!(
         permission_template_id: permission_template.id,
@@ -34,13 +34,5 @@ RSpec.feature 'Create an Ingest', js: true do
       login_as user
     end
 
-    scenario do
-      visit '/dashboard'
-      click_link "Ingest (new) >>"
-
-      expect(page).to have_content "Ingests"
-      click_on('Add New Ingest')
-      expect(page).to have_content('Files available to ingest:')
-    end
   end
 end

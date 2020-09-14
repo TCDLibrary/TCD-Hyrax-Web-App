@@ -8,7 +8,7 @@ end
 gem 'activerecord-nulldb-adapter'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.6.2'
+gem 'rails', '~> 5.2.4.3'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 # JL : 18/12/2018 Moving from Sqlite to MySql
@@ -60,7 +60,9 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '~> 2.13'
+  #gem 'capybara', '~> 2.13'
+  gem 'capybara', '~> 3.33.0'
+
   gem 'capybara-screenshot'
   gem 'selenium-webdriver'
   gem 'webdrivers', '~> 3.0'
