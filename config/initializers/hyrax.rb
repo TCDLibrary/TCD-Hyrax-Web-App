@@ -231,8 +231,8 @@ Hyrax.config do |config|
 
   # Temporary paths to hold uploads before they are ingested into FCrepo
   # These must be lambdas that return a Pathname. Can be configured separately
-  #  config.upload_path = ->() { Rails.root + 'tmp' + 'uploads' }
-  #  config.cache_path = ->() { Rails.root + 'tmp' + 'uploads' + 'cache' }
+  config.upload_path = ->() { '/opt/app/hyrax/tmp/uploads/' }
+  config.cache_path = ->() { '/opt/app/hyrax/tmp/uploads/cache/' }
 
   # Location on local file system where derivatives will be stored
   # If you use a multi-server architecture, this MUST be a shared volume
@@ -249,7 +249,8 @@ Hyrax.config do |config|
   # Location on local file system where uploaded files will be staged
   # prior to being ingested into the repository or having derivatives generated.
   # If you use a multi-server architecture, this MUST be a shared volume.
-  config.working_path = Rails.root.join( 'tmp', 'uploads')
+  #config.working_path = Rails.root.join( 'tmp', 'uploads')
+  config.working_path = '/opt/app/hyrax/tmp/uploads/'
 
   # Should the media display partial render a download link?
   # config.display_media_download_link = true
