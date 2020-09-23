@@ -67,7 +67,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'webdrivers', '~> 3.0'
   # TODO: remove this when chrome updates beyond version 70:
-  gem 'chromedriver-helper', '<= 2.45'
+  #gem 'chromedriver-helper', '<= 2.45'
 end
 
 group :development do
