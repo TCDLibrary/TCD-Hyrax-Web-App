@@ -160,12 +160,12 @@ Hyrax.config do |config|
   config.iiif_image_url_builder = lambda do |file_id, base_url, size|
     #Riiif::Engine.routes.url_helpers.image_url(file_id, host: base_url, size: size)
     #byebug
-#!#    if ENV['IIIF_SERVER_URL'].present?
+    if ENV['IIIF_SERVER_URL'].present?
 #      ENV['IIIF_SERVER_URL'] + file_id.gsub('/', '%2F') + "/" + size + "/full/0/default.jpg"
-#!#       ENV['IIIF_SERVER_URL'] + file_id.gsub('/', '%2F') + "/full/" + size + "/0/default.jpg"
-#!#     else
+       'http://dcdev-web.tcd.ie/iiif/2/' + file_id.gsub('/', '%2F') + "/full/" + size + "/0/default.jpg"
+    else
       Riiif::Engine.routes.url_helpers.image_url(file_id, host: base_url, size: size)
-#!#     end
+    end
   end
 
   # config.iiif_image_url_builder = lambda do |file_id, base_url, size|
