@@ -51,6 +51,10 @@ before_script:
   #- echo "USE mysql;\nUPDATE user SET password=PASSWORD('Pa$$w0rd') WHERE user='travis';\nFLUSH PRIVILEGES;\n" | mysql -u root
   - "cp ./config/.travis.database.yml ./config/database.yml"
   - "cp ./config/.travis.secrets.yml ./config/secrets.yml"
+  # Travis-CI does like chromedriver-helper but rspec needs it in the Gemfile.
+  # This removes it temporarily, but only on Travis-CI
+  # If line contains chromedriver-helper, comment out the gem
+  - "sed -i -e '/chromedriver-helper/s/gem/# gem/' Gemfile"
 
 script:
   - bundle exec rake ci
