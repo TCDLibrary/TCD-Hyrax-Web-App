@@ -162,7 +162,7 @@ Hyrax.config do |config|
     #byebug
     if ENV['IIIF_SERVER_URL'].present?
 #      ENV['IIIF_SERVER_URL'] + file_id.gsub('/', '%2F') + "/" + size + "/full/0/default.jpg"
-       ENV['IIIF_SERVER_URL'] + file_id.gsub('/', '%2F') + "/full/" + size + "/0/default.jpg"
+       IIIF_SERVER_URL + file_id.gsub('/', '%2F') + "/full/" + size + "/0/default.jpg"
     else
       Riiif::Engine.routes.url_helpers.image_url(file_id, host: base_url, size: size)
     end
@@ -183,7 +183,7 @@ Hyrax.config do |config|
     #uri = Riiif::Engine.routes.url_helpers.info_url(file_id, host: base_url)
     #uri.sub(%r{/info\.json\Z}, '')
     if ENV['IIIF_SERVER_URL'].present?
-      ENV['IIIF_SERVER_URL'] + file_id.gsub('/', '%2F')
+      IIIF_SERVER_URL + file_id.gsub('/', '%2F')
     else
       uri = Riiif::Engine.routes.url_helpers.info_url(file_id, host: base_url)
       uri.sub(%r{/info\.json\Z}, '')
