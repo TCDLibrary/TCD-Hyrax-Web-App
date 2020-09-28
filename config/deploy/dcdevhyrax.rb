@@ -1,15 +1,8 @@
 set :stage, :dcdevhyrax
 set :rails_env, :dcdevhyrax
-#set :branch, "master"
-#set :branch, "Notch8-2020-06-08-Manifest-Caching"
+set :branch, "master"
 
-set :branch, "2020-09-11-Move-ingest-tmp-folders-etc"
-#set :branch, "2020-03-25-Small-tweaks"
-#set :branch, "2020-05-15-UX-Homepage"
-#set :branch, "2020-07-06-Change-Default-Ingest-Folder"
-#set :branch, "2020-08-13-Various-Display-Changes"
-#set :branch,"2020-08-25-Metadata-Wrap-and-Folder-Number"
-
+#set :branch, "2020-09-11-Move-ingest-tmp-folders-etc"
 
 # Default deploy_to directory is /var/www/my_app_name. Override it:
 set :deploy_to, "/opt/app/TCD-Hyrax-Web-App"
