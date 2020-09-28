@@ -36,7 +36,7 @@
 		Provide the path to the directory containing project folders to import. Or to the individual project folder.
 	</p>
 
-  <%= fi.input :import_file_path, as: :string, input_html: { value: importer.parser_fields['import_file_path'] || '/digicolapp/datastore/ingest/' + current_user.email.delete_suffix("@tcd.ie")} %>
+  <%= fi.input :import_file_path, as: :string, input_html: { value: importer.parser_fields['import_file_path'] || '/digicolapp/datastore/import/' + current_user.email.delete_suffix("@tcd.ie")} %>
 
 <h4>Attach images?</h4>
 
