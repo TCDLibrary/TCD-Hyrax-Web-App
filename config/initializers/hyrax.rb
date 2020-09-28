@@ -162,7 +162,7 @@ Hyrax.config do |config|
     #byebug
     if ENV['IIIF_SERVER_URL'].present?
 #      ENV['IIIF_SERVER_URL'] + file_id.gsub('/', '%2F') + "/" + size + "/full/0/default.jpg"
-      ENV['IIIF_SERVER_URL'] + file_id.gsub('/', '%2F') + "/full/" + size + "/0/default.jpg"
+       IIIF_SERVER_URL + file_id.gsub('/', '%2F') + "/full/" + size + "/0/default.jpg"
     else
       Riiif::Engine.routes.url_helpers.image_url(file_id, host: base_url, size: size)
     end
@@ -183,7 +183,7 @@ Hyrax.config do |config|
     #uri = Riiif::Engine.routes.url_helpers.info_url(file_id, host: base_url)
     #uri.sub(%r{/info\.json\Z}, '')
     if ENV['IIIF_SERVER_URL'].present?
-      ENV['IIIF_SERVER_URL'] + file_id.gsub('/', '%2F')
+      IIIF_SERVER_URL + file_id.gsub('/', '%2F')
     else
       uri = Riiif::Engine.routes.url_helpers.info_url(file_id, host: base_url)
       uri.sub(%r{/info\.json\Z}, '')
@@ -231,8 +231,8 @@ Hyrax.config do |config|
 
   # Temporary paths to hold uploads before they are ingested into FCrepo
   # These must be lambdas that return a Pathname. Can be configured separately
-  #  config.upload_path = ->() { Rails.root + 'tmp' + 'uploads' }
-  #  config.cache_path = ->() { Rails.root + 'tmp' + 'uploads' + 'cache' }
+  config.upload_path = ->() { '/opt/app/hyrax/tmp/uploads/' }
+  config.cache_path = ->() { '/opt/app/hyrax/tmp/uploads/cache/' }
 
   # Location on local file system where derivatives will be stored
   # If you use a multi-server architecture, this MUST be a shared volume
@@ -249,7 +249,8 @@ Hyrax.config do |config|
   # Location on local file system where uploaded files will be staged
   # prior to being ingested into the repository or having derivatives generated.
   # If you use a multi-server architecture, this MUST be a shared volume.
-  config.working_path = Rails.root.join( 'tmp', 'uploads')
+  #config.working_path = Rails.root.join( 'tmp', 'uploads')
+  config.working_path = '/opt/app/hyrax/tmp/uploads/'
 
   # Should the media display partial render a download link?
   # config.display_media_download_link = true

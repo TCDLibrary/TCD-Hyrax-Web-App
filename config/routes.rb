@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   get 'import/index'
 
+  get 'search_tips' => 'hyrax/pages#show', key: 'search_tips'
+
   # TODO: remove get import/picker
   get 'import/picker'
 

@@ -50,9 +50,11 @@ en:
           subject_tesim: Subject
           title_tesim: Title
   hyrax:
+    search_tips: search_tips
     account_name: Trinity College Dublin Admin
     controls:
       library: Library
+      search_tips: Search Tips
     directory:
       suffix: "@example.org"
     download:
@@ -73,6 +75,9 @@ en:
         welcome_html: "Welcome to Digital Collections <strong>beta</strong> version, please bear with us as we add collections."
     institution_name: TCD
     institution_name_full: Trinity College Dublin
+    pages:
+      tabs:
+        search_tips_page: Search Tips
     product_name: Digital Collections
     product_twitter_handle: "@DigitalColl"
 

@@ -293,6 +293,10 @@ a { color: #2e74b2; }
   border-color: #265b89;
 }
 
+hr.horizontal_line {
+  border-top: 1px solid #3c763d;
+}
+
 </style>
 
 
@@ -404,6 +408,8 @@ a { color: #2e74b2; }
           <a href="/contact?locale=en">Contact</a></li>
         <li >
           <a href="https://www.tcd.ie/library">Library</a></li>
+        <li >
+          <a href="/search_tips?locale=en">Search Tips</a></li>
 
       </ul><!-- /.nav -->
       <div class="searchbar-right navbar-right col-sm-7">
@@ -445,19 +451,64 @@ a { color: #2e74b2; }
   <div class="alert alert-success alert-dismissable" role="alert">
 
 
-  <p>  Sorry! The page you are looking could not be found. </p>
+  <p>  Sorry! The page you are looking for could not be found. </p>
   <p>&nbsp;</p>
   <p>  We are currently upgrading our digital repository and transferring our collections to our new, improved platform.</p>
   <p>&nbsp;</p>
-  <p>  Have you tried using the search box above? Still can’t find what you’re looking for? <a href="https://www.tcd.ie/Library/digitalcollections" target="_blank">Try our old service here</a></p>
-  <p>&nbsp;</p>
+  <p>  Have you tried <a href="/catalog" id="cat" target="_blank">searching</a> our new service?</p>
   <p>&nbsp;</p>
 
+
+  <span id="legacy"></span>
+  <p>Are you looking for the Book of Kells? <a href="https://digitalcollections.tcd.ie/collections/ks65hc20t" target="_blank">Click here</a></p>
+  <p><a href="https://digitalcollections.tcd.ie/collections/ks65hc20t" target="_blank"><img src="/Kells_MS58_Banner_Crop.jpg" style="max-width:100%;border-radius:1em;" /></a></p>
+  <p>&nbsp;</p>
+  <p>  While you are here, we recommend that you <b>update your bookmarks</b>.</p>
+  <p>&nbsp;</p>
+
+  <hr class="horizontal_line">
+  <p>&nbsp;</p>
+  <i>
   <p>  Tá brón orainn! Ní fhéadfaí teacht ar an leathanach atá á lorg agat. </p>
   <p>&nbsp;</p>
   <p>  Táthar i mbun uasghrádaithe ar ár stór digiteach faoi láthair agus ag aistriú ár mbailiúchán chuig ár n-ardán nua, feabhsaithe. </p>
   <p>&nbsp;</p>
-  <p>  An ndearna tú iarracht an bosca cuardaigh thuas a úsáid? <a href="https://www.tcd.ie/Library/digitalcollections" target="_blank">Mura féidir teacht ar an méid atá á lorg agat go fóill, bain triail ár sean-seirbhís anseo</a>.</p>
+  <p>  An ndearna tú iarracht <a href="/catalog" id="cat_ga" target="_blank">an bosca cuardaigh thuas a úsáid?</a></p>
+  <p>&nbsp;</p>
+
+  <span id="legacy_ga"></span>
+  <p>An bhfuil tú ag lorg Leabhar Cheanannais? <a href="https://digitalcollections.tcd.ie/collections/ks65hc20t" target="_blank">Cliceáil anseo</a></p>
+  <p><a href="https://digitalcollections.tcd.ie/collections/ks65hc20t" target="_blank"><img src="/Kells_MS58_Banner_Crop.jpg" style="max-width:100%;border-radius:1em;"/></a></p>
+  <p>&nbsp;</p>
+</i>
+  <script>
+  var parser = document.createElement('a');
+  if (document.URL.toString().includes("#folder_id")) {
+    parser.href = document.URL;
+    var link_pre = '<p>Still can’t find what you’re looking for? Try our old service <a href="'
+    var link_pre_ga = '<p>Mura féidir teacht ar an méid atá á lorg agat go fóill, bain triail ár sean-seirbhís <a href="'
+    var link_post = '" target="_blank">here</a></p><p>&nbsp;</p>'
+    var link_post_ga = '" target="_blank">anseo</a></p><p>&nbsp;</p>'
+    var legacy_url = 'https://www.tcd.ie/library/digitalcollections/home/'
+    document.getElementById("legacy").innerHTML = link_pre.concat(legacy_url, parser.hash, link_post);
+    document.getElementById("legacy_ga").innerHTML = link_pre_ga.concat(legacy_url, parser.hash, link_post_ga);
+    // now tru to see the search with the pidtopage value (jpeg name)
+    var string = parser.hash;
+    const table = string.split("&").map(pair => pair.split("="));
+    const result = {};
+    table.forEach(([key,value]) => result[key] = value);
+    //console.log( result.pidtopage );
+    var url_pre = "/catalog?search_field=all_fields&q=";
+    //var search = result.pidtopage;
+    //console.log( search );
+    var search_link = url_pre.concat(result.pidtopage);
+    //console.log(search_link);
+    document.getElementById("cat").href=search_link;
+    document.getElementById("cat_ga").href=search_link;
+
+  }
+  </script>
+
 
 </div><!-- /.col-xs-6 -->
 
