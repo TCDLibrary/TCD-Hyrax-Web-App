@@ -11,7 +11,7 @@ module Bulkrax
     # Override bulkrax to move files to Bulkrax.import_path/importer_id/
     def valid_import?
       import_path = parser_fields['import_file_path']
-      if import_path.include?("public/data/ingest") || import_path.include?("/digicolapp/datastore/ingest")
+      if import_path.include?("public/data/ingest") || import_path.include?("/digicolapp/datastore/import")
         move_import_files
         parser_fields['import_file_path'] = path_for_import
         importerexporter.save!
