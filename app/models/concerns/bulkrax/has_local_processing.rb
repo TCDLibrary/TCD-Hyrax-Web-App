@@ -112,33 +112,7 @@ module Bulkrax::HasLocalProcessing
 
   def skip_fields
     %w[
-      creator_loc
-      creator_local
-      publisher
-      location
-      resource_type
-      bibliography
-      dris_page_no
-      dris_document_no
-      format_duration
-      copyright_note
-      digital_root_number
-      digital_object_identifier
-      location_type
-      sponsor
-      conservation_history
-      publisher_location
-      page_number
-      page_type
-      physical_extent
-      keyword
-      subject_local_keyword
-      series_title
-      county
-      project_number
-      order_no
-      total_records
-      folder_number
+  
     ]
   end
 end
