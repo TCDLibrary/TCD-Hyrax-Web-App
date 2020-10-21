@@ -9,7 +9,7 @@ ga:
           dris_page_no: Uimhir leathanaigh
           dris_page_no_tesim: Uimhir leathanaigh
           dris_page_no_label: Uimhir leathanaigh
-          genre_tesim: Genre
+          genre_tesim: Formáid
           abstract_tesim: Achoimre
           digital_object_identifier_tesim: Aitheantóir Oibiachta Digití
           dris_unique_tesim: Dris Unique
@@ -48,7 +48,7 @@ ga:
           dris_page_no: Uimhir leathanaigh
           dris_page_no_tesim: Uimhir leathanaigh
           dris_page_no_label: Uimhir leathanaigh
-          genre_tesim: Genre
+          genre_tesim: Formáid
           abstract_tesim: Achoimre
           digital_object_identifier_tesim: Aitheantóir Oibiachta Digití
           dris_unique_tesim: Dris Unique
@@ -88,7 +88,7 @@ ga:
           dris_page_no: Uimhir leathanaigh
           dris_page_no_tesim: Uimhir leathanaigh
           dris_page_no_label: Uimhir leathanaigh
-          genre_tesim: Genre
+          genre_tesim: Formáid
           abstract_tesim: Achoimre
           digital_object_identifier: Aitheantóir Oibiachta Digití
           dris_unique_tesim: Dris Unique

@@ -64,7 +64,7 @@ RSpec.feature 'Create a Folio', js: true do
 
       # 13-12-2018 JL:
       click_link("Additional fields")
-      fill_in "Genre", with: "A Work Genre"
+      fill_in "Format", with: "A Work Genre"
       fill_in "Bibliography", with: "A Work Bibliography"
       fill_in "Page no", with: "A Dris Page No"
       fill_in "Dris document no", with: "A Dris Document Number"

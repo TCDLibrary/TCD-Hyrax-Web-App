@@ -55,7 +55,7 @@ es:
           identifier_tesim: Identificador
           identifier: Número de referencia
           keyword_tesim: Palabra clave
-          genre: Género de objeto
+          genre: Formato
           language_tesim: Idioma
           license_tesim: Licencia
           license: Licencia

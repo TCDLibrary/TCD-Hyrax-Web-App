@@ -8,6 +8,7 @@ it:
           creator_sim: Creatore
           file_format_sim: Formato
           generic_type_sim: Tipo
+          genre_sim: Formato
           keyword_sim: Parola chiave
           language_sim: Lingua
           publisher_sim: Editore
@@ -37,6 +38,7 @@ it:
           date_uploaded_dtsi: Data caricata
           description_tesim: Descrizione
           file_format_tesim: Formato del file
+          genre: Formato
           identifier_tesim: Identifier
           keyword_tesim: Parola chiave
           language_tesim: Lingua

@@ -7,6 +7,7 @@ pt-BR:
           based_near_label_sim: Localização
           creator_sim: O Criador
           file_format_sim: Formato
+          genre_sim: Format
           generic_type_sim: Tipo
           keyword_sim: Palavra-chave
           language_sim: Língua
@@ -37,6 +38,7 @@ pt-BR:
           date_uploaded_dtsi: Data carregada
           description_tesim: Descrição
           file_format_tesim: Formato de arquivo
+          genre: Format
           identifier_tesim: Identificador
           keyword_tesim: Palavra-chave
           language_tesim: Língua

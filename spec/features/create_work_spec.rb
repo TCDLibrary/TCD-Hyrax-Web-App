@@ -66,7 +66,7 @@ RSpec.feature 'Create a Work', js: true do
       # 20-11-2018 JL:
       # require tcd_metadata.rb
       click_link("Additional fields")
-      fill_in "Genre", with: "A Work Genre"
+      fill_in "Format", with: "A Work Genre"
       fill_in "Bibliography", with: "A Work Bibliography"
       #fill_in "Dris page no", with: "A Dris Page No"
       fill_in "Dris document no", with: "A Dris Document Number"
@@ -108,7 +108,7 @@ RSpec.feature 'Create a Work', js: true do
       fill_in "Order no", with: "An Order No"
       fill_in "Total records", with: "A Total Records"
       fill_in "Location", with: "A Location"
-      
+
       # 29/11/2018 JL - abstract already exists
       # fill_in "Abstract", with: "An Abstract"
 
