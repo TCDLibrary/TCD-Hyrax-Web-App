@@ -15,6 +15,7 @@ es:
           human_readable_type_sim : Tipo
           keyword_sim: Palabra clave
           language_sim: Idioma
+          location_sim: Ubicación          
           publisher_sim: Editor
           subject_sim: Tema
           title_sim: Titulo

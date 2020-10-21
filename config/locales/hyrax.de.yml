@@ -11,6 +11,7 @@ de:
           genre_sim: Format
           keyword_sim: Stichwort
           language_sim: Sprache
+          location_sim: Lage
           publisher_sim: Herausgeber
           subject_sim: Fach
         index:

@@ -51,6 +51,7 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("based_near_label", :facetable), limit: 5
     config.add_facet_field solr_name("publisher", :facetable), limit: 5
     config.add_facet_field solr_name("genre", :facetable), limit: 5
+    config.add_facet_field solr_name("location", :facetable), limit: 2
     config.add_facet_field solr_name("file_format", :facetable), limit: 5
     config.add_facet_field solr_name('member_of_collection_ids', :symbol), limit: 5, label: 'Collections', helper_method: :collection_title_by_id
     config.add_facet_field solr_name("human_readable_type", :facetable), label: "Type", limit: 5
@@ -89,7 +90,7 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("keyword", :stored_searchable), itemprop: 'keywords', link_to_search: solr_name("keyword", :facetable)
     config.add_index_field solr_name("genre", :stored_searchable), itemprop: 'genre'
     config.add_index_field solr_name("identifier", :stored_searchable), helper_method: :index_field_link, field_name: 'identifier'
-    config.add_index_field solr_name("location", :stored_searchable), itemprop: 'location'
+    config.add_index_field solr_name("location", :stored_searchable), itemprop: 'location', link_to_search: solr_name("location", :facetable)
     config.add_index_field solr_name("rights_statement", :stored_searchable), helper_method: :rights_statement_links
     config.add_index_field solr_name("copyright_status", :stored_searchable), itemprop: 'copyright_status'
     config.add_index_field solr_name("date_modified", :stored_sortable, type: :date), itemprop: 'dateModified', helper_method: :human_readable_date

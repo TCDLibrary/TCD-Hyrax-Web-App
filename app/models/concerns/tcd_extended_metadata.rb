@@ -124,7 +124,7 @@ module TcdExtendedMetadata
       #  JL: note, in FileMaker can be captured in two places, depending on whether vocab used
       # TODO : test if searchable
       property :location, predicate: ::RDF::Vocab::MODS.Location  do |index|
-        index.as :stored_searchable
+        index.as :stored_searchable, :facetable
       end
 
       # 29/03/2019 JL - split creator, genre and subject for Michelle

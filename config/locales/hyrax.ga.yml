@@ -24,6 +24,7 @@ ga:
           type_tesim: Cineál
           human_readable_type_sim : Cineál
           generic_type_sim: Cineál
+          location_sim: Suíomh          
         show:
           admin_set: 'In Administrative Set:'
           based_near_label: Location

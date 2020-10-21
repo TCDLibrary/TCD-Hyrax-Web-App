@@ -11,6 +11,7 @@ fr:
           genre_sim: Format
           keyword_sim: Mot-clé
           language_sim: La langue
+          location_sim: Lieu
           publisher_sim: Éditeur
           subject_sim: Assujettir
         index:

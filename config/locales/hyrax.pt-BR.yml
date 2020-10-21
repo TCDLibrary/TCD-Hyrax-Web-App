@@ -11,6 +11,7 @@ pt-BR:
           generic_type_sim: Tipo
           keyword_sim: Palavra-chave
           language_sim: Língua
+          location_sim: Localização
           publisher_sim: Editor
           subject_sim: Sujeito
         index:

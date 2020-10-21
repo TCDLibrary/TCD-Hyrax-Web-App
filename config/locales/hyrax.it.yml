@@ -11,6 +11,7 @@ it:
           genre_sim: Formato
           keyword_sim: Parola chiave
           language_sim: Lingua
+          location_sim: Posizione
           publisher_sim: Editore
           subject_sim: Soggetto
         index:

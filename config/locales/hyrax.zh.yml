@@ -11,6 +11,7 @@ zh:
           genre_sim: Format
           keyword_sim: 关键词
           language_sim: 语言
+          location_sim: Location
           publisher_sim: 出版者
           subject_sim: 学科
         index:

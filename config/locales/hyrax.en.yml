@@ -14,6 +14,7 @@ en:
           language_sim: Language A
           publisher_sim: Publisher
           subject_sim: Subject
+          location_sim: Location
         index:
           based_near_tesim: Based Near
           flex_image: Homepage Flex Image
@@ -41,6 +42,7 @@ en:
           date_uploaded_dtsi: Date Uploaded
           description_tesim: Description
           file_format_tesim: File Format
+          genre: Format
           identifier_tesim: Identifier
           keyword_tesim: Keyword
           language_tesim: Language C
