@@ -24,7 +24,7 @@ ga:
           type_tesim: Cineál
           human_readable_type_sim : Cineál
           generic_type_sim: Cineál
-          location_sim: Suíomh          
+          location_sim: Suíomh
         show:
           admin_set: 'In Administrative Set:'
           based_near_label: Location
@@ -416,6 +416,7 @@ ga:
         date_uploaded: Dáta a uaslódáladh
         empty: This %{type} has no files associated with it. Click "edit" to add more files.
         header: Earraí
+        identifier: Cód seilf/Uimhir thagartha1
         thumbnail: Mionsamhail
         title: Teideal
         unauthorized: There are no publicly available items in this %{type}.

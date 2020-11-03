@@ -54,6 +54,9 @@ en:
   hyrax:
     search_tips: search_tips
     account_name: Trinity College Dublin Admin
+    base:
+      items:
+        identifier: Shelf Mark/Reference Number
     controls:
       library: Library
       search_tips: Search Tips

@@ -2,8 +2,17 @@
   <td class="thumbnail">
     <%= render_thumbnail_tag member %>
   </td>
+
+  <%
+  def blank_to_nbsp(value)
+    value.blank? ? "&nbsp;".html_safe : value.join(',')
+  end
+  %>
+
+
   <td class="attribute attribute-filename"><%= link_to(member.link_name, contextual_path(member, @presenter)) %></td>
-  <td class="attribute attribute-date_uploaded"><%= member.try(:date_uploaded) %></td>
+  <td class="attribute attribute-identifier"><%=  (member.class.name == "Hyrax::FileSetPresenter")? blank_to_nbsp(member.parent.try(:identifier)) : blank_to_nbsp(member.try(:identifier)) %></td>
+
   <td class="attribute attribute-permission"><%= member.permission_badge %></td>
   <td>
     <%= render 'actions', member: member %>

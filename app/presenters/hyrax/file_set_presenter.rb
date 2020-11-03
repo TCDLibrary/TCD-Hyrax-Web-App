@@ -30,7 +30,7 @@ module Hyrax
              :embargo_release_date, :lease_expiration_date,
              :depositor, :keyword, :title_or_label, :keyword,
              :date_created, :date_modified, :itemtype,
-             :original_file_id,
+             :original_file_id, :digital_object_identifier,
              to: :solr_document
 
     delegate :camera_model, :camera_make, :date_taken, :exposure_time, :f_number,
