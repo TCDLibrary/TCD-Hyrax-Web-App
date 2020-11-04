@@ -1,3 +1,8 @@
+<% presenter.title.each do |description| %>
+    <p class="TCD_work_description"><%= iconify_auto_link(description) %></p>
+<% end %>
+
+
 <%= presenter.attribute_to_html(:abstract, html_dl: true) %>
 <%= presenter.attribute_to_html(:alternative_title, html_dl: true) %>
 <%= presenter.attribute_to_html(:creator, render_as: :faceted, html_dl: true) %>

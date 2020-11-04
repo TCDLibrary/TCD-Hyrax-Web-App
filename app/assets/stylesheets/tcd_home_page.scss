@@ -136,3 +136,11 @@
 
 // not on homepage, this is for the collapsible text when displaying works, folios, subseries
 #TCDmore {display: none;}
+
+.TCD_work_description {
+  font-weight: bold;
+  font-size:120%;
+  li.attribute {
+  word-break: break-word;
+}
+}
