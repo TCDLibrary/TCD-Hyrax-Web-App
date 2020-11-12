@@ -27,7 +27,7 @@ module Hyrax
       end
 
       def persistent_url
-        "#{Hyrax.config.persistent_hostpath}#{id}"
+        "#{Rails.application.config.persistent_hostpath}#{id}"
       end
 
       def end_note_format
