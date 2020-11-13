@@ -31,7 +31,7 @@ es:
           date_uploaded_dtsi: Fecha de Subida
           description_tesim: Descripción
           file_format_tesim: Formato de Archivo
-          identifier_tesim: Identificador
+          identifier_tesim: Número de referencia
           keyword_tesim: Palabra clave
           language_tesim: Idioma
           license_tesim: Licencia
@@ -53,7 +53,7 @@ es:
           date_uploaded: Fecha de subida
           description_tesim: Descripción
           file_format_tesim: Formato de Archivo
-          identifier_tesim: Identificador
+          identifier_tesim: Número de referencia
           identifier: Número de referencia
           keyword_tesim: Palabra clave
           genre: Formato
@@ -139,7 +139,7 @@ es:
     labels:
       defaults:
         contributor: Contribuidor
-        identifier: Identificador
+        identifier: Número de referencia
         language: Lengua
         resource_type: Tipo de recurso
         subject: Tema

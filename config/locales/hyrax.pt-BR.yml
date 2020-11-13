@@ -23,7 +23,7 @@ pt-BR:
           date_uploaded_dtsi: Data carregada
           description_tesim: Descrição
           file_format_tesim: Formato de arquivo
-          identifier_tesim: Identificador
+          identifier_tesim: Número de referencia
           keyword_tesim: Palavra-chave
           language_tesim: Língua
           license_tesim: Licença
@@ -40,7 +40,7 @@ pt-BR:
           description_tesim: Descrição
           file_format_tesim: Formato de arquivo
           genre: Format
-          identifier_tesim: Identificador
+          identifier_tesim: Número de referencia
           keyword_tesim: Palavra-chave
           language_tesim: Língua
           license_tesim: Licença

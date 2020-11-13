@@ -1,4 +1,12 @@
 zh:
+  blacklight:
+    search:
+      fields:
+        facet:
+          genre_tesim: Genre
+          genre_sim: Genre
+        index:
+          genre_tesim: Genre
   hyrax:
     icons:
       folio:     'fa fa-file-text-o'

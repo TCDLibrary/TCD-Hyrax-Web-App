@@ -11,6 +11,8 @@ ga:
           dris_page_no_label: Uimhir leathanaigh
           genre_tesim: Formáid
           genre_sim: Formáid
+          identifier_tesim: Cód seilf/Uimhir thagartha
+          identifier_sim: Cód seilf/Uimhir thagartha
           abstract_tesim: Achoimre
           abstract_sim: Achoimre
           abstract_label: Achoimre

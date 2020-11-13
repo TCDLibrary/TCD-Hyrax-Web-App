@@ -5,6 +5,8 @@ es:
         facet:
           genre_tesim: Formato
           genre_sim: Formato
+        index:
+          genre_tesim: Formato
   hyrax:
     icons:
       folio:     'fa fa-file-text-o'

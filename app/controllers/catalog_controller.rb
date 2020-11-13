@@ -69,47 +69,49 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
-    config.add_index_field solr_name("title", :stored_searchable), label: "Title", itemprop: 'name', if: false
-    config.add_index_field solr_name("description", :stored_searchable), itemprop: 'description', helper_method: :iconify_auto_link
+  #JL  config.add_index_field solr_name("title", :stored_searchable), label: "Title", itemprop: 'name', if: false
+#JL    config.add_index_field solr_name("description", :stored_searchable), itemprop: 'description', helper_method: :iconify_auto_link
     #config.add_index_field solr_name("abstract", :stored_searchable), itemprop: 'abstract', helper_method: :iconify_auto_link
-    config.add_index_field solr_name("alternative_title", :stored_searchable), itemprop: 'alternative_title'
+#JL    config.add_index_field solr_name("alternative_title", :stored_searchable), itemprop: 'alternative_title'
     config.add_index_field solr_name("creator", :stored_searchable), itemprop: 'creator', link_to_search: solr_name("creator", :facetable)
-    config.add_index_field solr_name("publisher_location", :stored_searchable), itemprop: 'publisher_location'
-    config.add_index_field solr_name("publisher", :stored_searchable), itemprop: 'publisher', link_to_search: solr_name("publisher", :facetable)
-    config.add_index_field solr_name("date_created", :stored_searchable), itemprop: 'dateCreated'
-    config.add_index_field solr_name("series_title", :stored_searchable), itemprop: 'series_title'
-    config.add_index_field solr_name("collection_title", :stored_searchable), itemprop: 'collection_title'
-    config.add_index_field solr_name("medium", :stored_searchable), itemprop: 'medium'
-    config.add_index_field solr_name("support", :stored_searchable), itemprop: 'support'
-    config.add_index_field solr_name("dris_page_no", :stored_searchable), itemprop: 'dris_page_no'
-    config.add_index_field solr_name("digital_object_identifier", :stored_searchable), itemprop: 'digital_object_identifier'
-    config.add_index_field solr_name("language", :stored_searchable), itemprop: 'inLanguage', link_to_search: solr_name("language", :facetable)
-    config.add_index_field solr_name("culture", :stored_searchable), itemprop: 'culture'
-    config.add_index_field solr_name("provenance", :stored_searchable), itemprop: 'provenance'
-    config.add_index_field solr_name("subject", :stored_searchable), itemprop: 'about', link_to_search: solr_name("subject", :facetable)
-    config.add_index_field solr_name("keyword", :stored_searchable), itemprop: 'keywords', link_to_search: solr_name("keyword", :facetable)
+#JL    config.add_index_field solr_name("publisher_location", :stored_searchable), itemprop: 'publisher_location'
+#JL    config.add_index_field solr_name("publisher", :stored_searchable), itemprop: 'publisher', link_to_search: solr_name("publisher", :facetable)
+#JL    config.add_index_field solr_name("date_created", :stored_searchable), itemprop: 'dateCreated'
+#JL    config.add_index_field solr_name("series_title", :stored_searchable), itemprop: 'series_title'
+#JL    config.add_index_field solr_name("collection_title", :stored_searchable), itemprop: 'collection_title'
+#JL    config.add_index_field solr_name("medium", :stored_searchable), itemprop: 'medium'
+#JL    config.add_index_field solr_name("support", :stored_searchable), itemprop: 'support'
+#JL    config.add_index_field solr_name("dris_page_no", :stored_searchable), itemprop: 'dris_page_no'
+#JL    config.add_index_field solr_name("digital_object_identifier", :stored_searchable), itemprop: 'digital_object_identifier'
+#JL    config.add_index_field solr_name("language", :stored_searchable), itemprop: 'inLanguage', link_to_search: solr_name("language", :facetable)
+#JL    config.add_index_field solr_name("culture", :stored_searchable), itemprop: 'culture'
+#JL    config.add_index_field solr_name("provenance", :stored_searchable), itemprop: 'provenance'
+#JL    config.add_index_field solr_name("subject", :stored_searchable), itemprop: 'about', link_to_search: solr_name("subject", :facetable)
+#JL    config.add_index_field solr_name("keyword", :stored_searchable), itemprop: 'keywords', link_to_search: solr_name("keyword", :facetable)
     config.add_index_field solr_name("genre", :stored_searchable), itemprop: 'genre'
-    config.add_index_field solr_name("identifier", :stored_searchable), helper_method: :index_field_link, field_name: 'identifier'
-    config.add_index_field solr_name("location", :stored_searchable), itemprop: 'location', link_to_search: solr_name("location", :facetable)
-    config.add_index_field solr_name("rights_statement", :stored_searchable), helper_method: :rights_statement_links
-    config.add_index_field solr_name("copyright_status", :stored_searchable), itemprop: 'copyright_status'
-    config.add_index_field solr_name("date_modified", :stored_sortable, type: :date), itemprop: 'dateModified', helper_method: :human_readable_date
+    config.add_index_field solr_name("identifier", :stored_searchable), itemprop: 'identifier'
+
+#JL    config.add_index_field solr_name("identifier", :stored_searchable), helper_method: :index_field_link, field_name: 'identifier'
+#JL    config.add_index_field solr_name("location", :stored_searchable), itemprop: 'location', link_to_search: solr_name("location", :facetable)
+#JL    config.add_index_field solr_name("rights_statement", :stored_searchable), helper_method: :rights_statement_links
+#JL    config.add_index_field solr_name("copyright_status", :stored_searchable), itemprop: 'copyright_status'
+#JL    config.add_index_field solr_name("date_modified", :stored_sortable, type: :date), itemprop: 'dateModified', helper_method: :human_readable_date
 
 
     #config.add_index_field solr_name("dris_unique", :stored_searchable), itemprop: 'dris_unique'
-    config.add_index_field solr_name("folder_number", :stored_searchable), itemprop: 'folder_number'
-    config.add_index_field solr_name("sponsor", :stored_searchable), itemprop: 'sponsor'
-    config.add_index_field solr_name("bibliography", :stored_searchable), itemprop: 'bibliography'
-    config.add_index_field solr_name("contributor", :stored_searchable), itemprop: 'contributor', link_to_search: solr_name("contributor", :facetable)
-    config.add_index_field solr_name("proxy_depositor", :symbol), label: "Depositor", helper_method: :link_to_profile
-    config.add_index_field solr_name("depositor"), label: "Owner", helper_method: :link_to_profile
-    config.add_index_field solr_name("based_near_label", :stored_searchable), itemprop: 'contentLocation', link_to_search: solr_name("based_near_label", :facetable)
-    config.add_index_field solr_name("date_uploaded", :stored_sortable, type: :date), itemprop: 'datePublished', helper_method: :human_readable_date
-    config.add_index_field solr_name("license", :stored_searchable), helper_method: :license_links
-    config.add_index_field solr_name("resource_type", :stored_searchable), label: "Resource Type", link_to_search: solr_name("resource_type", :facetable)
-    config.add_index_field solr_name("file_format", :stored_searchable), link_to_search: solr_name("file_format", :facetable)
-    config.add_index_field solr_name("embargo_release_date", :stored_sortable, type: :date), label: "Embargo release date", helper_method: :human_readable_date
-    config.add_index_field solr_name("lease_expiration_date", :stored_sortable, type: :date), label: "Lease expiration date", helper_method: :human_readable_date
+#JL    config.add_index_field solr_name("folder_number", :stored_searchable), itemprop: 'folder_number'
+#JL    config.add_index_field solr_name("sponsor", :stored_searchable), itemprop: 'sponsor'
+#JL    config.add_index_field solr_name("bibliography", :stored_searchable), itemprop: 'bibliography'
+#JL    config.add_index_field solr_name("contributor", :stored_searchable), itemprop: 'contributor', link_to_search: solr_name("contributor", :facetable)
+#JL    config.add_index_field solr_name("proxy_depositor", :symbol), label: "Depositor", helper_method: :link_to_profile
+#JL    config.add_index_field solr_name("depositor"), label: "Owner", helper_method: :link_to_profile
+#JL    config.add_index_field solr_name("based_near_label", :stored_searchable), itemprop: 'contentLocation', link_to_search: solr_name("based_near_label", :facetable)
+#JL    config.add_index_field solr_name("date_uploaded", :stored_sortable, type: :date), itemprop: 'datePublished', helper_method: :human_readable_date
+#JL    config.add_index_field solr_name("license", :stored_searchable), helper_method: :license_links
+#JL    config.add_index_field solr_name("resource_type", :stored_searchable), label: "Resource Type", link_to_search: solr_name("resource_type", :facetable)
+#JL    config.add_index_field solr_name("file_format", :stored_searchable), link_to_search: solr_name("file_format", :facetable)
+#JL    config.add_index_field solr_name("embargo_release_date", :stored_sortable, type: :date), label: "Embargo release date", helper_method: :human_readable_date
+#JL    config.add_index_field solr_name("lease_expiration_date", :stored_sortable, type: :date), label: "Lease expiration date", helper_method: :human_readable_date
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display

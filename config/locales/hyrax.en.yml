@@ -10,6 +10,8 @@ en:
           creator_sim: Creator
           file_format_sim: Format
           generic_type_sim: Type
+          identifier_tesim: Shelf Mark/Reference Number
+          identifier_sim: Shelf Mark/Reference Number
           keyword_sim: Keyword
           language_sim: Language A
           publisher_sim: Publisher
@@ -25,7 +27,9 @@ en:
           date_uploaded_dtsi: Date Uploaded
           description_tesim: Description
           file_format_tesim: File Format
-          identifier_tesim: Identifier
+          identifier: Shelf Mark/Reference Number
+          identifier_tesim: Shelf Mark/Reference Number
+          identifier_label: Shelf Mark/Reference Number
           keyword_tesim: Keyword
           language_tesim: Language B
           license_tesim: License
@@ -43,7 +47,9 @@ en:
           description_tesim: Description
           file_format_tesim: File Format
           genre: Format
-          identifier_tesim: Identifier
+          identifier: Shelf Mark/Reference Number
+          identifier_tesim: Shelf Mark/Reference Number
+          identifier_label: Shelf Mark/Reference Number
           keyword_tesim: Keyword
           language_tesim: Language C
           license_tesim: License
@@ -96,3 +102,4 @@ en:
         defaults:
           based_near: Based Near
           description: Description
+          identifier: Shelf Mark/Reference Number
