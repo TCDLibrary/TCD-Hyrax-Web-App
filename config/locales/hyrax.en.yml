@@ -96,7 +96,10 @@ en:
     relationships_parent_rows:
       empty_text: "This object has no parent works or subseries."
       label: "Parent works and subseries:"
-
+    search:
+      form:
+        q:
+          placeholder: Enter search terms, e.g. "IE TCD MS 11437/5/1/5"
     simple_form:
       labels:
         defaults:

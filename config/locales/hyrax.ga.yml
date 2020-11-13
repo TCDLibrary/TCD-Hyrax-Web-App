@@ -1047,7 +1047,7 @@ ga:
             label_short: Mo Shaothair
         q:
           label: Cuardaigh %{application_name}
-          placeholder: Cuir isteach téarmaí an chuardaigh
+          placeholder: Cuir isteach téarmaí an chuardaigh, e.g. "IE TCD MS 114"
     select_type:
       description: General purpose worktype
       name: Work

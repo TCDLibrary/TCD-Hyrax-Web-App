@@ -134,7 +134,10 @@ es:
     institution_name_full: El nombre de la institución
     product_name: Hyrax
     product_twitter_handle: "@DigitalColl"
-
+    search:
+      form:
+        q:
+          placeholder: Introduce términos de búsqueda, e.g. "IE TCD MS 11437"
   simple_form:
     labels:
       defaults:

@@ -63,3 +63,7 @@ fr:
     institution_name_full: Nom de l'établissement
     product_name: Hyrax
     product_twitter_handle: "@SamveraRepo"
+    search:
+      form:
+        q:
+          placeholder: Entrez les termes de recherche, e.g. "IE TCD MS 11437"
