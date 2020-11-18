@@ -1,3 +1,8 @@
+<% presenter.title.each do |description| %>
+    <p class="TCD_work_description"><%= iconify_auto_link(description) %></p>
+<% end %>
+
+
 <%= presenter.attribute_to_html(:abstract, html_dl: true) %>
 <%= presenter.attribute_to_html(:alternative_title, html_dl: true) %>
 <%= presenter.attribute_to_html(:creator, render_as: :faceted, html_dl: true) %>
@@ -29,9 +34,10 @@
   <%= presenter.attribute_to_html(:provenance, html_dl: true) %>
   <%= presenter.attribute_to_html(:subject, render_as: :faceted, html_dl: true) %>
   <%= presenter.attribute_to_html(:keyword, render_as: :faceted, html_dl: true) %>
-  <%= presenter.attribute_to_html(:genre, html_dl: true) %>
+  <%= presenter.attribute_to_html(:genre, render_as: :faceted, html_dl: true) %>
   <%= presenter.attribute_to_html(:identifier, html_dl: true) %>
-  <%= presenter.attribute_to_html(:location, html_dl: true) %>
+  <%= presenter.attribute_to_html(:location, render_as: :faceted, html_dl: true) %>
+
   <%= presenter.attribute_to_html(:rights_statement, render_as: :rights_statement, html_dl: true) %>
   <%= presenter.attribute_to_html(:copyright_status, html_dl: true) %>
   <%= presenter.attribute_to_html(:date_modified, label: t('hyrax.base.show.last_modified'), html_dl: true) %>

@@ -9,7 +9,10 @@ ga:
           dris_page_no: Uimhir leathanaigh
           dris_page_no_tesim: Uimhir leathanaigh
           dris_page_no_label: Uimhir leathanaigh
-          genre_tesim: Seánra
+          genre_tesim: Formáid
+          genre_sim: Formáid
+          identifier_tesim: Cód seilf/Uimhir thagartha
+          identifier_sim: Cód seilf/Uimhir thagartha
           abstract_tesim: Achoimre
           abstract_sim: Achoimre
           abstract_label: Achoimre
@@ -67,7 +70,7 @@ ga:
           dris_page_no: Uimhir leathanaigh
           dris_page_no_tesim: Uimhir leathanaigh
           dris_page_no_label: Uimhir leathanaigh
-          genre_tesim: Seánra
+          genre_tesim: Formáid
           abstract_tesim: Achoimre
           abstract_sim: Achoimre
           abstract_label: Achoimre
@@ -127,8 +130,8 @@ ga:
           dris_page_no: Uimhir leathanaigh
           dris_page_no_tesim: Uimhir leathanaigh
           dris_page_no_label: Uimhir leathanaigh
-          genre_tesim: Seánra
-          genre: Seánra
+          genre_tesim: Formáid
+          genre: Formáid
           abstract: Achoimre
           digital_object_identifier: Aitheantóir Oibiachta Digití
           digital_object_identifier_tesim: Aitheantóir Oibiachta Digití

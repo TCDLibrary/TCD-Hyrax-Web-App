@@ -8,8 +8,10 @@ de:
           creator_sim: Schöpfer
           file_format_sim: Format
           generic_type_sim: Art
+          genre_sim: Format
           keyword_sim: Stichwort
           language_sim: Sprache
+          location_sim: Lage
           publisher_sim: Herausgeber
           subject_sim: Fach
         index:
@@ -37,6 +39,7 @@ de:
           date_uploaded_dtsi: Datum hochgeladen
           description_tesim: Beschreibung
           file_format_tesim: Datei Format
+          genre: Format
           identifier_tesim: Identifikator
           keyword_tesim: Stichwort
           language_tesim: Sprache
@@ -63,3 +66,7 @@ de:
     institution_name_full: Name des Instituts
     product_name: Hyrax
     product_twitter_handle: "@SamveraRepo"
+    search:
+      form:
+        q:
+          placeholder: Suchbegriffe eingeben, e.g. "IE TCD MS 11437/5/1/5"

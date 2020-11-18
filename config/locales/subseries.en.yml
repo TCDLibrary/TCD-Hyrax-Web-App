@@ -9,7 +9,7 @@ en:
           dris_page_no: Page No
           dris_page_no_tesim: Page No
           dris_page_no_label: Page No
-          genre_tesim: Genre
+          genre_tesim: Format
           abstract_tesim: Abstract
           digital_object_identifier_tesim: Digital Object Id
           dris_unique_tesim: Dris Unique
@@ -41,7 +41,7 @@ en:
           dris_page_no: Page No
           dris_page_no_tesim: Page No
           dris_page_no_label: Page No
-          genre_tesim: Genre
+          genre_tesim: Format
           abstract_tesim: Abstract
           digital_object_identifier_tesim: Digital Object Id
           dris_unique_tesim: Dris Unique
@@ -67,7 +67,7 @@ en:
           date_uploaded_dtsi: Date Uploaded
           description_tesim: Description
           file_format_tesim: File Format
-          identifier_tesim: Identifier
+          identifier_tesim: Shelf Mark/Reference Number
           keyword_tesim: Keyword
           language_tesim: Language
           license_tesim: License
@@ -80,7 +80,7 @@ en:
           dris_page_no: Page No
           dris_page_no_tesim: Page No
           dris_page_no_label: Page No
-          genre_tesim: Genre
+          genre_tesim: Format
           abstract_tesim: Abstract
           digital_object_identifier: Digital Object Id
           dris_unique_tesim: Dris Unique
@@ -106,7 +106,7 @@ en:
           date_uploaded_dtsi: Date Uploaded
           description_tesim: Description
           file_format_tesim: File Format
-          identifier_tesim: Identifier
+          identifier_tesim: Shelf Mark/Reference Number
           keyword_tesim: Keyword
           language_tesim: Language
           license_tesim: License

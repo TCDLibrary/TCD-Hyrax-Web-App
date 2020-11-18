@@ -1,5 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  config.persistent_hostpath = 'http://localhost:3000/concern/works/'
+
   config.ingest_folder = 'public/data/ingest/'
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development

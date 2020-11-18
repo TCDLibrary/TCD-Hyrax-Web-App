@@ -15,6 +15,7 @@ es:
           human_readable_type_sim : Tipo
           keyword_sim: Palabra clave
           language_sim: Idioma
+          location_sim: Ubicación
           publisher_sim: Editor
           subject_sim: Tema
           title_sim: Titulo
@@ -30,7 +31,7 @@ es:
           date_uploaded_dtsi: Fecha de Subida
           description_tesim: Descripción
           file_format_tesim: Formato de Archivo
-          identifier_tesim: Identificador
+          identifier_tesim: Número de referencia
           keyword_tesim: Palabra clave
           language_tesim: Idioma
           license_tesim: Licencia
@@ -52,10 +53,10 @@ es:
           date_uploaded: Fecha de subida
           description_tesim: Descripción
           file_format_tesim: Formato de Archivo
-          identifier_tesim: Identificador
+          identifier_tesim: Número de referencia
           identifier: Número de referencia
           keyword_tesim: Palabra clave
-          genre: Género de objeto
+          genre: Formato
           language_tesim: Idioma
           license_tesim: Licencia
           license: Licencia
@@ -87,6 +88,9 @@ es:
           characterization: Caracterización
   hyrax:
     account_name: Mi identificador de cuenta institucional
+    base:
+      items:
+        identifier: Número de referencia
     controls:
       library: Biblioteca
     directory:
@@ -130,12 +134,15 @@ es:
     institution_name_full: El nombre de la institución
     product_name: Hyrax
     product_twitter_handle: "@DigitalColl"
-
+    search:
+      form:
+        q:
+          placeholder: Introduce términos de búsqueda, e.g. "IE TCD MS 11437"
   simple_form:
     labels:
       defaults:
         contributor: Contribuidor
-        identifier: Identificador
+        identifier: Número de referencia
         language: Lengua
         resource_type: Tipo de recurso
         subject: Tema

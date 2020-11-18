@@ -9,7 +9,9 @@ en:
           dris_page_no: Page No
           dris_page_no_tesim: Page No
           dris_page_no_label: Page No
-          genre_tesim: Genre
+          genre_tesim: Format
+          genre_sim: Format
+          genre_label: Format
           abstract_tesim: Abstract
           digital_object_identifier_tesim: Digital Object Id
           dris_unique_tesim: Dris Unique
@@ -41,7 +43,9 @@ en:
           dris_page_no: Page No
           dris_page_no_tesim: Page No
           dris_page_no_label: Page No
-          genre_tesim: Genre
+          genre: Format
+          genre_tesim: Format
+          genre_label: Format
           abstract_tesim: Abstract
           digital_object_identifier_tesim: Digital Object Id
           dris_unique_tesim: Dris Unique
@@ -82,7 +86,9 @@ en:
           dris_page_no: Page No
           dris_page_no_tesim: Page No
           dris_page_no_label: Page No
-          genre_tesim: Genre
+          genre_tesim: Format
+          genre_tesim_tesim: Format
+          genre_tesim_label: Format
           abstract_tesim: Abstract
           digital_object_identifier: Digital Object Id
           dris_unique_tesim: Dris Unique
@@ -142,6 +148,7 @@ en:
         based_near: Based Near
         dris_page_no: Page no
         description: Description
+        genre: Format
         identifier: Shelf Mark/Reference Number
 
 

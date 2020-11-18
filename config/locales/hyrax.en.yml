@@ -10,10 +10,13 @@ en:
           creator_sim: Creator
           file_format_sim: Format
           generic_type_sim: Type
+          identifier_tesim: Shelf Mark/Reference Number
+          identifier_sim: Shelf Mark/Reference Number
           keyword_sim: Keyword
           language_sim: Language A
           publisher_sim: Publisher
           subject_sim: Subject
+          location_sim: Location
         index:
           based_near_tesim: Based Near
           flex_image: Homepage Flex Image
@@ -24,7 +27,9 @@ en:
           date_uploaded_dtsi: Date Uploaded
           description_tesim: Description
           file_format_tesim: File Format
-          identifier_tesim: Identifier
+          identifier: Shelf Mark/Reference Number
+          identifier_tesim: Shelf Mark/Reference Number
+          identifier_label: Shelf Mark/Reference Number
           keyword_tesim: Keyword
           language_tesim: Language B
           license_tesim: License
@@ -41,7 +46,10 @@ en:
           date_uploaded_dtsi: Date Uploaded
           description_tesim: Description
           file_format_tesim: File Format
-          identifier_tesim: Identifier
+          genre: Format
+          identifier: Shelf Mark/Reference Number
+          identifier_tesim: Shelf Mark/Reference Number
+          identifier_label: Shelf Mark/Reference Number
           keyword_tesim: Keyword
           language_tesim: Language C
           license_tesim: License
@@ -52,6 +60,9 @@ en:
   hyrax:
     search_tips: search_tips
     account_name: Trinity College Dublin Admin
+    base:
+      items:
+        identifier: Shelf Mark/Reference Number
     controls:
       library: Library
       search_tips: Search Tips
@@ -85,9 +96,13 @@ en:
     relationships_parent_rows:
       empty_text: "This object has no parent works or subseries."
       label: "Parent works and subseries:"
-
+    search:
+      form:
+        q:
+          placeholder: Enter search terms, e.g. "IE TCD MS 11437/5/1/5"
     simple_form:
       labels:
         defaults:
           based_near: Based Near
           description: Description
+          identifier: Shelf Mark/Reference Number

@@ -24,6 +24,7 @@ ga:
           type_tesim: Cineál
           human_readable_type_sim : Cineál
           generic_type_sim: Cineál
+          location_sim: Suíomh
         show:
           admin_set: 'In Administrative Set:'
           based_near_label: Location
@@ -415,6 +416,7 @@ ga:
         date_uploaded: Dáta a uaslódáladh
         empty: This %{type} has no files associated with it. Click "edit" to add more files.
         header: Earraí
+        identifier: Cód seilf/Uimhir thagartha1
         thumbnail: Mionsamhail
         title: Teideal
         unauthorized: There are no publicly available items in this %{type}.
@@ -1045,7 +1047,7 @@ ga:
             label_short: Mo Shaothair
         q:
           label: Cuardaigh %{application_name}
-          placeholder: Cuir isteach téarmaí an chuardaigh
+          placeholder: Cuir isteach téarmaí an chuardaigh, e.g. "IE TCD MS 114"
     select_type:
       description: General purpose worktype
       name: Work

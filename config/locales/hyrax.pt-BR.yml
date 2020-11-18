@@ -7,9 +7,11 @@ pt-BR:
           based_near_label_sim: Localização
           creator_sim: O Criador
           file_format_sim: Formato
+          genre_sim: Format
           generic_type_sim: Tipo
           keyword_sim: Palavra-chave
           language_sim: Língua
+          location_sim: Localização
           publisher_sim: Editor
           subject_sim: Sujeito
         index:
@@ -21,7 +23,7 @@ pt-BR:
           date_uploaded_dtsi: Data carregada
           description_tesim: Descrição
           file_format_tesim: Formato de arquivo
-          identifier_tesim: Identificador
+          identifier_tesim: Número de referencia
           keyword_tesim: Palavra-chave
           language_tesim: Língua
           license_tesim: Licença
@@ -37,7 +39,8 @@ pt-BR:
           date_uploaded_dtsi: Data carregada
           description_tesim: Descrição
           file_format_tesim: Formato de arquivo
-          identifier_tesim: Identificador
+          genre: Format
+          identifier_tesim: Número de referencia
           keyword_tesim: Palavra-chave
           language_tesim: Língua
           license_tesim: Licença
@@ -60,3 +63,7 @@ pt-BR:
     institution_name_full: O Nome da Instituição
     product_name: Hyrax
     product_twitter_handle: "@SamveraRepo"
+    search:
+      form:
+        q:
+          placeholder: Entre os termos da pesquisa, e.g. "IE TCD MS 11437"

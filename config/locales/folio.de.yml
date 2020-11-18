@@ -1,4 +1,10 @@
 de:
+  blacklight:
+    search:
+      fields:
+        facet:
+          genre_tesim: Format
+          genre_sim: Format
   hyrax:
     icons:
       folio:     'fa fa-file-text-o'

@@ -1,6 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  # TODO : JL : where should ingest folder be?
+  config.persistent_hostpath = 'https://digitalcollections.tcd.ie/concern/works/'
+
   config.ingest_folder = 'public/data/ingest/'
   # Code is not reloaded between requests.
   config.cache_classes = true
