@@ -1,0 +1,2 @@
+class HyraxChecksum < ApplicationRecord
+end
