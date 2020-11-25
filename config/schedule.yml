@@ -1,0 +1,4 @@
+fixity_audit:
+  cron: "* * * * *"
+  class: FixityAuditJob
+  queue: fixity
