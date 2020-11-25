@@ -3,6 +3,7 @@
   - ingest
   - import
   - export
+  - fixity
 
 :logfile: ./log/sidekiq.log
 
