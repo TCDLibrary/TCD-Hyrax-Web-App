@@ -15,7 +15,8 @@ class FixityAuditJob < ApplicationJob
     # end loop
 
     # send email
+    FixityAuditMailer.fixity_audit_email.deliver_later
 
-    byebug
+    #byebug
   end
 end

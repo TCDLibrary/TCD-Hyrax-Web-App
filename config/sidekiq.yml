@@ -4,6 +4,7 @@
   - import
   - export
   - fixity
+  - mailers
 
 :logfile: ./log/sidekiq.log
 
