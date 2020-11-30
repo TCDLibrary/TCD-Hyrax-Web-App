@@ -1,0 +1,35 @@
+<% provide :page_header do %>
+  <h1><span class="fa fa-shield" aria-hidden="true"></span> Checksum Audits</h1>
+<% end %>
+<div>
+  Files Ingested: <%= @hyrax_checksums.count %>
+</div>
+<div>
+  Files Audited: <%= HyraxChecksumPresenter.new.audited %>
+</div>
+<div>
+  Failures: <%= HyraxChecksumPresenter.new.audited %>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped datatable">
+    <thead>
+      <tr>
+        <th>fileset id</th>
+        <th>ingest date</th>
+        <th>ingest week no</th>
+        <th>last fixity check</th>
+        <th>last fixity result</th>
+      </tr>
+    </thead>
+    <% @hyrax_checksums&.each do | hyrax_checksum | %>
+    <tr>
+      <td><%= hyrax_checksum.fileset_id %></td>
+      <td><%= hyrax_checksum.ingest_date %></td>
+      <td><%= hyrax_checksum.ingest_week_no %></td>
+      <td><%= hyrax_checksum.last_fixity_check %></td>
+      <td><%= hyrax_checksum.last_fixity_result %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :hyrax_checksums, :only => [ :index, :create, :update ]
+
   mount Bulkrax::Engine, at: '/'
   resources :ingests
 
