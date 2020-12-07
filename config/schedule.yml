@@ -1,4 +1,5 @@
-fixity_audit:
-  cron: "50 * * * *"
-  class: FixityAuditJob
-  queue: fixity
+development:
+  fixity_audit:
+    cron: "05 * * * *"
+    class: FixityAuditJob
+    queue: fixity

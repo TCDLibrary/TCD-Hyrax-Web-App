@@ -2,13 +2,13 @@
   <h1><span class="fa fa-shield" aria-hidden="true"></span> Checksum Audits</h1>
 <% end %>
 <div>
-  Files Ingested: <%= @hyrax_checksums.count %>
+  Files Ingested: <%= HyraxChecksumPresenter.new.all %>
 </div>
 <div>
   Files Audited: <%= HyraxChecksumPresenter.new.audited %>
 </div>
 <div>
-  Failures: <%= HyraxChecksumPresenter.new.audited %>
+  Failures: <%= HyraxChecksumPresenter.new.failed %>
 </div>
 
 <div class="table-responsive">

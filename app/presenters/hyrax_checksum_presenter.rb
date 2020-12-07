@@ -8,4 +8,8 @@ class HyraxChecksumPresenter
     HyraxChecksum.where(:last_fixity_result => "FAIL").count
   end
 
+  def all
+    HyraxChecksum.count
+  end
+
 end

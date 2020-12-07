@@ -24,4 +24,10 @@ class HyraxChecksumsController < ApplicationController
 
   def update
   end
+
+  private
+  def hyrax_checksum_params
+    params.require(:hyrax_checksum).permit(:last_fixity_result, :last_fixity_check)
+  end
+
 end
