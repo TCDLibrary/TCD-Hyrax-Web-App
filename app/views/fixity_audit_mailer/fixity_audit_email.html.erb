@@ -6,6 +6,16 @@
   <body>
     <h1>Digital Collections Fixity Audit</h1>
     <p>
+      <% case ENV["RAILS_ENV"] %>
+        <% when 'development' %>
+             <span style="background-color:#5AC1DF; color:#FFFFFF; font-weight:bold">Environment : <%= ENV["RAILS_ENV"]%></span>
+        <% when 'dcdevhyrax' %>
+             <span style="background-color:#F0AB4C; color:#FFFFFF; font-weight:bold">Environment : Demo (dcdev)</span>
+        <% when 'digcollhyrax01' %>
+             <span style="background-color:#5AB95E; color:#FFFFFF; font-weight:bold">Environment : Primary (Production)</span>
+      <% end %>
+    </p>
+    <p>
       Fixity Audit has run for week number <%= @week_no %>.<br>
     </p>
     <p>Please login to Digital Collections Dashboard to check latest results.</p>
