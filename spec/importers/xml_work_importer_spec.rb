@@ -22,6 +22,8 @@ RSpec.describe FoxmlImporter do
   it "stores data in correct fields in the work" do
      artefact = Work
      expect { FoxmlImporter.new(object_model, ::User.batch_user, file_example, parent_id, parent_type,  'LO', visibility, base_folder).import(artefact) }.to change { Work.count }.by 1
+      
+     expect { FoxmlImporter.new(object_model, ::User.batch_user, file_example, parent_id, parent_type,  'LO', visibility, base_folder).import(artefact) }.to change { HyraxChecksumPresenter.new.all }.by 1
 
      imported_work = Work.first
      expect(imported_work.title.first).to eq('Letter from Catherine (Kate) D’Alton, Clonmore, 8th-12th August, 1824 to John D’Alton')
