@@ -4,9 +4,14 @@ fixity_audit:
   rails_env: development
   queue: fixity
 
-
 fixity_audit:
   cron: "10 01 * * 6"
   class: FixityAuditJob
   rails_env: dcdevhyrax
+  queue: fixity
+
+fixity_audit:
+  cron: "15 01 * * 6"
+  class: FixityAuditJob
+  rails_env: digcollhyrax01
   queue: fixity
