@@ -3,3 +3,15 @@ development:
     cron: "05 * * * *"
     class: FixityAuditJob
     queue: fixity
+
+dcdevhyrax:
+  fixity_audit:
+    cron: "05 01 * * 6"
+    class: FixityAuditJob
+    queue: fixity
+
+digcollhyrax01:
+  fixity_audit:
+    cron: "15 01 * * 6"
+    class: FixityAuditJob
+    queue: fixity
