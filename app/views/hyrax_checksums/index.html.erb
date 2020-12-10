@@ -24,11 +24,18 @@
     </thead>
     <% @hyrax_checksums&.each do | hyrax_checksum | %>
     <tr>
-      <td><%= hyrax_checksum.fileset_id %></td>
+      <td><%= link_to hyrax_checksum.fileset_id, polymorphic_path([main_app, FileSet.find(hyrax_checksum.fileset_id)]) %></td>
       <td><%= hyrax_checksum.ingest_date %></td>
       <td><%= hyrax_checksum.ingest_week_no %></td>
       <td><%= hyrax_checksum.last_fixity_check %></td>
-      <td><%= hyrax_checksum.last_fixity_result %></td>
+      <% case hyrax_checksum.last_fixity_result %>
+        <% when 'pass' %>
+             <td><span class="label label-success"><%= hyrax_checksum.last_fixity_result %></span></td>
+        <% when 'fail' %>
+             <td><span class="label label-danger"><%= hyrax_checksum.last_fixity_result %></span></td>
+        <% else %>
+             <td><span class="label label-warning">o/s</span></td>
+      <% end %>
     </tr>
     <% end %>
   </table>
