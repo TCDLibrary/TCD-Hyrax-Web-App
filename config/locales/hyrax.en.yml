@@ -58,6 +58,9 @@ en:
           subject_tesim: Subject
           title_tesim: Title
   hyrax:
+    admin:
+      sidebar:
+        hyrax_checksums: Checksum Audits
     search_tips: search_tips
     account_name: Trinity College Dublin Admin
     base:

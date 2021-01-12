@@ -26,6 +26,8 @@ RSpec.describe FoxmlImporter do
      artefact = Folio
      expect { FoxmlImporter.new(object_model, ::User.batch_user, file_example, parent_id, parent_type,  'HI and TIFF', visibility, base_folder).import(artefact) }.to change { Folio.count }.by 1
 
+     expect { FoxmlImporter.new(object_model, ::User.batch_user, file_example, parent_id, parent_type,  'LO', visibility, base_folder).import(artefact) }.to change { HyraxChecksumPresenter.new.all }.by 1
+
      imported_folio = Folio.first
      expect(imported_folio.title.first).to eq('Letter from Catherine (Kate) D’Alton, Clonmore, 8th-12th August, 1824 to John D’Alton')
      expect(imported_folio.depositor).to eq(::User.batch_user.email)
