@@ -52,3 +52,6 @@ vendor/engines
 
 # Ignore assets
 public/assets
+
+# Ignore UV install
+public/uv
