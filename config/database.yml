@@ -41,9 +41,9 @@ dcdevhyrax:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: test_hyrax
+  database: <%= ENV['HYRAX_TEST_DATABASE_NAME'] || 'test_hyrax' %>
   username: <%= ENV['MYSQL_USER'] || 'travis' %>
-  password: Pa$$w0rd
+  password: <%= ENV['MYSQL_PASSWORD'] || 'Pa$$w0rd' %>
 
 production:
   <<: *default
