@@ -10,6 +10,14 @@ module Bulkrax
     let(:image_type) { 'Not Now' }
     let(:import_type) { 'single' }
     let(:object_type) { 'Work' }
+
+    before do
+      DatabaseCleaner.strategy = :transaction
+      DatabaseCleaner.clean_with(:truncation)
+      ActiveFedora::Cleaner.clean!
+    end
+
+
     let(:importer) do
       Bulkrax::Importer.create(
         name: 'Importer',
