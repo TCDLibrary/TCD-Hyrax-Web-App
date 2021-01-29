@@ -1,3 +1,15 @@
+<!-- Google Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-47Q4VZRMJT"></script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-47Q4VZRMJT');
+</script>
+
 <%= csrf_meta_tag %>
 <meta charset="utf-8" />
 <%# Only display meta tag, which enables creation of the ActionCable
@@ -25,18 +37,6 @@ signed in %>
 <%= tinymce_assets if can? :update, ContentBlock %>
 <%= render 'shared/appearance_styles' %>
 
-<!-- Google Analytics -->
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-47Q4VZRMJT"> 
-</script>
-
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-47Q4VZRMJT');
-</script>
 <%= render partial: '/ga', formats: [:html] %>
 
 <!-- for extras, e.g., a favicon -->
