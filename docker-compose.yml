@@ -1,14 +1,5 @@
-version: '2.2'
+version: '3.8'
 services:
-  base:
-    # image: "${REGISTRY_HOST}${REGISTRY_URI}/base:latest"
-    build:
-      context: .
-      dockerfile: Dockerfile.base
-    env_file:
-      - .env
-      - .env.development
-
   app:
     # image: "${REGISTRY_HOST}${REGISTRY_URI}:latest"
     build:
@@ -19,15 +10,15 @@ services:
       - .env.development
     volumes:
       - .:/home/app/webapp:delegated
+      - tmp:/opt/app/hyrax/tmp
 
   # try https://www.gitmemory.com/issue/phusion/passenger/2211/505533958
   web:
     extends: app
+    command: bundle exec rails s puma -b 0.0.0.0 -p 3000
     environment:
       VIRTUAL_HOST: trinity.docker
-      VIRTUAL_PORT: 80
-    ports:
-      - "${DEV_PORT}"
+      VIRTUAL_PORT: 3000
     depends_on:
       - redis
       - solr
@@ -48,19 +39,15 @@ services:
 
   redis:
     image: redis:4
-    ports:
-      - '6379'
     volumes:
-      - 'redis:/data'
+      - redis:/data
 
   mysql:
     image: mysql:5.7
     env_file:
       - .env
-    ports:
-      - '3306:3306'
     volumes:
-      - 'mysql:/var/lib/mysql'
+      - mysql:/var/lib/mysql
     command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
 
   solr:
@@ -71,12 +58,11 @@ services:
     ports:
       - "8983:8983"
     volumes:
-      - './solr/config:/opt/config'
-    entrypoint:
-      - docker-entrypoint.sh
-      - solr-precreate
-      - hyrax
-      - /opt/config
+      - './solr/config:/opt/solr/server/configsets/hyraxconf'
+    command:
+      - sh
+      - "-c"
+      - "precreate-core hyrax_test /opt/solr/server/configsets/hyraxconf; solr-precreate hyrax /opt/solr/server/configsets/hyraxconf"
 
   fcrepo:
     image: botimer/fcrepo:4.5.1
@@ -89,3 +75,4 @@ volumes:
   fcrepo:
   mysql:
   redis:
+  tmp:
