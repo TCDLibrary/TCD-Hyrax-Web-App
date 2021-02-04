@@ -2,6 +2,13 @@
 
 [![Build Status](https://travis-ci.org/joelakes/TCD-Hyrax-Web-App.svg?branch=master)](https://travis-ci.org/joelakes/TCD-Hyrax-Web-App)
 
+## Local Setup
+
+In order for the Universal Viewer to work properly locally, run the following:
+```sh
+yarn install
+```
+
 ### Docker Setup
 
 Refer to the [ops README](ops/README.md).
