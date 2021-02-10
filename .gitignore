@@ -42,6 +42,7 @@ dump.rdb
 /public/branding/*
 
 .byebug_history
+.env
 
 # Ignore capistrano version
 /REVISION
@@ -51,3 +52,6 @@ vendor/engines
 
 # Ignore assets
 public/assets
+
+# Ignore UV install
+public/uv

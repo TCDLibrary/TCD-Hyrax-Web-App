@@ -18,11 +18,6 @@ then
     export PASSENGER_APP_ENV=development
 fi
 
-if [[ $PASSENGER_APP_ENV == "development" ]] || [[ $PASSENGER_APP_ENV == "test" ]]
-then
-    /sbin/setuser app /bin/bash -l -c 'cd /home/app/webapp && bundle exec rails db:test:prepare'
-fi
-
 if [[ $PASSENGER_APP_ENV == "production" ]] || [[ $PASSENGER_APP_ENV == "staging" ]]
 then
     # copy new assets over to volume

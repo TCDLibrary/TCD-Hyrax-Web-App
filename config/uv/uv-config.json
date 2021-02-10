@@ -1,0 +1,13 @@
+{
+  "options": {
+  },
+  "modules": {
+    "contentLeftPanel": {
+      "options": {
+        "thumbsCacheInvalidation": {
+          "enabled": false
+        }
+      }
+    }
+  }
+}
