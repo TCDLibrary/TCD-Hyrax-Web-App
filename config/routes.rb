@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  concern :oai_provider, BlacklightOaiProvider::Routes.new
 
   resources :hyrax_checksums, :only => [ :index, :create, :update ]
 
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
     concern :searchable, Blacklight::Routes::Searchable.new
 
   resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do
+    concerns :oai_provider
     concerns :searchable
   end
 

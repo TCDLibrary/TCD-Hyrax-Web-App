@@ -149,6 +149,9 @@ GEM
       bootstrap-sass (~> 3.0)
       openseadragon (>= 0.2.0)
       rails
+    blacklight_oai_provider (6.1.1)
+      blacklight (~> 6.0)
+      oai (~> 1.0)
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
@@ -905,6 +908,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-nulldb-adapter
+  blacklight_oai_provider
   bulkrax!
   byebug
   capistrano (~> 3.12.0)

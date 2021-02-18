@@ -135,3 +135,6 @@ gem 'hydra-role-management'
 gem 'willow_sword', github: 'notch8/willow_sword'
 
 gem 'kaminari'
+
+# JL: 25/02/2021 Add OAI-PMH iiif_endpoint
+gem 'blacklight_oai_provider'

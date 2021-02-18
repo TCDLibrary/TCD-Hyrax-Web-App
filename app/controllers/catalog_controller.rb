@@ -1,6 +1,7 @@
 class CatalogController < ApplicationController
   include Hydra::Catalog
   include Hydra::Controller::ControllerBehavior
+  include BlacklightOaiProvider::Controller
 
   # This filter applies the hydra access controls
   before_action :enforce_show_permissions, only: :show
@@ -499,6 +500,18 @@ class CatalogController < ApplicationController
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
     config.spell_max = 5
+
+    config.oai = {
+      provider: {
+        repository_name: 'Digital Collections',
+        repository_url: 'https://digitalcollections.tcd.ie/catalog/oai',
+      },
+      document: {
+        set_fields: [
+            { label: 'type', solr_field: 'has_model_ssim' }
+        ]
+      }
+    }
   end
 
   # disable the bookmark control from displaying in gallery view
