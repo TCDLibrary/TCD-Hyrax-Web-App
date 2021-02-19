@@ -61,6 +61,41 @@ it:
         welcome_html: "Welcome to Digital Collections <strong>beta</strong> version, please bear with us as we add collections."
     institution_name: Istituzione
     institution_name_full: Nome dell'Istituzione
+    pages:
+      tabs:
+        search_tips_page: Search Tips
+        search_tips_html: '<h1>Search Tips</h1>
+        <h4 style="text-transform: uppercase;">Searching For Items:</h4>
+        <div class="panel panel-default">
+          <div class="panel-body">
+        <p>Click on the GO button located to the right of the search box to browse the entire contents of Digital Collections.</p>
+        <p>For an exact, targeted search type into the search box the exact terms or phrases you want to search for, enclosing each term/phrase set in double quotation marks " ".</p>
+        <p>Examples:</p>
+        <ul>
+          <li>“fragmenta graeca”</li>
+          <li>“IE TCD MS 1209”</li>
+        </ul>
+        <p>Use the plus sign +, the minus sign -, and or (in lowercase) between term sets for AND, NOT, and OR searches.</p>
+        <p>Examples:</p>
+        <ul>
+          <li> +"waltz"+"robinson" [results MUST HAVE waltz AND Robinson]</li>
+          <li> +"catalogue"+"trade"-"painting" [results MUST HAVE catalogue AND trade but NOT painting]</li>
+          <li> "card games" or "trade catalogs" [results must contain EITHER the phrase card games OR the phrase trade catalogs]</li>
+        </ul>
+        </div>
+        </div>
+        <h4 style="text-transform: uppercase;">Refining Your Search:</h4>
+        <div class="panel panel-default">
+          <div class="panel-body">
+        <p>Searches may be further refined, if necessary, using the Limit your search options on the left side of the search results screen.</p>
+        </div>
+        </div>
+        <h4 style="text-transform: uppercase;">Watch Our Search Tips Videos:</h4>
+        <div class="panel panel-default">
+          <div class="panel-body">
+        <p></p>
+        </div>
+        </div>'
     product_name: Hyrax
     product_twitter_handle: "@SamveraRepo"
     search:

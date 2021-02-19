@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'search_assist/index'
+
   resources :hyrax_checksums, :only => [ :index, :create, :update ]
 
   mount Bulkrax::Engine, at: '/'
