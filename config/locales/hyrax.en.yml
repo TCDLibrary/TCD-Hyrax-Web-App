@@ -85,8 +85,8 @@ en:
       admin_sets:
         link: Explore More
       beta:
-        cant_html: "Can’t find what you’re looking for? <a href='https://www.tcd.ie/Library/digitalcollections' target='_blank'>Our old service can be found here</a>."
-        welcome_html: "Welcome to Digital Collections <strong>beta</strong> version, please bear with us as we add collections."
+        cant_html: "While we ingest all our digitised collections, our legacy service will remain <a href='https://www.tcd.ie/Library/digitalcollections' target='_blank'>here</a>."
+        welcome_html: "Welcome to Digital Collections. "
     institution_name: TCD
     institution_name_full: Trinity College Dublin
     pages:

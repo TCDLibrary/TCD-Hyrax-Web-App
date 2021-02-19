@@ -913,8 +913,8 @@ ga:
         tab_label: Explore Collections
         title: Explore Collections
       beta:
-        cant_html: "<a href='https://www.tcd.ie/Library/digitalcollections' target='_blank'>Mura bhfuil tú in ann teacht ar an méid atá á lorg agat, is féidir ár sean-seirbhís a fháil anseo</a>."
-        welcome_html: "Fáilte go leagan <strong>béite</strong> na mBailiúchán Digiteach. Bí foighneach linn, le do thoil, agus sinn ag cur leis na bailiúcháin."
+        cant_html: "Cé go n-ionsóimid ár mbailiúcháin dhigitithe go léir, fanfaidh ár seirbhís leagáide <a href='https://www.tcd.ie/Library/digitalcollections' target='_blank'>anseo</a>."
+        welcome_html: "Fáilte go na mBailiúchán Digiteach. "
       featured_researcher:
         missing: No researchers have been featured.
         tab_label: Featured Researcher

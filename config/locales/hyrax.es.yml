@@ -129,8 +129,8 @@ es:
       contact: Contacto de Trinity
     homepage:
       beta:
-        cant_html: "<a href='https://www.tcd.ie/Library/digitalcollections' target='_blank'>Si no puede encontrar lo que busca, nuestro antiguo servicio está aquí</a>."
-        welcome_html: "Bienvenido a la <strong>versión beta</strong> de nuestro Archivo Digital."
+        cant_html: "El servicio viejo permanece <a href='https://www.tcd.ie/Library/digitalcollections' target='_blank'>aquí</a>."
+        welcome_html: "Bienvenido a nuestro Archivo Digital. "
     institution_name: institución
     institution_name_full: El nombre de la institución
     pages:
