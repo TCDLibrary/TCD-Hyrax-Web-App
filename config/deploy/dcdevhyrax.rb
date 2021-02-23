@@ -1,8 +1,8 @@
 set :stage, :dcdevhyrax
 set :rails_env, :dcdevhyrax
-set :branch, "master"
+#set :branch, "master"
 
-#set :branch, "2021-02-02-Notch-Universal-Viewer-Changes"
+set :branch, "2021-02-18-Adds-New-Search-Tips-Screen"
 
 # Default deploy_to directory is /var/www/my_app_name. Override it:
 set :deploy_to, "/opt/app/TCD-Hyrax-Web-App"
