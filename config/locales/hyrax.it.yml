@@ -89,12 +89,6 @@ it:
           <div class="panel-body">
         <p>Searches may be further refined, if necessary, using the Limit your search options on the left side of the search results screen.</p>
         </div>
-        </div>
-        <h4 style="text-transform: uppercase;">Watch Our Search Tips Videos:</h4>
-        <div class="panel panel-default">
-          <div class="panel-body">
-        <p></p>
-        </div>
         </div>'
     product_name: Hyrax
     product_twitter_handle: "@SamveraRepo"
