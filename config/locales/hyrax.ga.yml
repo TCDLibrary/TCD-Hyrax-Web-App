@@ -913,8 +913,8 @@ ga:
         tab_label: Explore Collections
         title: Explore Collections
       beta:
-        cant_html: "<a href='https://www.tcd.ie/Library/digitalcollections' target='_blank'>Mura bhfuil tú in ann teacht ar an méid atá á lorg agat, is féidir ár sean-seirbhís a fháil anseo</a>."
-        welcome_html: "Fáilte go leagan <strong>béite</strong> na mBailiúchán Digiteach. Bí foighneach linn, le do thoil, agus sinn ag cur leis na bailiúcháin."
+        cant_html: "Cé go n-ionsóimid ár mbailiúcháin dhigitithe go léir, fanfaidh ár seirbhís leagáide <a href='https://www.tcd.ie/Library/digitalcollections' target='_blank'>anseo</a>."
+        welcome_html: "Fáilte go na mBailiúchán Digiteach. "
       featured_researcher:
         missing: No researchers have been featured.
         tab_label: Featured Researcher
@@ -1023,6 +1023,33 @@ ga:
         agreement_page: Deposit Agreement
         help_page: Help Page
         terms_page: Terms of Use
+        search_tips_page: Search Tips
+        search_tips_html: '<h1>Search Tips</h1>
+        <h4 style="text-transform: uppercase;">Searching For Items:</h4>
+        <div class="panel panel-default">
+          <div class="panel-body">
+        <p>Click on the GO button located to the right of the search box to browse the entire contents of Digital Collections.</p>
+        <p>For an exact, targeted search type into the search box the exact terms or phrases you want to search for, enclosing each term/phrase set in double quotation marks " ".</p>
+        <p>Examples:</p>
+        <ul>
+          <li>“fragmenta graeca”</li>
+          <li>“IE TCD MS 1209”</li>
+        </ul>
+        <p>Use the plus sign +, the minus sign -, and or (in lowercase) between term sets for AND, NOT, and OR searches.</p>
+        <p>Examples:</p>
+        <ul>
+          <li> +"waltz"+"robinson" [results MUST HAVE waltz AND Robinson]</li>
+          <li> +"catalogue"+"trade"-"painting" [results MUST HAVE catalogue AND trade but NOT painting]</li>
+          <li> "card games" or "trade catalogs" [results must contain EITHER the phrase card games OR the phrase trade catalogs]</li>
+        </ul>
+        </div>
+        </div>
+        <h4 style="text-transform: uppercase;">Refining Your Search:</h4>
+        <div class="panel panel-default">
+          <div class="panel-body">
+        <p>Searches may be further refined, if necessary, using the Limit your search options on the left side of the search results screen.</p>
+        </div>
+        </div>'
       updated: Pages updated.
     passive_consent_to_agreement: By saving this work I agree to the
     product_name: Bailiúcháin Dhigiteacha

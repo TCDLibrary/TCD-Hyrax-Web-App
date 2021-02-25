@@ -13,8 +13,8 @@
           <%= link_to t(:'hyrax.controls.contact'), hyrax.contact_path, aria: current_page?(hyrax.contact_path) ? {current: 'page'} : nil %></li>
         <li>
           <%= link_to t(:'hyrax.controls.library'), 'https://www.tcd.ie/library' %></li>
-        <li <%= 'class=active' if current_page?(hyrax.about_path) %>>
-            <%= link_to t(:'hyrax.controls.search_tips'), '/search_tips?locale=' + locale.to_s, aria: current_page?(hyrax.about_path) ? {current: 'page'} : nil %></li>
+        <li <%= 'class=active' if current_page?('/search_assist/index') %>>
+            <%= link_to t(:'hyrax.controls.search_tips'), '/search_assist/index?locale=' + locale.to_s, aria: current_page?('/search_assist/index') ? {current: 'page'} : nil %></li>
 
       </ul><!-- /.nav -->
       <div class="searchbar-right navbar-right col-sm-7">

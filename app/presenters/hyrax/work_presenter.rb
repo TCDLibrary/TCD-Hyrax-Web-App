@@ -10,7 +10,7 @@ module Hyrax
     #delegate :dris_page_no, to: :solr_document
 
 
-    # delegate :copyright_status, to: :solr_document
+    delegate :copyright_status, to: :solr_document
 
     delegate :digital_object_identifier, to: :solr_document
     delegate :dris_unique, to: :solr_document
