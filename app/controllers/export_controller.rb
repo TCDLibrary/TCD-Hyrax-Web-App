@@ -48,7 +48,7 @@ class ExportController < ApplicationController
                 end
               end
 
-              owner_rec.description.each do |attribute|
+              owner_rec.abstract.each do |attribute|
                 if !attribute.blank?
                    xml.send('dc:description', attribute)
                 end
