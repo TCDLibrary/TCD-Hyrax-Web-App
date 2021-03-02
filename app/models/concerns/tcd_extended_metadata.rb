@@ -138,6 +138,9 @@ module TcdExtendedMetadata
       # 29/03/2019 JL - experimental belongs_to added to work objects
       property :i_belong_to, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#i_belong_to')
 
+      property :doi, predicate: ::RDF::URI.new('http://id.loc.gov/vocabulary/identifiers/doi'), multiple: false do |index|
+        index.as :stored_searchable
+      end
   end
 
 end

@@ -66,6 +66,7 @@ en:
     base:
       items:
         identifier: Shelf Mark/Reference Number
+        doi: DOI
     controls:
       library: Library
       search_tips: Search Tips

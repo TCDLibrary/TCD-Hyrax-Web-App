@@ -113,6 +113,7 @@ en:
           date_modified_dtsi: Date Modified
           date_uploaded_dtsi: Date Uploaded
           description_tesim: Description
+          doi: DOI
           file_format_tesim: File Format
           identifier: Shelf Mark/Reference Number
           identifier_tesim: Shelf Mark/Reference Number
