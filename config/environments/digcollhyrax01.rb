@@ -3,6 +3,9 @@ Rails.application.configure do
   config.persistent_hostpath = 'https://digitalcollections.tcd.ie/concern/works/'
 
   config.ingest_folder = 'public/data/ingest/'
+
+  config.doi_prefix = '10.48495'
+  config.datacite_service = 'https://api.datacite.org/'
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
