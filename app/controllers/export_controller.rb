@@ -93,6 +93,11 @@ class ExportController < ApplicationController
                 end
               end
 
+              if !owner_rec.doi.blank?
+                   xml.send('dc:identifier', 'DOI: ' + owner_rec.doi)
+              end
+
+
               xml.send('dc:identifier', request.referrer)
 
               owner_rec.language.each do |attribute|

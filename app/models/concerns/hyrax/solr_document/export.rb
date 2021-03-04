@@ -27,7 +27,11 @@ module Hyrax
       end
 
       def persistent_url
-        "#{Rails.application.config.persistent_hostpath}#{id}"
+        if !doi.blank?
+          "#{doi.first}"
+        else
+          "#{Rails.application.config.persistent_hostpath}#{id}"
+        end
       end
 
       def end_note_format
@@ -68,7 +72,7 @@ module Hyrax
           '%@' => [:isbn],
           '%U' => [:related_url],
           '%7' => [:edition_statement],
-          '%R' => [:persistent_url],
+          '%R' => [:doi],
           '%X' => [:description],
           '%G' => [:language],
           '%[' => [:date_modified],
