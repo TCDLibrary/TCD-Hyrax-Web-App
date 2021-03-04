@@ -70,6 +70,7 @@ en:
     controls:
       library: Library
       search_tips: Search Tips
+      virtual_trinity: Virtual Trinity
     directory:
       suffix: "@example.org"
     download:
