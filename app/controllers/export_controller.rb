@@ -130,6 +130,23 @@ class ExportController < ApplicationController
                 end
               end
 
+              owner_rec.rights_statement.each do |attribute|
+                if !attribute.blank?
+                   xml.send('dc:rights', attribute)
+                end
+              end
+
+              owner_rec.copyright_status.each do |attribute|
+                if !attribute.blank?
+                   xml.send('dc:rights', attribute)
+                end
+              end
+
+              owner_rec.license.each do |attribute|
+                if !attribute.blank?
+                   xml.send('dcterms:license', attribute)
+                end
+              end
               # TODO: why is this not on the object?
               #rights	::RDF::Vocab::DC.rights	TRUE
 
@@ -154,6 +171,42 @@ class ExportController < ApplicationController
               owner_rec.provenance.each do |attribute|
                 if !attribute.blank?
                    xml.send('dc:provenance', attribute)
+                end
+              end
+
+              owner_rec.series_title.each do |attribute|
+                if !attribute.blank?
+                   xml.send('dcterms:isPartOf', attribute)
+                end
+              end
+
+              owner_rec.collection_title.each do |attribute|
+                if !attribute.blank?
+                   xml.send('dcterms:isPartOf', attribute)
+                end
+              end
+
+              owner_rec.alternative_title.each do |attribute|
+                if !attribute.blank?
+                   xml.send('dcterms:alternative', attribute)
+                end
+              end
+
+              owner_rec.genre.each do |attribute|
+                if !attribute.blank?
+                   xml.send('dc:type', attribute)
+                end
+              end
+
+              owner_rec.support.each do |attribute|
+                if !attribute.blank?
+                   xml.send('dcterms:medium', attribute)
+                end
+              end
+
+              owner_rec.related_url.each do |attribute|
+                if !attribute.blank?
+                   xml.send('dc:relation', attribute)
                 end
               end
 
