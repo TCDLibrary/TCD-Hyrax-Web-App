@@ -48,6 +48,12 @@ class ExportController < ApplicationController
                 end
               end
 
+              owner_rec.location.each do |attribute|
+                if !attribute.blank?
+                   xml.send('dc:creator', attribute)
+                end
+              end
+
               owner_rec.subject.each do |attribute|
                 if !attribute.blank?
                    xml.send('dc:subject', attribute)
@@ -55,6 +61,12 @@ class ExportController < ApplicationController
               end
 
               owner_rec.abstract.each do |attribute|
+                if !attribute.blank?
+                   xml.send('dc:description', attribute)
+                end
+              end
+
+              owner_rec.sponsor.each do |attribute|
                 if !attribute.blank?
                    xml.send('dc:description', attribute)
                 end
