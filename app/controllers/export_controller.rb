@@ -38,6 +38,12 @@ class ExportController < ApplicationController
 
               owner_rec.creator.each do |attribute|
                 if !attribute.blank?
+                   Role_codes_creator.each_value {|value|
+                     if value.in? attribute
+                     then
+                        attribute = attribute.delete_suffix(", " + value)
+                     end
+                   }
                    xml.send('dc:creator', attribute)
                 end
               end
@@ -62,7 +68,13 @@ class ExportController < ApplicationController
 
               owner_rec.contributor.each do |attribute|
                 if !attribute.blank?
-                   xml.send('dc:contributor', attribute)
+                  Role_codes_contributor.each_value {|value|
+                    if value.in? attribute
+                    then
+                       attribute = attribute.delete_suffix(", " + value)
+                    end
+                  }
+                  xml.send('dc:contributor', attribute)
                    #xml.send('marcrel:rcp', attribute)
                 end
               end
