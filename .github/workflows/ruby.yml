@@ -47,7 +47,7 @@ jobs:
     #- name: Create test database
     #  run: mysql  -uroot -proot -e "create database test_hyrax; grant all privileges on *.* to 'hyrax'@'%'"
     - run: mysql -h 127.0.0.1 --port 8888 -u root -ppassword -e 'CREATE DATABASE IF NOT EXISTS test_hyrax;'
-    #- run: mysql -h 127.0.0.1 --port 8888 -u root -ppassword -e 'CREATE USER 'travis'@'localhost' IDENTIFIED BY 'Pa$$w0rd';'
-    #- run: mysql -h 127.0.0.1 --port 8888 -u root -ppassword -e 'GRANT ALL PRIVILEGES ON database_name.* TO 'travis'@'localhost';'
+    - run: mysql -h 127.0.0.1 --port 8888 -u root -ppassword -e "CREATE USER 'travis'@'localhost' IDENTIFIED BY 'Pa$$w0rd';"
+    - run: mysql -h 127.0.0.1 --port 8888 -u root -ppassword -e "GRANT ALL PRIVILEGES ON test_hyrax.* TO 'travis'@'localhost';"
     - name: Run tests
       run: bundle exec rake ci
