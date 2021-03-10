@@ -44,7 +44,7 @@ jobs:
     - run: sudo /etc/init.d/mysql start
      
     - name: Set up app
-    - run: RAILS_ENV=test bundle exec rails db:create
+      run: RAILS_ENV=test bundle exec rails db:create
     #- run: cp ./config/.travis.database.yml ./config/database.yml
     #- run: cp ./config/.travis.secrets.yml ./config/secrets.yml
     #- name: Create test database
