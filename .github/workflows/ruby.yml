@@ -42,11 +42,11 @@ jobs:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - run: sudo /etc/init.d/mysql start
-     
+    - run: cp ./config/.travis.database.yml ./config/database.yml
+    - run: cp ./config/.travis.secrets.yml ./config/secrets.yml
+
     - name: Set up app
-      - run: cp ./config/.travis.database.yml ./config/database.yml
-      - run: cp ./config/.travis.secrets.yml ./config/secrets.yml
-      - run: RAILS_ENV=test bundle exec rails db:create
+      run: RAILS_ENV=test bundle exec rails db:create
 
     #- name: Create test database
     #  run: mysql  -uroot -proot -e "create database test_hyrax; grant all privileges on *.* to 'hyrax'@'%'"
