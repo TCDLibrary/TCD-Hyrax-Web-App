@@ -20,7 +20,11 @@ jobs:
     strategy:
       matrix:
         ruby-version: ['2.5']
-
+    services:
+      mysql:
+        env:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: test_hyrax
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
@@ -34,7 +38,8 @@ jobs:
     - run: sudo /etc/init.d/mysql start
     - run: cp ./config/.travis.database.yml ./config/database.yml
     - run: cp ./config/.travis.secrets.yml ./config/secrets.yml
-    #- name: Create test database
+    - name: Create test database
     #  run: mysql  -uroot -proot -e "create database test_hyrax; grant all privileges on *.* to 'hyrax'@'%'"
+    - run: mysql -h 127.0.0.1 --port 8888 -u root -ppassword -e 'CREATE DATABASE IF NOT EXISTS test_hyrax;'
     - name: Run tests
       run: bundle exec rake ci
