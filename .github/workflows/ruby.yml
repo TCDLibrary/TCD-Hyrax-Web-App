@@ -17,6 +17,15 @@ jobs:
   test:
 
     runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:14
+        env:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: test_hyrax
+        ports:
+            - '8888:3306'
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3    
     strategy:
       matrix:
         ruby-version: ['2.5']
@@ -35,6 +44,6 @@ jobs:
     - run: cp ./config/.travis.secrets.yml ./config/secrets.yml
     #- name: Create test database
     #  run: mysql  -uroot -proot -e "create database test_hyrax; grant all privileges on *.* to 'hyrax'@'%'"
-    - run: mysql -u root -e 'CREATE DATABASE IF NOT EXISTS test_hyrax;'
+    - run: mysql -u root -p password -e 'CREATE DATABASE IF NOT EXISTS test_hyrax;'
     - name: Run tests
       run: bundle exec rake ci
