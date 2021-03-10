@@ -34,5 +34,7 @@ jobs:
     - run: sudo /etc/init.d/mysql start
     - run: cp ./config/.travis.database.yml ./config/database.yml
     - run: cp ./config/.travis.secrets.yml ./config/secrets.yml
+    - name: Create test database
+      run: mysql  -uroot -proot -e "create database test_hyrax; grant all privileges on *.* to 'hyrax'@'%'"
     - name: Run tests
       run: bundle exec rake
