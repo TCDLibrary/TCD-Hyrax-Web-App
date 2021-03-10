@@ -22,7 +22,6 @@ jobs:
         ruby-version: ['2.5']
     services:
       mysql:
-        image: mysql:14.14
         env:
           MYSQL_ROOT_PASSWORD: password
           MYSQL_DATABASE: test_hyrax
