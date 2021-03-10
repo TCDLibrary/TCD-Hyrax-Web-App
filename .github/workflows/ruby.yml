@@ -44,6 +44,6 @@ jobs:
     - run: cp ./config/.travis.secrets.yml ./config/secrets.yml
     #- name: Create test database
     #  run: mysql  -uroot -proot -e "create database test_hyrax; grant all privileges on *.* to 'hyrax'@'%'"
-    - run: mysql -u root -ppassword -e 'CREATE DATABASE IF NOT EXISTS test_hyrax;'
+    - run: mysql -h 127.0.0.1 --port 8888 -u root -ppassword -e 'CREATE DATABASE IF NOT EXISTS test_hyrax;'
     - name: Run tests
       run: bundle exec rake ci
