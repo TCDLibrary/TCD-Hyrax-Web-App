@@ -44,9 +44,10 @@ jobs:
     - run: sudo /etc/init.d/mysql start
      
     - name: Set up app
-      run: RAILS_ENV=test bundle exec rails db:create
-    #- run: cp ./config/.travis.database.yml ./config/database.yml
-    #- run: cp ./config/.travis.secrets.yml ./config/secrets.yml
+      - run: cp ./config/.travis.database.yml ./config/database.yml
+      - run: cp ./config/.travis.secrets.yml ./config/secrets.yml
+      - run: RAILS_ENV=test bundle exec rails db:create
+
     #- name: Create test database
     #  run: mysql  -uroot -proot -e "create database test_hyrax; grant all privileges on *.* to 'hyrax'@'%'"
     #- run: mysql -h 127.0.0.1 --port 8888 -u root -ppassword -e 'CREATE DATABASE IF NOT EXISTS test_hyrax character set utf8mb4 collate utf8mb4_unicode_ci;'
