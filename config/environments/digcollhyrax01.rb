@@ -4,7 +4,8 @@ Rails.application.configure do
 
   config.ingest_folder = 'public/data/ingest/'
 
-  config.doi_prefix = 'https://doi.org/10.48495'
+  config.doi_org_url = 'https://doi.org/'
+  config.doi_prefix = '10.48495'
   config.datacite_service = 'https://api.datacite.org/'
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
