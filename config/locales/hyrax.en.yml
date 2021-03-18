@@ -71,6 +71,10 @@ en:
       library: Library
       search_tips: Search Tips
       virtual_trinity: Virtual Trinity
+    dashboard:
+      my:
+        action:
+          export_metadata : Export Metadata
     directory:
       suffix: "@example.org"
     download:

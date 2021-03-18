@@ -3,6 +3,7 @@ Rails.application.configure do
   config.persistent_hostpath = 'https://digitalcollections.tcd.ie/concern/works/'
 
   config.ingest_folder = 'public/data/ingest/'
+  config.export_folder = '/digicolapp/datastore/exports/primary/'
 
   config.doi_org_url = 'https://doi.org/'
   config.doi_prefix = '10.48495'
