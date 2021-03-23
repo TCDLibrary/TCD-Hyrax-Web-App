@@ -36,9 +36,6 @@ jobs:
         ports:
           # Opens tcp port 6379 on the host and service container
           - 6379:6379
-      fedora-commons:
-        ports:
-          - 8986:8986
     strategy:
       matrix:
         ruby-version: ['2.5']
@@ -82,4 +79,4 @@ jobs:
         MYSQL_DATABASE: test_hyrax
       run: |
         sudo service mysql start
-        RAILS_ENV=test bundle exec rspec
+        RAILS_ENV=test bundle exec rake ci
