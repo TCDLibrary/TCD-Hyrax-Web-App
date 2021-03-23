@@ -52,7 +52,7 @@ jobs:
         MYSQL_ROOT_PASSWORD: password
         MYSQL_DATABASE: test_hyrax
       run: RAILS_ENV=test bundle exec rails db:create
-      run: RAILS_ENV=test bundle exec rails db:migrate
+    #  run: RAILS_ENV=test bundle exec rails db:migrate
 
     #- name: Create test database
     #  run: mysql  -uroot -proot -e "create database test_hyrax; grant all privileges on *.* to 'hyrax'@'%'"
