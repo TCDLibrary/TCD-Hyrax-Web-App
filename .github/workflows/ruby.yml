@@ -48,7 +48,11 @@ jobs:
     - run: mysql -h 127.0.0.1 --port 8888 -u root -ppassword -e 'CREATE DATABASE IF NOT EXISTS test_hyrax;'
 
     - name: Set up app
+      env:
+        MYSQL_ROOT_PASSWORD: password
+        MYSQL_DATABASE: test_hyrax
       run: RAILS_ENV=test bundle exec rails db:create
+      run: RAILS_ENV=test bundle exec rails db:migrate
 
     #- name: Create test database
     #  run: mysql  -uroot -proot -e "create database test_hyrax; grant all privileges on *.* to 'hyrax'@'%'"
