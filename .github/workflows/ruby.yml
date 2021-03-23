@@ -65,6 +65,8 @@ jobs:
         MYSQL_ALLOW_EMPTY_PASSWORD: yes
         MYSQL_ROOT_PASSWORD: password
         MYSQL_DATABASE: test_hyrax
+        FEDORA_ADMIN_USER: fedoraAdmin
+        FEDORA_ADMIN_PASSWORD: fedoraAdmin
       run: |
         sudo service mysql start
         RAILS_ENV=test bundle exec rails db:create
@@ -82,6 +84,8 @@ jobs:
         MYSQL_ALLOW_EMPTY_PASSWORD: yes
         MYSQL_ROOT_PASSWORD: password
         MYSQL_DATABASE: test_hyrax
+        FEDORA_ADMIN_USER: fedoraAdmin
+        FEDORA_ADMIN_PASSWORD: fedoraAdmin
       run: |
         sudo service mysql start
         RAILS_ENV=test bundle exec rake ci
