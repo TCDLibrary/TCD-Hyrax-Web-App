@@ -53,7 +53,7 @@ jobs:
         MYSQL_ALLOW_EMPTY_PASSWORD: yes
         MYSQL_ROOT_PASSWORD: password
         MYSQL_DATABASE: test_hyrax
-      run:
+      run: |
         sudo service mysql start
         RAILS_ENV=test bundle exec rails db:create
         RAILS_ENV=test bundle exec rails db:migrate
@@ -70,6 +70,6 @@ jobs:
         MYSQL_ALLOW_EMPTY_PASSWORD: yes
         MYSQL_ROOT_PASSWORD: password
         MYSQL_DATABASE: test_hyrax
-      run: 
+      run: |
         sudo service mysql start
         RAILS_ENV=test bundle exec rspec spec/jobs/export_dublin_core_job_spec.rb
