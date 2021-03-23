@@ -21,6 +21,7 @@ jobs:
       mysql:
         image: mysql:8.0
         env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
           MYSQL_ROOT_PASSWORD: password
           MYSQL_DATABASE: test_hyrax
     #      MYSQL_USER: travis
@@ -49,6 +50,7 @@ jobs:
 
     - name: Set up app
       env:
+        MYSQL_ALLOW_EMPTY_PASSWORD: yes
         MYSQL_ROOT_PASSWORD: password
         MYSQL_DATABASE: test_hyrax
       run: RAILS_ENV=test bundle exec rails db:create
