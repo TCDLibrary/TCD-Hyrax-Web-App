@@ -1,0 +1,9 @@
+# JL: 08/01/2019 Travis uses this to replace database.yml because it wants to login with no password
+
+test:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: db/test
+  pool: 5
+  username: root
