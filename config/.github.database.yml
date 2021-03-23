@@ -5,6 +5,7 @@ test:
   encoding: utf8
   reconnect: false
   database: test_hyrax
+  host: 127.0.0.1
   pool: 5
   username: root
   password: password
