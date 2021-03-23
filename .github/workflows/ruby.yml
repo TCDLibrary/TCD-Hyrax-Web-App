@@ -73,4 +73,3 @@ jobs:
       run: 
         sudo service mysql start
         RAILS_ENV=test bundle exec rspec spec
-1
