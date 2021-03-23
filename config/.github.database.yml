@@ -6,6 +6,7 @@ test:
   reconnect: false
   database: test_hyrax
   host: 127.0.0.1
+  port: 8888
   pool: 5
   username: root
   password: password
