@@ -4,6 +4,6 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: db/test
+  database: test_hyrax
   pool: 5
   username: root
