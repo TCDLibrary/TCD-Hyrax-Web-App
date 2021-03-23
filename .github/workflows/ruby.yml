@@ -46,7 +46,7 @@ jobs:
     - run: cp ./config/.github.database.yml ./config/database.yml
     - run: cp ./config/.travis.secrets.yml ./config/secrets.yml
 
-    - run: mysql -h 127.0.0.1 --port 8888 -u root -ppassword -e 'CREATE DATABASE IF NOT EXISTS test_hyrax;'
+    #- run: mysql -h 127.0.0.1 --port 8888 -u root -ppassword -e 'CREATE DATABASE IF NOT EXISTS test_hyrax;'
 
     - name: Set up app
       env:
@@ -55,6 +55,7 @@ jobs:
         MYSQL_DATABASE: test_hyrax
       run:
         sudo service mysql start
+        RAILS_ENV=test bundle exec rails db:create
         RAILS_ENV=test bundle exec rails db:migrate
     #  run: RAILS_ENV=test bundle exec rails db:create
 
