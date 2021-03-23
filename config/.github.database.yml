@@ -7,3 +7,4 @@ test:
   database: test_hyrax
   pool: 5
   username: root
+  password: password
