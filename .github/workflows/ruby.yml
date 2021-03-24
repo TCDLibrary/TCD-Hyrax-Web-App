@@ -36,7 +36,7 @@ jobs:
         ports:
           # Opens tcp port 6379 on the host and service container
           - 6379:6379
-          - 8986:8986
+          #- 8986:8986
     strategy:
       matrix:
         ruby-version: ['2.5']
@@ -87,6 +87,7 @@ jobs:
         MYSQL_DATABASE: test_hyrax
         FEDORA_ADMIN_USER: fedoraAdmin
         FEDORA_ADMIN_PASSWORD: fedoraAdmin
+        FCREPO_TEST_PORT: 8080/fcrepo
       run: |
         RAILS_ENV=test bundle exec rake ci spec
 #       RAILS_ENV=test bundle exec rake hydra:test_server
