@@ -90,6 +90,6 @@ jobs:
         FEDORA_ADMIN_PASSWORD: fedoraAdmin
         FCREPO_TEST_PORT: 8080
       run: |
-        RAILS_ENV=test bundle exec rake ci spec
+        RAILS_ENV=test bundle exec rails ci spec
 #       RAILS_ENV=test bundle exec rake hydra:test_server
 #   sudo service mysql start
