@@ -68,6 +68,7 @@ jobs:
         MYSQL_DATABASE: test_hyrax
         FEDORA_ADMIN_USER: fedoraAdmin
         FEDORA_ADMIN_PASSWORD: fedoraAdmin
+        FCREPO_TEST_PORT: 8080/fcrepo
       run: |
         RAILS_ENV=test bundle exec rails db:create
         RAILS_ENV=test bundle exec rails db:migrate
