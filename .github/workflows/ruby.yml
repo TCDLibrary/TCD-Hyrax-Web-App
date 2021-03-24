@@ -36,9 +36,6 @@ jobs:
         ports:
           # Opens tcp port 6379 on the host and service container
           - 6379:6379
-      fedora-commons:
-        ports: 
-          - 8986:8986
     strategy:
       matrix:
         ruby-version: ['2.5']
@@ -60,7 +57,8 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: '8' # The JDK version to make available on the path.
-
+      ports: 
+        - 8986:8986
     #- run: mysql -h 127.0.0.1 --port 8888 -u root -ppassword -e 'CREATE DATABASE IF NOT EXISTS test_hyrax;'
 
     - name: Set up app
