@@ -5,6 +5,12 @@
 # This workflow will download a prebuilt Ruby version, install dependencies and run tests with Rake
 # For more information see: https://github.com/marketplace/actions/setup-ruby-jruby-and-truffleruby
 
+
+### NOTE: I was unable to resolve:
+#Faraday::ConnectionFailed:
+#  Failed to open TCP connection to 127.0.0.1:8986 (Connection refused - connect(2) for "127.0.0.1" port 8986)
+## ./spec/rails_helper.rb:72:in `block (2 levels) in <top (required)>'
+
 name: Ruby
 
 on:
