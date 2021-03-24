@@ -27,8 +27,8 @@ digcollhyrax02:
 test:
   user: <%= ENV['FEDORA_ADMIN_USER'] %>
   password: <%= ENV['FEDORA_ADMIN_PASSWORD'] %>
-  #url: http://127.0.0.1:<%= ENV['FCREPO_TEST_PORT'] || 8986 %>/rest
-  url: http://127.0.0.1:<%= ENV['FCREPO_TEST_PORT'] || 8080 %>/rest
+  url: http://127.0.0.1:<%= ENV['FCREPO_TEST_PORT'] || 8986 %>/rest
+  #url: http://127.0.0.1:<%= ENV['FCREPO_TEST_PORT'] || 8080 %>/rest
   #url: <%= ENV['FEDORA_URL'] || "http://127.0.0.1:#{ ENV['FCREPO_TEST_PORT'] || 8986 }/rest" %>
   base_path: /test
 
