@@ -6,14 +6,17 @@ class ExportController < ApplicationController
 
     objectId = params[:id]
 
-    obj  = ActiveFedora::Base.find(objectId, cast: true)
+    begin
+      obj  = ActiveFedora::Base.find(objectId, cast: true)
 
-    builder = obj.to_dublin_core
+      builder = obj.to_dublin_core
 
-    respond_to do |format|
-     format.html
-     format.xml { render xml: builder  }
-   end
+      respond_to do |format|
+       format.html
+       format.xml { render xml: builder  }
+      end
+    rescue
+    end
 
   end
 end
