@@ -20,7 +20,7 @@ class ExportBulkController < ApplicationController
     #byebug
     if obj.work?
       work_array = [obj]
-      ExportDublinCoreJob.perform_later(work_array, true)
+      ExportDublinCoreJob.perform_later(work_array)
 
       if obj.members.size > 0
       # need to go down through the tree recursively

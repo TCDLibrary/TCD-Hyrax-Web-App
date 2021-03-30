@@ -10,7 +10,7 @@ class ExportDublinCoreJob < ApplicationJob
       our_xml = make_dublin_core(work)
 
       #make a file with name Rails.application.config.export_folder + work.id + "-DublinCore-" + DateTime.now.to_s(:db) + ".xml"
-      File.open(Rails.application.config.export_folder + work.id + "-DublinCore-" + Date.today.to_s(:db) + ".xml", "w") { |f| f.write our_xml }
+      File.open(Rails.application.config.export_folder + work.id + "-DC-" + Date.today.to_s(:db) + ".xml", "w") { |f| f.write our_xml }
 
       #byebug
     end
