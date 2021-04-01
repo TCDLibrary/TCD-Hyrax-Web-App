@@ -262,5 +262,87 @@ module Hyrax
 
        return builder.to_xml
     end
+
+
+    def to_datacite_json
+      payload = JSON.generate(metadata_hash(self))
+      return payload
+    end
+
+    private
+
+    def metadata_hash(work)
+
+      work_language = ""
+      if !work.language.first.blank?
+         lang = Iso639[work.language.first]
+         if lang.present?
+           work_language = Iso639[work.language.first].alpha2
+         end
+      end
+
+     datacite_hash = {
+        "data": {
+          "id": "#{Rails.application.config.doi_prefix}/#{work.id}",
+          "type": "dois",
+          "attributes": {
+            # "event": "publish",
+            "doi": "#{Rails.application.config.doi_prefix}/#{work.id}",
+            "creators": [],
+            "titles": [],
+            "publisher": "Trinity College Dublin, the University of Dublin",
+            "publicationYear": work.create_date.strftime('%Y'),
+            "types": {
+              "resourceTypeGeneral": "PhysicalObject",
+              "resourceType": work.resource_type[0]
+            },
+            "subjects": [],
+            "contributors": [    {
+                "name": "The Library of Trinity College Dublin, the University of Dublin",
+                "nameType": "Organizational",
+                "affiliation": [
+                  {
+                    "name": "Trinity College Dublin, the University of Dublin"
+                  }
+                ],
+                "contributorType": "HostingInstitution",
+                "nameIdentifiers": [
+                  {
+                    "nameIdentifier": "Name ident",
+                    "nameIdentifierScheme": "Library of Congress Authorities"
+                  }
+                ]
+              }],
+            "descriptions": [],
+            "language": "#{work_language}",
+            "alternateIdentifiers": [],
+            "url": "https://schema.datacite.org/meta/kernel-4.0/index.html",
+            "schemaVersion": "http://datacite.org/schema/kernel-4"
+          }
+        }
+      }
+
+      work.creator.each do | a_creator |
+          datacite_hash[:data][:attributes][:creators] << { "name": "#{a_creator}" }
+      end
+      work.title.each do | a_title |
+          datacite_hash[:data][:attributes][:titles] << { "title": "#{a_title}" }
+      end
+      work.subject.each do | a_subject |
+        datacite_hash[:data][:attributes][:subjects] << { "subject": "#{a_subject}" , "schemeURI": "http://id.loc.gov/authorities/subjects", "subjectScheme": "Library of Congress Subject Headings"}
+      end
+      work.keyword.each do | a_keyword |
+        datacite_hash[:data][:attributes][:subjects] << { "subject": "#{a_keyword}" } unless a_keyword.casecmp?("unassigned")
+      end
+      work.abstract.each do | an_abstract |
+        datacite_hash[:data][:attributes][:descriptions] << { "lang": "en", "description": "#{an_abstract}", "descriptionType": "Abstract" }
+      end
+      work.identifier.each do | an_identifier |
+        datacite_hash[:data][:attributes][:alternateIdentifiers] << { "alternateIdentifier": "#{an_identifier}", "alternateIdentifierType": "Library of Congress Authorities" }
+      end
+
+
+      return datacite_hash
+    end
   end
 end

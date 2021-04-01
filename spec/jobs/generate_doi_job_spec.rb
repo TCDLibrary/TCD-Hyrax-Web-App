@@ -6,7 +6,14 @@ RSpec.describe GenerateDoiJob, type: :job do
         it "can set and store a DOI" do
           work = Work.new
           work.title = ["A Title"]
-          work.creator = ["A Creator"]
+          work.creator = ["A Creator", "Another Creator"]
+          work.resource_type = ["text", "image"]
+          work.subject = ["Ireland--History", "Ireland--Civilization", "Ireland. Constitution"]
+          work.keyword = ["Unassigned", "unassigned", "a keyword"]
+          work.abstract = ["Presented here are a number of Arabic language manuscripts from the collection held in the Manuscripts & Research Archives Library"]
+          work.language = ["english"]
+          work.identifier = ["IE TCD MS 2689"]
+
           work.save
           GenerateDoiJob.perform_now(work)
           expect(work.doi).to include work.id

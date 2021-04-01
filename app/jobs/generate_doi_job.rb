@@ -17,7 +17,8 @@ class GenerateDoiJob < ApplicationJob
           # If object has a DOI already, do nothing
           if work.doi.blank?
             # Build json for datacite
-            payload = JSON.generate(metadata_hash(work))
+            #payload = JSON.generate(metadata_hash(work))
+            payload = work.to_datacite_json
 
             # Build call to datacite, credentials in environment variables
             url = URI(Rails.application.config.datacite_service + 'dois')
@@ -44,16 +45,4 @@ class GenerateDoiJob < ApplicationJob
 
   end
 
-  private
-
-  def metadata_hash(work)
-     {
-      "data": {
-        "type": "dois",
-        "attributes": {
-          "doi": "#{Rails.application.config.doi_prefix}/#{work.id}"
-        }
-      }
-    }
-  end
 end
