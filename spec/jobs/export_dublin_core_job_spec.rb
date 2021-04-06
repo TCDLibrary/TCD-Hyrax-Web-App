@@ -10,7 +10,7 @@ RSpec.describe ExportDublinCoreJob, type: :job do
           work.save
           work_array = [work]
           result = ExportDublinCoreJob.perform_now(work_array)
-          output = Rails.application.config.export_folder + work.id + "-DublinCore-" + Date.today.to_s(:db) + ".xml"
+          output = Rails.application.config.export_folder + work.id + "-DC-" + Date.today.to_s(:db) + ".xml"
           #byebug
           expect(File).to exist(output)
         end
@@ -28,9 +28,9 @@ RSpec.describe ExportDublinCoreJob, type: :job do
           wo2.save
           work_array = [work, wo2]
           result = ExportDublinCoreJob.perform_now(work_array)
-          output = Rails.application.config.export_folder + work.id + "-DublinCore-" + Date.today.to_s(:db) + ".xml"
+          output = Rails.application.config.export_folder + work.id + "-DC-" + Date.today.to_s(:db) + ".xml"
           expect(File).to exist(output)
-          output2 = Rails.application.config.export_folder + wo2.id + "-DublinCore-" + Date.today.to_s(:db) + ".xml"
+          output2 = Rails.application.config.export_folder + wo2.id + "-DC-" + Date.today.to_s(:db) + ".xml"
           expect(File).to exist(output2)
         end
       end
