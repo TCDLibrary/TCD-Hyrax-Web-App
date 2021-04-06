@@ -18,13 +18,13 @@ class ExportDcTreeJob < ApplicationJob
       ExportDublinCoreJob.perform_later(work_array, name_qualifier)
 
       if obj.members.size > 0
-      # need to go down through the tree recursively
+      # need to go down through the tree recursively, name_qualifier is a convenience - it builds hierarchical filenames
       # need to manage the order of the children too. So use ordered_members
       #byebug
         children = obj.ordered_members.to_ary
         children.each_with_index do | child, i |
           human_index = '%04i' % (i + 1)
-          prep_for_export_job(child.id, "#{name_qualifier}#{objectId}_#{human_index}_")
+          prep_for_export_job(child.id, "#{name_qualifier}#{objectId}_#{human_index}_") unless name_qualifier.include? child.id
         end
       end
 
