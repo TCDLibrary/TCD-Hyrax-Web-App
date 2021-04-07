@@ -61,6 +61,7 @@ en:
     admin:
       sidebar:
         hyrax_checksums: Checksum Audits
+        doi_blocker_lists: DOI Blocker List
     search_tips: search_tips
     account_name: Trinity College Dublin Admin
     base:

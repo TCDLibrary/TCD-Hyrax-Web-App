@@ -1,2 +1,0 @@
-class DoiBlockerList < ApplicationRecord
-end

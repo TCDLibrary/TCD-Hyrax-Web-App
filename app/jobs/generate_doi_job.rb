@@ -12,7 +12,7 @@ class GenerateDoiJob < ApplicationJob
     if work.work?
 
       # check the list of bundle records, we don't want DOIs for them:
-      unless Doi_blocker.include? work.id
+      unless DoiBlockerLists.exists?(object_id: work.id)
 
           # If object has a DOI already, do nothing
           if work.doi.blank?

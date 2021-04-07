@@ -57,5 +57,3 @@ Role_codes_subject = {"dpc" => "Depicted"
 
 Role_codes_donor = {"dnr" => "Donor"
                  }
-
-Doi_blocker = ["123456789"]
