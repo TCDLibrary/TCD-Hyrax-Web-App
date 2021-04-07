@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'doi_blocker_lists/index'
+
   get 'search_assist/index'
 
   resources :hyrax_checksums, :only => [ :index, :create, :update ]
