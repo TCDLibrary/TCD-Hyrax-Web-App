@@ -12,6 +12,7 @@ class GenerateDoiJob < ApplicationJob
     if work.work?
 
       # check the list of bundle records, we don't want DOIs for them:
+      #byebug
       unless DoiBlockerLists.exists?(object_id: work.id)
 
           # If object has a DOI already, do nothing
@@ -37,7 +38,10 @@ class GenerateDoiJob < ApplicationJob
             # Check response, handle any errors, update the work with the doi value
             # work.doi = "kjkjj" + work.id
             if ["200", "201", '202'].include? response.code
+               #byebug
                work.doi = Rails.application.config.doi_org_url + Rails.application.config.doi_prefix + '/' + work.id
+               work.save
+               #byebug
             end
           end
       end
