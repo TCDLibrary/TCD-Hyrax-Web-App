@@ -240,11 +240,12 @@ module Hyrax
              end
            end
 
-           self.genre.each do |attribute|
-             if !attribute.blank?
-                xml.send('dc:type', attribute)
-             end
-           end
+           # Michelle asked for this to be dropped - data duplicated in other genre fields
+           #self.genre.each do |attribute|
+           #   if !attribute.blank?
+           #      xml.send('dc:type', attribute)
+           #   end
+           #end
 
            self.support.each do |attribute|
              if !attribute.blank?
@@ -300,7 +301,7 @@ module Hyrax
             },
             "subjects": [],
             "contributors": [    {
-                "name": "The Library of Trinity College Dublin, the University of Dublin",
+                "name": "Trinity College (Dublin, Ireland)",
                 "nameType": "Organizational",
                 "affiliation": [
                   {
@@ -318,13 +319,19 @@ module Hyrax
             "descriptions": [],
             "language": "#{work_language}",
             "alternateIdentifiers": [],
-            "url": "https://schema.datacite.org/meta/kernel-4.0/index.html",
+            "url": "#{Rails.application.config.persistent_hostpath + work.id}",
             "schemaVersion": "http://datacite.org/schema/kernel-4"
           }
         }
       }
 
       work.creator.each do | a_creator |
+          Role_codes_creator.each_value {|value|
+            if value.in? a_creator
+            then
+               a_creator = a_creator.delete_suffix(", " + value)
+            end
+          }
           datacite_hash[:data][:attributes][:creators] << { "name": "#{a_creator}" }
       end
       work.title.each do | a_title |
@@ -340,7 +347,7 @@ module Hyrax
         datacite_hash[:data][:attributes][:descriptions] << { "lang": "en", "description": "#{an_abstract}", "descriptionType": "Abstract" }
       end
       work.identifier.each do | an_identifier |
-        datacite_hash[:data][:attributes][:alternateIdentifiers] << { "alternateIdentifier": "#{an_identifier}", "alternateIdentifierType": "Library of Congress Authorities" }
+        datacite_hash[:data][:attributes][:alternateIdentifiers] << { "alternateIdentifier": "#{an_identifier}", "alternateIdentifierType": "Locally created shelfmark/reference number" }
       end
 
 
