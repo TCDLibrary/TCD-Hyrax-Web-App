@@ -153,6 +153,8 @@ module Hyrax
 
            if !self.doi.blank?
                 xml.send('dc:identifier', 'DOI: ' + self.doi)
+           else
+                xml.send('dc:identifier', Rails.application.config.persistent_hostpath + self.id)
            end
 
 
