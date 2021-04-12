@@ -22,6 +22,7 @@ pt-BR:
           date_modified_dtsi: Data modificada
           date_uploaded_dtsi: Data carregada
           description_tesim: Descrição
+          doi_tesim: DOI
           file_format_tesim: Formato de arquivo
           identifier_tesim: Número de referencia
           keyword_tesim: Palavra-chave
@@ -38,6 +39,7 @@ pt-BR:
           date_modified_dtsi: Data modificada
           date_uploaded_dtsi: Data carregada
           description_tesim: Descrição
+          doi_tesim: DOI
           file_format_tesim: Formato de arquivo
           genre: Format
           identifier_tesim: Número de referencia

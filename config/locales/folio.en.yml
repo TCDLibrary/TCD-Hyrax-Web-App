@@ -40,6 +40,7 @@ en:
         index:
           based_near_tesim: Based Near
           based_near_label: Based Near
+          doi_tesim: DOI
           dris_page_no: Page No
           dris_page_no_tesim: Page No
           dris_page_no_label: Page No
