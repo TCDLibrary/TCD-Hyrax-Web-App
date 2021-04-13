@@ -13,6 +13,7 @@ RSpec.describe GenerateDoiJob, type: :job do
           work.abstract = ["Presented here are a number of Arabic language manuscripts from the collection held in the Manuscripts & Research Archives Library"]
           work.language = ["english"]
           work.identifier = ["IE TCD MS 2689"]
+          work.visibility = 'open'
 
           work.save
           GenerateDoiJob.perform_now(work)
@@ -28,9 +29,22 @@ RSpec.describe GenerateDoiJob, type: :job do
           work.title = ["A Title"]
           work.creator = ["A Creator"]
           work.doi = "A DOI"
+          work.visibility = 'open'
           work.save
           GenerateDoiJob.perform_now(work)
           expect(work.doi).to eq "A DOI"
+        end
+      end
+
+      context "with a private Work" do
+        it "doesnt write a DOI" do
+          work = Work.new
+          work.title = ["A Private Title"]
+          work.creator = ["A Private Creator"]
+          work.visibility = 'restricted'
+          work.save
+          GenerateDoiJob.perform_now(work)
+          expect(work.doi).to be_nil
         end
       end
 

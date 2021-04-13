@@ -7,6 +7,7 @@ RSpec.describe GenerateDoiTreeJob, type: :job do
         work = Work.new
         work.title = ["A Title - one level"]
         work.creator = ["A Creator"]
+        work.visibility = 'open'
         work.save
         result = GenerateDoiTreeJob.perform_now(work)
         #byebug
@@ -24,10 +25,12 @@ RSpec.describe GenerateDoiTreeJob, type: :job do
         work = Work.new
         work.title = ["A Title - top level"]
         work.creator = ["A Creator"]
+        work.visibility = 'open'
         work.save
         child = Work.new
         child.title = ["A Title - child level"]
         child.creator = ["A Creator"]
+        child.visibility = 'open'
         child.save
         work.members << child
         result = GenerateDoiTreeJob.perform_now(work)
@@ -42,6 +45,17 @@ RSpec.describe GenerateDoiTreeJob, type: :job do
       end
     end
 
+    context "with a private Work" do
+      it "doesnt write a DOI" do
+        work = Work.new
+        work.title = ["A Private Title"]
+        work.creator = ["A Private Creator"]
+        work.visibility = 'restricted'
+        work.save
+        GenerateDoiJob.perform_now(work)
+        expect(work.doi).to be_nil
+      end
+    end
 
  end
 end
