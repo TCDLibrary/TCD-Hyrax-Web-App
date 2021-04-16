@@ -284,12 +284,17 @@ module Hyrax
          end
       end
 
-     datacite_hash = {
+      event= ""
+      if ENV["RAILS_ENV"] == 'digcollhyrax01'
+         event = "publish"
+      end
+
+      datacite_hash = {
         "data": {
           "id": "#{Rails.application.config.doi_prefix}/#{work.id}",
           "type": "dois",
           "attributes": {
-            # "event": "publish",
+            "event": "#{event}",
             "doi": "#{Rails.application.config.doi_prefix}/#{work.id}",
             "creators": [],
             "titles": [],
