@@ -40,6 +40,7 @@ en:
         index:
           based_near_tesim: Based Near
           based_near_label: Based Near
+          doi_tesim: DOI
           dris_page_no: Page No
           dris_page_no_tesim: Page No
           dris_page_no_label: Page No
@@ -113,6 +114,7 @@ en:
           date_modified_dtsi: Date Modified
           date_uploaded_dtsi: Date Uploaded
           description_tesim: Description
+          doi: DOI
           file_format_tesim: File Format
           identifier: Shelf Mark/Reference Number
           identifier_tesim: Shelf Mark/Reference Number

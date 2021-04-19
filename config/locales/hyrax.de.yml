@@ -50,6 +50,9 @@ de:
           title_tesim: Titel
   hyrax:
     account_name: Meine Institution Konto-ID
+    base:
+      items:
+        doi: DOI
     directory:
       suffix: "@ Example.org"
     download:

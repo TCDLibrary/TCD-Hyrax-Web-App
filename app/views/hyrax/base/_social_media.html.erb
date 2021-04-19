@@ -60,5 +60,15 @@
         <%= t('hyrax.download.schema') %>
         <br />
     </a>
-
+    <% if current_ability.can_create_any_work? %>
+      <a href="/export_bulk/dublinCore.html?id=<%= indivId %> ">
+          <br />
+          <%= t('hyrax.download.bulk') %>
+          <br />
+          <span class="fa fa-folder-open fa-3x" style="color:#6d6d6d"></span>
+          <br />
+          <%= t('hyrax.download.schema') %>
+          <br />
+      </a>
+    <% end %>
 </div>

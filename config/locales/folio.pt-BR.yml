@@ -1,4 +1,11 @@
 pt-BR:
+  blacklight:
+    search:
+      fields:
+        index:
+          doi_tesim: DOI
+        show:
+          doi: DOI
   hyrax:
     icons:
       folio:     'fa fa-file-text-o'

@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
+  #get 'doi_blocker_lists/index'
+
   get 'search_assist/index'
 
   resources :hyrax_checksums, :only => [ :index, :create, :update ]
+  resources :doi_blocker_lists, :only => [ :index ]
 
   mount Bulkrax::Engine, at: '/'
   resources :ingests
@@ -16,6 +19,7 @@ Rails.application.routes.draw do
 
   post 'import/picker'
   get 'export/dublinCore'
+  get 'export_bulk/dublinCore'
 
   mount Riiif::Engine => 'images', as: :riiif if Hyrax.config.iiif_image_server?
   mount Blacklight::Engine => '/'

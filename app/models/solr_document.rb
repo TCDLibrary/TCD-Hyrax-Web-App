@@ -163,4 +163,8 @@ class SolrDocument
     self[Solrizer.solr_name('fedora_sha1')]
   end
 
+  def doi
+    self[Solrizer.solr_name('doi')]
+  end
+
 end
