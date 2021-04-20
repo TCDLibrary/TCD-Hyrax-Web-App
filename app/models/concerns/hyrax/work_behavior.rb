@@ -285,9 +285,9 @@ module Hyrax
       end
 
       event= ""
-      if ENV["RAILS_ENV"] == 'digcollhyrax01'
-         event = "publish"
-      end
+    #  if ENV["RAILS_ENV"] == 'digcollhyrax01'
+    #     event = "publish"
+    #  end
 
       datacite_hash = {
         "data": {
