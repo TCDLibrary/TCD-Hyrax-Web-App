@@ -1,0 +1,12 @@
+# JL: 08/01/2019 Travis uses this to replace database.yml because it wants to login with no password
+
+test:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: test_hyrax
+  host: 127.0.0.1
+  port: 8888
+  pool: 5
+  username: root
+  password: password

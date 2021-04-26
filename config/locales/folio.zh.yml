@@ -7,6 +7,9 @@ zh:
           genre_sim: Genre
         index:
           genre_tesim: Genre
+          doi_tesim: DOI
+        show:
+          doi: DOI
   hyrax:
     icons:
       folio:     'fa fa-file-text-o'

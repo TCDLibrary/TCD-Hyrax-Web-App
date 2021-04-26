@@ -1,0 +1,20 @@
+<% provide :page_header do %>
+  <h1><span class="fa fa-ban" aria-hidden="true"></span> DOI Blocker List</h1>
+<% end %>
+
+<div class="table-responsive">
+  <table class="table table-striped datatable">
+    <thead>
+      <tr>
+        <th>object id</th>
+        <th>description</th>
+      </tr>
+    </thead>
+    <% @doi_blocker_lists&.each do | blocked | %>
+    <tr>
+      <td><%= blocked.object_id %></td>
+      <td><%= blocked.description %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>

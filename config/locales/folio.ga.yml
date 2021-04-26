@@ -124,6 +124,7 @@ ga:
           editor_sim: Eagarthóir
           publisher: Eagarthóir
           editor_label: Eagarthóir
+          doi_tesim: DOI
         show:
           based_near_tesim: Based Near
           based_near_label: Based Near
@@ -133,6 +134,7 @@ ga:
           genre_tesim: Formáid
           genre: Formáid
           abstract: Achoimre
+          doi: DOI
           digital_object_identifier: Aitheantóir Oibiachta Digití
           digital_object_identifier_tesim: Aitheantóir Oibiachta Digití
           dris_unique_tesim: Dris Unique

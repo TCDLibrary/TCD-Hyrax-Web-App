@@ -7,6 +7,9 @@ es:
           genre_sim: Formato
         index:
           genre_tesim: Formato
+          doi_tesim: DOI
+        show:
+          doi: DOI
   hyrax:
     icons:
       folio:     'fa fa-file-text-o'

@@ -5,6 +5,10 @@ de:
         facet:
           genre_tesim: Format
           genre_sim: Format
+        index:
+          doi_tesim: DOI
+        show:
+          doi: DOI
   hyrax:
     icons:
       folio:     'fa fa-file-text-o'

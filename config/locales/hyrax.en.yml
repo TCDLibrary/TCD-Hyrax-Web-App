@@ -61,19 +61,27 @@ en:
     admin:
       sidebar:
         hyrax_checksums: Checksum Audits
+        doi_blocker_lists: DOI Blocker List
     search_tips: search_tips
     account_name: Trinity College Dublin Admin
     base:
       items:
         identifier: Shelf Mark/Reference Number
+        doi: DOI
     controls:
       library: Library
       search_tips: Search Tips
+      virtual_trinity: Virtual Trinity
+    dashboard:
+      my:
+        action:
+          export_metadata : Export Metadata
     directory:
       suffix: "@example.org"
     download:
       metadata: Download Metadata
       schema: (Dublin Core)
+      bulk: Bulk Download
     footer:
       copyright_html: "<strong>Copyright &copy; 2018 Samvera</strong> Licensed under the Apache License, Version 2.0"
       service_html: A service of <a href="http://samvera.org/" class="navbar-link" target="_blank">Samvera</a>.
@@ -85,13 +93,39 @@ en:
       admin_sets:
         link: Explore More
       beta:
-        cant_html: "Can’t find what you’re looking for? <a href='https://www.tcd.ie/Library/digitalcollections' target='_blank'>Our old service can be found here</a>."
-        welcome_html: "Welcome to Digital Collections <strong>beta</strong> version, please bear with us as we add collections."
+        cant_html: "While we ingest all our digitised collections, our legacy service will remain <a href='https://www.tcd.ie/Library/digitalcollections' target='_blank'>here</a>."
+        welcome_html: "Welcome to Digital Collections. "
     institution_name: TCD
     institution_name_full: Trinity College Dublin
     pages:
       tabs:
         search_tips_page: Search Tips
+        search_tips_html: '<h1>Search Tips</h1>
+        <h4 style="text-transform: uppercase;">Searching For Items:</h4>
+        <div class="panel panel-default">
+          <div class="panel-body">
+        <p>Click on the GO button located to the right of the search box to browse the entire contents of Digital Collections.</p>
+        <p>For an exact, targeted search type into the search box the exact terms or phrases you want to search for, enclosing each term/phrase set in double quotation marks " ".</p>
+        <p>Examples:</p>
+        <ul>
+          <li>“fragmenta graeca”</li>
+          <li>“IE TCD MS 1209”</li>
+        </ul>
+        <p>Use the plus sign +, the minus sign -, and or (in lowercase) between term sets for AND, NOT, and OR searches.</p>
+        <p>Examples:</p>
+        <ul>
+          <li> +"waltz"+"robinson" [results MUST HAVE waltz AND Robinson]</li>
+          <li> +"catalogue"+"trade"-"painting" [results MUST HAVE catalogue AND trade but NOT painting]</li>
+          <li> "card games" or "trade catalogs" [results must contain EITHER the phrase card games OR the phrase trade catalogs]</li>
+        </ul>
+        </div>
+        </div>
+        <h4 style="text-transform: uppercase;">Refining Your Search:</h4>
+        <div class="panel panel-default">
+          <div class="panel-body">
+        <p>Searches may be further refined, if necessary, using the Limit your search options on the left side of the search results screen.</p>
+        </div>
+        </div>'
     product_name: Digital Collections
     product_twitter_handle: "@DigitalColl"
 

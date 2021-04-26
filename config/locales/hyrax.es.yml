@@ -93,6 +93,7 @@ es:
         identifier: Número de referencia
     controls:
       library: Biblioteca
+      search_tips: Consejos de búsqueda
     directory:
       suffix: "@example.org"
     download:
@@ -128,10 +129,39 @@ es:
       contact: Contacto de Trinity
     homepage:
       beta:
-        cant_html: "<a href='https://www.tcd.ie/Library/digitalcollections' target='_blank'>Si no puede encontrar lo que busca, nuestro antiguo servicio está aquí</a>."
-        welcome_html: "Bienvenido a la <strong>versión beta</strong> de nuestro Archivo Digital."
+        cant_html: "El servicio viejo permanece <a href='https://www.tcd.ie/Library/digitalcollections' target='_blank'>aquí</a>."
+        welcome_html: "Bienvenido a nuestro Archivo Digital. "
     institution_name: institución
     institution_name_full: El nombre de la institución
+    pages:
+      tabs:
+        search_tips_page: Consejos de búsqueda
+        search_tips_html: '<h1>Consejos de búsqueda</h1>
+        <h4 style="text-transform: uppercase;">Buscando artículos:</h4>
+        <div class="panel panel-default">
+          <div class="panel-body">
+        <p>Haga clic en el botón IR ubicado a la derecha del cuadro de búsqueda para explorar todo el contenido de las Colecciones Digitales.</p>
+        <p>Para una búsqueda específica y exacta, escriba en el cuadro de búsqueda los términos o frases exactos que desea buscar, encerrando cada término / frase entre comillas dobles " ".</p>
+        <p>Ejemplos:</p>
+        <ul>
+          <li>“fragmenta graeca”</li>
+          <li>“IE TCD MS 1209”</li>
+        </ul>
+        <p>Utilice el signo más +, el signo menos - y o (en minúsculas) entre conjuntos de términos para búsquedas Y, NO y O.</p>
+        <p>Ejemplos:</p>
+        <ul>
+          <li> +"waltz"+"robinson" [resultados DEBEN TENER "waltz" Y "robinson"]</li>
+          <li> +"catalogue"+"trade"-"painting" [resultados DEBEN TENER "catalogue" Y "trade" pero NO "painting"]</li>
+          <li> "card games" or "trade catalogs" [los resultados deben contener una o más de las frases "card games" O "trade catalogs"]</li>
+        </ul>
+        </div>
+        </div>
+        <h4 style="text-transform: uppercase;">Refinando su búsqueda:</h4>
+        <div class="panel panel-default">
+          <div class="panel-body">
+        <p>Las búsquedas se pueden refinar aún más, si es necesario, utilizando las opciones <b>Limite su búsqueda</b> en el lado izquierdo de la pantalla de resultados de búsqueda.</p>
+        </div>
+        </div>'
     product_name: Hyrax
     product_twitter_handle: "@DigitalColl"
     search:
