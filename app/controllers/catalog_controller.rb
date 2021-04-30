@@ -514,7 +514,7 @@ class CatalogController < ApplicationController
     config.oai = {
       provider: {
         repository_name: 'Digital Collections',
-        repository_url: 'https://digitalcollections.tcd.ie/catalog/oai',
+        repository_url: "#{Rails.application.config.oai_pmh_hostpath}",
       },
       document: {
         set_fields: [

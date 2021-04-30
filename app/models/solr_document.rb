@@ -168,13 +168,13 @@ class SolrDocument
   def doi
     self[Solrizer.solr_name('doi')]
   end
-  
+
   field_semantics.merge!(
     contributor: 'contributor_tesim',
     creator: 'creator_tesim',
     date: 'date_created_tesim',
     description: 'description_tesim',
-    identifier: 'identifier_tesim',
+    identifier: ['identifier_tesim', 'doi_tesim'],
     language: 'language_tesim',
     publisher: 'publisher_tesim',
     relation: 'nesting_collection__pathnames_ssim',

@@ -1,6 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.persistent_hostpath = 'https://digitalcollections.tcd.ie/concern/works/'
+  config.oai_pmh_hostpath = 'http://digitalcollections.tcd.ie/catalog/oai'
 
   config.ingest_folder = 'public/data/ingest/'
   config.export_folder = '/digicolapp/datastore/exports/hyrax02/'
