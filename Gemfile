@@ -95,7 +95,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #gem 'hyrax', git: 'https://github.com/samvera/hyrax', branch: 'iiif-manifest-order-backport'
 ##>>gem 'hyrax', git: 'https://github.com/samvera/hyrax', branch: 'iiif-manifest-order-backport-ii'
 
-gem 'hyrax', '2.9.0'
+gem 'hyrax', '2.9.5'
 
 gem 'bulkrax', git: 'https://github.com/samvera-labs/bulkrax'
 
