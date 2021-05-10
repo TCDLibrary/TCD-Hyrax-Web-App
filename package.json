@@ -2,7 +2,8 @@
   "name": "tcd_hyrax_app_3",
   "private": true,
   "dependencies": {
-  "universalviewer": "^3.1.1"
+    "lodash": "4.17.21",
+    "universalviewer": "^3.1.1"
   },
   "scripts": {
     "preinstall": "rm -rf ./public/uv",
@@ -11,6 +12,6 @@
     "uv-config": "shx cp ./config/uv/uv.html ./public/uv/uv.html & shx cp ./config/uv/uv-config.json ./public/uv/"
   },
   "devDependencies": {
-  "shx": "^0.3.2"
+    "shx": "^0.3.2"
   }
 }
