@@ -3,7 +3,8 @@
   "private": true,
   "dependencies": {
     "lodash": "4.17.21",
-    "universalviewer": "^3.1.1"
+    "universalviewer": "^3.1.1",
+    "xmldom": "0.5.0"
   },
   "scripts": {
     "preinstall": "rm -rf ./public/uv",
