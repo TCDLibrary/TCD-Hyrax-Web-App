@@ -29,3 +29,33 @@ Television, Televisions, TV, TVs
 # Synonym mappings can be used for spelling correction too
 pixima => pixma
 
+# Differences between US and English spelling:
+acknowledgment => acknowledgement
+aging => ageing
+ameba => amoeba
+analog => analogue
+analyze => analyse
+anesthesia => anaesthesia
+behavior => behaviour
+catalyze => catalyse
+center => centre
+cesium => caesium
+characterize => characterise
+color => colour
+defense => defence
+dialog => dialogue
+diarrhea => diarrhoea
+enroll => enrol
+esophagus => oesophagus
+favor => favour
+fiber => fibre
+fulfill => fulfil
+judgment => judgement
+labeled => labelled
+leukemia => leukaemia
+liter => litre
+prioritize => prioritise
+program => programme
+signaling => signalling
+skillful => skilful
+specialize => specialise
