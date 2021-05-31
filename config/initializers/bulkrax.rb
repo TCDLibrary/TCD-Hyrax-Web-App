@@ -7,9 +7,10 @@ Bulkrax.setup do |config|
   # ]
 
   config.parsers = [
-    { class_name: 'Bulkrax::MarcxmlParser', name: 'MARCXML importer', partial: 'marcxml_fields' },
     { class_name: 'Bulkrax::FoxmlParser', name: 'FOXML importer', partial: 'foxml_fields' },
-    { class_name: 'Bulkrax::CsvParser', name: 'CSV importer', partial: 'csv_fields' }
+    { class_name: 'Bulkrax::CsvParser', name: 'CSV importer', partial: 'csv_fields' },
+    { class_name: 'Bulkrax::MarcxmlParser', name: 'MARC XML importer', partial: 'marcxml_fields' },
+    { class_name: 'Bulkrax::ModsParser', name: 'MODS importer', partial: 'mods_fields' }
   ]
 
   # Field to use during import to identify if the Work or Collection already exists.
@@ -41,7 +42,8 @@ Bulkrax.setup do |config|
   # config.source_identifier_field_mapping = { }
   config.source_identifier_field_mapping = {
     'Bulkrax::FoxmlEntry' => 'DrisUnique',
-    'Bulkrax::MarcxmlEntry' => 'controlfield'
+    'Bulkrax::MarcxmlEntry' => 'controlfield',
+    'Bulkrax::ModsEntry' => 'recordIdentifier'
   }
 
   # Field_mapping for establishing a parent-child relationship (FROM parent TO child)
@@ -191,6 +193,15 @@ Bulkrax.setup do |config|
 #marc    'order_no' => { from: ['LCN'] },
 #marc    'total_records' => { from: ['PageTotal'] }
   }
+
+  config.field_mappings['Bulkrax::ModsParser'] = {
+    'keyword' => { from: ['relatedItem'], parsed: true },
+    'creator' => { from: ['name'], parsed: true },
+    'title' => { from: ['title'], parsed: true },
+    'dris_unique' => { from: ['recordIdentifier'] }
+  }
+
+
   # Properties that should not be used in imports/exports. They are reserved for use by Hyrax.
   # config.reserved_properties += ['my_field']
 end

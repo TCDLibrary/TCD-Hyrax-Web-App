@@ -6,8 +6,9 @@ RSpec.describe Bulkrax do
   describe '#config' do
     it 'has custom parsers' do
       expect(described_class.parsers).to eq([
-                                              { class_name: 'Bulkrax::FoxmlParser', name: 'FOXML importer', partial: 'foxml_fields' },
+                                              { class_name: 'Bulkrax::ModsParser', name: 'Mods importer', partial: 'mods_fields' },
                                               { class_name: 'Bulkrax::MarcxmlParser', name: 'Marc XML importer', partial: 'marcxml_fields' },
+                                              { class_name: 'Bulkrax::FoxmlParser', name: 'FOXML importer', partial: 'foxml_fields' },
                                               { class_name: 'Bulkrax::CsvParser', name: 'CSV importer', partial: 'csv_fields' }
                                             ])
     end

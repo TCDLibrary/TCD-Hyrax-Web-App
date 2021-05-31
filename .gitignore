@@ -55,3 +55,6 @@ public/assets
 
 # Ignore UV install
 public/uv
+
+# Ignore my local version of bulkrax javascript. It's there so I can force rebuild of dynamic js.
+app/assets/javascripts/bulkrax/importers.js.erb
