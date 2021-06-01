@@ -28,7 +28,9 @@ Rails.application.routes.draw do
     concern :searchable, Blacklight::Routes::Searchable.new
 
   resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do
-    concerns :oai_provider
+    authenticate :user, lambda { |u| u.valid? } do
+      concerns :oai_provider
+    end
     concerns :searchable
   end
 
