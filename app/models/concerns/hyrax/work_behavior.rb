@@ -54,8 +54,8 @@ module Hyrax
                       'xmlns:dc' => "http://purl.org/dc/elements/1.1/",
                       #'xsi:schemaLocation' => "http://purl.org/dc/elements/1.1/dc.xsd",
                       'xmlns:dcterms' => "http://purl.org/dc/terms/",
-                      #'xmlns:marcrel' => "http://www.loc.gov/marc.relators/",
-                      'xsi:schemaLocation' => "http://www.loc.gov/marc.relators/marcrel.xsd",
+                      'xmlns:marcrel' => "http://www.loc.gov/marc.relators/",
+                      'xsi:schemaLocation' => "http://www.loc.gov/marc.relators/ http://imlsdcc2.grainger.illinois.edu/registry/marcrel.xsd",
                       #'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance",
                       'xsi:noNamespaceSchemaLocation' => "http://dublincore.org/schemas/xmls/qdc/2008/02/11/qualifieddc.xsd" ) {
 
@@ -127,7 +127,7 @@ module Hyrax
 
            self.date_created.each do |attribute|
              if !attribute.blank?
-                xml.send('dc:created', attribute)
+                xml.send('dcterms:created', attribute)
              end
            end
 
@@ -218,7 +218,7 @@ module Hyrax
 
            self.provenance.each do |attribute|
              if !attribute.blank?
-                xml.send('dc:provenance', attribute)
+                xml.send('dcterms:provenance', attribute)
              end
            end
 
