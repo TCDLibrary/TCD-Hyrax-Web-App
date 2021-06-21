@@ -66,7 +66,7 @@ module Hyrax
            ##
            self.title.each do |attribute|
              if !attribute.blank?
-                xml.send('dc:title', attribute)
+                xml.send('dc:title', attribute.encode(:xml => :text))
              end
            end
 
@@ -78,37 +78,37 @@ module Hyrax
                      attribute = attribute.delete_suffix(", " + value)
                   end
                 }
-                xml.send('dc:creator', attribute)
+                xml.send('dc:creator', attribute.encode(:xml => :text))
              end
            end
 
            self.location.each do |attribute|
              if !attribute.blank?
-                xml.send('dc:creator', attribute)
+                xml.send('dc:creator', attribute.encode(:xml => :text))
              end
            end
 
            self.subject.each do |attribute|
              if !attribute.blank?
-                xml.send('dc:subject', attribute)
+                xml.send('dc:subject', attribute.encode(:xml => :text))
              end
            end
 
            self.abstract.each do |attribute|
              if !attribute.blank?
-                xml.send('dc:description', attribute)
+                xml.send('dc:description', attribute.encode(:xml => :text))
              end
            end
 
            self.sponsor.each do |attribute|
              if !attribute.blank?
-                xml.send('dc:description', attribute)
+                xml.send('dc:description', attribute.encode(:xml => :text))
              end
            end
 
            self.publisher.each do |attribute|
              if !attribute.blank?
-                xml.send('dc:publisher', attribute)
+                xml.send('dc:publisher', attribute.encode(:xml => :text))
              end
            end
 
@@ -120,14 +120,14 @@ module Hyrax
                     attribute = attribute.delete_suffix(", " + value)
                  end
                }
-               xml.send('dc:contributor', attribute)
+               xml.send('dc:contributor', attribute.encode(:xml => :text))
                 #xml.send('marcrel:rcp', attribute)
              end
            end
 
            self.date_created.each do |attribute|
              if !attribute.blank?
-                xml.send('dcterms:created', attribute)
+                xml.send('dcterms:created', attribute.encode(:xml => :text))
              end
            end
 
@@ -141,13 +141,13 @@ module Hyrax
 
            self.resource_type.each do |attribute|
              if !attribute.blank?
-                xml.send('dc:type', attribute.camelize)
+                xml.send('dc:type', attribute.camelize.encode(:xml => :text))
              end
            end
 
            self.identifier.each do |attribute|
              if !attribute.blank?
-                xml.send('dc:identifier', attribute)
+                xml.send('dc:identifier', attribute.encode(:xml => :text))
              end
            end
 
@@ -174,25 +174,25 @@ module Hyrax
            #self.rights_statement.each do |attribute|
            self.copyright_note.each do |attribute|
              if !attribute.blank?
-                xml.send('dc:rights', attribute)
+                xml.send('dc:rights', attribute.encode(:xml => :text))
              end
            end
 
            self.rights_statement.each do |attribute|
              if !attribute.blank?
-                xml.send('dc:rights', attribute)
+                xml.send('dc:rights', attribute.encode(:xml => :text))
              end
            end
 
            self.copyright_status.each do |attribute|
              if !attribute.blank?
-                xml.send('dc:rights', attribute)
+                xml.send('dc:rights', attribute.encode(:xml => :text))
              end
            end
 
            self.license.each do |attribute|
              if !attribute.blank?
-                xml.send('dcterms:license', attribute)
+                xml.send('dcterms:license', attribute.encode(:xml => :text))
              end
            end
            # TODO: why is this not on the object?
@@ -200,43 +200,43 @@ module Hyrax
 
            self.bibliographic_citation.each do |attribute|
              if !attribute.blank?
-                xml.send('dcterms:bibliographicCitation', attribute)
+                xml.send('dcterms:bibliographicCitation', attribute.encode(:xml => :text))
              end
            end
 
            self.genre_tgm.each do |attribute|
              if !attribute.blank?
-                xml.send('dc:type', attribute)
+                xml.send('dc:type', attribute.encode(:xml => :text))
              end
            end
 
            self.genre_aat.each do |attribute|
              if !attribute.blank?
-                xml.send('dc:type', attribute)
+                xml.send('dc:type', attribute.encode(:xml => :text))
              end
            end
 
            self.provenance.each do |attribute|
              if !attribute.blank?
-                xml.send('dcterms:provenance', attribute)
+                xml.send('dcterms:provenance', attribute.encode(:xml => :text))
              end
            end
 
            self.series_title.each do |attribute|
              if !attribute.blank?
-                xml.send('dcterms:isPartOf', attribute)
+                xml.send('dcterms:isPartOf', attribute.encode(:xml => :text))
              end
            end
 
            self.collection_title.each do |attribute|
              if !attribute.blank?
-                xml.send('dcterms:isPartOf', attribute)
+                xml.send('dcterms:isPartOf', attribute.encode(:xml => :text))
              end
            end
 
            self.alternative_title.each do |attribute|
              if !attribute.blank?
-                xml.send('dcterms:alternative', attribute)
+                xml.send('dcterms:alternative', attribute.encode(:xml => :text))
              end
            end
 
@@ -249,13 +249,13 @@ module Hyrax
 
            self.support.each do |attribute|
              if !attribute.blank?
-                xml.send('dcterms:medium', attribute)
+                xml.send('dcterms:medium', attribute.encode(:xml => :text))
              end
            end
 
            self.related_url.each do |attribute|
              if !attribute.blank?
-                xml.send('dc:relation', attribute)
+                xml.send('dc:relation', attribute.encode(:xml => :text))
              end
            end
 
