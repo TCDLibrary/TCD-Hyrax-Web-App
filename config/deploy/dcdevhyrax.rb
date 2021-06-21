@@ -1,8 +1,8 @@
 set :stage, :dcdevhyrax
 set :rails_env, :dcdevhyrax
-#set :branch, "master"
+set :branch, "master"
 
-set :branch, "2021-03-01-DOI-DublinCoreBatchExport-DRI"
+#set :branch, "2021-03-01-DOI-DublinCoreBatchExport-DRI"
 
 # Default deploy_to directory is /var/www/my_app_name. Override it:
 set :deploy_to, "/opt/app/TCD-Hyrax-Web-App"
