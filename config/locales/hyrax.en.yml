@@ -93,8 +93,8 @@ en:
       admin_sets:
         link: Explore More
       beta:
-        cant_html: "While we ingest all our digitised collections, our legacy service will remain <a href='https://www.tcd.ie/Library/digitalcollections' target='_blank'>here</a>."
-        welcome_html: "Welcome to Digital Collections. "
+        cant_html: "Our <a href='https://www.tcd.ie/Library/digitalcollections' target='_blank'>legacy service</a> will be in operation until 1st July when it will <a href='https://www.tcd.ie/library/news/legacy-digital-collections-closing-down/' target='_blank'>close down</a>."
+        welcome_html: "Welcome to Digital Collections where you can find all of our digitised collections. "
     institution_name: TCD
     institution_name_full: Trinity College Dublin
     pages:

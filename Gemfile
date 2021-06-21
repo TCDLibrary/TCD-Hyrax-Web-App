@@ -16,7 +16,7 @@ gem 'mysql2'
 
 group :development, :test do
   # Use Puma as the app server
-  gem 'puma', '~> 3.12'
+  gem 'puma', '~> 4.3'
 end
 
 group :dcdevhyrax, :digcollhyrax01, :digcollhyrax02 do
@@ -95,7 +95,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #gem 'hyrax', git: 'https://github.com/samvera/hyrax', branch: 'iiif-manifest-order-backport'
 ##>>gem 'hyrax', git: 'https://github.com/samvera/hyrax', branch: 'iiif-manifest-order-backport-ii'
 
-gem 'hyrax', '2.9.0'
+gem 'hyrax', '2.9.5'
 
 gem 'bulkrax', git: 'https://github.com/samvera-labs/bulkrax'
 
