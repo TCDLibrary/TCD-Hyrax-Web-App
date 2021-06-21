@@ -10,7 +10,8 @@ Bulkrax.setup do |config|
     { class_name: 'Bulkrax::FoxmlParser', name: 'FOXML importer', partial: 'foxml_fields' },
     { class_name: 'Bulkrax::CsvParser', name: 'CSV importer', partial: 'csv_fields' },
     { class_name: 'Bulkrax::MarcxmlParser', name: 'MARC XML importer', partial: 'marcxml_fields' },
-    { class_name: 'Bulkrax::ModsParser', name: 'MODS importer', partial: 'mods_fields' }
+    { class_name: 'Bulkrax::ModsParser', name: 'MODS importer', partial: 'mods_fields' },
+    { class_name: 'Bulkrax::MetsXmlParser', name: 'METS XML', partial: 'mets_xml_fields' }
   ]
 
   # Field to use during import to identify if the Work or Collection already exists.
@@ -43,7 +44,8 @@ Bulkrax.setup do |config|
   config.source_identifier_field_mapping = {
     'Bulkrax::FoxmlEntry' => 'DrisUnique',
     'Bulkrax::MarcxmlEntry' => 'controlfield',
-    'Bulkrax::ModsEntry' => 'recordIdentifier'
+    'Bulkrax::ModsEntry' => 'recordIdentifier',
+    'Bulkrax::MetsXmlEntry' => 'OBJID'
   }
 
   # Field_mapping for establishing a parent-child relationship (FROM parent TO child)
@@ -201,7 +203,10 @@ Bulkrax.setup do |config|
     'dris_unique' => { from: ['recordIdentifier'] }
   }
 
-
+  config.field_mappings['Bulkrax::MetsXmlParser'] = {
+    'source_identifier' => { from: ['identifier'] },
+    'work_type' => 'PagedResource'
+  }
   # Properties that should not be used in imports/exports. They are reserved for use by Hyrax.
   # config.reserved_properties += ['my_field']
 end

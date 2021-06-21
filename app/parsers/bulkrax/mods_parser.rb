@@ -1,12 +1,39 @@
 module Bulkrax
   class ModsParser < XmlParser
     def record_element
-      'mods'
+      'mods version="3.5"'
     end
 
     def entry_class
       Bulkrax::ModsEntry
     end
+
+    # JL: not implemented in METS
+    def collection_entry_class
+      Bulkrax::ModsCollectionEntry
+    end
+
+    # JL: cloned from METS
+    # @todo not yet supported
+    def import_fields; end
+
+    # JL: not implemented in METS
+    # Create collection entries.
+    # We NEED Collection Entries for parent Work/Folio/Subseries
+    # These Collection Entries are used by #create_parent_child_relationships to build the work-work relationship
+    # We do not NEED Collection Entries for Collections, as the relationship from Work/Folio/Subseries to Collection is already handled
+    # But for consistency we create a collection entry for the parent Collection anyway
+    def create_collections
+      return if parser_fields['parent_id'].blank? || parent.blank?
+
+      @parent = setup_parent_for_collection_entry
+      raise StandardError, "problem setting #{Bulkrax.system_identifier_field} on parent #{parent.id}" if parent.send(Bulkrax.system_identifier_field).blank?
+
+      new_entry = find_or_create_entry(collection_entry_class, parent.send(Bulkrax.system_identifier_field).first, 'Bulkrax::Importer')
+      ImportWorkCollectionJob.perform_now(new_entry.id, current_importer_run.id)
+      increment_counters(0, true)
+    end
+
 
     # Override bulkrax to move files to Bulkrax.import_path/importer_id/
     def valid_import?
@@ -25,22 +52,6 @@ module Bulkrax
       false
     end
 
-    # Create collection entries.
-    # We NEED Collection Entries for parent Work/Folio/Subseries
-    # These Collection Entries are used by #create_parent_child_relationships to build the work-work relationship
-    # We do not NEED Collection Entries for Collections, as the relationship from Work/Folio/Subseries to Collection is already handled
-    # But for consistency we create a collection entry for the parent Collection anyway
-    def create_collections
-      return if parser_fields['parent_id'].blank? || parent.blank?
-
-      @parent = setup_parent_for_collection_entry
-      raise StandardError, "problem setting #{Bulkrax.system_identifier_field} on parent #{parent.id}" if parent.send(Bulkrax.system_identifier_field).blank?
-
-      new_entry = find_or_create_entry(collection_entry_class, parent.send(Bulkrax.system_identifier_field).first, 'Bulkrax::Importer')
-      ImportWorkCollectionJob.perform_now(new_entry.id, current_importer_run.id)
-      increment_counters(0, true)
-    end
-
     # Override bulkrax method to create only work-work relationships
     def create_parent_child_relationships
       return if parser_fields['parent_id'].blank? || parent.blank? || parent.class == Collection
@@ -51,10 +62,6 @@ module Bulkrax
       parent_id = parents.first.id
       child_entry_ids = importerexporter.entries.map { |e| e.id if e.class == entry_class }.compact
       ChildRelationshipsJob.perform_later(parent_id, child_entry_ids, current_importer_run.id)
-    end
-
-    def collection_entry_class
-      Bulkrax::ModsCollectionEntry
     end
 
     def parent
@@ -105,19 +112,57 @@ module Bulkrax
     # This is Julie's fix for multiple XML records in a Single Object,Multiple Image import
     def records(_opts = {})
       @records ||= build_records
+      byebug
     end
 
     # single/multiple doesn't matter here, we want all the ROWs
     def build_records
+      byebug
       r = []
       metadata_paths.map do |md|
        # Retrieve all records
-       elements = entry_class.read_data(md).xpath("//#{record_element}")
+       byebug
+       # elements = entry_class.read_data(md).css("//#{record_element}")
+      elements = entry_class.read_data(md).css("//*[name()='mods']")
        r += elements.map { |el| entry_class.data_for_entry(el, md) }
       end
       # Flatten because we may have multiple records per array
       r.compact.flatten
     end
+
+    # JL: cloned from base Bulkrax
+    # Return all files in the import directory and sub-directories
+    def file_paths
+      @file_paths ||=
+        # Relative to the file
+        if file?
+          Dir.glob("#{File.dirname(path_for_import)}/**/*").reject { |f| File.file?(f) == false }
+        # In the supplied directory
+        else
+          Dir.glob("#{path_for_import}/**/*").reject { |f| File.file?(f) == false }
+        end
+    end
+
+    # If the import_file_path is an xml file, return that
+    # Otherwise return all xml files in the given folder
+    def metadata_paths
+      @metadata_paths ||=
+        if file? && MIME::Types.type_for(path_for_import).include?('application/xml')
+          [path_for_import]
+        else
+          file_paths.select { |f| MIME::Types.type_for(f).include?('application/xml') }
+        end
+    end
+    def metadata_paths
+      @metadata_paths ||=
+        if file? && MIME::Types.type_for(import_file_path).include?('application/xml')
+          [import_file_path]
+        else
+          file_paths.select { |f| MIME::Types.type_for(f).include?('application/xml') }
+        end
+    end
+
+
 
   end
 end

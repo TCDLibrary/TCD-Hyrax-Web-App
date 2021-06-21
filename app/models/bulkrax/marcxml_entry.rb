@@ -11,7 +11,7 @@ module Bulkrax
     def self.data_for_entry(data, path = nil)
       collections = []
       children = []
-      #byebug
+      byebug
       xpath_for_source_id = ".//*[name()='#{source_identifier_field}']"
       {
         source_identifier: data.xpath(xpath_for_source_id).first.text,
