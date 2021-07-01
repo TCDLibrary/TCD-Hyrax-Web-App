@@ -1,23 +1,19 @@
 module Bulkrax
   class ModsParser < XmlParser
     def record_element
-      'mods version="3.5"'
+      'mods'
     end
 
     def entry_class
       Bulkrax::ModsEntry
     end
 
-    # JL: not implemented in METS
     def collection_entry_class
       Bulkrax::ModsCollectionEntry
     end
 
-    # JL: cloned from METS
-    # @todo not yet supported
     def import_fields; end
 
-    # JL: not implemented in METS
     # Create collection entries.
     # We NEED Collection Entries for parent Work/Folio/Subseries
     # These Collection Entries are used by #create_parent_child_relationships to build the work-work relationship
@@ -112,19 +108,15 @@ module Bulkrax
     # This is Julie's fix for multiple XML records in a Single Object,Multiple Image import
     def records(_opts = {})
       @records ||= build_records
-      byebug
     end
 
     # single/multiple doesn't matter here, we want all the ROWs
     def build_records
-      byebug
       r = []
       metadata_paths.map do |md|
        # Retrieve all records
-       byebug
-       # elements = entry_class.read_data(md).css("//#{record_element}")
-      elements = entry_class.read_data(md).css("//*[name()='mods']")
-       r += elements.map { |el| entry_class.data_for_entry(el, md) }
+      elements = entry_class.read_data(md).xpath("//#{record_element}")
+       r += elements.map { |el| entry_class.data_for_entry(el) }
       end
       # Flatten because we may have multiple records per array
       r.compact.flatten

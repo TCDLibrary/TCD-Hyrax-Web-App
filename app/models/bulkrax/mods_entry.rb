@@ -1,29 +1,97 @@
+# frozen_string_literal: true
+require 'tcd_metadata/mods_record'
+require 'nokogiri'
 module Bulkrax
-  class ModsEntry < XmlEntry
-    def self.matcher_class
-      Bulkrax::ModsMatcher
+  # Generic XML Entry
+  class ModsEntry < Entry
+    serialize :raw_metadata, JSON
+
+    def self.fields_from_data(data); end
+
+
+    # @param [String] path
+    # @return [Nokogiri::XML::Document]
+    def self.read_data(path)
+      Nokogiri::XML(open(path)).remove_namespaces!
     end
 
-    # Override to gsub the following:
-    # \u0096 => space
-    # \u0092 => ’
-    # \u0091 => ‘
-    def self.data_for_entry(data, path = nil)
+
+    # @param [Nokogiri::XML::Element] data
+    def self.data_for_entry(data)
       collections = []
       children = []
       xpath_for_source_id = ".//*[name()='#{source_identifier_field}']"
-      {
+      return {
         source_identifier: data.xpath(xpath_for_source_id).first.text,
         data:
-          data.to_xml(
-            encoding: 'UTF-8',
+          data.document.to_xml(
+            encoding: 'utf-8',
             save_with:
-              Nokogiri::XML::Node::SaveOptions::AS_XML | Nokogiri::XML::Node::SaveOptions::NO_DECLARATION | Nokogiri::XML::Node::SaveOptions::NO_EMPTY_TAGS
+                Nokogiri::XML::Node::SaveOptions::DEFAULT_XML | Nokogiri::XML::Node::SaveOptions::NO_DECLARATION | Nokogiri::XML::Node::SaveOptions::NO_EMPTY_TAGS
           ).delete("\n").delete("\t").tr("\u0091", '‘').tr("\u0092", '’').tr("\u0096", ' '),
         collection: collections,
-        file: record_file_paths(path),
         children: children
       }
+    end
+
+    def source_identifier
+      @source_identifier ||= self.raw_metadata['source_identifier']
+    end
+
+    def record
+    # JL: self.raw_metadata['data'] is the full XML file. So MODSRecord has to pull just the current recordIdentifier node
+      @record ||= TcdMetadata::MODSRecord.new(source_identifier, self.raw_metadata['data'])
+    end
+
+    def files
+      @files ||= record.files
+    end
+
+    def build_metadata
+      raise StandardError, 'Record not found' if record.nil?
+      raise StandardError, 'Missing source identifier' if source_identifier.blank?
+      self.parsed_metadata = {}
+      self.parsed_metadata['admin_set_id'] = self.importerexporter.admin_set_id
+      self.parsed_metadata[Bulkrax.system_identifier_field] = [source_identifier]
+
+      record.attributes.each do |k,v|
+        add_metadata(k, v) unless v.blank?
+      end
+      add_title
+      add_visibility
+      add_rights_statement
+      add_shelf_locator
+      add_folder_number
+      add_digital_root_number
+      add_genre
+      add_abstract
+      add_local
+      raise StandardError, "title is required" if record.title.blank?
+      self.parsed_metadata
+    end
+
+    def add_title
+      self.parsed_metadata['title'] = [record.title]
+    end
+
+    def add_shelf_locator
+      self.parsed_metadata['shelfLocator'] = [record.shelfLocator]
+    end
+
+    def add_folder_number
+      self.parsed_metadata['folder_number'] = [record.folder_number]
+    end
+
+    def add_digital_root_number
+      self.parsed_metadata['digital_root_number'] = [record.digital_root_number]
+    end
+
+    def add_genre
+      self.parsed_metadata['genre'] = [record.genre]
+    end
+
+    def add_abstract
+      self.parsed_metadata['abstract'] = [record.abstract]
     end
 
     def collections_created?
@@ -59,5 +127,6 @@ module Bulkrax
     def factory_class
       importerexporter.parser_fields['object_type'].constantize
     end
+
   end
 end

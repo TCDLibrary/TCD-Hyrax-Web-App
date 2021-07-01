@@ -1,68 +1,38 @@
 module TcdMetadata
   class MODSRecord < MODSDocument
     def initialize(id, source)
+      # JL: The caller sends the whole XML file, so need to just pull mods node for current recordIdentifier
       @id = id
       @source = source
-      @mods = Nokogiri::XML(source)
+      @all_mods = Nokogiri::XML(source)
+      @elements = @all_mods.xpath("//*[name()='mods']")
+      @elements.each do | elem |
+        if elem.to_s.include? "#{id}</recordIdentifier>"
+          @mods = elem
+        end
+      end
+
     end
 
     attr_reader :id, :source
 
+    # JL to do: I removed idenfifier from here (shelf mark?)
     # local metadata
     ATTRIBUTES = %w[
-      identifier
       source_metadata_identifier
-      viewing_direction
+      title
+      shelfLocator
+      folder_number
+      digital_root_number
     ].freeze
 
     def attributes
       ATTRIBUTES.map { |att| [att, send(att)] }.to_h.compact
     end
 
-    def dris_unique
-      dris_unique
-    end
-
     def source_metadata_identifier
-      bib_id
+      ark_id
     end
 
-    # no default metadata
-
-    # ingest metadata
-    def volumes
-      volumes = []
-      volume_ids.each do |volume_id|
-        volume_hash = {}
-        volume_hash[:title] = [label_for_volume(volume_id)]
-        volume_hash[:structure] = structure_for_volume(volume_id)
-        volume_hash[:files] = files_for_volume(volume_id)
-        volumes << volume_hash
-      end
-      volumes
-    end
-
-    def files
-      add_file_attributes super
-    end
-
-    def collections
-      Array.wrap(collection_slugs)
-    end
-
-    private
-
-      def add_file_attributes(file_hash_array)
-        file_hash_array.each do |f|
-          f[:file_opts] = file_opts(f)
-          f[:attributes] ||= {}
-          f[:attributes][:title] = [file_label(f[:id])]
-        end
-        file_hash_array
-      end
-
-      def files_for_volume(volume_id)
-        add_file_attributes super
-      end
   end
 end

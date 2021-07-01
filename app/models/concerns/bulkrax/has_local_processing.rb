@@ -16,6 +16,7 @@ module Bulkrax::HasLocalProcessing
 
   # Retrieve paths to the images according to the image_type selection
   def image_paths
+    #byebug
     return [] if importerexporter.parser_fields['image_type'] == 'Not Now'
 
     image_full_paths.map do |path|
@@ -40,7 +41,6 @@ module Bulkrax::HasLocalProcessing
   end
 
   def image_base_path
-    #import_path = importerexporter.parser_fields['import_file_path']
     import_path = '/digicolapp/datastore/web'
     # If the import_file_path is to a file, use the containing directory
     if File.file?(import_path)
@@ -52,14 +52,24 @@ module Bulkrax::HasLocalProcessing
 
   # Use CatNo for 'single' and range, use DRISPhotoID for multiple
   def image_id
-    if importerexporter.parser_fields['import_type'] == 'multiple' && image_range.blank?
-      record.xpath("//*[name()='DRISPhotoID']").first.content
+    #byebug
+    # JL : to do : check that this doesn't break Foxml
+    if record.is_a?(TcdMetadata::MODSRecord)
+      record.digital_root_number
     else
-      record.xpath("//*[name()='CatNo']").first.content
+      if importerexporter.parser_fields['import_type'] == 'multiple' && image_range.blank?
+        record.xpath("//*[name()='DRISPhotoID']").first.content
+      else
+        record.xpath("//*[name()='CatNo']").first.content
+      end
     end
   end
 
   def image_range
+    #byebug
+    # JL : to do : check that this doesn't break Foxml
+    return [] if record.is_a?(TcdMetadata::MODSRecord)
+
     range_el = record.xpath("//*[name()='ImgRange']")
     return [] if range_el.blank?
 
@@ -71,7 +81,13 @@ module Bulkrax::HasLocalProcessing
 
   # Use ProjectName for the folder containing images
   def image_folder
-    folder = record.xpath("//*[name()='ProjectName']").first.content.strip
+    #byebug
+    # JL : to do : check that this doesn't break Foxml
+    if record.is_a?(TcdMetadata::MODSRecord)
+      folder = record.folder_number
+    else
+      folder = record.xpath("//*[name()='ProjectName']").first.content.strip
+    end
     if image_base_path.include?(folder)
       return ''
     else
@@ -80,6 +96,7 @@ module Bulkrax::HasLocalProcessing
   end
 
   def image_type_subpaths
+    #byebug
     case importerexporter.parser_fields['image_type']
     when 'HI'
       ['/HI/']
@@ -112,7 +129,7 @@ module Bulkrax::HasLocalProcessing
 
   def skip_fields
     %w[
-  
+
     ]
   end
 end

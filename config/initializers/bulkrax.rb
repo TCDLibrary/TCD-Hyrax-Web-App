@@ -200,7 +200,12 @@ Bulkrax.setup do |config|
     'keyword' => { from: ['relatedItem'], parsed: true },
     'creator' => { from: ['name'], parsed: true },
     'title' => { from: ['title'], parsed: true },
-    'dris_unique' => { from: ['recordIdentifier'] }
+    'dris_unique' => { from: ['recordIdentifier'] },
+    'identifier' => { from: ['shelfLocator'] },
+    'folder_number' => { from: ['folder_number'] },
+    'digital_root_number' => { from: ['digital_root_number'] },
+    'genre' => { from: ['genre'] },
+    'abstract' => { from: ['abstract'] }       
   }
 
   config.field_mappings['Bulkrax::MetsXmlParser'] = {
