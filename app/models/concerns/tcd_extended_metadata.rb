@@ -141,6 +141,18 @@ module TcdExtendedMetadata
       property :doi, predicate: ::RDF::URI.new('http://id.loc.gov/vocabulary/identifiers/doi'), multiple: false do |index|
         index.as :stored_searchable
       end
+
+      property :biographical_note, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#biographical_note') do |index|
+        index.as :stored_searchable
+      end
+
+      property :finding_aid, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#finding_aid') do |index|
+        index.as :stored_searchable
+      end
+      property :note, predicate: ::RDF::Vocab::MODS.NoteGroup do |index|
+        index.as :stored_searchable
+      end
+
   end
 
 end

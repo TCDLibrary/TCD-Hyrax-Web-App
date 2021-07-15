@@ -167,4 +167,15 @@ class SolrDocument
     self[Solrizer.solr_name('doi')]
   end
 
+  def biographical_note
+    self[Solrizer.solr_name('biographical_note')]
+  end
+
+  def finding_aid
+    self[Solrizer.solr_name('finding_aid')]
+  end
+
+  def note
+    self[Solrizer.solr_name('note')]
+  end
 end

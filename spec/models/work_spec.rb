@@ -61,6 +61,10 @@ RSpec.describe Work do
         expect(work.subject_local_keyword).to be_empty
         # 29/03/2019 JL - experimental belongs_to added to work objects
         expect(work.i_belong_to).to be_empty
+        expect(work.biographical_note).to be_empty
+        expect(work.finding_aid).to be_empty
+        expect(work.note).to be_empty
+
       end
     end
     context "with a Work that has TCD metadata defined" do
@@ -119,7 +123,9 @@ RSpec.describe Work do
         work.subject_local_keyword = ["A Subject - local keyword"]
         # 29/03/2019 JL - experimental belongs_to added to work objects
         work.i_belong_to = ["An I_Belong_To link"]
-
+        work.biographical_note = ["A Biographical Note"]
+        work.finding_aid = ["Finding Aid"]
+        work.note = ["A Note"]
 
         expect(work.abstract).to eq(["An Abstract"])
         expect(work.genre).to eq(["A Work Genre"])
@@ -175,6 +181,10 @@ RSpec.describe Work do
         expect(work.subject_local_keyword).to eq (["A Subject - local keyword"])
         # 29/03/2019 JL - experimental belongs_to added to work objects
         expect(work.i_belong_to).to eq (["An I_Belong_To link"])
+        expect(work.biographical_note).to eq (["A Biographical Note"])
+        expect(work.finding_aid).to eq (["Finding Aid"])
+        expect(work.note).to eq (["A Note"])
+
       end
     end
   end

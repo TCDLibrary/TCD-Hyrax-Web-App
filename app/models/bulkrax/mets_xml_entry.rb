@@ -22,7 +22,7 @@ module Bulkrax
     def self.data_for_entry(data)
       collections = []
       children = []
-      byebug
+      #byebug
       source_identifier = data.attributes[source_identifier_field].text
       return {
         source_identifier: source_identifier,

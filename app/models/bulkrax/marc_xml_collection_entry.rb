@@ -1,5 +1,5 @@
 module Bulkrax
-  class MarcxmlCollectionEntry < MarcxmlEntry
+  class MarcXmlCollectionEntry < MarcXmlEntry
     def build_metadata
       self.parsed_metadata = {
         Bulkrax.system_identifier_field => parent.send(Bulkrax.system_identifier_field)

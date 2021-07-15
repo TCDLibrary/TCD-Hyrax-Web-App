@@ -1,9 +1,6 @@
 module Bulkrax
-  class MarcxmlMatcher < Bulkrax::ApplicationMatcher
-    def parse_title(src)
-      src.strip
-    end
-
+  class MarcXmlMatcher < Bulkrax::ApplicationMatcher
+    # JL : to do : Needs full mappings
     def parse_creator_loc(src)
       src.strip
     end
@@ -70,13 +67,7 @@ module Bulkrax
 
     # 'AttributedArtistCalculation', 'OtherArtistCalculation'
     def parse_creator(src)
-      data = artist_to_hash(src)
-      role_code = data['ArtistRoleCode']
-
-      if role_code && Role_codes_creator[role_code]
-      #  "#{data['Artist']}, #{data['ArtistRole']}"
-         "#{data['Artist']}, #{Role_codes_creator[role_code]}"
-      end
+      src.strip
     end
 
     # 'AttributedArtistCalculation', 'OtherArtistCalculation'
@@ -120,7 +111,7 @@ module Bulkrax
       end
     end
 
-    def parse_genre(src)
+    def parse_genres(src)
       # 'SubjectTMG', 'TypeOfWork'
       src.strip
     end

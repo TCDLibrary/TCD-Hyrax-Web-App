@@ -48,6 +48,9 @@ RSpec.feature 'Search for a work' do
         expect(page).to have_content work.provenance.first
         expect(page).to have_content work.culture.first
         expect(page).to have_content work.folder_number.first
+        expect(page).to have_content work.biographical_note.first
+        expect(page).to have_content work.finding_aid.first
+        expect(page).to have_content work.note.first
 
       end
     end

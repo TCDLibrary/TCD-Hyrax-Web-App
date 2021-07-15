@@ -44,6 +44,9 @@
     <%= presenter.attribute_to_html(:date_modified, label: t('hyrax.base.show.last_modified'), html_dl: true) %>
 <% end %>
 <!--  presenter.attribute_to_html(:based_near_label, html_dl: true)  -->
+<%= presenter.attribute_to_html(:biographical_note, html_dl: true) %>
+<%= presenter.attribute_to_html(:finding_aid, html_dl: true) %>
+<%= presenter.attribute_to_html(:note, html_dl: true) %>
 
 </span>
 <button onclick="TCDCollapsibleFunction()" id="TCDMoreBtn">Read more</button>

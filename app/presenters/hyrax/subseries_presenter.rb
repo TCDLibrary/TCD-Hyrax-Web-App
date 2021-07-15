@@ -33,6 +33,9 @@ module Hyrax
     delegate :location, to: :solr_document
     delegate :folder_number, to: :solr_document
     delegate :doi, to: :solr_document
-    
+    delegate :biographical_note, to: :solr_document
+    delegate :finding_aid, to: :solr_document
+    delegate :note, to: :solr_document  
+
   end
 end

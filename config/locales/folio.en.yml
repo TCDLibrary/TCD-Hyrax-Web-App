@@ -18,6 +18,9 @@ en:
           sponsor_tesim: Sponsor
           bibliography_tesim: Bibliography
           publisher_location_tesim: Publisher Location
+          biographical_note_tesim: Biographical Note
+          finding_aid_tesim: Finding Aid
+          note_tesim: Note
           support_tesim: Support
           medium_tesim: Medium
           alternative_title_tesim: Alternative Title
@@ -53,6 +56,9 @@ en:
           sponsor_tesim: Sponsor
           bibliography_tesim: Bibliography
           publisher_location_tesim: Publisher Location
+          biographical_note_tesim: Biographical Note
+          finding_aid_tesim: Finding Aid
+          note_tesim: Note
           support_tesim: Support
           medium_tesim: Medium
           alternative_title_tesim: Alternative Title
@@ -96,6 +102,9 @@ en:
           sponsor_tesim: Sponsor
           bibliography_tesim: Bibliography
           publisher_location_tesim: Publisher Location
+          biographical_note_tesim: Biographical Note
+          finding_aid_tesim: Finding Aid
+          note_tesim: Note
           support_tesim: Support
           medium_tesim: Medium
           alternative_title_tesim: Alternative Title

@@ -8,10 +8,10 @@ Bulkrax.setup do |config|
 
   config.parsers = [
     { class_name: 'Bulkrax::FoxmlParser', name: 'FOXML importer', partial: 'foxml_fields' },
-    { class_name: 'Bulkrax::CsvParser', name: 'CSV importer', partial: 'csv_fields' },
-    { class_name: 'Bulkrax::MarcxmlParser', name: 'MARC XML importer', partial: 'marcxml_fields' },
-    { class_name: 'Bulkrax::ModsParser', name: 'MODS importer', partial: 'mods_fields' },
-    { class_name: 'Bulkrax::MetsXmlParser', name: 'METS XML', partial: 'mets_xml_fields' }
+  #  { class_name: 'Bulkrax::CsvParser', name: 'CSV importer', partial: 'csv_fields' },
+    { class_name: 'Bulkrax::MarcXmlParser', name: 'MARC XML importer', partial: 'marcxml_fields' }
+  #  { class_name: 'Bulkrax::ModsParser', name: 'MODS importer', partial: 'mods_fields' },
+  #  { class_name: 'Bulkrax::MetsXmlParser', name: 'METS XML', partial: 'mets_xml_fields' }
   ]
 
   # Field to use during import to identify if the Work or Collection already exists.
@@ -43,7 +43,7 @@ Bulkrax.setup do |config|
   # config.source_identifier_field_mapping = { }
   config.source_identifier_field_mapping = {
     'Bulkrax::FoxmlEntry' => 'DrisUnique',
-    'Bulkrax::MarcxmlEntry' => 'controlfield',
+    'Bulkrax::MarcXmlEntry' => 'controlfield',
     'Bulkrax::ModsEntry' => 'recordIdentifier',
     'Bulkrax::MetsXmlEntry' => 'OBJID'
   }
@@ -137,63 +137,13 @@ Bulkrax.setup do |config|
     'total_records' => { from: ['PageTotal'] }
   }
 
-  config.field_mappings['Bulkrax::MarcxmlParser'] = {
-
-    # DATA sub-properties - multiple in source
-#marc    'creator_loc' => { from: ['AttributedArtist'], parsed: true },
-#marc    'creator_local' => { from: ['OtherArtist'], parsed: true },
-#marc    'language' => { from: ['Language'], parsed: true },
-#marc    'location' => { from: ['Location'], parsed: true },
-#marc    'copyright_status' => { from: ['CopyrightHolder'], parsed: true },
-#marc    'copyright_note' => { from: ['CopyrightNotes'], parsed: true },
-#marc    'location_type' => { from: ['LocationType'], parsed: true },
-#marc    'support' => { from: ['Medium'], parsed: true },
-#marc    'medium' => { from: ['Support'], parsed: true },
-#marc    'subject_lcsh' => { from: ['SubjectLCSH'], parsed: true },
-    'keyword' => { from: %w[600 610 611 650 651], parsed: true },
-#marc    'subject_local_keyword' => { from: ['OpenKeyword'], parsed: true },
-#marc    'subject_subj_name' => { from: ['LCSubjectNames'], parsed: true },
-#marc    'alternative_title' => { from: ['OtherTitle'], parsed: true },
-#marc    'series_title' => { from: ['SeriesReportNo'], parsed: true },
-#marc    'culture' => { from: ['Culture'], parsed: true },
-    # Custom parsing
-    'creator' => { from: %w[100 700 110 710 111 711], parsed: true },
-#marc    'contributor' => { from: %w[AttributedArtistCalculation OtherArtistCalculation], parsed: true },
-#marc    'provenance' => { from: %w[AttributedArtistCalculation OtherArtistCalculation Provenance], parsed: true },
-#marc    'subject' => { from: %w[AttributedArtistCalculation OtherArtistCalculation SubjectLCSH LCSubjectNames], parsed: true },
-#marc    'genre' => { from: %w[SubjectTMG TypeOfWork], parsed: true },
-#marc    'genre_tgm' => { from: ['SubjectTMG'], parsed: true },
-#marc    'genre_aat' => { from: ['TypeOfWork'], parsed: true },
-#marc    'description' => { from: ['Abstract'], parsed: true },
-#marc    'date_created' => { from: ['DateCalculation'], parsed: true },
-    # Singular in source
-    'title' => { from: ['datafield[@tag="245"]'], parsed: true },
-    #title' => { from: ['datafield.tag=245'], parsed: true },
-    #'title' => { from: ['245'], parsed: true },
-    #'title' => { from: ['datafield([@tag=245])'], parsed:true },
-#marc    'folder_number' => { from: ['ProjectName'] },
-#marc    'abstract' => { from: ['Abstract'] },
-#marc    'resource_type' => { from: ['Type'] },
-#marc    'bibliography' => { from: ['Bibliography'] },
-#marc    'dris_page_no' => { from: ['DrisPageNo'] },
-#marc    'dris_document_no' => { from: ['DrisDocumentNo'] },
-    'dris_unique' => { from: ['001'] }
-#marc    'format_duration' => { from: ['FormatDur'] },
-#marc    'digital_root_number' => { from: ['CatNo'] },
-#marc    'digital_object_identifier' => { from: ['DRISPhotoID'] },
-#marc    'identifier' => { from: ['Citation'] },
-#marc    'sponsor' => { from: ['Sponsor'] },
-#marc    'conservation_history' => { from: ['Introduction'] },
-#marc    'publisher' => { from: ['Publisher'] },
-#marc    'publisher_location' => { from: %w[PublisherCity PublisherCountry] },
-#marc    'page_number' => { from: %w[PageNo PageNoB] },
-#marc    'page_type' => { from: %w[PageType PageTypeB] },
-#marc    'physical_extent' => { from: ['FormatW'] },
-#marc    'collection_title' => { from: ['TitleLargerEntity'] },
-#marc    'county' => { from: ['CALM'] },
-#marc    'project_number' => { from: ['ProjectNo'] },
-#marc    'order_no' => { from: ['LCN'] },
-#marc    'total_records' => { from: ['PageTotal'] }
+  config.field_mappings['Bulkrax::MarcXmlParser'] = {
+    'keyword' => { from: ['relatedItem'], parsed: true },
+    'creator' => { from: ['name'], parsed: true },
+    'title' => { from: ['title'], parsed: true },
+    'identifier' => { from: ['identifier'] },
+    'description' => { from: ['abstract'], parsed: true },
+    'abstract' => { from: ['abstract'] }
   }
 
   config.field_mappings['Bulkrax::ModsParser'] = {
@@ -205,7 +155,7 @@ Bulkrax.setup do |config|
     'folder_number' => { from: ['folder_number'] },
     'digital_root_number' => { from: ['digital_root_number'] },
     'genre' => { from: ['genre'] },
-    'abstract' => { from: ['abstract'] }       
+    'abstract' => { from: ['abstract'] }
   }
 
   config.field_mappings['Bulkrax::MetsXmlParser'] = {

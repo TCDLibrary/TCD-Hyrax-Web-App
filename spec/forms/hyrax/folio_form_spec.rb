@@ -52,6 +52,9 @@ RSpec.describe Hyrax::FolioForm do
     expect(form.terms).to include(:order_no)
     expect(form.terms).to include(:total_records)
     expect(form.terms).to include(:location)
+    expect(form.terms).to include(:biographical_note)
+    expect(form.terms).to include(:finding_aid)
+    expect(form.terms).to include(:note)
 
   end
 

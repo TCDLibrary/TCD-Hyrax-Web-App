@@ -1,5 +1,6 @@
 module Bulkrax
   class ModsMatcher < Bulkrax::ApplicationMatcher
+    # JL : to do : Needs full mappings
     def parse_creator_loc(src)
       src.strip
     end
@@ -112,6 +113,7 @@ module Bulkrax
 
     def parse_genre(src)
       # 'SubjectTMG', 'TypeOfWork'
+      #byebug
       src.strip
     end
 

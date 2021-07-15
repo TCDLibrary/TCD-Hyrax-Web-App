@@ -54,7 +54,7 @@ module Bulkrax::HasLocalProcessing
   def image_id
     #byebug
     # JL : to do : check that this doesn't break Foxml
-    if record.is_a?(TcdMetadata::MODSRecord)
+    if ((importerexporter.parser_klass.eql? "Bulkrax::MarcXmlParser") || (importerexporter.parser_klass.eql? "Bulkrax::ModsParser"))
       record.digital_root_number
     else
       if importerexporter.parser_fields['import_type'] == 'multiple' && image_range.blank?
@@ -68,12 +68,19 @@ module Bulkrax::HasLocalProcessing
   def image_range
     #byebug
     # JL : to do : check that this doesn't break Foxml
-    return [] if record.is_a?(TcdMetadata::MODSRecord)
+    # JL : to do : Handle image range for MarcXml and MODS
+    return [] if (importerexporter.parser_klass.eql? "Bulkrax::ModsParser")
 
-    range_el = record.xpath("//*[name()='ImgRange']")
-    return [] if range_el.blank?
-
-    range = range_el.first.content.split(':')
+    if (importerexporter.parser_klass.eql? "Bulkrax::MarcXmlParser")
+      range_el = [record.image_range]
+      return [] if range_el.blank?
+      range = range_el.first.split(':')
+    else
+      range_el = record.xpath("//*[name()='ImgRange']")
+      return [] if range_el.blank?
+      range = range_el.first.content.split(':')
+    end
+    byebug
     return [] if range.count == 0
 
     (range[0]..range[1]).to_a
@@ -83,7 +90,7 @@ module Bulkrax::HasLocalProcessing
   def image_folder
     #byebug
     # JL : to do : check that this doesn't break Foxml
-    if record.is_a?(TcdMetadata::MODSRecord)
+    if ((importerexporter.parser_klass.eql? "Bulkrax::MarcXmlParser") || (importerexporter.parser_klass.eql? "Bulkrax::ModsParser"))
       folder = record.folder_number
     else
       folder = record.xpath("//*[name()='ProjectName']").first.content.strip

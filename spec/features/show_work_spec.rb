@@ -30,6 +30,9 @@ RSpec.feature 'Display a Work' do
   let(:provenance)                  {['A Provenance']}
   let(:culture)                     {['A Culture']}
   let(:folder_number)               {['123']}
+  let(:biographical_note)           {['A Biographical Note']}
+  let(:finding_aid)                 {['Finding Aid']}
+  let(:note)                        {['A Note']}
 
   #let()
 
@@ -59,7 +62,10 @@ RSpec.feature 'Display a Work' do
                 collection_title:           collection_title,
                 provenance:                 provenance,
                 culture:                    culture,
-                folder_number:              folder_number
+                folder_number:              folder_number,
+                biographical_note:          biographical_note,
+                finding_aid:                finding_aid,
+                note:                       note
               )
   end
 
@@ -93,6 +99,9 @@ RSpec.feature 'Display a Work' do
 
     expect(page).to have_content work.provenance.first
     expect(page).to have_content work.culture.first
+    expect(page).to have_content work.biographical_note.first
+    expect(page).to have_content work.finding_aid.first
+    expect(page).to have_content work.note.first
     # you have to be logged in to see folder_number
     # expect(page).to have_content work.folder_number.first
   end
