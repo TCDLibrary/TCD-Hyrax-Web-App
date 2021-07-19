@@ -80,7 +80,6 @@ module Bulkrax::HasLocalProcessing
       return [] if range_el.blank?
       range = range_el.first.content.split(':')
     end
-    byebug
     return [] if range.count == 0
 
     (range[0]..range[1]).to_a

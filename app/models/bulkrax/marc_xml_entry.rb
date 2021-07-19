@@ -92,6 +92,9 @@ module Bulkrax
       add_location_types
       add_notes
       add_local
+      if parent_collection?
+         add_collections
+      end
       raise StandardError, "title is required" if record.title.blank?
       self.parsed_metadata
     end
@@ -111,11 +114,11 @@ module Bulkrax
         #byebug
         code_a = gen.xpath("subfield[@code='a']").text.strip
         code_2 = gen.xpath("subfield[@code='2']").text.strip
-        self.parsed_metadata['genre'] << code_a + " : " + code_2
+        self.parsed_metadata['genre'] << (code_a + " : " + code_2).strip
         if code_2.eql?  'aat'
-          self.parsed_metadata['genre_aat'] << code_a + " : " + code_2
+          self.parsed_metadata['genre_aat'] << (code_a + " : " + code_2).strip
         else if code_2.eql? 'lctgm'
-               self.parsed_metadata['genre_tgm'] << code_a + " : " + code_2
+               self.parsed_metadata['genre_tgm'] << (code_a + " : " + code_2).strip
              end
         end
       end
@@ -161,23 +164,23 @@ module Bulkrax
         code_2 = cre.xpath("subfield[@code='2']").text.strip  # means role code is local
         a_creator = ""
         if cre.values[0].eql? "100" || "700"
-          a_creator = code_a + ' ' + code_q + ' ' + code_b + ' ' + code_c + ' ' + code_d + ' ' + code_e
+          a_creator = (code_a + ' ' + code_q + ' ' + code_b + ' ' + code_c + ' ' + code_d + ' ' + code_e).strip
           else if cre.values[0].eql? "111" || "711"
             #$a $n $d $c $e $j
-            a_creator = code_a + ' ' + code_n + ' ' + code_d + ' ' + code_c + ' ' + code_e + ' ' + code_j
+            a_creator = (code_a + ' ' + code_n + ' ' + code_d + ' ' + code_c + ' ' + code_e + ' ' + code_j).strip
                else # 110 or 710
-                 a_creator = code_a + ' ' + code_b + ' ' + code_e
+                 a_creator = (code_a + ' ' + code_b + ' ' + code_e).strip
           end
         end
         #byebug
         if code_e && Role_codes_creator.value?(code_e) && code_2.empty? # reverse lookup of Role_codes_creator
-          self.parsed_metadata['creator'] << a_creator
+          self.parsed_metadata['creator'] << a_creator.gsub(/ +/, " ")
         end
 
         # role code might be local:
         if !code_2.empty?
-          self.parsed_metadata['creator_loc'] << a_creator
-          self.parsed_metadata['creator_local'] << a_creator
+          self.parsed_metadata['creator_loc'] << a_creator.gsub(/ +/, " ")
+          self.parsed_metadata['creator_local'] << a_creator.gsub(/ +/, " ")
         end
       end # each
     end # def
@@ -198,17 +201,17 @@ module Bulkrax
         # a_contributor = code_a + ' ' + code_q + ' ' + code_d + ' ' + code_e
         a_contributor = ""
         if con.values[0].eql? "100" || "700"
-          a_contributor = code_a + ' ' + code_q + ' ' + code_b + ' ' + code_c + ' ' + code_d + ' ' + code_e
+          a_contributor = (code_a + ' ' + code_q + ' ' + code_b + ' ' + code_c + ' ' + code_d + ' ' + code_e).strip
           else if con.values[0].eql? "111" || "711"
             #$a $n $d $c $e $j
-            a_contributor = code_a + ' ' + code_n + ' ' + code_d + ' ' + code_c + ' ' + code_e + ' ' + code_j
+            a_contributor = (code_a + ' ' + code_n + ' ' + code_d + ' ' + code_c + ' ' + code_e + ' ' + code_j).strip
                else # 110 or 710
-                  a_contributor = code_a + ' ' + code_b + ' ' + code_e
+                  a_contributor = (code_a + ' ' + code_b + ' ' + code_e).strip
                end
         end
         #byebug
         if code_e && Role_codes_contributor.value?(code_e) && code_2.empty? # reverse lookup of Role_codes_creator
-          self.parsed_metadata['contributor'] << a_contributor
+          self.parsed_metadata['contributor'] << a_contributor.gsub(/ +/, " ")
         end
       end # each
     end # def
@@ -265,11 +268,11 @@ module Bulkrax
         code_d = subj.xpath("subfield[@code='d']").text.strip  # years
         code_2 = subj.xpath("subfield[@code='2']").text.strip  # check if role code is local
         if code_2.eql? 'local'
-          a_keyword = code_a + ' ' + code_c + ' ' + code_q + ' ' + code_d
-          self.parsed_metadata['keyword'] << a_keyword
+          a_keyword = (code_a + ' ' + code_c + ' ' + code_q + ' ' + code_d).strip
+          self.parsed_metadata['keyword'] << a_keyword.gsub(/ +/, " ")
         else
-          a_subject = code_a + ' ' + code_c + ' ' + code_q + ' ' + code_d
-          self.parsed_metadata['subject'] << a_subject
+          a_subject = (code_a + ' ' + code_c + ' ' + code_q + ' ' + code_d).strip
+          self.parsed_metadata['subject'] << a_subject.gsub(/ +/, " ")
         end
       end
     end
@@ -340,8 +343,8 @@ module Bulkrax
         code_b = alt.xpath("subfield[@code='b']").text.strip  # Remainder of title
         code_n = alt.xpath("subfield[@code='n']").text.strip  # Number of part/section of a work
         code_p = alt.xpath("subfield[@code='p']").text.strip  # Name of part/section of a work
-        alt_title = code_a + ' ' + code_b + ' ' + code_n + ' ' + code_p
-        self.parsed_metadata['alternative_title'] << alt_title
+        alt_title = (code_a + code_b + code_n + code_p).strip
+        self.parsed_metadata['alternative_title'] << alt_title.gsub(/ +/, " ")
       end
     end
 
@@ -351,8 +354,8 @@ module Bulkrax
         code_a = ext.xpath("subfield[@code='a']").text.strip  # Extent
         code_c = ext.xpath("subfield[@code='c']").text.strip  # Dimensions
         code_e = ext.xpath("subfield[@code='e']").text.strip  # Accompanying material
-        an_extent = code_a + ' ' + code_c + ' ' + code_e
-        self.parsed_metadata['physical_extent'] << an_extent
+        an_extent = (code_a + ' ' + code_c + ' ' + code_e).strip
+        self.parsed_metadata['physical_extent'] << an_extent.gsub(/ +/, " ")
       end
     end
 
@@ -362,8 +365,8 @@ module Bulkrax
         code_a = stit.xpath("subfield[@code='a']").text.strip  # Series statement
         code_x = stit.xpath("subfield[@code='x']").text.strip  # International Standard Serial Number
         code_v = stit.xpath("subfield[@code='v']").text.strip  # Volume/sequential designation
-        a_title = code_a + ' ' + code_x + ' ' + code_v
-        self.parsed_metadata['series_title'] << a_title
+        a_title = (code_a + ' ' + code_x + ' ' + code_v).strip
+        self.parsed_metadata['series_title'] << a_title.gsub(/ +/, " ")
       end
     end
 
@@ -372,8 +375,8 @@ module Bulkrax
       record.provenances.each do | prov |
         code_a = prov.xpath("subfield[@code='a']").text.strip  # History
         code_u = prov.xpath("subfield[@code='u']").text.strip  # Uniform Resource Identifier
-        a_prov = code_a + ' ' + code_u
-        self.parsed_metadata['provenance'] << a_prov
+        a_prov = (code_a + ' ' + code_u).strip
+        self.parsed_metadata['provenance'] << a_prov.gsub(/ +/, " ")
       end
     end
 
