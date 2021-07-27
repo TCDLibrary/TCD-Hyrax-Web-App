@@ -91,7 +91,6 @@ RSpec.describe Bulkrax do
         'location' => { from: ['Location'], parsed: true },
         'copyright_status' => { from: ['CopyrightHolder'], parsed: true },
         'copyright_note' => { from: ['CopyrightNotes'], parsed: true },
-        'location_type' => { from: ['LocationType'], parsed: true },
         'support' => { from: ['Medium'], parsed: true },
         'medium' => { from: ['Support'], parsed: true },
         'subject_lcsh' => { from: ['SubjectLCSH'], parsed: true },

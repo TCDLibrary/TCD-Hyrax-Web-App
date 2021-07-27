@@ -91,7 +91,6 @@ module Bulkrax
             'keyword' => ["Sherwood, Mrs. (Mary Martha), 1775-1851.", "F. Houlston and Son.", "Sherwood family."],
             'language' => ["eng", "fre"],
             'location' => ["Department of Early Printed Books,", "2222 Department of Early Printed Books,"],
-            'location_type' => ["Department of Early Printed Books,", "2222 Department of Early Printed Books,"],
             'medium' => ["ink"],
             'note' => ["English, with parallel French translation."],
             'physical_extent' => ["v, 45 pages, 6 unnumbered leaves of plates : 25 cm. + 1 folded colour map (24 x 37 cm.)"],

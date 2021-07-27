@@ -35,6 +35,7 @@ RSpec.describe Hyrax::SubseriesPresenter do
   let(:biographical_note) {['A Biographical Note']}
   let(:finding_aid) {['Finding Aid']}
   let(:note) {['A Note']}
+  let(:sub_fond) {['A Sub Fond']}
 
   let :work do
     Work.new(
@@ -60,7 +61,8 @@ RSpec.describe Hyrax::SubseriesPresenter do
       culture: culture,
       biographical_note: biographical_note,
       finding_aid: finding_aid,
-      note: note
+      note: note,
+      sub_fond: sub_fond
 
     )
   end
@@ -157,5 +159,10 @@ RSpec.describe Hyrax::SubseriesPresenter do
   it "delegates note to solr document" do
     expect(solr_document).to receive(:note)
     presenter.note
+  end
+
+  it "delegates sub_fond to solr document" do
+    expect(solr_document).to receive(:sub_fond)
+    presenter.sub_fond
   end
 end

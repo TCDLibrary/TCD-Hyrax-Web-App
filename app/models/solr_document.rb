@@ -178,4 +178,9 @@ class SolrDocument
   def note
     self[Solrizer.solr_name('note')]
   end
+
+  def sub_fond
+    self[Solrizer.solr_name('sub_fond')]
+  end
+
 end

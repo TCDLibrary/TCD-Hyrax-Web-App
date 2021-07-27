@@ -58,6 +58,7 @@ RSpec.describe Subseries do
         expect(subseries.biographical_note).to be_empty
         expect(subseries.finding_aid).to be_empty
         expect(subseries.note).to be_empty
+        expect(subseries.sub_fond).to be_empty
 
       end
     end
@@ -115,6 +116,7 @@ RSpec.describe Subseries do
         subseries.biographical_note = ["A Biographical Note"]
         subseries.finding_aid = ["Finding Aid"]
         subseries.note = ["A Note"]
+        subseries.sub_fond = ["A Sub Fond"]
 
         expect(subseries.abstract).to eq(["An Abstract"])
         expect(subseries.genre).to eq(["A subseries Genre"])
@@ -168,6 +170,7 @@ RSpec.describe Subseries do
         expect(subseries.biographical_note).to eq (["A Biographical Note"])
         expect(subseries.finding_aid).to eq (["Finding Aid"])
         expect(subseries.note).to eq (["A Note"])
+        expect(subseries.sub_fond).to eq (["A Sub Fond"])
 
       end
     end

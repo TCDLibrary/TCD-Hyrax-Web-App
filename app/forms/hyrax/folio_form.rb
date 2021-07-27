@@ -39,7 +39,8 @@ module Hyrax
     self.terms += [:county]
     self.terms += [:biographical_note]
     self.terms += [:finding_aid]
-    self.terms += [:note]    
+    self.terms += [:note]
+    self.terms += [:sub_fond]
 
   end
 end

@@ -89,8 +89,9 @@ module Bulkrax
       add_series_titles
       add_provenances
       add_bibliographys
-      add_location_types
       add_notes
+      add_collection_titles
+      add_sub_fonds
       add_local
       if parent_collection?
          add_collections
@@ -179,8 +180,9 @@ module Bulkrax
 
         # role code might be local:
         if !code_2.empty?
-          self.parsed_metadata['creator_loc'] << a_creator.gsub(/ +/, " ")
           self.parsed_metadata['creator_local'] << a_creator.gsub(/ +/, " ")
+        else
+          self.parsed_metadata['creator_loc'] << a_creator.gsub(/ +/, " ")
         end
       end # each
     end # def
@@ -263,15 +265,51 @@ module Bulkrax
       self.parsed_metadata['keyword'] = []
       record.subjects_and_keywords.each do | subj |
         code_a = subj.xpath("subfield[@code='a']").text.strip  # surname
+        code_b = subj.xpath("subfield[@code='b']").text.strip
         code_c = subj.xpath("subfield[@code='c']").text.strip  # persons title
-        code_q = subj.xpath("subfield[@code='q']").text.strip  # first names
         code_d = subj.xpath("subfield[@code='d']").text.strip  # years
+        code_e = subj.xpath("subfield[@code='e']").text.strip
+        code_g = subj.xpath("subfield[@code='g']").text.strip
+        code_j = subj.xpath("subfield[@code='j']").text.strip
+        code_l = subj.xpath("subfield[@code='l']").text.strip
+        code_n = subj.xpath("subfield[@code='n']").text.strip
+        code_q = subj.xpath("subfield[@code='q']").text.strip  # first names
+        code_t = subj.xpath("subfield[@code='t']").text.strip
+        code_v = subj.xpath("subfield[@code='v']").text.strip
+        code_x = subj.xpath("subfield[@code='x']").text.strip
+        code_y = subj.xpath("subfield[@code='y']").text.strip
+        code_z = subj.xpath("subfield[@code='z']").text.strip
         code_2 = subj.xpath("subfield[@code='2']").text.strip  # check if role code is local
+
+        case subj.values[0]
+        when '600'
+           # 600 subfield order: $a $b $c $q $d $l $t $x $z $y $v $e $2
+           a_keyword = (code_a + ' ' + code_b  + ' ' + code_c + ' ' + code_q + ' ' + code_d+ ' ' + code_l  + ' ' + code_t + ' ' + code_x + ' ' + code_z  + ' ' + code_y + ' ' + code_v + ' ' + code_e).strip
+        when '610'
+           # 610 subfield order: $a $b $c $d $l $t $x $z $y $v $e $2
+           a_keyword = (code_a + ' ' + code_b  + ' ' + code_c + ' ' + code_d + ' ' + code_l  + ' ' + code_t + ' ' + code_x + ' ' + code_z  + ' ' + code_y + ' ' + code_v + ' ' + code_e).strip
+        when '611'
+           # 611 subfield order: $a $n $d $c $e $l $t $x $z $y $v $j $2
+           a_keyword = (code_a + ' ' + code_n  + ' ' + code_d + ' ' + code_c + ' ' + code_e + ' ' + code_l  + ' ' + code_t + ' ' + code_x + ' ' + code_z  + ' ' + code_y + ' ' + code_v + ' ' + code_j).strip
+        when '647'
+           # 647 subfield order: $a $c $d $g $x $z $y $v $2
+           a_keyword = (code_a + ' ' + code_c  + ' ' + code_d + ' ' + code_g + ' ' + code_x + ' ' + code_z  + ' ' + code_y + ' ' + code_v).strip
+        when '648'
+           # 648 subfield order: $a $x $z $y $v $2
+           a_keyword = (code_a + ' ' + code_x + ' ' + code_z  + ' ' + code_y + ' ' + code_v).strip
+        when '650'
+           # 650 subfield order: $a $b $c $d $x $z $y $v $e $2
+           a_keyword = (code_a + ' ' + code_b  + ' ' + code_c + ' ' + code_d + ' ' + code_x + ' ' + code_z  + ' ' + code_y + ' ' + code_v + ' ' + code_e).strip
+        else
+           # 651 subfield order: $a $x $z $y $v $e $2
+           a_keyword = (code_a + ' ' + code_x + ' ' + code_z  + ' ' + code_y + ' ' + code_v + ' ' + code_e).strip
+        end
+
         if code_2.eql? 'local'
-          a_keyword = (code_a + ' ' + code_c + ' ' + code_q + ' ' + code_d).strip
+          #a_keyword = (code_a + ' ' + code_c + ' ' + code_q + ' ' + code_d).strip
           self.parsed_metadata['keyword'] << a_keyword.gsub(/ +/, " ")
         else
-          a_subject = (code_a + ' ' + code_c + ' ' + code_q + ' ' + code_d).strip
+          #a_subject = (code_a + ' ' + code_c + ' ' + code_q + ' ' + code_d).strip
           self.parsed_metadata['subject'] << a_subject.gsub(/ +/, " ")
         end
       end
@@ -387,17 +425,35 @@ module Bulkrax
       end
     end
 
-    def add_location_types
-      self.parsed_metadata['location_type'] = []
-      record.location_types.each do | loc |
-        self.parsed_metadata['location_type'] << loc.text.strip
-      end
-    end
-
     def add_notes
       self.parsed_metadata['note'] = []
       record.notes.each do | note |
         self.parsed_metadata['note'] << note.text.strip
+      end
+    end
+
+    def add_collection_titles
+      self.parsed_metadata['collection_title'] = []
+      record.collection_titles.each do | colt |
+        code_a = colt.xpath("subfield[@code='a']").text.strip
+        code_n = colt.xpath("subfield[@code='n']").text.strip
+
+        if code_n.eql? 'Collection'
+          self.parsed_metadata['collection_title'] << code_a
+        end
+      end
+    end
+
+
+    def add_sub_fonds
+      self.parsed_metadata['sub_fond'] = []
+      record.sub_fonds.each do | fond |
+        code_a = fond.xpath("subfield[@code='a']").text.strip
+        code_n = fond.xpath("subfield[@code='n']").text.strip
+
+        if (code_n.eql? 'Sub-Series' | 'Sub-sub-series')
+          self.parsed_metadata['sub_fond'] << code_a
+        end
       end
     end
 

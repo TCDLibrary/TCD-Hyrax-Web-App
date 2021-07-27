@@ -25,10 +25,6 @@ module Bulkrax
       src.strip
     end
 
-    def parse_location_type(src)
-      src.strip
-    end
-
     def parse_support(src)
       src.strip
     end

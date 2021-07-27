@@ -55,7 +55,7 @@ RSpec.describe Hyrax::FolioForm do
     expect(form.terms).to include(:biographical_note)
     expect(form.terms).to include(:finding_aid)
     expect(form.terms).to include(:note)
-
+    expect(form.terms).to include(:sub_fond)
   end
 
 end

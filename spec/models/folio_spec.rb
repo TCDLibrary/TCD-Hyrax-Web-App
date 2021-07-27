@@ -64,6 +64,7 @@ RSpec.describe Folio do
         expect(folio.biographical_note).to be_empty
         expect(folio.finding_aid).to be_empty
         expect(folio.note).to be_empty
+        expect(folio.sub_fond).to be_empty
 
       end
     end
@@ -126,6 +127,7 @@ RSpec.describe Folio do
         folio.biographical_note = ["A Biographical Note"]
         folio.finding_aid = ["Finding Aid"]
         folio.note = ["A Note"]
+        folio.sub_fond = ["A Sub Fond"]
 
         expect(folio.abstract).to eq(["An Abstract"])
         expect(folio.genre).to eq(["A Folio Genre"])
@@ -183,6 +185,7 @@ RSpec.describe Folio do
         expect(folio.biographical_note).to eq (["A Biographical Note"])
         expect(folio.finding_aid).to eq (["Finding Aid"])
         expect(folio.note).to eq (["A Note"])
+        expect(folio.sub_fond).to eq (["A Sub Fond"])        
 
       end
     end

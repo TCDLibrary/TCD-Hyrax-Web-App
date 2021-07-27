@@ -33,6 +33,7 @@ RSpec.feature 'Display a Work' do
   let(:biographical_note)           {['A Biographical Note']}
   let(:finding_aid)                 {['Finding Aid']}
   let(:note)                        {['A Note']}
+  let(:sub_fond)                    {['A Sub Fond']}
 
   #let()
 
@@ -65,7 +66,8 @@ RSpec.feature 'Display a Work' do
                 folder_number:              folder_number,
                 biographical_note:          biographical_note,
                 finding_aid:                finding_aid,
-                note:                       note
+                note:                       note,
+                sub_fond:                   sub_fond
               )
   end
 
@@ -102,6 +104,7 @@ RSpec.feature 'Display a Work' do
     expect(page).to have_content work.biographical_note.first
     expect(page).to have_content work.finding_aid.first
     expect(page).to have_content work.note.first
+    expect(page).to have_content work.sub_fond.first
     # you have to be logged in to see folder_number
     # expect(page).to have_content work.folder_number.first
   end

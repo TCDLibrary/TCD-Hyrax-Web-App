@@ -66,7 +66,7 @@ class MarcXmlDocument # < Nokogiri::XML::Document
   end
 
   def subjects_and_keywords
-    @marcxml.xpath("datafield[@tag='600'] | datafield[@tag='610'] | datafield[@tag='611']")
+    @marcxml.xpath("datafield[@tag='600'] | datafield[@tag='610'] | datafield[@tag='611'] | datafield[@tag='647'] | datafield[@tag='648'] | datafield[@tag='650'] | datafield[@tag='651']")
   end
 
   def resource_types
@@ -133,12 +133,15 @@ class MarcXmlDocument # < Nokogiri::XML::Document
     @marcxml.xpath("datafield[@tag='510']/subfield[@code='a']")
   end
 
-  def location_types
-    @marcxml.xpath("datafield[@tag='534']/subfield[@code='l']")
-  end
-
   def notes
     @marcxml.xpath("datafield[@tag='546']/subfield[@code='a']")
   end
 
+  def collection_titles
+    @marcxml.xpath("datafield[@tag='773']")
+  end
+
+  def sub_fonds
+    @marcxml.xpath("datafield[@tag='773'] | datafield[@tag='774']")
+  end
 end

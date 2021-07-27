@@ -152,6 +152,9 @@ module TcdExtendedMetadata
       property :note, predicate: ::RDF::Vocab::MODS.NoteGroup do |index|
         index.as :stored_searchable
       end
+      property :sub_fond, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#sub_fond') do |index|
+        index.as :stored_searchable
+      end
 
   end
 

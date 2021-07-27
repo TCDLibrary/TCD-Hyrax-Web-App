@@ -54,8 +54,12 @@ module Bulkrax::HasLocalProcessing
   def image_id
     #byebug
     # JL : to do : check that this doesn't break Foxml
-    if ((importerexporter.parser_klass.eql? "Bulkrax::MarcXmlParser") || (importerexporter.parser_klass.eql? "Bulkrax::ModsParser"))
-      record.digital_root_number
+    if (importerexporter.parser_klass.eql? "Bulkrax::MarcXmlParser")
+      if importerexporter.parser_fields['import_type'] == 'multiple'
+         record.digital_object_identifier
+      else
+         record.digital_root_number
+      end
     else
       if importerexporter.parser_fields['import_type'] == 'multiple' && image_range.blank?
         record.xpath("//*[name()='DRISPhotoID']").first.content
