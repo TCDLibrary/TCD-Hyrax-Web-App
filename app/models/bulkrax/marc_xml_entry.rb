@@ -164,9 +164,9 @@ module Bulkrax
         code_5 = cre.xpath("subfield[@code='5']").text.strip  # JL : to do : whats this?
         code_2 = cre.xpath("subfield[@code='2']").text.strip  # means role code is local
         a_creator = ""
-        if cre.values[0].eql? "100" || "700"
+        if (cre.values[0].eql? "100") || (cre.values[0].eql? "700")
           a_creator = (code_a + ' ' + code_q + ' ' + code_b + ' ' + code_c + ' ' + code_d + ' ' + code_e).strip
-          else if cre.values[0].eql? "111" || "711"
+        else if (cre.values[0].eql? "111") || (cre.values[0].eql? "711")
             #$a $n $d $c $e $j
             a_creator = (code_a + ' ' + code_n + ' ' + code_d + ' ' + code_c + ' ' + code_e + ' ' + code_j).strip
                else # 110 or 710
@@ -176,14 +176,14 @@ module Bulkrax
         #byebug
         if code_e && Role_codes_creator.value?(code_e) && code_2.empty? # reverse lookup of Role_codes_creator
           self.parsed_metadata['creator'] << a_creator.gsub(/ +/, " ")
+          # role code might be local:
+          if !code_2.empty?
+            self.parsed_metadata['creator_local'] << a_creator.gsub(/ +/, " ")
+          else
+            self.parsed_metadata['creator_loc'] << a_creator.gsub(/ +/, " ")
+          end
         end
 
-        # role code might be local:
-        if !code_2.empty?
-          self.parsed_metadata['creator_local'] << a_creator.gsub(/ +/, " ")
-        else
-          self.parsed_metadata['creator_loc'] << a_creator.gsub(/ +/, " ")
-        end
       end # each
     end # def
 
@@ -202,9 +202,9 @@ module Bulkrax
         code_2 = con.xpath("subfield[@code='2']").text.strip  # means role code is local
         # a_contributor = code_a + ' ' + code_q + ' ' + code_d + ' ' + code_e
         a_contributor = ""
-        if con.values[0].eql? "100" || "700"
+        if (con.values[0].eql? "100") || (con.values[0].eql? "700")
           a_contributor = (code_a + ' ' + code_q + ' ' + code_b + ' ' + code_c + ' ' + code_d + ' ' + code_e).strip
-          else if con.values[0].eql? "111" || "711"
+        else if (con.values[0].eql? "111") || (con.values[0].eql? "711")
             #$a $n $d $c $e $j
             a_contributor = (code_a + ' ' + code_n + ' ' + code_d + ' ' + code_c + ' ' + code_e + ' ' + code_j).strip
                else # 110 or 710
@@ -310,7 +310,7 @@ module Bulkrax
           self.parsed_metadata['keyword'] << a_keyword.gsub(/ +/, " ")
         else
           #a_subject = (code_a + ' ' + code_c + ' ' + code_q + ' ' + code_d).strip
-          self.parsed_metadata['subject'] << a_subject.gsub(/ +/, " ")
+          self.parsed_metadata['subject'] << a_keyword.gsub(/ +/, " ")
         end
       end
     end
@@ -451,7 +451,7 @@ module Bulkrax
         code_a = fond.xpath("subfield[@code='a']").text.strip
         code_n = fond.xpath("subfield[@code='n']").text.strip
 
-        if (code_n.eql? 'Sub-Series' | 'Sub-sub-series')
+        if (code_n.eql? 'Sub-Series') || (code_n.eql? 'Sub-sub-series')
           self.parsed_metadata['sub_fond'] << code_a
         end
       end
