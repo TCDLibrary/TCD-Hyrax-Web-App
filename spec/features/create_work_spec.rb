@@ -55,7 +55,7 @@ RSpec.feature 'Create a Work', js: true do
       expect(page).to have_content "Add folder"
       within('span#addfiles') do
         attach_file("files[]", "#{::Rails.root}/spec/fixtures/image.jpg", visible: false)
-        attach_file("files[]", "#{::Rails.root}/spec/fixtures/jpg_fits.xml", visible: false)
+        #attach_file("files[]", "#{::Rails.root}/spec/fixtures/jpg_fits.xml", visible: false)
       end
       click_link "Descriptions" # switch tab
       fill_in('Title', with: 'My Test Work')
