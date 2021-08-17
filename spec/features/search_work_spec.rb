@@ -52,6 +52,8 @@ RSpec.feature 'Search for a work' do
         expect(page).to have_content work.finding_aid.first
         expect(page).to have_content work.note.first
         expect(page).to have_content work.sub_fond.first
+        expect(page).to have_content work.arrangement.first
+        expect(page).to have_content work.issued_with.first
 
       end
     end

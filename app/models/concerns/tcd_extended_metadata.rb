@@ -155,7 +155,12 @@ module TcdExtendedMetadata
       property :sub_fond, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#sub_fond') do |index|
         index.as :stored_searchable
       end
-
+      property :arrangement, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#arrangement') do |index|
+        index.as :stored_searchable
+      end
+      property :issued_with, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#issued_with') do |index|
+        index.as :stored_searchable
+      end
   end
 
 end

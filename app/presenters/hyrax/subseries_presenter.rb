@@ -36,7 +36,10 @@ module Hyrax
     delegate :biographical_note, to: :solr_document
     delegate :finding_aid, to: :solr_document
     delegate :note, to: :solr_document
-    delegate :sub_fond, to: :solr_document  
+    delegate :sub_fond, to: :solr_document
+    delegate :arrangement, to: :solr_document
+    delegate :issued_with, to: :solr_document
+    delegate :bibliography, to: :solr_document
 
   end
 end

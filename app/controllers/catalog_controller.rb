@@ -160,6 +160,8 @@ class CatalogController < ApplicationController
     config.add_show_field solr_name("finding_aid", :stored_searchable)
     config.add_show_field solr_name("note", :stored_searchable)
     config.add_show_field solr_name("sub_fond", :stored_searchable)
+    config.add_show_field solr_name("arrangement", :stored_searchable)
+    config.add_show_field solr_name("issued_with", :stored_searchable)
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
     #
@@ -530,6 +532,24 @@ class CatalogController < ApplicationController
     config.add_search_field('sub_fond') do |field|
       field.label = "Sub Fond"
       solr_name = solr_name("sub_fond", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('arrangement') do |field|
+      field.label = "Arrangement"
+      solr_name = solr_name("arrangement", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('issued_with') do |field|
+      field.label = "Issued With"
+      solr_name = solr_name("issued_with", :stored_searchable)
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name

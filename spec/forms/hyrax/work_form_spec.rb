@@ -56,6 +56,8 @@ RSpec.describe Hyrax::WorkForm do
     expect(form.terms).to include(:finding_aid)
     expect(form.terms).to include(:note)
     expect(form.terms).to include(:sub_fond)
+    expect(form.terms).to include(:arrangement)
+    expect(form.terms).to include(:issued_with)
 
   end
 

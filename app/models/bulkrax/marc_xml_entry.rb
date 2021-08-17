@@ -81,7 +81,6 @@ module Bulkrax
       add_digital_root_number
       add_image_range
       add_dris_unique
-      add_project_number
       add_biographical_notes
       add_finding_aids
       add_alternative_titles
@@ -92,6 +91,8 @@ module Bulkrax
       add_notes
       add_collection_titles
       add_sub_fonds
+      add_arrangements
+      add_issued_withs
       add_local
       if parent_collection?
          add_collections
@@ -241,7 +242,7 @@ module Bulkrax
     def add_languages
       self.parsed_metadata['language'] = []
       record.languages.each  do | lang |
-        self.parsed_metadata['language'] << lang.text.strip
+        self.parsed_metadata['language'] << Iso639[lang.text.strip].english_name
       end
     end
 
@@ -355,21 +356,23 @@ module Bulkrax
       self.parsed_metadata['dris_unique'] = [record.dris_unique]
     end
 
-    def add_project_number
-      self.parsed_metadata['project_number'] = [record.project_number]
-    end
-
     def add_biographical_notes
       self.parsed_metadata['biographical_note'] = []
       record.biographical_notes.each  do | bio |
-        self.parsed_metadata['biographical_note'] << bio.text.strip
+        code_a = bio.xpath("subfield[@code='a']").text.strip
+        code_u = bio.xpath("subfield[@code='u']").text.strip
+        a_bio = (code_a + ' ' + code_u).strip
+        self.parsed_metadata['biographical_note'] << a_bio
       end
     end
 
     def add_finding_aids
       self.parsed_metadata['finding_aid'] = []
       record.finding_aids.each  do | aid |
-        self.parsed_metadata['finding_aid'] << aid.text.strip
+        code_a = aid.xpath("subfield[@code='a']").text.strip
+        code_u = aid.xpath("subfield[@code='u']").text.strip
+        an_aid = (code_a + ' ' + code_u).strip
+        self.parsed_metadata['finding_aid'] << an_aid
       end
     end
 
@@ -431,14 +434,32 @@ module Bulkrax
       end
     end
 
+    def add_arrangements
+      self.parsed_metadata['arrangement'] = []
+      record.arrangements.each do | arr |
+        code_a = arr.xpath("subfield[@code='a']").text.strip
+        code_b = arr.xpath("subfield[@code='b']").text.strip
+        code_c = arr.xpath("subfield[@code='c']").text.strip
+        an_arr = (code_a + ' ' + code_b + ' ' + code_c).strip
+        self.parsed_metadata['arrangement'] << an_arr
+      end
+    end
+
+    def add_issued_withs
+      self.parsed_metadata['issued_with'] = []
+      record.issued_withs.each  do | with |
+        self.parsed_metadata['issued_with'] << with.text.strip
+      end
+    end
+
     def add_collection_titles
       self.parsed_metadata['collection_title'] = []
       record.collection_titles.each do | colt |
-        code_a = colt.xpath("subfield[@code='a']").text.strip
+        code_t = colt.xpath("subfield[@code='t']").text.strip
         code_n = colt.xpath("subfield[@code='n']").text.strip
 
         if code_n.eql? 'Collection'
-          self.parsed_metadata['collection_title'] << code_a
+          self.parsed_metadata['collection_title'] << code_t
         end
       end
     end
@@ -447,11 +468,11 @@ module Bulkrax
     def add_sub_fonds
       self.parsed_metadata['sub_fond'] = []
       record.sub_fonds.each do | fond |
-        code_a = fond.xpath("subfield[@code='a']").text.strip
+        code_t = fond.xpath("subfield[@code='t']").text.strip
         code_n = fond.xpath("subfield[@code='n']").text.strip
 
         if (code_n.eql? 'Sub-Series') || (code_n.eql? 'Sub-sub-series')
-          self.parsed_metadata['sub_fond'] << code_a
+          self.parsed_metadata['sub_fond'] << code_t
         end
       end
     end

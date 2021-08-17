@@ -101,16 +101,12 @@ class MarcXmlDocument # < Nokogiri::XML::Document
     @marcxml.xpath("//controlfield[@tag='001']").text
   end
 
-  def project_number
-    @marcxml.xpath("datafield[@tag='019']/subfield[@code='c']").text
-  end
-
   def biographical_notes
-    @marcxml.xpath("datafield[@tag='545']/subfield[@code='a']")
+    @marcxml.xpath("datafield[@tag='545']")
   end
 
   def finding_aids
-    @marcxml.xpath("datafield[@tag='555']/subfield[@code='a']")
+    @marcxml.xpath("datafield[@tag='555']")
   end
 
   def alternative_titles
@@ -122,7 +118,7 @@ class MarcXmlDocument # < Nokogiri::XML::Document
   end
 
   def series_titles
-    @marcxml.xpath("datafield[@tag='490']")
+    @marcxml.xpath("datafield[@tag='490'][@ind1='0'] | datafield[@tag='830']")
   end
 
   def provenances
@@ -134,7 +130,7 @@ class MarcXmlDocument # < Nokogiri::XML::Document
   end
 
   def notes
-    @marcxml.xpath("datafield[@tag='546']/subfield[@code='a']")
+    @marcxml.xpath("datafield[@tag='500']/subfield[@code='a'] | datafield[@tag='546']/subfield[@code='a']")
   end
 
   def collection_titles
@@ -144,4 +140,13 @@ class MarcXmlDocument # < Nokogiri::XML::Document
   def sub_fonds
     @marcxml.xpath("datafield[@tag='773'] | datafield[@tag='774']")
   end
+
+  def arrangements
+    @marcxml.xpath("datafield[@tag='351']")
+  end
+
+  def issued_withs
+    @marcxml.xpath("datafield[@tag='501']/subfield[@code='a']")
+  end
+
 end

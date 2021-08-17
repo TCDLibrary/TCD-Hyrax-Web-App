@@ -36,6 +36,8 @@ RSpec.describe Hyrax::SubseriesPresenter do
   let(:finding_aid) {['Finding Aid']}
   let(:note) {['A Note']}
   let(:sub_fond) {['A Sub Fond']}
+  let(:arrangement) {['An Arrangement']}
+  let(:issued_with) {['Issued With']}
 
   let :work do
     Work.new(
@@ -62,7 +64,9 @@ RSpec.describe Hyrax::SubseriesPresenter do
       biographical_note: biographical_note,
       finding_aid: finding_aid,
       note: note,
-      sub_fond: sub_fond
+      sub_fond: sub_fond,
+      arrangement: arrangement,
+      issued_with: issued_with
 
     )
   end
@@ -165,4 +169,15 @@ RSpec.describe Hyrax::SubseriesPresenter do
     expect(solr_document).to receive(:sub_fond)
     presenter.sub_fond
   end
+
+  it "delegates arrangement to solr document" do
+    expect(solr_document).to receive(:arrangement)
+    presenter.arrangement
+  end
+
+  it "delegates issued_with to solr document" do
+    expect(solr_document).to receive(:issued_with)
+    presenter.issued_with
+  end
+
 end
