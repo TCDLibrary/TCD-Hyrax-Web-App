@@ -115,8 +115,8 @@ module Bulkrax
       r = []
       metadata_paths.map do |md|
        # Retrieve all records
-      #byebug
-      elements = entry_class.read_data(md).xpath("//#{record_element}")
+       #byebug
+       elements = entry_class.read_data(md).xpath("//#{record_element}")
        r += elements.map { |el| entry_class.data_for_entry(el) }
       end
       # Flatten because we may have multiple records per array
