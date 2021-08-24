@@ -78,7 +78,9 @@ module TcdExtendedMetadata
       property :page_number, predicate: ::RDF::Vocab::MODS.partOrder
       property :page_type, predicate: ::RDF::Vocab::MODS.partType
 
-      property :physical_extent, predicate: ::RDF::Vocab::MODS.physicalExtent
+      property :physical_extent, predicate: ::RDF::Vocab::MODS.physicalExtent do |index|
+        index.as :stored_searchable
+      end
       #  JL: can physical_entent replace format_h and format_w?
       #  property :format_h, predicate: ::RDF::Vocab::????
       #  property :format_w, predicate: ::RDF::Vocab::????

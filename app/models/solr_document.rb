@@ -194,4 +194,8 @@ class SolrDocument
   def bibliography
     self[Solrizer.solr_name('bibliography')]
   end
+
+  def physical_extent
+    self[Solrizer.solr_name('physical_extent')]
+  end
 end

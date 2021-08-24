@@ -162,6 +162,7 @@ class CatalogController < ApplicationController
     config.add_show_field solr_name("sub_fond", :stored_searchable)
     config.add_show_field solr_name("arrangement", :stored_searchable)
     config.add_show_field solr_name("issued_with", :stored_searchable)
+    config.add_show_field solr_name("physical_extent", :stored_searchable)
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
     #
@@ -556,6 +557,14 @@ class CatalogController < ApplicationController
       }
     end
 
+    config.add_search_field('physical_extent') do |field|
+      field.label = "Physical Extent"
+      solr_name = solr_name("physical_extent", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc

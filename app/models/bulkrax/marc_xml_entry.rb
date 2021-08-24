@@ -102,7 +102,12 @@ module Bulkrax
     end
 
     def add_title
-      self.parsed_metadata['title'] = [record.title.chomp("/")]
+      self.parsed_metadata['title'] = []
+      code_a = record.title.xpath("subfield[@code='a']").text.strip
+      code_b = record.title.xpath("subfield[@code='b']").text.strip
+      code_n = record.title.xpath("subfield[@code='n']").text.strip
+      code_p = record.title.xpath("subfield[@code='p']").text.strip
+      self.parsed_metadata['title']  << (code_a + " " + code_b + " " + code_n + " " + code_p).strip.chomp("/")
     end
 
     def add_genres
@@ -116,23 +121,29 @@ module Bulkrax
         #byebug
         code_a = gen.xpath("subfield[@code='a']").text.strip
         code_2 = gen.xpath("subfield[@code='2']").text.strip
-        self.parsed_metadata['genre'] << (code_a + " : " + code_2).strip
+        self.parsed_metadata['genre'] << code_a.chomp(".")
         if code_2.eql?  'aat'
-          self.parsed_metadata['genre_aat'] << (code_a + " : " + code_2).strip
+          self.parsed_metadata['genre_aat'] << code_a.chomp(".")
         else if code_2.eql? 'lctgm'
-               self.parsed_metadata['genre_tgm'] << (code_a + " : " + code_2).strip
+               self.parsed_metadata['genre_tgm'] << code_a.chomp(".")
              end
         end
       end
     end
 
     def add_abstracts
-      self.parsed_metadata['abstract'] = [record.abstracts.text.strip]
-      desc = record.abstracts.text.strip
+      full_abstract = ""
+      record.abstracts.each do | abs |
+        code_a = abs.xpath("subfield[@code='a']").text.strip
+        code_u = abs.xpath("subfield[@code='u']").text.strip
+        full_abstract = full_abstract + code_a + " " + code_u + " "
+      end
+      self.parsed_metadata['abstract'] = [full_abstract.strip]
+      desc = full_abstract
       if desc.length > 200
         desc = (desc.slice(0..200) + '...')
       end
-      self.parsed_metadata['description'] = [desc]
+      self.parsed_metadata['description'] = [desc.strip]
     end
 
     def add_identifiers # => shelf mark
@@ -145,7 +156,7 @@ module Bulkrax
     def add_locations
       self.parsed_metadata['location'] = []
       record.locations.each do | loc |
-        self.parsed_metadata['location'] << loc.text.strip
+        self.parsed_metadata['location'] << loc.text.strip.chomp(",")
       end
     end
 
@@ -221,21 +232,21 @@ module Bulkrax
     def add_publisher_locations
       self.parsed_metadata['publisher_location'] = []
       record.publisher_locations.each  do | loc |
-        self.parsed_metadata['publisher_location'] << loc.text.strip
+        self.parsed_metadata['publisher_location'] << loc.text.strip.gsub(/[[:punct:]]+$/,"") # remove punctuation at end of string
       end
     end
 
     def add_publishers
       self.parsed_metadata['publisher'] = []
       record.publishers.each  do | pub |
-        self.parsed_metadata['publisher'] << pub.text.strip
+        self.parsed_metadata['publisher'] << pub.text.strip.gsub(/[[:punct:]]+$/,"") # remove punctuation at end of string
       end
     end
 
     def add_dates_created
       self.parsed_metadata['date_created'] = []
       record.dates_created.each  do | cr_dat |
-        self.parsed_metadata['date_created'] << cr_dat.text.strip
+        self.parsed_metadata['date_created'] << cr_dat.text.strip.chomp(".")
       end
     end
 
@@ -284,13 +295,13 @@ module Bulkrax
         case subj.values[0]
         when '600'
            # 600 subfield order: $a $b $c $q $d $l $t $x $z $y $v $e $2
-           a_keyword = (code_a + ' ' + code_b  + ' ' + code_c + ' ' + code_q + ' ' + code_d+ ' ' + code_l  + ' ' + code_t + ' ' + code_x + ' ' + code_z  + ' ' + code_y + ' ' + code_v + ' ' + code_e).strip
+           a_keyword = (code_a + ' ' + code_b  + ' ' + code_c + ' ' + code_q + ' ' + code_d+ ' ' + code_l  + '--' + code_t + '--' + code_x + '--' + code_z  + '--' + code_y + '--' + code_v + ' ' + code_e).strip
         when '610'
            # 610 subfield order: $a $b $c $d $l $t $x $z $y $v $e $2
-           a_keyword = (code_a + ' ' + code_b  + ' ' + code_c + ' ' + code_d + ' ' + code_l  + ' ' + code_t + ' ' + code_x + ' ' + code_z  + ' ' + code_y + ' ' + code_v + ' ' + code_e).strip
+           a_keyword = (code_a + ' ' + code_b  + ' ' + code_c + ' ' + code_d + ' ' + code_l  + '--' + code_t + '--' + code_x + '--' + code_z  + '--' + code_y + '--' + code_v + ' ' + code_e).strip
         when '611'
            # 611 subfield order: $a $n $d $c $e $l $t $x $z $y $v $j $2
-           a_keyword = (code_a + ' ' + code_n  + ' ' + code_d + ' ' + code_c + ' ' + code_e + ' ' + code_l  + ' ' + code_t + ' ' + code_x + ' ' + code_z  + ' ' + code_y + ' ' + code_v + ' ' + code_j).strip
+           a_keyword = (code_a + ' ' + code_n  + ' ' + code_d + ' ' + code_c + ' ' + code_e + ' ' + code_l  + '--' + code_t + '--' + code_x + '--' + code_z  + '--' + code_y + '--' + code_v + ' ' + code_j).strip
         when '647'
            # 647 subfield order: $a $c $d $g $x $z $y $v $2
            a_keyword = (code_a + ' ' + code_c  + ' ' + code_d + ' ' + code_g + ' ' + code_x + ' ' + code_z  + ' ' + code_y + ' ' + code_v).strip
@@ -299,18 +310,25 @@ module Bulkrax
            a_keyword = (code_a + ' ' + code_x + ' ' + code_z  + ' ' + code_y + ' ' + code_v).strip
         when '650'
            # 650 subfield order: $a $b $c $d $x $z $y $v $e $2
-           a_keyword = (code_a + ' ' + code_b  + ' ' + code_c + ' ' + code_d + ' ' + code_x + ' ' + code_z  + ' ' + code_y + ' ' + code_v + ' ' + code_e).strip
+           a_keyword = (code_a + ' ' + code_b  + '--' + code_c + '--' + code_d + '--' + code_x + '--' + code_z  + '--' + code_y + '--' + code_v + '--' + code_e).strip
         else
            # 651 subfield order: $a $x $z $y $v $e $2
-           a_keyword = (code_a + ' ' + code_x + ' ' + code_z  + ' ' + code_y + ' ' + code_v + ' ' + code_e).strip
+           a_keyword = (code_a + ' ' + code_x + '--' + code_z  + '--' + code_y + '--' + code_v + '--' + code_e).strip
         end
+        # JL : to do: Find a better way to do this:
+        a_keyword = a_keyword.gsub(/--------------/, "--") # * 7 doubles possible etc
+        a_keyword = a_keyword.gsub(/------------/, "--") # * 6
+        a_keyword = a_keyword.gsub(/----------/, "--") # * 5
+        a_keyword = a_keyword.gsub(/--------/, "--") # * 4
+        a_keyword = a_keyword.gsub(/------/, "--") # * 3
+        a_keyword = a_keyword.gsub(/----/, "--").chomp("--") # * 2
 
         if code_2.eql? 'local'
           #a_keyword = (code_a + ' ' + code_c + ' ' + code_q + ' ' + code_d).strip
-          self.parsed_metadata['keyword'] << a_keyword.gsub(/ +/, " ")
+          self.parsed_metadata['keyword'] << a_keyword.gsub(/ +/, " ").chomp(".")
         else
           #a_subject = (code_a + ' ' + code_c + ' ' + code_q + ' ' + code_d).strip
-          self.parsed_metadata['subject'] << a_keyword.gsub(/ +/, " ")
+          self.parsed_metadata['subject'] << a_keyword.gsub(/ +/, " ").chomp(".")
         end
       end
     end
@@ -383,7 +401,7 @@ module Bulkrax
         code_b = alt.xpath("subfield[@code='b']").text.strip  # Remainder of title
         code_n = alt.xpath("subfield[@code='n']").text.strip  # Number of part/section of a work
         code_p = alt.xpath("subfield[@code='p']").text.strip  # Name of part/section of a work
-        alt_title = (code_a + code_b + code_n + code_p).strip
+        alt_title = (code_a + ' ' + code_b + ' ' + code_n + ' ' + code_p).strip
         self.parsed_metadata['alternative_title'] << alt_title.gsub(/ +/, " ")
       end
     end

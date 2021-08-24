@@ -39,6 +39,7 @@ module Hyrax
     delegate :arrangement, to: :solr_document
     delegate :issued_with, to: :solr_document
     delegate :bibliography, to: :solr_document
+    delegate :physical_extent, to: :solr_document
 
   end
 end

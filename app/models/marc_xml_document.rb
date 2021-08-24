@@ -14,7 +14,7 @@ class MarcXmlDocument # < Nokogiri::XML::Document
   end
 
   def title
-    @marcxml.xpath("datafield[@tag='245']/subfield[@code='a'] | datafield[@tag='245']/subfield[@code='b'] | datafield[@tag='245']/subfield[@code='n'] | datafield[@tag='245']/subfield[@code='p']").text
+    @marcxml.xpath("datafield[@tag='245']")
   end
 
   def genres
