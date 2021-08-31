@@ -1,6 +1,6 @@
 module Bulkrax
   class MarcXmlMatcher < Bulkrax::ApplicationMatcher
-    # JL : to do : Needs full mappings
+    # JL : to do : Is this redundant for marcxml?
     def parse_creator_loc(src)
       src.strip
     end
@@ -61,96 +61,46 @@ module Bulkrax
       src.strip
     end
 
-    # 'AttributedArtistCalculation', 'OtherArtistCalculation'
     def parse_creator(src)
       src.strip
     end
 
-    # 'AttributedArtistCalculation', 'OtherArtistCalculation'
     def parse_contributor(src)
-      data = artist_to_hash(src)
-      role_code = data['ArtistRoleCode']
-      if role_code && Role_codes_contributor[role_code]
-      #  "#{data['Artist']}, #{data['ArtistRole']}"
-      # JL : XML files from old DB are missing role text, so use my lookup
-        "#{data['Artist']}, #{Role_codes_contributor[role_code]}"
-      end
+      src.strip
     end
 
     def parse_provenance(src)
-      # 'AttributedArtistCalculation', 'OtherArtistCalculation'
-      data = artist_to_hash(src)
-      if data
-        role_code = data['ArtistRoleCode']
-        if role_code && Role_codes_donor[role_code]
-        #  "#{data['Artist']}, #{data['ArtistRole']}"
-           "#{data['Artist']}, #{Role_codes_donor[role_code]}"
-        end
-      else
-        # 'Provenance'
-        src.strip
-      end
+      src.strip
     end
 
     def parse_subject(src)
-      # 'AttributedArtistCalculation', 'OtherArtistCalculation'
-      data = artist_to_hash(src)
-      if data
-        role_code = data['ArtistRoleCode']
-        if role_code && Role_codes_subject[role_code]
-        #  "#{data['Artist']}, #{data['ArtistRole']}"
-           "#{data['Artist']}, #{Role_codes_subject[role_code]}"
-        end
-      else
-        # 'SubjectLCSH', 'LCSubjectNames'
-        src.strip
-      end
+      src.strip
     end
 
     def parse_genres(src)
-      # 'SubjectTMG', 'TypeOfWork'
       src.strip
     end
 
     def parse_genre_tgm(src)
-      # 'SubjectTMG'
       src.strip
     end
 
     def parse_genre_aat(src)
-      # 'TypeOfWork'
       src.strip
     end
 
     def parse_description(src)
-      # 'Abstract'
-      if src.length > 200
-        (src.slice(0..200) + '...')
-      else
-        src
-      end
+      src.strip
     end
 
     def parse_date_created(src)
-      # 'DateCalculation'
-      src.sub('DateType: ', '').sub('Day: ', '').sub(' A.D.', '').sub('--', '').sub(';', '').strip
+      src.strip
     end
 
     private
 
-    # AttributedArtistRole
-    # AttributedArtistRoleCode
-    # AttributedArtist
-    # OtherArtistRole
-    # OtherArtistRoleCode
-    # OtherArtist
     def artist_to_hash(src)
-      #byebug
-      return nil unless src.include?('OtherArtist') || src.include?('AttributedArtist')
-
-      array = src.gsub('Attributed', '').gsub('Other', '').split(';')
-      # substitue ' : ' in strings, we only want to split on ': '
-      Hash[array.map { |el| el.gsub(' : ', '---').split(':').map { |s| s.strip.gsub('---', ' : ') } }]
+      src.strip
     end
   end
 end

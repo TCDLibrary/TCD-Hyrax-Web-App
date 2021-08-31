@@ -20,11 +20,12 @@ module Bulkrax
     def self.data_for_entry(data)
       collections = []
       children = []
-      xpath_for_source_id = ".//*[name()='#{source_identifier_field}'][@tag='001']"
+      #xpath_for_source_id = ".//*[name()='#{source_identifier_field}'][@tag='001']"
+      xpath_for_source_id = ".//*[name()='controlfield'][@tag='001']"
       return {
         source_identifier: data.xpath(xpath_for_source_id).first.text,
         data:
-          data.document.to_xml(
+          data.to_xml(
             encoding: 'utf-8',
             save_with:
                 Nokogiri::XML::Node::SaveOptions::DEFAULT_XML | Nokogiri::XML::Node::SaveOptions::NO_DECLARATION | Nokogiri::XML::Node::SaveOptions::NO_EMPTY_TAGS
@@ -174,7 +175,8 @@ module Bulkrax
         code_n = cre.xpath("subfield[@code='n']").text.strip  #
         code_q = cre.xpath("subfield[@code='q']").text.strip  # first names
         code_5 = cre.xpath("subfield[@code='5']").text.strip  # JL : to do : whats this?
-        code_2 = cre.xpath("subfield[@code='2']").text.strip  # means role code is local
+        code_2 = cre.xpath("subfield[@code='2']").text.strip  #
+        #byebug
         a_creator = ""
         if (cre.values[0].eql? "100") || (cre.values[0].eql? "700")
           a_creator = (code_a + ' ' + code_b + ' ' + code_c + ' ' + code_q + ' ' + code_d + ' ' + code_e).strip
@@ -186,14 +188,13 @@ module Bulkrax
           end
         end
         #byebug
-        if code_e && Role_codes_creator.value?(code_e) # reverse lookup of Role_codes_creator
+        if code_e && Role_codes_creator.value?(code_e.capitalize) # reverse lookup of Role_codes_creator
           self.parsed_metadata['creator'] << a_creator.gsub(/ +/, " ")
-          # role code might be local:
-        end
-        if !code_2.empty?
-          self.parsed_metadata['creator_local'] << a_creator.gsub(/ +/, " ")
-        else
-          self.parsed_metadata['creator_loc'] << a_creator.gsub(/ +/, " ")
+          if !code_2.empty?
+            self.parsed_metadata['creator_local'] << a_creator.gsub(/ +/, " ")
+          else
+            self.parsed_metadata['creator_loc'] << a_creator.gsub(/ +/, " ")
+          end
         end
       end # each
     end # def
@@ -223,7 +224,7 @@ module Bulkrax
                end
         end
         #byebug
-        if code_e && Role_codes_contributor.value?(code_e) # reverse lookup of Role_codes_creator
+        if code_e && Role_codes_contributor.value?(code_e.capitalize) # reverse lookup of Role_codes_creator
           self.parsed_metadata['contributor'] << a_contributor.gsub(/ +/, " ")
         end
       end # each

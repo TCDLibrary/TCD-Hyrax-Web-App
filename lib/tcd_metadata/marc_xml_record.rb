@@ -4,15 +4,15 @@ module TcdMetadata
       # JL: The caller sends the whole XML file, so need to just pull marc:record node for current recordIdentifier
       @id = id
       @source = source
-      @all_marcxml = Nokogiri::XML(source)
+      @marcxml = Nokogiri::XML(source)
       #byebug
-      @elements = @all_marcxml.xpath("//*[name()='record']")
-      @elements.each do | elem |
-        #byebug
-        if elem.to_s.include? "#{id}</controlfield>"
-          @marcxml = elem
-        end
-      end
+      #@elements = @all_marcxml.xpath("//*[name()='record']")
+      #@elements.each do | elem |
+      #  #byebug
+      #  if elem.to_s.include? "#{id}</controlfield>"
+      #    @marcxml = elem
+      #  end
+      #end
 
     end
 
