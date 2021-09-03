@@ -91,7 +91,7 @@ module Bulkrax
             'identifier' => ["OLS POL 3811 no.3.","2222 OLS POL 3811 no.3."],
             'image_range' => ["001:009"],
             'issued_with' => ["With a separately titled map on an accompanying sheet: Lady Lucys route around Covent Garden."],
-            'keyword' => ["with $2 Sherwood, Mrs. (Mary Martha), 1775-1851. ", "with $2 F. Houlston and Son. ", "with $2 Sherwood family. "],
+            'keyword' => ["with $2 Sherwood, Mrs. (Mary Martha), 1775-1851", "with $2 F. Houlston and Son", "with $2 Sherwood family"],
             'language' => ["English", "French"],
             'location' => ["Department of Early Printed Books", "2222 Department of Early Printed Books"],
             'medium' => ["ink"],
@@ -107,7 +107,7 @@ module Bulkrax
             'source' => ["Jmarc0713"],
             'sponsor' => ["Digitisation and metadata creation sponsored by the Bank of America, 2018.", "TCD"],
             'sub_fond' => [],
-            'subject' => ["Sherwood, Mrs. (Mary Martha), 1775-1851. ", "F. Houlston and Son. ", "Sherwood family. ", "Avarice --Religious aspectsChristianity--Juvenile fiction", "Worldliness --Juvenile fiction", "Christian life --Juvenile fiction", "Mothers and daughters --Juvenile fiction", "Conduct of life --Juvenile fiction", "Avarice --Religious aspectsChristianity", "Worldliness. ", "Christian life. ", "Mothers and daughters. ", "Young women --Conduct of life"],
+            'subject' => ["Sherwood, Mrs. (Mary Martha), 1775-1851", "F. Houlston and Son", "Sherwood family", "Avarice--Religious aspectsChristianity--Juvenile fiction", "Worldliness--Juvenile fiction", "Christian life--Juvenile fiction", "Mothers and daughters--Juvenile fiction", "Conduct of life--Juvenile fiction", "Avarice--Religious aspectsChristianity", "Worldliness", "Christian life", "Mothers and daughters", "Young women--Conduct of life"],
             'support' => ["paper (fiber product)", "ink2"],
             'title' => ["A drive in the coach through the streets of London : a story founded on fact "],
             'visibility' => 'open'

@@ -106,7 +106,7 @@ RSpec.feature 'Create a Folio', js: true do
       fill_in "Order no", with: "An Order No"
       fill_in "Total records", with: "A Total Records"
       fill_in "Location", with: "A Location"
-      fill_in "Sub fond", with: "A Sub Fond"
+      fill_in "Sub Fonds", with: "A Sub Fond"
 
 
       # With selenium and the chrome driver, focus remains on the

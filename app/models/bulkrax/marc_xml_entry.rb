@@ -108,7 +108,7 @@ module Bulkrax
       code_b = record.title.xpath("subfield[@code='b']").text.strip
       code_n = record.title.xpath("subfield[@code='n']").text.strip
       code_p = record.title.xpath("subfield[@code='p']").text.strip
-      self.parsed_metadata['title']  << (code_a + " " + code_b + " " + code_n + " " + code_p).strip.chomp("/")
+      self.parsed_metadata['title']  << (code_a + " " + code_b + " " + code_n + " " + code_p).strip.chomp("/").sub!(/[?.:,;]?$/, '')
     end
 
     def add_genres
@@ -233,14 +233,14 @@ module Bulkrax
     def add_publisher_locations
       self.parsed_metadata['publisher_location'] = []
       record.publisher_locations.each  do | loc |
-        self.parsed_metadata['publisher_location'] << loc.text.strip.gsub(/[[:punct:]]+$/,"") # remove punctuation at end of string
+        self.parsed_metadata['publisher_location'] << loc.text.strip.sub!(/[?.:,;]?$/, '') # remove punctuation at end of string
       end
     end
 
     def add_publishers
       self.parsed_metadata['publisher'] = []
       record.publishers.each  do | pub |
-        self.parsed_metadata['publisher'] << pub.text.strip.gsub(/[[:punct:]]+$/,"") # remove punctuation at end of string
+        self.parsed_metadata['publisher'] << pub.text.strip.sub!(/[?.:,;]?$/, '') # remove punctuation at end of string
       end
     end
 
@@ -277,45 +277,33 @@ module Bulkrax
       self.parsed_metadata['keyword'] = []
       record.subjects_and_keywords.each do | subj |
         code_a = subj.xpath("subfield[@code='a']").text.strip  # surname
-        code_b = subj.xpath("subfield[@code='b']").text.strip
+        code_b = subj.xpath("subfield[@code='b']").text.strip.sub!(/[?.:,;]?$/, '')
         code_c = subj.xpath("subfield[@code='c']").text.strip  # persons title
-        code_d = subj.xpath("subfield[@code='d']").text.strip  # years
-        code_e = subj.xpath("subfield[@code='e']").text.strip
-        code_g = subj.xpath("subfield[@code='g']").text.strip
-        code_j = subj.xpath("subfield[@code='j']").text.strip
-        code_l = subj.xpath("subfield[@code='l']").text.strip
-        code_n = subj.xpath("subfield[@code='n']").text.strip
+        code_d = subj.xpath("subfield[@code='d']").text.strip.sub!(/[?.:,;]?$/, '')  # years
+        code_e = subj.xpath("subfield[@code='e']").text.strip.sub!(/[?.:,;]?$/, '')
+        code_g = subj.xpath("subfield[@code='g']").text.strip.sub!(/[?.:,;]?$/, '')
+        code_j = subj.xpath("subfield[@code='j']").text.strip.sub!(/[?.:,;]?$/, '')
+        code_l = subj.xpath("subfield[@code='l']").text.strip.sub!(/[?.:,;]?$/, '')
+        code_n = subj.xpath("subfield[@code='n']").text.strip.sub!(/[?.:,;]?$/, '')
         code_q = subj.xpath("subfield[@code='q']").text.strip  # first names
-        code_t = subj.xpath("subfield[@code='t']").text.strip
-        code_v = subj.xpath("subfield[@code='v']").text.strip
-        code_x = subj.xpath("subfield[@code='x']").text.strip
-        code_y = subj.xpath("subfield[@code='y']").text.strip
-        code_z = subj.xpath("subfield[@code='z']").text.strip
-        code_2 = subj.xpath("subfield[@code='2']").text.strip  # check if role code is local
-
+        code_t = subj.xpath("subfield[@code='t']").text.strip.sub!(/[?.:,;]?$/, '')
+        code_v = subj.xpath("subfield[@code='v']").text.strip.sub!(/[?.:,;]?$/, '')
+        code_x = subj.xpath("subfield[@code='x']").text.strip.sub!(/[?.:,;]?$/, '')
+        code_y = subj.xpath("subfield[@code='y']").text.strip.sub!(/[?.:,;]?$/, '')
+        code_z = subj.xpath("subfield[@code='z']").text.strip.sub!(/[?.:,;]?$/, '')
+        code_2 = subj.xpath("subfield[@code='2']").text.strip.sub!(/[?.:,;]?$/, '')  # check if role code is local
+        #byebug
         case subj.values[0]
-        when '600'
-           # 600 subfield order: $a $b $c $q $d $l $t $x $z $y $v $e $2
-           a_keyword = (code_a + ' ' + code_b  + ' ' + code_c + ' ' + code_q + ' ' + code_d+ ' ' + code_l  + '--' + code_t + '--' + code_x + '--' + code_z  + '--' + code_y + '--' + code_v + ' ' + code_e).strip
-        when '610'
-           # 610 subfield order: $a $b $c $d $l $t $x $z $y $v $e $2
-           a_keyword = (code_a + ' ' + code_b  + ' ' + code_c + ' ' + code_d + ' ' + code_l  + '--' + code_t + '--' + code_x + '--' + code_z  + '--' + code_y + '--' + code_v + ' ' + code_e).strip
         when '611'
-           # 611 subfield order: $a $n $d $c $e $l $t $x $z $y $v $j $2
            a_keyword = (code_a + ' ' + code_n  + ' ' + code_d + ' ' + code_c + ' ' + code_e + ' ' + code_l  + '--' + code_t + '--' + code_x + '--' + code_z  + '--' + code_y + '--' + code_v + ' ' + code_j).strip
-        when '647'
-           # 647 subfield order: $a $c $d $g $x $z $y $v $2
-           a_keyword = (code_a + ' ' + code_c  + ' ' + code_d + ' ' + code_g + ' ' + code_x + ' ' + code_z  + ' ' + code_y + ' ' + code_v).strip
-        when '648'
-           # 648 subfield order: $a $x $z $y $v $2
-           a_keyword = (code_a + ' ' + code_x + ' ' + code_z  + ' ' + code_y + ' ' + code_v).strip
-        when '650'
-           # 650 subfield order: $a $b $c $d $x $z $y $v $e $2
-           a_keyword = (code_a + ' ' + code_b  + '--' + code_c + '--' + code_d + '--' + code_x + '--' + code_z  + '--' + code_y + '--' + code_v + '--' + code_e).strip
-        else
-           # 651 subfield order: $a $x $z $y $v $e $2
-           a_keyword = (code_a + ' ' + code_x + '--' + code_z  + '--' + code_y + '--' + code_v + '--' + code_e).strip
+        else # '600', '610', '647', '648', '650', '651'
+           a_keyword = (code_a + ' ' + code_b  + ' ' + code_c + ' ' + code_q + ' ' + code_d + ' ' + code_g + ' ' + code_l  + '--' + code_t + '--' + code_x + '--' + code_z  + '--' + code_y + '--' + code_v + ' ' + code_e).strip
         end
+        #byebug
+        a_keyword = a_keyword.squeeze(" ") # remove all double spaces
+
+        a_keyword.sub!(/[?.:,;]?$/, '') # and trailing punctuation
+
         # JL : to do: Find a better way to do this:
         a_keyword = a_keyword.gsub(/--------------/, "--") # * 7 doubles possible etc
         a_keyword = a_keyword.gsub(/------------/, "--") # * 6
@@ -323,6 +311,10 @@ module Bulkrax
         a_keyword = a_keyword.gsub(/--------/, "--") # * 4
         a_keyword = a_keyword.gsub(/------/, "--") # * 3
         a_keyword = a_keyword.gsub(/----/, "--").chomp("--") # * 2
+        a_keyword = a_keyword.gsub(/ --/, "--")
+        a_keyword = a_keyword.gsub(/-- /, "--")
+
+        a_keyword = a_keyword.strip # remove trailing space
 
         if code_2.eql? 'local'
           #a_keyword = (code_a + ' ' + code_c + ' ' + code_q + ' ' + code_d).strip
