@@ -78,7 +78,9 @@ module TcdExtendedMetadata
       property :page_number, predicate: ::RDF::Vocab::MODS.partOrder
       property :page_type, predicate: ::RDF::Vocab::MODS.partType
 
-      property :physical_extent, predicate: ::RDF::Vocab::MODS.physicalExtent
+      property :physical_extent, predicate: ::RDF::Vocab::MODS.physicalExtent do |index|
+        index.as :stored_searchable
+      end
       #  JL: can physical_entent replace format_h and format_w?
       #  property :format_h, predicate: ::RDF::Vocab::????
       #  property :format_w, predicate: ::RDF::Vocab::????
@@ -139,6 +141,26 @@ module TcdExtendedMetadata
       property :i_belong_to, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#i_belong_to')
 
       property :doi, predicate: ::RDF::URI.new('http://id.loc.gov/vocabulary/identifiers/doi'), multiple: false do |index|
+        index.as :stored_searchable
+      end
+
+      property :biographical_note, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#biographical_note') do |index|
+        index.as :stored_searchable
+      end
+
+      property :finding_aid, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#finding_aid') do |index|
+        index.as :stored_searchable
+      end
+      property :note, predicate: ::RDF::Vocab::MODS.NoteGroup do |index|
+        index.as :stored_searchable
+      end
+      property :sub_fond, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#sub_fond') do |index|
+        index.as :stored_searchable
+      end
+      property :arrangement, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#arrangement') do |index|
+        index.as :stored_searchable
+      end
+      property :issued_with, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#issued_with') do |index|
         index.as :stored_searchable
       end
   end

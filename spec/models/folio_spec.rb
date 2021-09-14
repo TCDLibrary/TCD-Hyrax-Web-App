@@ -61,6 +61,13 @@ RSpec.describe Folio do
         expect(folio.subject_local_keyword).to be_empty
         # 29/03/2019 JL - experimental belongs_to added to work objects
         expect(folio.i_belong_to).to be_empty
+        expect(folio.biographical_note).to be_empty
+        expect(folio.finding_aid).to be_empty
+        expect(folio.note).to be_empty
+        expect(folio.sub_fond).to be_empty
+        expect(folio.arrangement).to be_empty
+        expect(folio.issued_with).to be_empty
+
       end
     end
     context "with a Folio that has TCD metadata defined" do
@@ -119,6 +126,12 @@ RSpec.describe Folio do
         folio.subject_local_keyword = ["A Subject - local keyword"]
         # 29/03/2019 JL - experimental belongs_to added to work objects
         folio.i_belong_to = ["An I_Belong_To link"]
+        folio.biographical_note = ["A Biographical Note"]
+        folio.finding_aid = ["Finding Aid"]
+        folio.note = ["A Note"]
+        folio.sub_fond = ["A Sub Fond"]
+        folio.arrangement = ["An Arrangement"]
+        folio.issued_with = ["Issued With"]
 
         expect(folio.abstract).to eq(["An Abstract"])
         expect(folio.genre).to eq(["A Folio Genre"])
@@ -173,6 +186,12 @@ RSpec.describe Folio do
         expect(folio.subject_local_keyword).to eq (["A Subject - local keyword"])
         # 29/03/2019 JL - experimental belongs_to added to work objects
         expect(folio.i_belong_to).to eq (["An I_Belong_To link"])
+        expect(folio.biographical_note).to eq (["A Biographical Note"])
+        expect(folio.finding_aid).to eq (["Finding Aid"])
+        expect(folio.note).to eq (["A Note"])
+        expect(folio.sub_fond).to eq (["A Sub Fond"])
+        expect(folio.arrangement).to eq (["An Arrangement"])
+        expect(folio.issued_with).to eq (["Issued With"])
 
       end
     end

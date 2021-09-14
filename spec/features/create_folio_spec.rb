@@ -30,6 +30,7 @@ RSpec.feature 'Create a Folio', js: true do
         access: 'deposit'
       )
       login_as user
+      #Capybara.page.current_window.resize_to(5000, 5000)
     end
 
     scenario do
@@ -62,7 +63,7 @@ RSpec.feature 'Create a Folio', js: true do
       fill_in('Keyword', with: 'testing')
       select('Copyright The Board of Trinity College Dublin', from: 'Rights statement')
 
-      # 13-12-2018 JL:
+      # 13-12-2018 JL:    #!#
       click_link("Additional fields")
       fill_in "Format", with: "A Work Genre"
       fill_in "Bibliography", with: "A Work Bibliography"
@@ -105,7 +106,7 @@ RSpec.feature 'Create a Folio', js: true do
       fill_in "Order no", with: "An Order No"
       fill_in "Total records", with: "A Total Records"
       fill_in "Location", with: "A Location"
-
+      fill_in "Sub Fonds", with: "A Sub Fond"
 
 
       # With selenium and the chrome driver, focus remains on the
@@ -114,6 +115,8 @@ RSpec.feature 'Create a Folio', js: true do
       find('body').click
       choose('folio_visibility_open')
       expect(page).to have_content('Please note, making something visible to the world (i.e. marking this as Public) may be viewed as publishing which could impact your ability to')
+      #byebug
+
       check('agreement')
 
       click_on('Save')

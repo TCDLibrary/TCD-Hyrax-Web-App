@@ -21,7 +21,10 @@ en:
           alternative_title_tesim: Alternative Title
           series_title_tesim: Series Title
           collection_title_tesim: Collection Title
-
+          issued_with_tesim: With
+          issued_with: With
+          issued_with_sim: With
+          issued_with_label: With
           provenance_tesim: Provenance
           culture_tesim: Culture
           location_tesim: Location
@@ -42,6 +45,10 @@ en:
           dris_page_no_tesim: Page No
           dris_page_no_label: Page No
           genre_tesim: Format
+          issued_with_tesim: With
+          issued_with: With
+          issued_with_sim: With
+          issued_with_label: With
           abstract_tesim: Abstract
           digital_object_identifier_tesim: Digital Object Id
           dris_unique_tesim: Dris Unique
@@ -81,6 +88,10 @@ en:
           dris_page_no_tesim: Page No
           dris_page_no_label: Page No
           genre_tesim: Format
+          issued_with_tesim: With
+          issued_with: With
+          issued_with_sim: With
+          issued_with_label: With
           abstract_tesim: Abstract
           digital_object_identifier: Digital Object Id
           dris_unique_tesim: Dris Unique

@@ -18,6 +18,18 @@ en:
           sponsor_tesim: Sponsor
           bibliography_tesim: Bibliography
           publisher_location_tesim: Publisher Location
+          biographical_note_tesim: Biographical Note
+          finding_aid_tesim: Finding Aid
+          note_tesim: Note
+          sub_fond_tesim: Sub Fonds
+          sub_fond: Sub Fonds
+          sub_fond_sim: Sub Fonds
+          sub_fond_label: Sub Fonds
+          arrangement_tesim: Arrangement
+          issued_with_tesim: With
+          issued_with: With
+          issued_with_sim: With
+          issued_with_label: With
           support_tesim: Support
           medium_tesim: Medium
           alternative_title_tesim: Alternative Title
@@ -53,6 +65,18 @@ en:
           sponsor_tesim: Sponsor
           bibliography_tesim: Bibliography
           publisher_location_tesim: Publisher Location
+          biographical_note_tesim: Biographical Note
+          finding_aid_tesim: Finding Aid
+          note_tesim: Note
+          sub_fond_tesim: Sub Fonds
+          sub_fond: Sub Fonds
+          sub_fond_sim: Sub Fonds
+          sub_fond_label: Sub Fonds
+          arrangement_tesim: Arrangement
+          issued_with_tesim: With
+          issued_with: With
+          issued_with_sim: With
+          issued_with_label: With
           support_tesim: Support
           medium_tesim: Medium
           alternative_title_tesim: Alternative Title
@@ -66,6 +90,9 @@ en:
           copyright_status_tesim: Copyright Status
           flex_image: Homepage Flex Image
           contributor_tesim: Contributor
+          contributor: Contributor
+          contributor_sim: Contributor
+          contributor_label: Contributor
           creator_tesim: Creator
           date_created_tesim: Date Created
           date_modified_dtsi: Date Modified
@@ -96,6 +123,18 @@ en:
           sponsor_tesim: Sponsor
           bibliography_tesim: Bibliography
           publisher_location_tesim: Publisher Location
+          biographical_note_tesim: Biographical Note
+          finding_aid_tesim: Finding Aid
+          note_tesim: Note
+          sub_fond_tesim: Sub Fonds
+          sub_fond: Sub Fonds
+          sub_fond_sim: Sub Fonds
+          sub_fond_label: Sub Fonds
+          arrangement_tesim: Arrangement
+          issued_with_tesim: With
+          issued_with: With
+          issued_with_sim: With
+          issued_with_label: With
           support_tesim: Support
           medium_tesim: Medium
           alternative_title_tesim: Alternative Title
@@ -109,6 +148,9 @@ en:
           copyright_status_tesim: Copyright Status
           flex_image: Homepage Flex Image
           contributor_tesim: Contributor
+          contributor: Contributor
+          contributor_sim: Contributor
+          contributor_label: Contributor
           creator_tesim: Creator
           date_created_tesim: Date Created
           date_modified_dtsi: Date Modified
@@ -152,6 +194,12 @@ en:
         description: Description
         genre: Format
         identifier: Shelf Mark/Reference Number
-
+        sub_fond: Sub Fonds
+        sub_fond_sim: Sub Fonds
+        sub_fond_label: Sub Fonds
+        contributor_tesim: Contributor
+        contributor: Contributor
+        contributor_sim: Contributor
+        contributor_label: Contributor
 
 #  hyrax:

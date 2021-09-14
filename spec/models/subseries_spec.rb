@@ -55,6 +55,13 @@ RSpec.describe Subseries do
         expect(subseries.subject_local_keyword).to be_empty
         # 29/03/2019 JL - experimental belongs_to added to work objects
         expect(subseries.i_belong_to).to be_empty
+        expect(subseries.biographical_note).to be_empty
+        expect(subseries.finding_aid).to be_empty
+        expect(subseries.note).to be_empty
+        expect(subseries.sub_fond).to be_empty
+        expect(subseries.arrangement).to be_empty
+        expect(subseries.issued_with).to be_empty
+
       end
     end
     context "with a subseries that has TCD metadata defined" do
@@ -108,6 +115,12 @@ RSpec.describe Subseries do
         subseries.subject_local_keyword = ["A Subject - local keyword"]
         # 29/03/2019 JL - experimental belongs_to added to work objects
         subseries.i_belong_to = ["An I_Belong_To link"]
+        subseries.biographical_note = ["A Biographical Note"]
+        subseries.finding_aid = ["Finding Aid"]
+        subseries.note = ["A Note"]
+        subseries.sub_fond = ["A Sub Fond"]
+        subseries.arrangement = ["An Arrangement"]
+        subseries.issued_with = ["Issued With"]
 
         expect(subseries.abstract).to eq(["An Abstract"])
         expect(subseries.genre).to eq(["A subseries Genre"])
@@ -158,6 +171,12 @@ RSpec.describe Subseries do
         expect(subseries.subject_local_keyword).to eq (["A Subject - local keyword"])
         # 29/03/2019 JL - experimental belongs_to added to work objects
         expect(subseries.i_belong_to).to eq (["An I_Belong_To link"])
+        expect(subseries.biographical_note).to eq (["A Biographical Note"])
+        expect(subseries.finding_aid).to eq (["Finding Aid"])
+        expect(subseries.note).to eq (["A Note"])
+        expect(subseries.sub_fond).to eq (["A Sub Fond"])
+        expect(subseries.arrangement).to eq (["An Arrangement"])
+        expect(subseries.issued_with).to eq (["Issued With"])
 
       end
     end
