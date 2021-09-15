@@ -174,19 +174,19 @@ module Hyrax
            #self.rights_statement.each do |attribute|
            self.copyright_note.each do |attribute|
              if !attribute.blank?
-                xml.send('dc:rights', attribute.encode(:xml => :text))
+                xml.send('dc:rights', attribute.encode(:xml => :text)) unless attribute.casecmp?("public domain")
              end
            end
 
            self.rights_statement.each do |attribute|
              if !attribute.blank?
-                xml.send('dc:rights', attribute.encode(:xml => :text))
+                xml.send('dc:rights', attribute.encode(:xml => :text)) unless attribute.casecmp?("public domain")
              end
            end
 
            self.copyright_status.each do |attribute|
              if !attribute.blank?
-                xml.send('dc:rights', attribute.encode(:xml => :text))
+                xml.send('dc:rights', attribute.encode(:xml => :text)) unless attribute.casecmp?("public domain")
              end
            end
 

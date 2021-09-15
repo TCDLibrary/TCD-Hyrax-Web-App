@@ -8,7 +8,10 @@ Bulkrax.setup do |config|
 
   config.parsers = [
     { class_name: 'Bulkrax::FoxmlParser', name: 'FOXML importer', partial: 'foxml_fields' },
-    { class_name: 'Bulkrax::CsvParser', name: 'CSV importer', partial: 'csv_fields' }
+  #  { class_name: 'Bulkrax::CsvParser', name: 'CSV importer', partial: 'csv_fields' },
+    { class_name: 'Bulkrax::MarcXmlParser', name: 'MARC XML importer', partial: 'marcxml_fields' }
+  #  { class_name: 'Bulkrax::ModsParser', name: 'MODS importer', partial: 'mods_fields' },
+  #  { class_name: 'Bulkrax::MetsXmlParser', name: 'METS XML', partial: 'mets_xml_fields' }
   ]
 
   # Field to use during import to identify if the Work or Collection already exists.
@@ -39,7 +42,10 @@ Bulkrax.setup do |config|
   # The default value for CSV is 'source_idnetifier'
   # config.source_identifier_field_mapping = { }
   config.source_identifier_field_mapping = {
-    'Bulkrax::FoxmlEntry' => 'DrisUnique'
+    'Bulkrax::FoxmlEntry' => 'DrisUnique',
+    'Bulkrax::MarcXmlEntry' => 'controlfield',
+    'Bulkrax::ModsEntry' => 'recordIdentifier',
+    'Bulkrax::MetsXmlEntry' => 'OBJID'
   }
 
   # Field_mapping for establishing a parent-child relationship (FROM parent TO child)
@@ -131,6 +137,31 @@ Bulkrax.setup do |config|
     'total_records' => { from: ['PageTotal'] }
   }
 
+  config.field_mappings['Bulkrax::MarcXmlParser'] = {
+    'keyword' => { from: ['relatedItem'], parsed: true },
+    'creator' => { from: ['name'], parsed: true },
+    'title' => { from: ['title'], parsed: true },
+    'identifier' => { from: ['identifier'] },
+    'description' => { from: ['abstract'], parsed: true },
+    'abstract' => { from: ['abstract'] }
+  }
+
+  config.field_mappings['Bulkrax::ModsParser'] = {
+    'keyword' => { from: ['relatedItem'], parsed: true },
+    'creator' => { from: ['name'], parsed: true },
+    'title' => { from: ['title'], parsed: true },
+    'dris_unique' => { from: ['recordIdentifier'] },
+    'identifier' => { from: ['shelfLocator'] },
+    'folder_number' => { from: ['folder_number'] },
+    'digital_root_number' => { from: ['digital_root_number'] },
+    'genre' => { from: ['genre'] },
+    'abstract' => { from: ['abstract'] }
+  }
+
+  config.field_mappings['Bulkrax::MetsXmlParser'] = {
+    'source_identifier' => { from: ['identifier'] },
+    'work_type' => 'PagedResource'
+  }
   # Properties that should not be used in imports/exports. They are reserved for use by Hyrax.
   # config.reserved_properties += ['my_field']
 end

@@ -5,10 +5,8 @@ require 'rails_helper'
 RSpec.describe Bulkrax do
   describe '#config' do
     it 'has custom parsers' do
-      expect(described_class.parsers).to eq([
-                                              { class_name: 'Bulkrax::FoxmlParser', name: 'FOXML importer', partial: 'foxml_fields' },
-                                              { class_name: 'Bulkrax::CsvParser', name: 'CSV importer', partial: 'csv_fields' }
-                                            ])
+      expect(described_class.parsers).to include({ class_name: 'Bulkrax::FoxmlParser', name: 'FOXML importer', partial: 'foxml_fields' })
+      expect(described_class.parsers).to include({ class_name: 'Bulkrax::MarcXmlParser', name: 'MARC XML importer', partial: 'marcxml_fields' })
     end
 
     it 'has custom system_identifier_field' do
@@ -16,7 +14,8 @@ RSpec.describe Bulkrax do
     end
 
     it 'has custom source_identifier_field_mapping' do
-      expect(described_class.source_identifier_field_mapping).to eq('Bulkrax::FoxmlEntry' => 'DrisUnique')
+      expect(described_class.source_identifier_field_mapping).to include('Bulkrax::FoxmlEntry' => 'DrisUnique')
+      expect(described_class.source_identifier_field_mapping).to include('Bulkrax::MarcXmlEntry' => 'controlfield')
     end
 
     it 'has custom field_mappings for the FoxmlParser' do
@@ -81,6 +80,17 @@ RSpec.describe Bulkrax do
         'project_number' => { from: ['ProjectNo'] },
         'order_no' => { from: ['LCN'] },
         'total_records' => { from: ['PageTotal'] }
+      )
+    end
+
+    it 'has custom field_mappings for the MarcXmlParser' do
+      expect(described_class.field_mappings['Bulkrax::MarcXmlParser']).to eq(
+        'keyword' => { from: ['relatedItem'], parsed: true },
+        'creator' => { from: ['name'], parsed: true },
+        'title' => { from: ['title'], parsed: true },
+        'identifier' => { from: ['identifier'] },
+        'description' => { from: ['abstract'], parsed: true },
+        'abstract' => { from: ['abstract'] }
       )
     end
   end

@@ -1,0 +1,373 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<marc:collection xmlns:marc="http://www.loc.gov/MARC21/slim" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <marc:record>
+    <marc:leader>07890nam a22009255i 4500</marc:leader>
+    <marc:controlfield tag="001">Jmarc0713</marc:controlfield>
+    <marc:controlfield tag="003">IeDuTC</marc:controlfield>
+    <marc:controlfield tag="006">m o j </marc:controlfield>
+    <marc:controlfield tag="007">cr c| a|a|a</marc:controlfield>
+    <marc:controlfield tag="008">200929s1823 ie abf o 000 0 eng c</marc:controlfield>
+    <marc:datafield tag="019" ind1=" " ind2=" ">
+      <marc:subfield code="a">DC Repository; NOT FOR PUBLIC VIEW; map to Hyrax only</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="019" ind1=" " ind2=" ">
+      <marc:subfield code="b">901</marc:subfield>
+      <marc:subfield code="c">1234</marc:subfield>
+      <marc:subfield code="d">MS4053</marc:subfield>
+      <marc:subfield code="e">digital obj id</marc:subfield>
+      <marc:subfield code="f">001:009</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">01234567XX</marc:subfield>
+      <marc:subfield code="q">(paperback)</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="020" ind1=" " ind2=" ">
+      <marc:subfield code="a">97801234567XX</marc:subfield>
+      <marc:subfield code="q">(paperback)</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="040" ind1=" " ind2=" ">
+      <marc:subfield code="a">IeDuTC</marc:subfield>
+      <marc:subfield code="b">eng</marc:subfield>
+      <marc:subfield code="e">rda</marc:subfield>
+      <marc:subfield code="c">IeDuTC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="041" ind1="0" ind2=" ">
+      <marc:subfield code="a">eng</marc:subfield>
+      <marc:subfield code="a">fre</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="100" ind1="1" ind2=" ">
+      <marc:subfield code="a">Sherwood,</marc:subfield>
+      <marc:subfield code="c">Mrs.</marc:subfield>
+      <marc:subfield code="q">(Mary Martha),</marc:subfield>
+      <marc:subfield code="d">1775-1851,</marc:subfield>
+      <marc:subfield code="e">author.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="245" ind1="1" ind2="2">
+      <marc:subfield code="a">A drive in the coach through the streets of London :</marc:subfield>
+      <marc:subfield code="b">a story founded on fact /</marc:subfield>
+      <marc:subfield code="c">by Mrs. Sherwood.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="246" ind1="3" ind2="8">
+      <marc:subfield code="a">A coach ride around London for young ladies</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="246" ind1="3" ind2="4">
+      <marc:subfield code="a">Julias coach ride around London</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="246" ind1="3" ind2="5">
+      <marc:subfield code="a">A coach drive for Julia and a lesson learned</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="250" ind1=" " ind2=" ">
+      <marc:subfield code="a">Eighth edition.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="264" ind1=" " ind2="3">
+      <marc:subfield code="a">Wellington, Salop [Shropshire] :</marc:subfield>
+      <marc:subfield code="b">printed by and for F. Houlston and Son,</marc:subfield>
+      <marc:subfield code="c">1823.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="264" ind1=" " ind2="3">
+      <marc:subfield code="a">Trinity College Dublin:</marc:subfield>
+      <marc:subfield code="b">printed by and for TCD</marc:subfield>
+      <marc:subfield code="c">2021</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="300" ind1=" " ind2=" ">
+      <marc:subfield code="a">v, 45 pages, 6 unnumbered leaves of plates :</marc:subfield>
+      <marc:subfield code="b">illustrations (black and white), map ;</marc:subfield>
+      <marc:subfield code="c">25 cm. +</marc:subfield>
+      <marc:subfield code="e">1 folded colour map (24 x 37 cm.) </marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="336" ind1=" " ind2=" ">
+      <marc:subfield code="a">text</marc:subfield>
+      <marc:subfield code="b">txt</marc:subfield>
+      <marc:subfield code="2">rdacontent</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="336" ind1=" " ind2=" ">
+      <marc:subfield code="a">still image</marc:subfield>
+      <marc:subfield code="b">sti</marc:subfield>
+      <marc:subfield code="2">rdacontent</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="336" ind1=" " ind2=" ">
+      <marc:subfield code="a">cartographic image</marc:subfield>
+      <marc:subfield code="b">cri</marc:subfield>
+      <marc:subfield code="2">rdacontent</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="337" ind1=" " ind2=" ">
+      <marc:subfield code="a">unmediated</marc:subfield>
+      <marc:subfield code="b">n</marc:subfield>
+      <marc:subfield code="2">rdamedia</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="338" ind1=" " ind2=" ">
+      <marc:subfield code="a">volume</marc:subfield>
+      <marc:subfield code="b">nc</marc:subfield>
+      <marc:subfield code="2">rdacarrier</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="340" ind1=" " ind2=" ">
+      <marc:subfield code="a">paper (fiber product)</marc:subfield>
+      <marc:subfield code="c">ink</marc:subfield>
+      <marc:subfield code="e">ink2</marc:subfield>
+      <marc:subfield code="2">aat</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="380" ind1=" " ind2=" ">
+      <marc:subfield code="a">pamphlets</marc:subfield>
+      <marc:subfield code="2">aat</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="380" ind1=" " ind2=" ">
+      <marc:subfield code="a">Books</marc:subfield>
+      <marc:subfield code="2">lctgm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="490" ind1="1" ind2=" ">
+      <marc:subfield code="a">Miss Primroses Library for Young Ladies ;</marc:subfield>
+      <marc:subfield code="v">number 6</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="500" ind1=" " ind2=" ">
+      <marc:subfield code="a">THIS IS A DUMMY RECORD (INACCURATE); TESTING PURPOSES ONLY.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="501" ind1=" " ind2=" ">
+      <marc:subfield code="a">With a separately titled map on an accompanying sheet: Lady Lucys route around Covent Garden.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="510" ind1="0" ind2=" ">
+      <marc:subfield code="a">Every day with Jesus / A. Man -- Hope for hard times / A.N. Other -- How to pray / A. Woman -- Devotions for girls / A.N. Otherwoman.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="520" ind1=" " ind2=" ">
+      <marc:subfield code="a">In A Drive in the Coach through the Streets of London, a young girl named Julia is "granted the privilege of shopping with her mother only if she will "behave wisely in the streets" and "not give [her] mind to self-pleasing." Of course, she cannot keep this promise and she eagerly peeks in at every store window and begs her mother to buy her everything she sees. Her mother therefore allows her to select one item from every shop. Julia, ecstatic, chooses, among other things, blue satin boots, a penknife, and a new hat with flowers, until the pair reach the undertakers shop. There her mood droops considerably and she realizes the moral of the lesson, recited by her mother, as she picks out a coffin: "but she that liveth in pleasure is dead while she liveth" (1 Timothy 5:6)." --https://en.wikipedia.org/wiki/Mary_Martha_Sherwood (accessed 29/09/2020).</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="520" ind1=" " ind2=" ">
+      <marc:subfield code="a">Abstract part 2</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="530" ind1=" " ind2=" ">
+      <marc:subfield code="a">Original print version available in the Department of Early Printed Books at OLS POL 3811 no.3 ;</marc:subfield>
+      <marc:subfield code="c">for use in the Department of Early Printed Books only.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="534" ind1=" " ind2=" ">
+      <marc:subfield code="p">Digitised version of:</marc:subfield>
+      <marc:subfield code="t">A drive in the coach through the streets of London in the</marc:subfield>
+      <marc:subfield code="l">Department of Early Printed Books,</marc:subfield>
+      <marc:subfield code="o">OLS POL 3811 no.3.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="534" ind1=" " ind2=" ">
+      <marc:subfield code="p">2222 Digitised version of:</marc:subfield>
+      <marc:subfield code="t">2222 A drive in the coach through the streets of London in the</marc:subfield>
+      <marc:subfield code="l">2222 Department of Early Printed Books,</marc:subfield>
+      <marc:subfield code="o">2222 OLS POL 3811 no.3.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="535" ind1="1" ind2=" ">
+      <marc:subfield code="a">Library of Trinity College Dublin, Department of Early Printed Books ;</marc:subfield>
+      <marc:subfield code="b">Trinity College, College Green, Dublin 2;</marc:subfield>
+      <marc:subfield code="c">Ireland;</marc:subfield>
+      <marc:subfield code="d">+353(0)1 896 1172</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="536" ind1=" " ind2=" ">
+      <marc:subfield code="a">Digitisation and metadata creation sponsored by the Bank of America, 2018.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="536" ind1=" " ind2=" ">
+      <marc:subfield code="a">TCD</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="541" ind1="1" ind2=" ">
+      <marc:subfield code="3">Errata supplement (pamphlet, 2 leaves)</marc:subfield>
+      <marc:subfield code="c">Donation;</marc:subfield>
+      <marc:subfield code="a">Ms. Jane Doe;</marc:subfield>
+      <marc:subfield code="b">Poughkeepsie, NY 12601;</marc:subfield>
+      <marc:subfield code="d">2020;</marc:subfield>
+      <marc:subfield code="f">Jane Doe Estate;</marc:subfield>
+      <marc:subfield code="n">1</marc:subfield>
+      <marc:subfield code="o">pamphlet.</marc:subfield>
+      <marc:subfield code="5">IeDuTC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="545" ind1="0" ind2=" ">
+      <marc:subfield code="a">"Mary Martha Sherwood (née Butt; 6 May 1775 {u2013} 22 September 1851) was a writer of childrens literature in 19th-century Britain. She composed over 400 books, tracts, magazine articles, and chapbooks. Among her best known works are The History of Little Henry and his Bearer (1814), The History of Henry Milner (1822{u2013}37), and The History of the Fairchild Family (1818{u2013}47). While Sherwood is known primarily for the strong evangelicalism that coloured her early writings, her later works are characterized by common Victorian themes, such as domesticity. Sherwoods childhood was uneventful, although she recalled it as the happiest part of her life. After she married Captain Henry Sherwood and moved to India, she converted to evangelical Christianity and began to write for children. Although her books were initially intended only for the children of the military encampments in India, the British public also received them enthusiastically. The Sherwoods returned to England after a decade in India and, building upon her popularity, Sherwood opened a boarding school and published scores of texts for children and the poor. Many of Sherwoods books were bestsellers and she has been described as "one of the most significant authors of childrens literature of the nineteenth century".[1] Her depictions of domesticity and Britains relationship with India may have played a part in shaping the opinions of many young British readers.[2] However, her works fell from favor as a different style of childrens literature came into fashion during the late nineteenth century, one exemplified by Lewis Carrolls playful and nonsensical Alices Adventures in Wonderland." See the full Wikipedia entry at</marc:subfield>
+      <marc:subfield code="u">https://en.wikipedia.org/wiki/Mary_Martha_Sherwood</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="546" ind1=" " ind2=" ">
+      <marc:subfield code="a">English, with parallel French translation.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="555" ind1="0" ind2=" ">
+      <marc:subfield code="a">More for archival/MSS collections, but map anyway</marc:subfield>
+      <marc:subfield code="u">https://en.wikipedia.org/wiki/Mary_Martha_Sherwood2222</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="561" ind1=" " ind2=" ">
+      <marc:subfield code="a">With MS name and date on title page: Margaret W. Woods, 1850. Formerly owned by Mary Paul Pollard, and forms part of the Pollard Collection of childrens books.</marc:subfield>
+      <marc:subfield code="u">test u</marc:subfield>
+      <marc:subfield code="5">IeDuTC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="561" ind1="1" ind2=" ">
+      <marc:subfield code="a">ind1.</marc:subfield>
+      <marc:subfield code="5">IeDuTC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="561" ind1="3" ind2=" ">
+      <marc:subfield code="a">aaaaa</marc:subfield>
+      <marc:subfield code="u">uuuu</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="563" ind1=" " ind2=" ">
+      <marc:subfield code="a">Blue paper covers, printed in black on the front. Bound in a volume with three other items: Mammas gift ... (Edinburgh: Oliver &amp; Boyd, 1829); Swifts Gullivers travels (Edinburgh: Oliver &amp; Boyd, [ca. 1830]); Mrs. Camerons The caskets: or The palace and the church (11th edition: London: Houlston and Son, 1831).</marc:subfield>
+      <marc:subfield code="5">IeDuTC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="580" ind1=" " ind2=" ">
+      <marc:subfield code="a">Forms part of the Pollard Collection.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="581" ind1=" " ind2=" ">
+      <marc:subfield code="a">Description based on research conducted by Dr. A.N. Academic, Department of English, Trinity College Dublin.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="583" ind1=" " ind2=" ">
+      <marc:subfield code="a">digitised</marc:subfield>
+      <marc:subfield code="c">20200929</marc:subfield>
+      <marc:subfield code="h">Library</marc:subfield>
+      <marc:subfield code="i">photographed</marc:subfield>
+      <marc:subfield code="j">Digital Collections, The Library of Trinity College Dublin.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="600" ind1="1" ind2="0">
+      <marc:subfield code="a">Sherwood,</marc:subfield>
+      <marc:subfield code="c">Mrs.</marc:subfield>
+      <marc:subfield code="q">(Mary Martha),</marc:subfield>
+      <marc:subfield code="d">1775-1851.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="610" ind1="2" ind2="0">
+      <marc:subfield code="a">F. Houlston and Son.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="600" ind1="3" ind2="0">
+      <marc:subfield code="a">Sherwood family.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="600" ind1="1" ind2="0">
+      <marc:subfield code="a">with $2 Sherwood,</marc:subfield>
+      <marc:subfield code="c">Mrs.</marc:subfield>
+      <marc:subfield code="q">(Mary Martha),</marc:subfield>
+      <marc:subfield code="d">1775-1851.</marc:subfield>
+      <marc:subfield code="2">local</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="610" ind1="2" ind2="0">
+      <marc:subfield code="a">with $2 F. Houlston and Son.</marc:subfield>
+      <marc:subfield code="2">local</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="600" ind1="3" ind2="0">
+      <marc:subfield code="a">with $2 Sherwood family.</marc:subfield>
+      <marc:subfield code="2">local</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Avarice</marc:subfield>
+      <marc:subfield code="x">Religious aspects</marc:subfield>
+      <marc:subfield code="x">Christianity</marc:subfield>
+      <marc:subfield code="v">Juvenile fiction.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Worldliness</marc:subfield>
+      <marc:subfield code="v">Juvenile fiction.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Christian life</marc:subfield>
+      <marc:subfield code="v">Juvenile fiction.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Mothers and daughters</marc:subfield>
+      <marc:subfield code="v">Juvenile fiction.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="0">
+      <marc:subfield code="a">Conduct of life</marc:subfield>
+      <marc:subfield code="v">Juvenile fiction.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="7">
+      <marc:subfield code="a">Avarice</marc:subfield>
+      <marc:subfield code="x">Religious aspects</marc:subfield>
+      <marc:subfield code="x">Christianity.</marc:subfield>
+      <marc:subfield code="2">fast</marc:subfield>
+      <marc:subfield code="0">(OCoLC)fst00824302</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="7">
+      <marc:subfield code="a">Worldliness.</marc:subfield>
+      <marc:subfield code="2">fast</marc:subfield>
+      <marc:subfield code="0">(OCoLC)fst01181415</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="7">
+      <marc:subfield code="a">Christian life.</marc:subfield>
+      <marc:subfield code="2">fast</marc:subfield>
+      <marc:subfield code="0">((OCoLC)fst00859185</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="7">
+      <marc:subfield code="a">Mothers and daughters.</marc:subfield>
+      <marc:subfield code="2">fast</marc:subfield>
+      <marc:subfield code="0">((OCoLC)fst01026997</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="650" ind1=" " ind2="7">
+      <marc:subfield code="a">Young women</marc:subfield>
+      <marc:subfield code="x">Conduct of life.</marc:subfield>
+      <marc:subfield code="2">fast</marc:subfield>
+      <marc:subfield code="0">(OCoLC)fst01183306</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="655" ind1=" " ind2="7">
+      <marc:subfield code="a">Books.</marc:subfield>
+      <marc:subfield code="2">lctgm</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="655" ind1=" " ind2="7">
+      <marc:subfield code="a">pamphlets.</marc:subfield>
+      <marc:subfield code="2">aat</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+      <marc:subfield code="a">Pollard, M.</marc:subfield>
+      <marc:subfield code="q">(Mary),</marc:subfield>
+      <marc:subfield code="e">former owner.</marc:subfield>
+      <marc:subfield code="5">IeDuTC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="700" ind1="1" ind2=" ">
+      <marc:subfield code="a">Woods, Margaret W.,</marc:subfield>
+      <marc:subfield code="d">active 1850,</marc:subfield>
+      <marc:subfield code="e">former owner.</marc:subfield>
+      <marc:subfield code="5">IeDuTC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="710" ind1="2" ind2=" ">
+      <marc:subfield code="a">Pollard Collection,</marc:subfield>
+      <marc:subfield code="e">former owner.</marc:subfield>
+      <marc:subfield code="5">IeDuTC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="710" ind1="2" ind2=" ">
+      <marc:subfield code="a">F. Houlston and Son,</marc:subfield>
+      <marc:subfield code="e">printer.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="710" ind1="2" ind2=" ">
+      <marc:subfield code="a">Bank of America,</marc:subfield>
+      <marc:subfield code="e">sponsor.</marc:subfield>
+      <marc:subfield code="5">IeDuTC</marc:subfield>
+      <marc:subfield code="2">NOT ME!! 710</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="773" ind1="0" ind2=" ">
+      <marc:subfield code="i">Forms part of:</marc:subfield>
+      <marc:subfield code="t">Pollard Collection</marc:subfield>
+      <marc:subfield code="w">NO BIB NUMBER FOR THIS</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="776" ind1="0" ind2=" ">
+      <marc:subfield code="c">Print version:</marc:subfield>
+      <marc:subfield code="t">A drive in the coach through the streets of London</marc:subfield>
+      <marc:subfield code="w">b145354295</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="830" ind1=" " ind2="0">
+      <marc:subfield code="a">Miss Primroses library for young ladies ;</marc:subfield>
+      <marc:subfield code="v">no. 6.</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="850" ind1=" " ind2=" ">
+      <marc:subfield code="a">IeDuTC</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="852" ind1=" " ind2=" ">
+      <marc:subfield code="a">The Library of Trinity College Dublin</marc:subfield>
+      <marc:subfield code="b">Department of Early Printed Books</marc:subfield>
+      <marc:subfield code="j">OLS POL 3811 no.3</marc:subfield>
+      <marc:subfield code="d">former numbers</marc:subfield>
+      <marc:subfield code="n">ie</marc:subfield>
+      <marc:subfield code="u">https://www.tcd.ie/library/epb/</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="907" ind1=" " ind2=" ">
+      <marc:subfield code="a">.b190511631</marc:subfield>
+      <marc:subfield code="b">29-09-20</marc:subfield>
+      <marc:subfield code="c">29-09-20</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="998" ind1=" " ind2=" ">
+      <marc:subfield code="a">none</marc:subfield>
+      <marc:subfield code="b">29-09-20</marc:subfield>
+      <marc:subfield code="c">m</marc:subfield>
+      <marc:subfield code="d">3 </marc:subfield>
+      <marc:subfield code="e">b</marc:subfield>
+      <marc:subfield code="f">eng</marc:subfield>
+      <marc:subfield code="g">ie </marc:subfield>
+      <marc:subfield code="h">2</marc:subfield>
+      <marc:subfield code="i">0</marc:subfield>
+    </marc:datafield>
+    <marc:datafield tag="989" ind1=" " ind2=" ">
+      <marc:subfield code="a">21</marc:subfield>
+    </marc:datafield>
+  </marc:record>
+</marc:collection>

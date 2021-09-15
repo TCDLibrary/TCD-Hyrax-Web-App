@@ -37,6 +37,12 @@ module Hyrax
     self.terms += [:order_no]
     self.terms += [:total_records]
     self.terms += [:county]
+    self.terms += [:biographical_note]
+    self.terms += [:finding_aid]
+    self.terms += [:note]
+    self.terms += [:sub_fond]
+    self.terms += [:arrangement]
+    self.terms += [:issued_with]
 
   end
 end

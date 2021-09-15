@@ -167,4 +167,35 @@ class SolrDocument
     self[Solrizer.solr_name('doi')]
   end
 
+  def biographical_note
+    self[Solrizer.solr_name('biographical_note')]
+  end
+
+  def finding_aid
+    self[Solrizer.solr_name('finding_aid')]
+  end
+
+  def note
+    self[Solrizer.solr_name('note')]
+  end
+
+  def sub_fond
+    self[Solrizer.solr_name('sub_fond')]
+  end
+
+  def arrangement
+    self[Solrizer.solr_name('arrangement')]
+  end
+
+  def issued_with
+    self[Solrizer.solr_name('issued_with')]
+  end
+
+  def bibliography
+    self[Solrizer.solr_name('bibliography')]
+  end
+
+  def physical_extent
+    self[Solrizer.solr_name('physical_extent')]
+  end
 end

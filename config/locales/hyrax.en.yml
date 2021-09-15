@@ -47,6 +47,11 @@ en:
           description_tesim: Description
           file_format_tesim: File Format
           genre: Format
+          issued_with_tesim: With
+          issued_with: With     
+          issued_with_sim: With
+          issued_with_label: With
+          issue_with: With
           identifier: Shelf Mark/Reference Number
           identifier_tesim: Shelf Mark/Reference Number
           identifier_label: Shelf Mark/Reference Number
