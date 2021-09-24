@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210407085238) do
+ActiveRecord::Schema.define(version: 20210920110148) do
 
   create_table "bookmarks", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.integer "user_id", null: false
@@ -646,6 +646,9 @@ ActiveRecord::Schema.define(version: 20210407085238) do
     t.binary "zotero_token"
     t.string "zotero_userid"
     t.string "preferred_locale"
+    t.integer "failed_attempts"
+    t.string "unlock_token"
+    t.datetime "locked_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

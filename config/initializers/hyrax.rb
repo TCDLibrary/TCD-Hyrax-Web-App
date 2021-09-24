@@ -277,6 +277,27 @@ Hyrax.config do |config|
   # ActiveJob queue to handle ingest-like jobs
   config.ingest_queue_name = :ingest
 
+  # Some Devise config changes
+
+  Devise.lock_strategy = :failed_attempts
+
+  # Defines which key will be used when locking and unlocking an account
+  Devise.unlock_keys = [:time]
+
+  # Defines which strategy will be used to unlock an account.
+  # :email = Sends an unlock link to the user email
+  # :time  = Re-enables login after a certain amount of time (see :unlock_in below)
+  # :both  = Enables both strategies
+  # :none  = No unlock strategy. You should handle unlocking by yourself.
+  # config.unlock_strategy = :both
+
+  # Number of authentication tries before locking an account if lock_strategy
+  # is failed attempts.
+  Devise.maximum_attempts = 5
+
+  # Time interval to unlock the account if :time is enabled as unlock_strategy.
+  Devise.unlock_in = 1.hour
+
   ## Attributes for the lock manager which ensures a single process/thread is mutating a ore:Aggregation at once.
   # How many times to retry to acquire the lock before raising UnableToAcquireLockError
   # config.lock_retry_count = 600 # Up to 2 minutes of trying at intervals up to 200ms

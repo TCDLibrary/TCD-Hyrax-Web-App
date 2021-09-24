@@ -94,4 +94,6 @@ Rails.application.configure do
   # JL : TODO. Check if I need this. Added it because viewer giving errors on VM-099
   config.public_file_server.enabled = true
 
+  # JL: For Devise account locking
+  Rails.application.routes.default_url_options[:host] = 'http://dcdev-web.tcd.ie'
 end

@@ -101,4 +101,7 @@ Rails.application.configure do
   # JL : 2020-04-27 :  Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
 
+  # JL: For Devise account locking
+  Rails.application.routes.default_url_options[:host] = 'http://digcoll-hyrax02.tcd.ie'
+
 end

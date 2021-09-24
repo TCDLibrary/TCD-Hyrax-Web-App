@@ -83,4 +83,7 @@ Rails.application.configure do
   #IIIF_SERVER_URL='http://127.0.0.1:8080/cantaloupe-4.1.2/iiif/2/'
 
   config.web_console.whitelisted_ips = ['172.0.0.0/8', '192.168.0.0/16', '127.0.0.1']
+
+  # JL: For Devise account locking
+  Rails.application.routes.default_url_options[:host] = 'http://localhost:3000'
 end
