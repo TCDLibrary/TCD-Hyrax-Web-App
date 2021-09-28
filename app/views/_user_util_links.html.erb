@@ -20,10 +20,12 @@
       </ul>
     </li><!-- /.btn-group -->
   <% else %>
-    <li>
-      <%= link_to main_app.new_user_session_path do %>
-        <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> <%= t("hyrax.toolbar.profile.login") %>
-      <% end %>
-    </li>
+    <% if !request.ssl? %>
+      <li>
+        <%= link_to main_app.new_user_session_path do %>
+          <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> <%= t("hyrax.toolbar.profile.login") %>
+        <% end %>
+      </li>
+    <% end %>
   <% end %>
 </ul>
