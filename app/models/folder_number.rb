@@ -1,0 +1,2 @@
+class FolderNumber < ApplicationRecord
+end

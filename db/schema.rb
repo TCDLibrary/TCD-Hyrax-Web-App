@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210920110148) do
+ActiveRecord::Schema.define(version: 20210929120544) do
 
   create_table "bookmarks", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.integer "user_id", null: false
@@ -200,6 +200,19 @@ ActiveRecord::Schema.define(version: 20210920110148) do
     t.integer "user_id"
     t.index ["file_id"], name: "index_file_view_stats_on_file_id"
     t.index ["user_id"], name: "index_file_view_stats_on_user_id"
+  end
+
+  create_table "folder_numbers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+    t.string "project_id"
+    t.string "root_filename"
+    t.string "title"
+    t.string "job_type"
+    t.string "suitable_for_ingest"
+    t.string "status"
+    t.text "note"
+    t.string "created_by"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "hyrax_checksums", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
