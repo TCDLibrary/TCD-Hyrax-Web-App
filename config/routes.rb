@@ -1,11 +1,30 @@
 Rails.application.routes.draw do
 
+  get 'folder_numbers/index'
+
+  get 'folder_numbers/show'
+
+  get 'folder_numbers/new'
+
+  get 'folder_numbers/edit'
+
+  get 'folder_numbers/delete'
+
   #get 'doi_blocker_lists/index'
 
   get 'search_assist/index'
 
   resources :hyrax_checksums, :only => [ :index, :create, :update ]
   resources :doi_blocker_lists, :only => [ :index ]
+
+  resources :folder_numbers do
+    member do
+      get :delete
+    end
+    collection do
+      get :export 
+    end
+  end
 
   mount Bulkrax::Engine, at: '/'
   resources :ingests
