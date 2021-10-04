@@ -1,2 +1,33 @@
-<h1>FolderNumbers#index</h1>
-<p>Find me in app/views/folder_numbers/index.html.erb</p>
+<% provide :page_header do %>
+  <h1><span class="fa fa-folder" aria-hidden="true"></span> Folder Number/Project ID</h1>
+<% end %>
+
+<%= link_to("Add New Folder Number/Project ID", "#", :class => 'action new') %>
+
+<div class="table-responsive">
+  <table class="table table-striped datatable">
+    <thead>
+      <tr>
+        <th>Folder Number/<br>Project ID</th>
+        <th>Root Filename</th>
+        <th>Title</th>
+        <th>Job Type</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <% @folder_numbers&.each do | folder | %>
+    <tr>
+      <td><%= folder.project_id %></td>
+
+      <td><%= folder.root_filename %></td>
+      <td><%= folder.title %></td>
+      <td><%= folder.job_type %></td>
+      <td class="actions">
+        <%= link_to("Show", folder_number_path(folder), :class => 'action show') %>
+        <%= link_to("Edit", "#", :class => 'action edit') %>
+        <%= link_to("Delete", "#", :class => 'action delete', data: { confirm: 'Are you sure?' }) %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
