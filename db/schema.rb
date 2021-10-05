@@ -203,7 +203,7 @@ ActiveRecord::Schema.define(version: 20210929120544) do
   end
 
   create_table "folder_numbers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
-    t.string "project_id"
+    t.integer "project_id"
     t.string "root_filename"
     t.string "title"
     t.string "job_type"

@@ -1,7 +1,7 @@
 class CreateFolderNumbers < ActiveRecord::Migration[5.1]
   def change
     create_table :folder_numbers do |t|
-      t.string :project_id
+      t.integer :project_id
       t.string :root_filename
       t.string :title
       t.string :job_type
