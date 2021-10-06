@@ -24,7 +24,7 @@
       <td><%= folder.job_type %></td>
       <td class="actions">
         <%= link_to("Show", folder_number_path(folder), :class => 'action show') %>
-        <%= link_to("Edit", "#", :class => 'action edit') %>
+        <%= link_to("Edit", edit_folder_number_path(folder), :class => 'action edit') %>
         <%= link_to("Delete", "#", :class => 'action delete', data: { confirm: 'Are you sure?' }) %>
       </td>
     </tr>

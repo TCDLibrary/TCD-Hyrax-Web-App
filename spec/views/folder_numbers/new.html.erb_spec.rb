@@ -1,5 +1,5 @@
 require 'rails_helper'
 
 RSpec.describe "folder_numbers/new.html.erb", type: :view do
-  pending "add some examples to (or delete) #{__FILE__}"
+  pending "needs login because it depends on current_user for hidden field"
 end

@@ -15,7 +15,7 @@ class FolderNumbersController < ApplicationController
     add_breadcrumb t(:'hyrax.controls.home'), main_app.root_path
     add_breadcrumb t(:'hyrax.dashboard.breadcrumbs.admin'), hyrax.dashboard_path
     add_breadcrumb 'Folder No/Project ID', folder_numbers_path
-    @folder_numbers = FolderNumber.sorted
+    @folder_numbers = FolderNumber.all
   end
 
   def show
@@ -29,7 +29,7 @@ class FolderNumbersController < ApplicationController
     add_breadcrumb t(:'hyrax.controls.home'), main_app.root_path
     add_breadcrumb t(:'hyrax.dashboard.breadcrumbs.admin'), hyrax.dashboard_path
     add_breadcrumb 'Folder No/Project ID', folder_numbers_path
-    @next = FolderNumber.maximum("project_id") + 1
+    @next = (FolderNumber.maximum("project_id") || 0) + 1
     @folder_number = FolderNumber.new({:project_id => @next, :suitable_for_ingest => 'No'})
   end
 
@@ -43,9 +43,19 @@ class FolderNumbersController < ApplicationController
   end
 
   def edit
+    add_breadcrumb t(:'hyrax.controls.home'), main_app.root_path
+    add_breadcrumb t(:'hyrax.dashboard.breadcrumbs.admin'), hyrax.dashboard_path
+    add_breadcrumb 'Folder No/Project ID', folder_numbers_path
+    @folder_number = FolderNumber.find(params[:id])
   end
 
   def update
+    @folder_number = FolderNumber.find(params[:id])
+    if @folder_number.update_attributes(folder_number_params)
+      redirect_to(folder_number_path(@folder_number))
+    else
+      render('edit') # redraws the form, doesn't rerun new method
+    end
   end
 
   def delete
