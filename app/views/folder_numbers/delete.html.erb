@@ -1,2 +1,84 @@
-<h1>FolderNumbers#delete</h1>
-<p>Find me in app/views/folder_numbers/delete.html.erb</p>
+<% provide :page_header do %>
+  <h1><span class="fa fa-folder" aria-hidden="true"></span> Delete Folder Number/Project ID: <%= @folder_number.project_id %></h1>
+<% end %>
+<%= link_to("<< Back to List", folder_numbers_path, :class => 'back-link') %>
+
+<div class="panel-body">
+  <% if @folder_number.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@folder_number.errors.count, "error") %> prevented this project folder from being deleted:</h2>
+
+      <ul>
+        <% @folder_number.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div class="panel-body">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default tabs nifty_form">
+
+            <%= form_for(@folder_number, :url => folder_number_path(@folder_number), :method => 'delete') do |f| %>
+
+             <p> Are you sure you want to permanently delete Folder No/Project ID <%= f.object.project_id %>?</p>
+
+             <p>
+               <strong>Folder No/Project ID:</strong>
+               <%= @folder_number.project_id %>
+             </p>
+
+             <p>
+               <strong>Root Filename:</strong>
+               <%= @folder_number.root_filename %>
+             </p>
+
+             <p>
+               <strong>Title:</strong>
+               <%= @folder_number.title %>
+             </p>
+
+             <p>
+               <strong>Job Type:</strong>
+               <%= @folder_number.job_type %>
+             </p>
+
+             <p>
+               <strong>Suitable For Ingest?</strong>
+               <%= @folder_number.suitable_for_ingest %>
+             </p>
+
+             <p>
+               <strong>Status:</strong>
+               <%= @folder_number.status %>
+             </p>
+
+             <p>
+               <strong>Note:</strong>
+               <%= @folder_number.note %>
+             </p>
+
+             <p>
+               <strong>Folder Created By:</strong>
+               <%= @folder_number.created_by || "legacy" %>
+             </p>
+
+             <p>
+               <strong>Folder Created Date:</strong>
+               <%= @folder_number.created_at || "legacy"%>
+             </p>
+
+
+              <div class="btn btn-default">
+                <% @text_for_button = "Delete Folder No " + f.object.project_id.to_s %>
+                <%= f.submit @text_for_button, class: 'btn btn-primary' %>
+              </div>
+
+            <% end %>
+          </div>
+        </div>
+      </div>
+</div>

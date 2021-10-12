@@ -6,7 +6,7 @@
 <div class="panel-body">
   <% if @folder_number.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@folder_number.errors.count, "error") %> prevented this new project folder from being saved:</h2>
+      <h2><%= pluralize(@folder_number.errors.count, "error") %> prevented this changed project folder from being saved:</h2>
 
       <ul>
         <% @folder_number.errors.full_messages.each do |message| %>

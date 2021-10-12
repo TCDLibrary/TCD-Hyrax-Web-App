@@ -36,7 +36,7 @@ class FolderNumbersController < ApplicationController
   def create
     @folder_number = FolderNumber.new(folder_number_params)
     if @folder_number.save
-      redirect_to(folder_numbers_path)
+      redirect_to folder_numbers_path, notice: "Folder No/Project ID #{@folder_number.project_id.to_s} was successfully created."
     else
       render('new') # redraws the form, doesn't rerun new method
     end
@@ -52,19 +52,31 @@ class FolderNumbersController < ApplicationController
   def update
     @folder_number = FolderNumber.find(params[:id])
     if @folder_number.update_attributes(folder_number_params)
-      redirect_to(folder_number_path(@folder_number))
+      redirect_to folder_number_path(@folder_number), notice: "Folder No/Project ID #{@folder_number.project_id.to_s} was successfully updated."
     else
-      render('edit') # redraws the form, doesn't rerun new method
+      render('edit') # redraws the form, doesn't rerun new method #
     end
   end
 
   def delete
+    @folder_number = FolderNumber.find(params[:id])
   end
 
   def destroy
+    @folder_number = FolderNumber.find(params[:id])
+    @folder_number.destroy
+    redirect_to folder_numbers_path, notice: "Folder No/Project ID #{@folder_number.project_id.to_s} was successfully deleted."
   end
 
   def export
+    folder_numbers = FolderNumber.all.to_a
+    #byebug
+    ExportFolderNumbersJob.perform_later(folder_numbers)
+    #flash[:notice] = "Folder No/Project ID data export has been submitted. Files will be saved in " + Rails.application.config.export_folder
+    #redirect_to main_app.root_url
+    #redirect_to [main_app, curation_concern]
+    redirect_to folder_numbers_path, notice: "Folder No/Project ID data export has been submitted. Files will be saved in " + Rails.application.config.export_folder
+    #redirect_back(fallback_location: root_path)
   end
 
  private

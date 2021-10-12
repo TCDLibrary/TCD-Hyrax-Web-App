@@ -2,8 +2,8 @@
   <h1><span class="fa fa-folder" aria-hidden="true"></span> Folder Number/Project ID</h1>
 <% end %>
 
-<%= link_to("Add New Folder Number/Project ID", new_folder_number_path, :class => 'action new') %>
-
+<p><%= link_to("Add New Folder Number/Project ID", new_folder_number_path, :class => 'action new') %></p>
+<p><a href="/folder_numbers/export">Export New Folder Number/Project ID data to a file</a></p>
 <div class="table-responsive">
   <table class="table table-striped datatable">
     <thead>
@@ -25,7 +25,7 @@
       <td class="actions">
         <%= link_to("Show", folder_number_path(folder), :class => 'action show') %>
         <%= link_to("Edit", edit_folder_number_path(folder), :class => 'action edit') %>
-        <%= link_to("Delete", "#", :class => 'action delete', data: { confirm: 'Are you sure?' }) %>
+        <%= link_to("Delete", delete_folder_number_path(folder), :class => 'action delete') %>  <!-- , data: { confirm: 'Are you sure?' }) -->
       </td>
     </tr>
     <% end %>

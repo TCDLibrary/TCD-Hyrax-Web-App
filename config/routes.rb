@@ -8,8 +8,6 @@ Rails.application.routes.draw do
 
   get 'folder_numbers/edit'
 
-  get 'folder_numbers/delete'
-
   #get 'doi_blocker_lists/index'
 
   get 'search_assist/index'
@@ -22,7 +20,7 @@ Rails.application.routes.draw do
       get :delete
     end
     collection do
-      get :export 
+      get :export
     end
   end
 
