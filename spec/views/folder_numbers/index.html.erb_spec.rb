@@ -8,6 +8,7 @@ RSpec.describe "folder_numbers/index.html.erb", type: :view do
 
   it "draws the folder_number index view" do
     expect(rendered).to have_content "Add New Folder Number/Project ID"
+    expect(rendered).to have_content "Export New Folder Number/Project ID data to a file"
     expect(rendered).to have_content "Folder Number/Project ID"
     expect(rendered).to have_content "Root Filename"
     expect(rendered).to have_content "Title"
