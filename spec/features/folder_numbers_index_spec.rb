@@ -46,6 +46,11 @@ RSpec.feature 'Import Work', js: true do
     end
 
     scenario do
+      visit folder_numbers_path
+      expect(page).to have_content "Export New Folder Number/Project ID data to a file"
+    end
+
+    scenario do
       visit new_folder_number_path
       expect(page).to have_content "Create Folder Number/Project ID"
     end

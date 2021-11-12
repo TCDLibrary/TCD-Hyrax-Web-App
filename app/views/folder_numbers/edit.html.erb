@@ -37,11 +37,15 @@
                 </tr>
                 <tr>
                   <th>Job type</th>
-                  <td><%= f.text_field(:job_type, size: "70") %></td>
+                  <td><%= f.select :job_type, ["Queue/Programme", "Customer Full Volume", "Special Request", "Exhibition", "Project", "Test"]  %></td>
                 </tr>
                 <tr>
                   <th>Suitable for ingest?</th>
-                  <td><%= f.select :suitable_for_ingest, ["Yes", "No", "Dont Know"]  %></td>
+                  <td><%= f.select :suitable_for_ingest, ["Yes", "No - Archive only at this time", "Unknown"]  %></td>
+                </tr>
+                <tr>
+                  <th>Project name</th>
+                  <td><%= f.text_field(:project_name, size: "70") %></td>
                 </tr>
                 <tr>
                   <th>Status</th>

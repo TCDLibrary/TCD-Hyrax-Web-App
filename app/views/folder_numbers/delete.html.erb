@@ -27,12 +27,12 @@
              <p> Are you sure you want to permanently delete Folder No/Project ID <%= f.object.project_id %>?</p>
 
              <p>
-               <strong>Folder No/Project ID:</strong>
+               <strong>Folder no/Project ID:</strong>
                <%= @folder_number.project_id %>
              </p>
 
              <p>
-               <strong>Root Filename:</strong>
+               <strong>Root filename:</strong>
                <%= @folder_number.root_filename %>
              </p>
 
@@ -42,13 +42,18 @@
              </p>
 
              <p>
-               <strong>Job Type:</strong>
+               <strong>Job type:</strong>
                <%= @folder_number.job_type %>
              </p>
 
              <p>
-               <strong>Suitable For Ingest?</strong>
+               <strong>Suitable for ingest?</strong>
                <%= @folder_number.suitable_for_ingest %>
+             </p>
+
+             <p>
+               <strong>Project name</strong>
+               <%= @folder_number.project_name %>
              </p>
 
              <p>
@@ -62,12 +67,12 @@
              </p>
 
              <p>
-               <strong>Folder Created By:</strong>
+               <strong>Folder created by:</strong>
                <%= @folder_number.created_by || "legacy" %>
              </p>
 
              <p>
-               <strong>Folder Created Date:</strong>
+               <strong>Folder created date:</strong>
                <%= @folder_number.created_at || "legacy"%>
              </p>
 

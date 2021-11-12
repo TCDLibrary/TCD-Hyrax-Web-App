@@ -82,6 +82,6 @@ class FolderNumbersController < ApplicationController
  private
 
   def folder_number_params
-    params.require(:folder_number).permit(:project_id, :root_filename, :title, :job_type, :suitable_for_ingest, :status, :note, :created_by)
+    params.require(:folder_number).permit(:project_id, :root_filename, :title, :job_type, :suitable_for_ingest, :project_name, :status, :note, :created_by)
   end
 end
