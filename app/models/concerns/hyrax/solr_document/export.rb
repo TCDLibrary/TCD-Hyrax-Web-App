@@ -4,8 +4,9 @@ module Hyrax
       # MIME: 'application/x-endnote-refer'
       def export_as_endnote
         text = []
-        text << "%0 #{human_readable_type}"
+        text << "%0 Generic"
         end_note_format.each do |endnote_key, mapping|
+          #byebug
           if mapping.is_a? String
             values = [mapping]
           else
@@ -23,7 +24,7 @@ module Hyrax
       # Name of the downloaded endnote file
       # Override this if you want to use a different name
       def endnote_filename
-        "#{id}.endnote"
+        "#{id}.ris"
       end
 
       def persistent_url
@@ -38,7 +39,7 @@ module Hyrax
         {
           '%T' => [:title],
           # '%Q' => [:title, ->(x) { x.drop(1) }], # subtitles
-          '%A' => [:creator],
+          '%A' => [:creator, ->(x) { x.delete_if {|a| a == "Unattributed" }}],
           '%C' => [:publication_place],
           '%D' => [:date_created],
           '%8' => [:date_uploaded],

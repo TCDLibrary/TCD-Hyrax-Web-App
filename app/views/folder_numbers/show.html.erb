@@ -1,0 +1,63 @@
+<% provide :page_header do %>
+  <h1><span class="fa fa-folder" aria-hidden="true"></span> Folder Number/Project ID</h1>
+<% end %>
+
+<%= link_to("<< Back to List", folder_numbers_path, :class => 'back-link') %>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+
+    <p>
+      <strong>Folder no/Project ID:</strong>
+      <%= @folder_number.project_id %>
+    </p>
+
+    <p>
+      <strong>Root filename:</strong>
+      <%= @folder_number.root_filename %>
+    </p>
+
+    <p>
+      <strong>Title:</strong>
+      <%= @folder_number.title %>
+    </p>
+
+    <p>
+      <strong>Job type:</strong>
+      <%= @folder_number.job_type %>
+    </p>
+
+    <p>
+      <strong>Suitable for ingest?</strong>
+      <%= @folder_number.suitable_for_ingest %>
+    </p>
+
+    <p>
+      <strong>Project name:</strong>
+      <%= @folder_number.project_name %>
+    </p>
+
+    <p>
+      <strong>Status:</strong>
+      <%= @folder_number.status %>
+    </p>
+
+    <p>
+      <strong>Note:</strong>
+      <%= @folder_number.note %>
+    </p>
+
+    <p>
+      <strong>Folder created by:</strong>
+      <%= @folder_number.created_by || "legacy" %>
+    </p>
+
+    <p>
+      <strong>Folder created date:</strong>
+      <%= @folder_number.created_at || "legacy"%>
+    </p>
+    <%= link_to 'Edit', edit_folder_number_path(@folder_number.id) %> |
+    <%= link_to 'Back', folder_numbers_path %><br /><br />
+
+  </div>
+</div>

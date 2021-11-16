@@ -1,0 +1,33 @@
+<% provide :page_header do %>
+  <h1><span class="fa fa-folder" aria-hidden="true"></span> Folder Number/Project ID</h1>
+<% end %>
+
+<p><%= link_to("Add New Folder Number/Project ID", new_folder_number_path, :class => 'action new') %></p>
+<p><a href="/folder_numbers/export">Export New Folder Number/Project ID data to a file</a></p>
+<div class="table-responsive">
+  <table class="table table-striped datatable">
+    <thead>
+      <tr>
+        <th>Folder Number/<br>Project ID</th>
+        <th>Root Filename</th>
+        <th>Title</th>
+        <th>Job Type</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <% @folder_numbers&.each do | folder | %>
+    <tr>
+      <td><%= folder.project_id %></td>
+
+      <td><%= folder.root_filename %></td>
+      <td><%= folder.title %></td>
+      <td><%= folder.job_type %></td>
+      <td class="actions">
+        <%= link_to("Show", folder_number_path(folder), :class => 'action show') %>
+        <%= link_to("Edit", edit_folder_number_path(folder), :class => 'action edit') %>
+        <%= link_to("Delete", delete_folder_number_path(folder), :class => 'action delete') %>  <!-- , data: { confirm: 'Are you sure?' }) -->
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>

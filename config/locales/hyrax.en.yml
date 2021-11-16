@@ -48,7 +48,7 @@ en:
           file_format_tesim: File Format
           genre: Format
           issued_with_tesim: With
-          issued_with: With     
+          issued_with: With
           issued_with_sim: With
           issued_with_label: With
           issue_with: With
@@ -67,6 +67,7 @@ en:
       sidebar:
         hyrax_checksums: Checksum Audits
         doi_blocker_lists: DOI Blocker List
+        folder_numbers: Folder No/Project Id
     search_tips: search_tips
     account_name: Trinity College Dublin Admin
     base:
