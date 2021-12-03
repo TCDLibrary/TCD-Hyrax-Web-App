@@ -15,3 +15,21 @@ fixity_audit:
   class: FixityAuditJob
   rails_env: digcollhyrax01
   queue: fixity
+
+send_doi_to_sierra:
+  cron: "05 11 * * *"
+  class: SendDoiToSierraJob
+  rails_env: development
+  queue: export
+
+send_doi_to_sierra:
+  cron: cron: "15 02 * * 6"
+  class: SendDoiToSierraJob
+  rails_env: dcdevhyrax
+  queue: export
+
+send_doi_to_sierra:
+  cron: cron: "15 02 * * 6"
+  class: SendDoiToSierraJob
+  rails_env: digcollhyrax01
+  queue: export
