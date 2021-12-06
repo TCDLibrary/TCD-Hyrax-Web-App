@@ -29,7 +29,7 @@ send_doi_to_sierra:
   queue: export
 
 send_doi_to_sierra:
-  cron: "15 02 * * 6"
+  cron: "15 02 * * 1"
   class: SendDoiToSierraJob
   rails_env: digcollhyrax01
   queue: export
