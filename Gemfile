@@ -101,7 +101,7 @@ gem 'bulkrax', git: 'https://github.com/samvera-labs/bulkrax'
 
 group :development, :test, :dcdevhyrax, :digcollhyrax01, :digcollhyrax02 do
 # JL : removed on 16/03/2020 : , :dcdevhyrax, :digcollhyrax01, :digcollhyrax02
-  gem 'solr_wrapper', '>= 0.3'
+  gem 'solr_wrapper', '>= 3.1.2'
 end
 
 gem 'rsolr', '>= 1.0'
