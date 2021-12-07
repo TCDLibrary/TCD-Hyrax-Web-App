@@ -3,7 +3,7 @@
 port: 8985
 instance_dir: tmp/solr-test
 version: 7.5.0
-#mirror_url: https://archive.apache.org/dist/
+mirror_url: https://archive.apache.org/dist/
 #collection:
 #    persist: false
 #    dir: solr/config
