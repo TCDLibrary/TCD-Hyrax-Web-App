@@ -982,7 +982,7 @@ DEPENDENCIES
   selenium-webdriver
   sidekiq
   sidekiq-cron (~> 1.1)
-  solr_wrapper (>= 3.1.2)
+  solr_wrapper (>= 0.3)
   sshkit-sudo
   turbolinks (~> 5)
   tzinfo-data
