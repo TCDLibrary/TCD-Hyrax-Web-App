@@ -1,14 +1,15 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.persistent_hostpath = 'http://localhost:3000/concern/works/'
-  
+
   config.ingest_folder = 'public/data/ingest/'
   config.export_folder = '/digicolapp/datastore/exports/test/'
 
   config.doi_org_url = 'https://doi.org/'
   config.doi_prefix = '10.81003'
   config.datacite_service = 'https://api.test.datacite.org/'
-
+  config.solr_vm = '127.0.0.1'
+  config.solr_port = '8985'
   # The test environment is used exclusively to run your application's
   # test suite. You never need to work with it otherwise. Remember that
   # your test database is "scratch space" for the test suite and is wiped

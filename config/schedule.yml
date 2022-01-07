@@ -1,3 +1,6 @@
+# NOTE: rails_env doesn't work here
+
+
 fixity_audit:
   cron: "05 01 * * 6"
   class: FixityAuditJob
@@ -15,3 +18,8 @@ fixity_audit:
   class: FixityAuditJob
   rails_env: digcollhyrax01
   queue: fixity
+
+send_doi_to_sierra:
+  cron: "15 02 * * 6"
+  class: SendDoiToSierraJob
+  queue: export

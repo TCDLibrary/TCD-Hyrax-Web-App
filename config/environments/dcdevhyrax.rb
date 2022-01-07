@@ -8,6 +8,8 @@ Rails.application.configure do
   config.doi_org_url = 'https://doi.org/'
   config.doi_prefix = '10.81003'
   config.datacite_service = 'https://api.test.datacite.org/'
+  config.solr_vm = 'dcdev-solr.tcd.ie'
+  config.solr_port = '8983'
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.

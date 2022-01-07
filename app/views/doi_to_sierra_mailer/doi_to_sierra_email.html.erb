@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Digital Collections - Sending DOIs to Sierra</h1>
+    <p>
+      <% case ENV["RAILS_ENV"] %>
+        <% when 'development' %>
+             <span style="background-color:#5AC1DF; color:#FFFFFF; font-weight:bold">Environment : <%= ENV["RAILS_ENV"]%></span>
+        <% when 'dcdevhyrax' %>
+             <span style="background-color:#F0AB4C; color:#FFFFFF; font-weight:bold">Environment : Demo (dcdev)</span>
+        <% when 'digcollhyrax01' %>
+             <span style="background-color:#5AB95E; color:#FFFFFF; font-weight:bold">Environment : Primary (Production)</span>
+      <% end %>
+    </p>
+    <p>
+      DOI File has been written to <%= Rails.application.config.export_folder %></p>
+      <p style="color:red"><%= @max_rows_exceeded %></p>
+  </body>
+</html>
