@@ -40,6 +40,7 @@ module Hyrax
         solr_doc['software_tesim'] = object.software
         solr_doc['fedora_sha1_tesim'] = object.fedora_sha1
 
+
       end
     end
 
