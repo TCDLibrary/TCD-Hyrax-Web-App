@@ -71,4 +71,16 @@
           <br />
       </a>
     <% end %>
+
+    <% if current_ability.can_create_any_work? %>
+    <a href="/image_display_names/new?id=<%= indivId %> ">
+        <br />
+        <%= t('hyrax.image_names.manage') %>
+        <br />
+        <span class="fa fa-comment fa-3x" style="color:#6d6d6d"></span>
+        <br />
+    </a>
+
+    <% end %>
+
 </div>
