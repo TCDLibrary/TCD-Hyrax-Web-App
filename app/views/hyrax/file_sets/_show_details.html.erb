@@ -1,11 +1,18 @@
 <h2><%= t('hyrax.technical_metadata.file_details') %></h2>
 <dl class="dl-vertical file-show-term file-show-details">
+
+  <dt>File name</dt>
+  <dd itemprop="label"><%= @presenter.label %></dd>
+
   <dt><%= t('hyrax.technical_metadata.date_uploaded') %></dt>
   <dd itemprop="datePublished"><%= @presenter.date_uploaded %></dd>
   <dt><%= t('hyrax.technical_metadata.date_modified') %></dt>
   <dd itemprop="dateModified"><%= @presenter.date_modified %></dd>
   <dt><%= t('hyrax.technical_metadata.fixity_check') %></dt>
   <dd><%= @presenter.fixity_check_status %></dd>
+  <br />
+  <dt><%= t('hyrax.technical_metadata.sha1') %></dt>
+  <dd itemprop="fedora_sha1"><%= @presenter.fedora_sha1&.first %></dd>
 
   <dt><%= t('hyrax.technical_metadata.characterization') %></dt>
   <dd>
@@ -15,8 +22,7 @@
       <%= t('hyrax.technical_metadata.not_yet_characterized') %>
     <% end %>
   </dd>
-  <dt><%= t('hyrax.technical_metadata.sha1') %></dt>
-  <dd itemprop="fedora_sha1"><%= @presenter.fedora_sha1&.first %></dd>
+
 </dl>
 
 <h2><%= t('hyrax.technical_metadata.technical_metadata') %></h2>
