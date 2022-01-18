@@ -1,2 +1,3 @@
 class ImageDisplayName < ApplicationRecord
+  
 end
