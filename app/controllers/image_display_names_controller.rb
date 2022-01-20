@@ -20,6 +20,7 @@ class ImageDisplayNamesController < ApplicationController
   end
 
   def create
+    message = "Image labels recorded. Labels will update in batch jobs. See Sidekiq."
     byebug
     rows = params[:excel_data]
     # obj = ActiveFedora::Base.find(params[:objid], cast: true)
@@ -28,22 +29,29 @@ class ImageDisplayNamesController < ApplicationController
     #=> delete existing rows for this work id?
     #ImageDisplayName.where(:object_id => params[:objid]).destroy_all
     byebug
-    rows.each_line do | a_row |
-        cols = a_row.split("\t")
-        puts cols[0] + "=>" + cols[1]
-        ImageDisplayName.where(:object_id => params[:objid], :image_file_name => cols[0].strip).destroy_all
-        #=> insert table row for this excel row
-        newrec = ImageDisplayName.new
-        newrec.object_id = params[:objid]
-        newrec.image_file_name = cols[0].strip
-        newrec.image_display_text = cols[1].strip
-        newrec.save
-
-        #=> clean up the data so that I don't get code injections
+    begin
+      rows.each_line do | a_row |
+          byebug
+          cols = a_row.split("\t")
+          puts cols[0] + "=>" + cols[1]
+          ImageDisplayName.where(:object_id => params[:objid], :image_file_name => cols[0].strip).destroy_all
+          #=> insert table row for this excel row
+          newrec = ImageDisplayName.new
+          newrec.object_id = params[:objid]
+          newrec.image_file_name = cols[0].strip
+          newrec.image_display_text = cols[1].strip
+          newrec.save
+          #=> clean up the data so that I don't get code injections
+      end
+    rescue StandardError => e
+      byebug
+      message = "ERROR: " + params[:objid] + " => " + "ImageDisplayNamesController => " + e.to_s
     end
+
     # new that the data is stored, I need to kick of a job that processes the work and its filesets.
 
     # then send a message back to the screen and redirect to the work page.
     byebug
+    redirect_to hyrax.my_works_path, notice: message
   end
 end
