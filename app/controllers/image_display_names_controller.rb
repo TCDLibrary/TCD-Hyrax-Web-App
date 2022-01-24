@@ -49,7 +49,8 @@ class ImageDisplayNamesController < ApplicationController
     end
 
     # new that the data is stored, I need to kick of a job that processes the work and its filesets.
-
+    object = ActiveFedora::Base.find(params[:objid], cast: true)
+    UpdateImageLabelsJob.perform_later(object)
     # then send a message back to the screen and redirect to the work page.
     byebug
     redirect_to hyrax.my_works_path, notice: message
