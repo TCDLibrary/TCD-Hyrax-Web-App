@@ -11,10 +11,14 @@ class FixityAuditJob < ApplicationJob
     @hyrax_checksums = HyraxChecksum.weekly(week_no)
 
     @hyrax_checksums.each do | hyrax_checksum |
-        fs = FileSet.find(hyrax_checksum.fileset_id)
-        fs.files.each do | a_file |
-          # byebug
-          FixityCheckJob.perform_now(a_file.uri, file_set_id:fs.id, file_id:a_file.id)
+        begin
+          fs = FileSet.find(hyrax_checksum.fileset_id)
+          fs.files.each do | a_file |
+            # byebug
+            FixityCheckJob.perform_now(a_file.uri, file_set_id:fs.id, file_id:a_file.id)
+          end
+        rescue
+
         end
     end
 
