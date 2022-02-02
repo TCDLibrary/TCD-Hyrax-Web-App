@@ -19,6 +19,8 @@ module Bulkrax
       add_breadcrumb t(:'hyrax.dashboard.breadcrumbs.admin'), hyrax.dashboard_path
       add_breadcrumb 'Importers', bulkrax.importers_path
       #@importers = Importer.all
+      @disk_used = %x|df -h --output=used /opt/app|.split("\n")[1]
+      @disk_avail = %x|df -h --output=avail /opt/app|.split("\n")[1]
       @importers = Importer.page(params[:page]).per(10).order('id DESC')
     end
 
