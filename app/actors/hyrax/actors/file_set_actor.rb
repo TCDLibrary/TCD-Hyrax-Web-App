@@ -136,6 +136,8 @@ module Hyrax
 
       def destroy
         unlink_from_work
+        hc = HyraxChecksum.find_by(:fileset_id => file_set.id)
+        hc.update(deleted_by: user)
         file_set.destroy
         Hyrax.config.callback.run(:after_destroy, file_set.id, user)
       end

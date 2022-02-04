@@ -7,6 +7,10 @@
   </div>
 <% end %>
 
+<div>
+Used Space: <%= @disk_used %><br />
+Available Space: <%= @disk_avail %><br />
+</div>
 <div class="panel panel-default">
   <div class="panel-body">
     <% if @importers.present? %>

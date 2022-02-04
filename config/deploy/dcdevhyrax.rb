@@ -2,7 +2,7 @@ set :stage, :dcdevhyrax
 set :rails_env, :dcdevhyrax
 set :branch, "master"
 
-#set :branch, "2021-11-29-DOI-Export-To-Sierra"
+#set :branch, "2022-01-31-Changes-To-Checksum-Process"
 
 # Default deploy_to directory is /var/www/my_app_name. Override it:
 set :deploy_to, "/opt/app/TCD-Hyrax-Web-App"
