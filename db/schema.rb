@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220118123128) do
+ActiveRecord::Schema.define(version: 20220131152213) do
 
   create_table "bookmarks", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.integer "user_id", null: false
@@ -224,6 +224,8 @@ ActiveRecord::Schema.define(version: 20220118123128) do
     t.string "last_fixity_result"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "deleted_by"
+    t.string "image_file_name"
     t.index ["fileset_id"], name: "index_hyrax_checksums_on_fileset_id", unique: true
     t.index ["ingest_week_no"], name: "index_hyrax_checksums_on_ingest_week_no"
   end

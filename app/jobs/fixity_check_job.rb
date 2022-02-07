@@ -49,6 +49,15 @@ class FixityCheckJob < Hyrax::ApplicationJob
     #hc.save
     hc.update(last_fixity_result: fixity.check_file_set_status,
               last_fixity_check: Date.today)
+    begin
+      if hc.image_file_name.nil?
+        file_set = FileSet.find(file_set_id)
+        hc.update(last_fixity_result: fixity.check_file_set_status,
+                  last_fixity_check: Date.today,
+                  image_file_name: file_set.label)
+      end
+    rescue
+    end
 
   end
 

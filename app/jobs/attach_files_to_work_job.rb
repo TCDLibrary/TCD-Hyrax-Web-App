@@ -21,7 +21,7 @@ class AttachFilesToWorkJob < Hyrax::ApplicationJob
       actor.create_content(uploaded_file)
       actor.attach_to_work(work)
       begin
-          HyraxChecksum.where(:fileset_id => actor.file_set.id).first_or_create(:ingest_date => Date.today, :ingest_week_no => Date.today.strftime("%U").to_i )
+          HyraxChecksum.where(:fileset_id => actor.file_set.id).first_or_create(:ingest_date => Date.today, :ingest_week_no => Date.today.strftime("%U").to_i, :image_file_name => actor.file_set.label )
       rescue
         Rails.logger.warn("AttachFilesToWorkJob failed to create #{actor.file_set.id}")
       end
