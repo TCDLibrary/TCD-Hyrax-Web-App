@@ -1,6 +1,6 @@
 
 <div class="TCD-flex-container">
-  <% collections.each do |collection| %>
+  <% collections.reverse.each do |collection| %>
     <% col_rec = Collection.find(collection.id) %>
     <div class="TCD-flex-item">
         <%= link_to [hyrax, collection],  'aria-hidden' => true do %>

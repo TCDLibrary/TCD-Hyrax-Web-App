@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  #get 'image_display_names/new'
+  resources :image_display_names, :only => [ :new, :create ]
+
   get 'folder_numbers/index'
 
   get 'folder_numbers/show'

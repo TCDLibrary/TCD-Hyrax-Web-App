@@ -40,6 +40,7 @@ module Hyrax
         solr_doc['software_tesim'] = object.software
         solr_doc['fedora_sha1_tesim'] = object.fedora_sha1
 
+
       end
     end
 
@@ -54,7 +55,7 @@ module Hyrax
         return unless object.original_file
         Hyrax::VersioningService.versioned_file_id object.original_file
       end
-      
+
       def file_format
         if object.mime_type.present? && object.format_label.present?
           "#{object.mime_type.split('/').last} (#{object.format_label.join(', ')})"

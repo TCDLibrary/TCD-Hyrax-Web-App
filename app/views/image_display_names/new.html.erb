@@ -1,0 +1,26 @@
+
+<% provide :page_header do %>
+  <h1><span class="fa fa-comment" aria-hidden="true"></span> Manage Image Display Names</h1>
+<% end %>
+
+<div>
+  Object Id: <b><%= request.params[:id] %></b>
+</div>
+
+<p>Paste excel data here: <br />Two columns: <b>ImageName.jpg | New Image Label</b></p>
+
+<form action="/image_display_names" method="post">
+    <textarea name="excel_data" style="width:500px;height:350px;"></textarea><br>
+    <input type="hidden" id="objid" name="objid" value="<%= request.params[:id] %>"/>
+    <input type="button" onclick="javascript:TCDActivateButton()" value="Generate Table"/>
+
+<br><br />
+    <p>Table data will appear below:</p>
+
+<div id="excel_table"></div>
+
+
+<div id="proceed_button"</div>
+
+</form>
+<p />
