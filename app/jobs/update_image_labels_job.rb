@@ -7,7 +7,7 @@ class UpdateImageLabelsJob < ApplicationJob
     work.file_sets.each do | afile |
 
       #  Lookup the filename on image labels table
-         display_name = ImageDisplayName.where("image_file_name = '#{afile.label}'")
+         display_name = ImageDisplayName.where(object_id: "#{work.id}", image_file_name: "#{afile.label}")
 
       # If label found, update the fileset
          if display_name.count > 0 && afile.title.first != display_name.first.image_display_text
