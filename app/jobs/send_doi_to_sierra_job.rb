@@ -54,7 +54,7 @@ class SendDoiToSierraJob < ApplicationJob
   end
 
   def marcxml_leader(doc)
-    "<marc:leader>" + doc[:dris_unique_tesim].first.to_s + "</marc:leader>\n"
+    "<marc:leader>20964ntm a2201141 i 4500</marc:leader>\n"
   end
 
   def marcxml_record(doc)
