@@ -22,10 +22,11 @@ class GenerateDoiJob < ApplicationJob
                 # Build json for datacite
                 #payload = JSON.generate(metadata_hash(work))
                 payload = work.to_datacite_json
-                byebug
+                Rails.logger.warn('PAYLOAD:' + payload)
                 puts 'PAYLOAD:' + payload
                 # Build call to datacite, credentials in environment variables
                 url = URI(Rails.application.config.datacite_service + 'dois')
+                Rails.logger.warn('URL' + url.to_s)
                 puts 'URL' + url.to_s
                 http = Net::HTTP.new(url.host, url.port)
                 http.use_ssl = true
@@ -34,8 +35,9 @@ class GenerateDoiJob < ApplicationJob
                 request["Content-Type"] = 'application/vnd.api+json'
                 request["Authorization"] = ENV['DATACITE_API_BASIC_AUTH']
                 request.body = payload
-                puts 'PAYLOAD' + payload
+
                 response = http.request(request)
+                Rails.logger.warn('RESPONSE CODE' + response.code)
                 puts 'RESPONSE CODE' + response.code
                 puts response.read_body
                 # Check response, handle any errors, update the work with the doi value

@@ -18,7 +18,7 @@ class DoiController < ApplicationController
         flash[:error] = "DOI requests can only be requested if object is public, does not already have a DOI, and is not on the DOI blocker list"
         redirect_back(fallback_location: root_path)
       else
-        GenerateDoiJob.perform_later(objectId)
+        GenerateDoiJob.perform_now(objectId)
         flash[:notice] = "DOI request has been submitted. Check jobs in sidekiq, then refresh your Work/Folio/Subseries to see the new DOI"
         redirect_back(fallback_location: root_path)
       end
