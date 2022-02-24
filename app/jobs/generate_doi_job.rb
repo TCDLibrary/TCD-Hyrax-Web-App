@@ -6,8 +6,9 @@ require 'json'
 class GenerateDoiJob < ApplicationJob
   queue_as :doi
 
-  def perform(work)
+  def perform(objectId)
 
+    work  = ActiveFedora::Base.find(objectId, cast: true)
     # If object is not a work, series or folio, do nothing
     if work.work?
 
