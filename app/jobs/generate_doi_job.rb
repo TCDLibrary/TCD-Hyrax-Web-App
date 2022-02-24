@@ -22,6 +22,7 @@ class GenerateDoiJob < ApplicationJob
                 # Build json for datacite
                 #payload = JSON.generate(metadata_hash(work))
                 payload = work.to_datacite_json
+                byebug
                 puts 'PAYLOAD:' + payload
                 # Build call to datacite, credentials in environment variables
                 url = URI(Rails.application.config.datacite_service + 'dois')
