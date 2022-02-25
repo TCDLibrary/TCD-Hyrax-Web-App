@@ -6,6 +6,10 @@ require 'json'
 class GenerateDoiJob < ApplicationJob
   queue_as :doi
 
+  after_perform do |job|
+    puts 'after perform GenerateDoiJob'
+  end
+
   def perform(objectId)
 
     work  = ActiveFedora::Base.find(objectId, cast: true)
@@ -21,13 +25,14 @@ class GenerateDoiJob < ApplicationJob
               if work.doi.blank?
                 # Build json for datacite
                 #payload = JSON.generate(metadata_hash(work))
+
                 payload = work.to_datacite_json
                 Rails.logger.warn('PAYLOAD:' + payload)
-                puts 'PAYLOAD:' + payload
+
                 # Build call to datacite, credentials in environment variables
                 url = URI(Rails.application.config.datacite_service + 'dois')
                 Rails.logger.warn('URL' + url.to_s)
-                puts 'URL' + url.to_s
+
                 http = Net::HTTP.new(url.host, url.port)
                 http.use_ssl = true
 
@@ -38,12 +43,11 @@ class GenerateDoiJob < ApplicationJob
 
                 response = http.request(request)
                 Rails.logger.warn('RESPONSE CODE' + response.code)
-                puts 'RESPONSE CODE' + response.code
-                puts response.read_body
+
                 # Check response, handle any errors, update the work with the doi value
                 # work.doi = "kjkjj" + work.id
                 if ["200", "201", '202'].include? response.code
-                   #byebug
+                   Rails.logger.warn('UPDATING DOI FOR WORK' + work.id)
                    work.doi = Rails.application.config.doi_org_url + Rails.application.config.doi_prefix + '/' + work.id
                    work.save
                    #byebug
