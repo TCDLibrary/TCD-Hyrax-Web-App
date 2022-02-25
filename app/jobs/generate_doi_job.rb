@@ -40,7 +40,7 @@ class GenerateDoiJob < ApplicationJob
                 request["Content-Type"] = 'application/vnd.api+json'
                 request["Authorization"] = ENV['DATACITE_API_BASIC_AUTH']
                 request.body = payload
-                #Rails.logger.warn('REQUEST' + request.to_s
+                Rails.logger.warn('Authorization' + ENV['DATACITE_API_BASIC_AUTH']
                 response = http.request(request)
                 Rails.logger.warn('RESPONSE CODE' + response.code)
 
