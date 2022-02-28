@@ -10,7 +10,7 @@ class GenerateDoiJob < ApplicationJob
     puts 'after perform GenerateDoiJob'
   end
 
-  def perform(objectId, secret)
+  def perform(objectId)
 
     work  = ActiveFedora::Base.find(objectId, cast: true)
     # If object is not a work, series or folio, do nothing
@@ -38,7 +38,7 @@ class GenerateDoiJob < ApplicationJob
 
                 request = Net::HTTP::Post.new(url)
                 request["Content-Type"] = 'application/vnd.api+json'
-                request["Authorization"] = secret # ENV['DATACITE_API_BASIC_AUTH']
+                request["Authorization"] = ENV['DATACITE_API_BASIC_AUTH']
                 request.body = payload
                 Rails.logger.warn('Authorization' + ENV['DATACITE_API_BASIC_AUTH'].to_s)
                 response = http.request(request)
