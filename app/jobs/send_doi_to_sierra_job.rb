@@ -28,8 +28,10 @@ class SendDoiToSierraJob < ApplicationJob
 
       # Add XML records
       rsp[:response][:docs].each { |doc|
+        our_xml << marcxml_record_header
         our_xml << marcxml_leader(doc)
         our_xml << marcxml_record(doc)
+        our_xml << marcxml_record_trailer
       }
     end
     # Add XML trailer
@@ -46,11 +48,19 @@ class SendDoiToSierraJob < ApplicationJob
   private
 
   def marcxml_header
-    "<?xml version='1.0' encoding='UTF-8' ?>\n<marc:collection xmlns:marc='http://www.loc.gov/MARC21/slim' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd'>\n<marc:record>\n"
+    "<?xml version='1.0' encoding='UTF-8' ?>\n<marc:collection xmlns:marc='http://www.loc.gov/MARC21/slim' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd'>\n"
+  end
+
+  def marcxml_record_header
+    "<marc:record>\n"
   end
 
   def marcxml_trailer
-    "</marc:record>\n</marc:collection>"
+    "</marc:collection>"
+  end
+
+  def marcxml_record_trailer
+    "</marc:record>\n"
   end
 
   def marcxml_leader(doc)
