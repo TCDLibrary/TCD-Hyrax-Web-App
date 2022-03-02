@@ -50,6 +50,11 @@ class GenerateDoiJob < ApplicationJob
                    Rails.logger.warn('UPDATING DOI FOR WORK' + work.id)
                    work.doi = Rails.application.config.doi_org_url + Rails.application.config.doi_prefix + '/' + work.id
                    work.save
+                   # add it to the list of recent DOIs. Used by send_doi_to_sierra_job
+                   recent = RecentDoi.new
+                   recent.dris_unique = work.dris_unique.first
+                   recent.doi = work.doi
+                   recent.save
                    #byebug
                 end
               end

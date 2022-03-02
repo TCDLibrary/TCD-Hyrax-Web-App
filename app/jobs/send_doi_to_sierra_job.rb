@@ -4,8 +4,10 @@ class SendDoiToSierraJob < ApplicationJob
 
   def perform(*args)
 
-    # Add XML header
+    # Add XML header for full file
     our_xml = marcxml_header
+    # Add XML header for file containing only this weeks DOIs
+    latest_xml = marcxml_header
 
     @max_rows = 15000
     max_rows_exceeded = ""
@@ -32,14 +34,27 @@ class SendDoiToSierraJob < ApplicationJob
         our_xml << marcxml_leader(doc)
         our_xml << marcxml_record(doc)
         our_xml << marcxml_record_trailer
+        # was it created this week? Check the recent DOIs table:
+        if RecentDoi.exists?(dris_unique: doc[:dris_unique_tesim].first.to_s)
+          latest_xml << marcxml_record_header
+          latest_xml << marcxml_leader(doc)
+          latest_xml << marcxml_record(doc)
+          latest_xml << marcxml_record_trailer
+        end
       }
     end
     # Add XML trailer
     our_xml << marcxml_trailer
+    latest_xml << marcxml_trailer
 
-    # Open file and write the xml
-    File.open(Rails.application.config.export_folder + "DOIs_To_Sierra.xml", "w") { |f| f.write our_xml }
+    # Open file and write all records
+    File.open(Rails.application.config.export_folder + "DOIs_To_Sierra_All.xml", "w") { |f| f.write our_xml }
 
+    # Open weekly file and only write this weeks records to it
+    File.open(Rails.application.config.export_folder + "DOIs_To_Sierra_Weekly_" + Date.today.to_s + ".xml", "w") { |f| f.write latest_xml }
+
+    # Empty out the RecentDoi table, reset it for next week.
+    RecentDoi.delete_all
     # Mail me, Michelle, Charles
     DoiToSierraMailer.doi_to_sierra_email(max_rows_exceeded).deliver_later
 
