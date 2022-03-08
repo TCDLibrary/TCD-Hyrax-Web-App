@@ -90,6 +90,7 @@ en:
       bulk: Bulk Download
     image_names:
       manage: Manage Image Labels
+      doi: Create DOI
     footer:
       copyright_html: "<strong>Copyright &copy; 2018 Samvera</strong> Licensed under the Apache License, Version 2.0"
       service_html: A service of <a href="http://samvera.org/" class="navbar-link" target="_blank">Samvera</a>.

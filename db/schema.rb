@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220131152213) do
+ActiveRecord::Schema.define(version: 20220301123641) do
 
   create_table "bookmarks", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.integer "user_id", null: false
@@ -413,6 +413,13 @@ ActiveRecord::Schema.define(version: 20220131152213) do
     t.datetime "updated_at", null: false
     t.index ["local_authority_id"], name: "index_qa_local_authority_entries_on_local_authority_id"
     t.index ["uri"], name: "index_qa_local_authority_entries_on_uri", unique: true
+  end
+
+  create_table "recent_dois", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+    t.string "dris_unique"
+    t.string "doi"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "roles", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|

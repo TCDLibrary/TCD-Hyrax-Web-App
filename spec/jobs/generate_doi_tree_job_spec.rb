@@ -52,8 +52,9 @@ RSpec.describe GenerateDoiTreeJob, type: :job do
         work.creator = ["A Private Creator"]
         work.visibility = 'restricted'
         work.save
-        GenerateDoiJob.perform_now(work)
-        expect(work.doi).to be_nil
+        GenerateDoiJob.perform_now(work.id)
+        updated_work = Work.find(work.id)
+        expect(updated_work.doi).to be_nil
       end
     end
 

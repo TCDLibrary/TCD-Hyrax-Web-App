@@ -1,0 +1,2 @@
+class RecentDoi < ApplicationRecord
+end
