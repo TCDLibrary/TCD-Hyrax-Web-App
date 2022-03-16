@@ -11,7 +11,12 @@ module Bulkrax
     include Bulkrax::DownloadBehavior
     before_action :authenticate_user!
     before_action :set_importer, only: [:show, :edit, :update, :destroy]
+    before_action :ensure_admin!
     with_themed_layout 'dashboard'
+
+    def ensure_admin!
+        authorize! :read, :admin_dashboard
+    end
 
     # GET /importers
     def index
