@@ -20,6 +20,6 @@ fixity_audit:
   queue: fixity
 
 send_doi_to_sierra:
-  cron: "15 02 * * 6"
+  cron: "15 02 * * 7"
   class: SendDoiToSierraJob
   queue: export
