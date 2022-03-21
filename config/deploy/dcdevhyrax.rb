@@ -2,7 +2,7 @@ set :stage, :dcdevhyrax
 set :rails_env, :dcdevhyrax
 set :branch, "master"
 
-#set :branch, "2022-02-16-Adds-DOI-Creation-To-Dashboard"
+#set :branch, "2022-03-16-Moves-Folder-No-Screens"
 
 # Default deploy_to directory is /var/www/my_app_name. Override it:
 set :deploy_to, "/opt/app/TCD-Hyrax-Web-App"

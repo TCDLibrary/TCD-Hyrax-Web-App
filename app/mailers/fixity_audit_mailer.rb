@@ -3,6 +3,6 @@ class FixityAuditMailer < ApplicationMailer
 
   def fixity_audit_email(week_no)
     @week_no = week_no
-    mail(to: 'jlakes@tcd.ie', subject: 'Digital Collections Fixity Audit')
+    mail(to: 'jlakes@tcd.ie,digcollsupport@tcd.ie', subject: 'Digital Collections Fixity Audit')
   end
 end

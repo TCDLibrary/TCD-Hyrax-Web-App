@@ -3,13 +3,13 @@ class FolderNumbersController < ApplicationController
 
   # JL : 14/02/2019 Put security (admin level) around the ingest screen
   before_action :authenticate_user!
-  before_action :ensure_admin!
+  #before_action :ensure_admin!
 
   with_themed_layout 'dashboard'
 
-  def ensure_admin!
-      authorize! :read, :admin_dashboard
-  end
+  #def ensure_admin!
+  #    authorize! :read, :admin_dashboard
+  #end
 
   def index
     add_breadcrumb t(:'hyrax.controls.home'), main_app.root_path
