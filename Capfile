@@ -24,7 +24,7 @@ install_plugin Capistrano::SCM::Git
 # JL : 16/12/2019 Moving away from rvm??
 #require "capistrano/rvm"
 
-require "capistrano/rbenv"
+#require "capistrano/rbenv"
 #require "capistrano/chruby"
 require "capistrano/bundler"
 #require "capistrano/rails/assets"
