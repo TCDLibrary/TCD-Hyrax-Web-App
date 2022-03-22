@@ -13,7 +13,7 @@ install_plugin Capistrano::SCM::Git
 #
 # For documentation on these, see for example:
 #
-#   https://github.com/capistrano/rvm
+#   https://github.com/capistrano/rvmahX*ied8u
 #   https://github.com/capistrano/rbenv
 #   https://github.com/capistrano/chruby
 #   https://github.com/capistrano/bundler
@@ -37,3 +37,5 @@ Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
 
 # JL 11/10/2019 added to allow capistrano use sudo
 require 'sshkit/sudo'
+
+set :rbenv_ruby, "2.6.9"
