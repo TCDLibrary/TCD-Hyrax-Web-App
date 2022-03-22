@@ -6,7 +6,7 @@ set :branch, "master"
 
 # Default deploy_to directory is /var/www/my_app_name. Override it:
 set :deploy_to, "/opt/app/TCD-Hyrax-Web-App"
-set :rvm_ruby_version, '2.5.1'
+set :rvm_ruby_version, '2.6.9'
 
 # server-based syntax
 # ======================
