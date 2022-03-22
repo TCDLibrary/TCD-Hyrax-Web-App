@@ -24,7 +24,10 @@ install_plugin Capistrano::SCM::Git
 # JL : 16/12/2019 Moving away from rvm??
 #require "capistrano/rvm"
 
-#require "capistrano/rbenv"
+require "capistrano/rbenv"
+set :rbenv_type, :user
+set :rbenv_ruby, "2.6.9"
+
 #require "capistrano/chruby"
 require "capistrano/bundler"
 #require "capistrano/rails/assets"
@@ -37,5 +40,3 @@ Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
 
 # JL 11/10/2019 added to allow capistrano use sudo
 require 'sshkit/sudo'
-
-set :rbenv_ruby, "2.6.9"
