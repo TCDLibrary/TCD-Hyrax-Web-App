@@ -9,7 +9,8 @@ gem 'activerecord-nulldb-adapter'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6.2'
-ruby "2.6.9"
+#ruby "2.6.9"
+ruby "~> 2.6.0"
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 # JL : 18/12/2018 Moving from Sqlite to MySql
