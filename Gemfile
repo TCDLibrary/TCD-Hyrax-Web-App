@@ -58,6 +58,11 @@ group :development do
   gem 'capistrano-passenger'
 end
 
+group :dcdevhyrax do
+  gem 'capistrano', '~> 3.12'
+  gem 'capistrano-rbenv', '~> 2.2'
+end
+
 group :development, :test do
   # JL : removed on 16/03/2020: , :dcdevhyrax, :digcollhyrax01, :digcollhyrax02
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
