@@ -59,7 +59,7 @@ group :development do
 end
 
 group :dcdevhyrax do
-  gem 'capistrano', '~> 3.12'
+  gem 'capistrano', '~> 3.12.0'
   gem 'capistrano-rbenv', '~> 2.2'
 end
 
