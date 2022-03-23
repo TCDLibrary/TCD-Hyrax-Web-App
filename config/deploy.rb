@@ -3,7 +3,7 @@ lock "~> 3.12.0"
 
 set :application, "TCD-Hyrax-Web-App"
 set :repo_url, "https://github.com/joelakes/TCD-Hyrax-Web-App.git"
-set :rvm_ruby_version, '2.6.9'
+#set :rvm_ruby_version, '2.5.1'
 
 # JL : see notes when installing capistrano 21/03/2019
 set :passenger_restart_with_touch, true
@@ -44,7 +44,7 @@ append :linked_dirs, "log", "tmp/derivatives", "tmp/uploads", "public/data/inges
 set :pty, true
 
 # Default value for default_env is {}
-set :default_env, { path: "$HOME/.rbenv/bin:$PATH" }
+# set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 # Default value for local_user is ENV['USER']
 # set :local_user, -> { `git config user.name`.chomp }

@@ -13,7 +13,7 @@ install_plugin Capistrano::SCM::Git
 #
 # For documentation on these, see for example:
 #
-#   https://github.com/capistrano/rvmahX*ied8u
+#   https://github.com/capistrano/rvm
 #   https://github.com/capistrano/rbenv
 #   https://github.com/capistrano/chruby
 #   https://github.com/capistrano/bundler
@@ -24,10 +24,7 @@ install_plugin Capistrano::SCM::Git
 # JL : 16/12/2019 Moving away from rvm??
 #require "capistrano/rvm"
 
-require "capistrano/rbenv"
-set :rbenv_type, :user
-set :rbenv_ruby, "2.6.9"
-
+#require "capistrano/rbenv"
 #require "capistrano/chruby"
 require "capistrano/bundler"
 #require "capistrano/rails/assets"
