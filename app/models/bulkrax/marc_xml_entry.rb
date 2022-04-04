@@ -111,6 +111,19 @@ module Bulkrax
       self.parsed_metadata['title']  << (code_a + " " + code_b + " " + code_n + " " + code_p).strip.chomp("/").sub!(/[?.:,;]?$/, '')
     end
 
+    def add_rights_statement
+      self.parsed_metadata['rights_statement'] = []
+      record.rights_statements.each  do | stmt |
+        code_f = stmt.xpath("subfield[@code='f']").text.strip
+        if !code_f.empty?
+          self.parsed_metadata['rights_statement'] << code_f
+        end
+      end
+      if self.parsed_metadata['rights_statement'].empty?
+        self.parsed_metadata['rights_statement'] << "Copyright The Board of Trinity College Dublin. Images are available for single-use academic application only. Publication, transmission or display is prohibited without formal written approval of the Library of Trinity College, Dublin."
+      end
+    end
+
     def add_genres
       #byebug
       #genres = self.parsed_metadata['genre'] = [record.genres]

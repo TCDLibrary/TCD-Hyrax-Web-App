@@ -121,9 +121,11 @@ module Bulkrax::HasLocalProcessing
 
   # override Bulkrax add_rights_statement with boilerplate
   def add_rights_statement
-    parsed_metadata['rights_statement'] = [
-      'Copyright The Board of Trinity College Dublin. Images are available for single-use academic application only. Publication, transmission or display is prohibited without formal written approval of the Library of Trinity College, Dublin.'
-    ]
+    if (importerexporter.parser_klass.eql? "Bulkrax::FoxmlParser")
+      parsed_metadata['rights_statement'] = [
+        'Copyright The Board of Trinity College Dublin. Images are available for single-use academic application only. Publication, transmission or display is prohibited without formal written approval of the Library of Trinity College, Dublin.'
+      ]
+    end
   end
 
   # Remove metadata from the skip_fields elements if it matches that in the parent
