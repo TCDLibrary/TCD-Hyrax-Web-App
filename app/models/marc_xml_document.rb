@@ -17,9 +17,13 @@ class MarcXmlDocument # < Nokogiri::XML::Document
     @marcxml.xpath("//datafield[@tag='245']")
   end
 
- def rights_statements
-    @marcxml.xpath("//datafield[@tag='542'][@ind1=' '] | //datafield[@tag='542'][@ind1='1'] ")
- end
+  def rights_statements
+      @marcxml.xpath("//datafield[@tag='542'][@ind1=' '] | //datafield[@tag='542'][@ind1='1'] ")
+  end
+
+  def copyright_notes
+      @marcxml.xpath("//datafield[@tag='542'][@ind1=' '] | //datafield[@tag='542'][@ind1='1'] ")
+  end
 
   def genres
     @marcxml.xpath("//datafield[@tag='655']")

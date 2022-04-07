@@ -119,6 +119,7 @@ class CatalogController < ApplicationController
     config.add_show_field solr_name("description", :stored_searchable)
     #config.add_show_field solr_name("abstract", :stored_searchable)
     config.add_show_field solr_name("dris_page_no", :stored_searchable)
+    config.add_show_field solr_name("copyright_note", :stored_searchable)
     config.add_show_field solr_name("copyright_status", :stored_searchable)
     config.add_show_field solr_name("genre", :stored_searchable)
     config.add_show_field solr_name("digital_object_identifier", :stored_searchable)
@@ -245,6 +246,15 @@ class CatalogController < ApplicationController
     config.add_search_field('dris_page_no') do |field|
       field.label = "Page no"
       solr_name = solr_name("dris_page_no", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('copyright_note') do |field|
+      field.label = "Copyright Note"
+      solr_name = solr_name("copyright_note", :stored_searchable)
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name

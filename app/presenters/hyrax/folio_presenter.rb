@@ -8,7 +8,7 @@ module Hyrax
     delegate :genre, to: :solr_document
     # JL: 2020-04-27 suppress Page No
     #delegate :dris_page_no, to: :solr_document
-
+    delegate :copyright_note, to: :solr_document
     delegate :copyright_status, to: :solr_document
 
     delegate :digital_object_identifier, to: :solr_document

@@ -61,6 +61,7 @@ module Bulkrax
       add_title
       add_visibility
       add_rights_statement
+      add_copyright_note
       add_genres
       add_abstracts
       add_identifiers # => shelf mark
@@ -114,13 +115,27 @@ module Bulkrax
     def add_rights_statement
       self.parsed_metadata['rights_statement'] = []
       record.rights_statements.each  do | stmt |
-        code_f = stmt.xpath("subfield[@code='f']").text.strip
-        if !code_f.empty?
-          self.parsed_metadata['rights_statement'] << code_f
+        code_l = stmt.xpath("subfield[@code='l']").text.strip
+        if !code_l.empty?
+          # lookup the note text (id), we received the term. See config/authorities/rights_statements.yml
+          rights = Hyrax.config.rights_statement_service_class.new
+          active_rights = rights.select_active_options
+          note_text = active_rights.find{|(x, y)| x == code_l}
+          self.parsed_metadata['rights_statement'] << note_text[1]
         end
       end
       if self.parsed_metadata['rights_statement'].empty?
         self.parsed_metadata['rights_statement'] << "Copyright The Board of Trinity College Dublin. Images are available for single-use academic application only. Publication, transmission or display is prohibited without formal written approval of the Library of Trinity College, Dublin."
+      end
+    end
+
+    def add_copyright_note
+      self.parsed_metadata['copyright_note'] = []
+      record.copyright_notes.each  do | note |
+        code_f = note.xpath("subfield[@code='f']").text.strip
+        if !code_f.empty?
+          self.parsed_metadata['copyright_note'] << code_f
+        end
       end
     end
 

@@ -25,7 +25,9 @@ module TcdExtendedMetadata
         index.as :stored_searchable
       end
 
-      property :copyright_note, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#copyright_note')
+      property :copyright_note, predicate: ::RDF::URI.new('https://digitalcollections.tcd.ie/app/assets/local_vocabulary.html#copyright_note') do |index|
+        index.as :stored_searchable
+      end
 
       property :genre, predicate: ::RDF::URI.new("http://id.loc.gov/vocabulary/graphicMaterials") do |index|
         index.as :stored_searchable, :facetable
