@@ -37,7 +37,7 @@ terms:
   active: true
 - id: https://rightsstatements.org/page/InC/1.0/
   term: "Active - In Copyright"
-  active: true
+  active: false
 - id: http://creativecommons.org/publicdomain/mark/1.0/
   term: "Expired - Public Domain (Creative Commons)"
   active: true
@@ -46,7 +46,28 @@ terms:
   active: true
 - id: https://rightsstatements.org/page/UND/1.0/
   term: "Uncertain - Copyright Undetermined"
-  active: true
+  active: false
 - id: "Copyright The Board of Trinity College Dublin. Images are available for single-use academic application only. Publication, transmission or display is prohibited without formal written approval of the Library of Trinity College, Dublin."
   term: Copyright The Board of Trinity College Dublin
+  active: true
+- id: https://creativecommons.org/licenses/by/4.0/
+  term: CC BY
+  active: true
+- id: https://creativecommons.org/licenses/by-sa/4.0/
+  term: CC BY-SA
+  active: true
+- id: https://creativecommons.org/licenses/by-nc/4.0/
+  term: CC BY-NC
+  active: true
+- id: https://creativecommons.org/licenses/by-nc-sa/4.0/
+  term: CC BY-NC-SA
+  active: true
+- id: https://creativecommons.org/licenses/by-nd/4.0/
+  term: CC BY-ND
+  active: true
+- id: https://creativecommons.org/licenses/by-nc-nd/4.0/
+  term: CC BY-NC-ND
+  active: true
+- id: https://creativecommons.org/publicdomain/zero/1.0/
+  term: CC0
   active: true
