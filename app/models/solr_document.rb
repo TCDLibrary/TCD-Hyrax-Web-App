@@ -39,6 +39,10 @@ class SolrDocument
     self[Solrizer.solr_name('dris_page_no')]
   end
 
+  def copyright_note
+    self[Solrizer.solr_name('copyright_note')]
+  end
+
   def copyright_status
     self[Solrizer.solr_name('copyright_status')]
   end

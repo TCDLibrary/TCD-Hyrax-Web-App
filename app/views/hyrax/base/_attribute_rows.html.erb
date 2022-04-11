@@ -15,6 +15,7 @@
 <!-- The Collapsible metadata -->
 <span id="TCDmore">
 <%= presenter.attribute_to_html(:rights_statement, render_as: :rights_statement, html_dl: true) %>
+<%= presenter.attribute_to_html(:copyright_note, html_dl: true) %>
 <%= presenter.attribute_to_html(:copyright_status, html_dl: true) %>
 <%= presenter.attribute_to_html(:license, render_as: :external_link, html_dl: true) %>
 <%= presenter.attribute_to_html(:publisher_location, html_dl: true) %>

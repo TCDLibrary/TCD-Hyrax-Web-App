@@ -1,52 +1,73 @@
 terms:
 - id: http://rightsstatements.org/vocab/InC/1.0/
   term: "In Copyright"
-  active: false
+  active: true
 - id: http://rightsstatements.org/vocab/InC-OW-EU/1.0/
   term: "In Copyright - EU Orphan Work"
-  active: false
+  active: true
 - id: http://rightsstatements.org/vocab/InC-EDU/1.0/
   term: "In Copyright - Educational Use Permitted"
-  active: false
+  active: true
 - id: http://rightsstatements.org/vocab/InC-NC/1.0/
   term: "In Copyright - Non-Commercial Use Permitted"
-  active: false
+  active: true
 - id: http://rightsstatements.org/vocab/InC-RUU/1.0/
   term: "In Copyright - Rights-holder(s) Unlocatable or Unidentifiable"
-  active: false
+  active: true
 - id: http://rightsstatements.org/vocab/NoC-CR/1.0/
   term: "No Copyright - Contractual Restrictions"
-  active: false
+  active: true
 - id: http://rightsstatements.org/vocab/NoC-NC/1.0/
   term: "No Copyright - Non-Commercial Use Only "
-  active: false
+  active: true
 - id: http://rightsstatements.org/vocab/NoC-OKLR/1.0/
   term: "No Copyright - Other Known Legal Restrictions"
-  active: false
+  active: true
 - id: http://rightsstatements.org/vocab/NoC-US/1.0/
   term: "No Copyright - United States"
-  active: false
+  active: true
 - id: http://rightsstatements.org/vocab/CNE/1.0/
   term: "Copyright Not Evaluated"
-  active: false
+  active: true
 - id: http://rightsstatements.org/vocab/UND/1.0/
   term: "Copyright Undetermined"
-  active: false
+  active: true
 - id: http://rightsstatements.org/vocab/NKC/1.0/
   term: "No Known Copyright"
-  active: false
+  active: true
 - id: https://rightsstatements.org/page/InC/1.0/
   term: "Active - In Copyright"
   active: false
 - id: http://creativecommons.org/publicdomain/mark/1.0/
   term: "Expired - Public Domain (Creative Commons)"
-  active: false
+  active: true
 - id: https://rightsstatements.org/page/InC-OW-EU/1.0/
   term: "Orphan - In Copyright - EU Orphan Work"
-  active: false
+  active: true
 - id: https://rightsstatements.org/page/UND/1.0/
   term: "Uncertain - Copyright Undetermined"
   active: false
 - id: "Copyright The Board of Trinity College Dublin. Images are available for single-use academic application only. Publication, transmission or display is prohibited without formal written approval of the Library of Trinity College, Dublin."
   term: Copyright The Board of Trinity College Dublin
+  active: true
+- id: https://creativecommons.org/licenses/by/4.0/
+  term: CC BY
+  active: true
+- id: https://creativecommons.org/licenses/by-sa/4.0/
+  term: CC BY-SA
+  active: true
+- id: https://creativecommons.org/licenses/by-nc/4.0/
+  term: CC BY-NC
+  active: true
+- id: https://creativecommons.org/licenses/by-nc-sa/4.0/
+  term: CC BY-NC-SA
+  active: true
+- id: https://creativecommons.org/licenses/by-nd/4.0/
+  term: CC BY-ND
+  active: true
+- id: https://creativecommons.org/licenses/by-nc-nd/4.0/
+  term: CC BY-NC-ND
+  active: true
+- id: https://creativecommons.org/publicdomain/zero/1.0/
+  term: CC0
   active: true
