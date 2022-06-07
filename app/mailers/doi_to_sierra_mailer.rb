@@ -3,7 +3,7 @@ class DoiToSierraMailer < ApplicationMailer
 
   def doi_to_sierra_email(max_rows_exceeded)
     @max_rows_exceeded = max_rows_exceeded
-    mail(to: 'jlakes@tcd.ie,digcollsupport@tcd.ie', subject: 'Digital Collections - Sending DOI file to Sierra')
+    mail(to: 'digcollsupport@tcd.ie', subject: 'Digital Collections - Sending DOI file to Sierra')
   end
 
 end
